@@ -1,0 +1,108 @@
+Event
+    TriggerRegisterTimerExpireEventBJ
+        Var   : StartTimer
+Condition
+Action
+    CreateQuestBJ
+        Preset: QuestTypeReqDiscovered
+        Const : Information
+        Const : '|cffffcc00PayPal:|r 
+www.paypal.me/bbwc3
+|cffffcc00Patreon:|r 
+www.patreon.com/bbwc3
+|cffffcc00Yandex.Money:|r 
+410019801341552
+|c00ffcc00Our Discord:|r discordapp.com/invite/KVfrcby
+|c00ffcc00Our Discord.me:|r discord.me/bbwc3
+The icons are taken from the game World of Warcraft.'
+        Const : ReplaceableTextures\CommandButtons\BTNSelectHeroOn.blp
+    CreateQuestBJ
+        Preset: QuestTypeReqDiscovered
+        Const : 'About the map'
+        Const : '|c00ffcc00Boss Battle|r is a |c00ffcc00Hero Arena|r map with elements from the |c00ffcc00RougeLike|r genre. Your task is to defeat all the proposed bosses on ten levels. After the victory of the bosses and the transition to the next level, you are given a choice of 3 artifacts that will help you strengthen your character or your allies.
+
+During the battles, you can go to the additional arenas of |c00ffcc00Cute Bob|r for a change and receive additional bonuses. You will lose if all the heroes die in battle with the main bosses (without trying).
+
+There are various shops on the map for selling potions and books, but there are also not ordinary ones: |c00ffcc00Huckster|r will offer you for a small cost to get a random artifact for money or in exchange for another artifact. |c00ffcc00Jules|r - allows you to buy selected artifacts, but at a great price. |c00ffcc00Exchanger|r - allows exchanges between players.
+
+The map adjusts to the number of players, so you can go through the map both alone and with friends up to 4 people.
+
+The map will appeal to players who like |c00ffcc00Hearthstone|r, |c00ffcc00Binding of Isaac|r or, |c00ffcc00Slay the Spire|r.'
+        Const : ReplaceableTextures\CommandButtons\BTNStrongDrink.blp
+    CreateQuestBJ
+        Preset: QuestTypeReqDiscovered
+        Const : Acknowledgments
+        Const : 'Thank you for your help in developing the map:
+- Sheepy
+- Rena
+- Mike
+- Leviolon
+- Banderling
+- Glen
+- Ratman
+- Infoneral
+- Eric
+- Wondershovel
+- ZiHeLL
+- Aza_zelko
+- xWizard
+- Zolo
+- Wtii
+- 2kxaoc
+- vatk0end
+- hooka
+- Pohx
+- mrhans
+- Leviolon
+- faceroll
+- Yoti Coyote
+- Lichloved
+- Poor Kimmo
+- stonebludgeon
+- SkifterOk'
+        Const : ReplaceableTextures\CommandButtons\BTNMurgalSlave.blp
+    CreateQuestBJ
+        Preset: QuestTypeOptDiscovered
+        Const : Commands
+        Const : '|c00ffcc00-time X|r Sets the timer out of combat. This command is only available to the host. X - timer time in seconds (no more than 300; no less than 60; the timer is off, if 0).
+|c00ffcc00-zoom X|r/|c00ffcc00-cam X|r Changes the camera range (where X is a number from 1 to 5).
+|c00ffcc00-item X Y|r Allows changing items in inventory. X is the position of the first item in the inventory. Y is the position of the second item in the inventory.
+|c00ffcc00-kick X|r Allows voting to exclude a player from the game. Voting continues until everyone confirms their consent to the exclusion or 30 seconds pass. X - player number (red - 1, blue - 2, etc.)
+|c00ffcc00-tp|r Teleports the hero to the preparatory room. It works only outside the battlefield.
+|c00ffcc00-debug|r Corrects errors on the map. Teleports all heroes to the preparatory room.
+|c00ffcc00-load X-XXXXX-XX|r Load your save file.
+|c00ffcc00-autoload|r Automatically downloads your current save file.
+|c00ffcc00-endgame|r After winning, you can continue playing. You will start killing bosses again, but you will retain all your experience from previous battles. Enemies will have +200% health, attack power and spell damage, as well as -20% ability cooldown for each end victory of the game.
+|c00ffcc00-endnow|r Ends the current arena from Cute Bob. The command is only available to the host.
+|c00ffcc00-color X|r Changes the color of the player. Works only outside of combat. X is a number from 1 to 24.'
+        Const : ReplaceableTextures\CommandButtons\BTNHeartOfAszune.blp
+    CreateQuestBJ
+        Preset: QuestTypeOptDiscovered
+        Const : Distortion
+        Const : 'Host can change the parameters on the map before starting the first battle.
+X - number in %, by which the parameter will change.
+Y - The player whose parameter will change.
+(1 - red, 2 - blue, 3 - teal, 4 - purple)
+
+|c00ffcc00-stat|r Shows the parameters of the current distortion.
+|c00ffcc00-set hp X|r Changes the health of enemies.
+|c00ffcc00-set at X|r Changes the attack power of enemies.
+|c00ffcc00-set sp X|r Changes the spell power of enemies.
+|c00ffcc00-set heal Y X|r Changes the effectiveness of health and mana heals.
+|c00ffcc00-set heal all X|r Changes the effectiveness of health and mana heals for all players.
+|c00ffcc00-set dmg ph Y X|r Changes physical damage.
+|c00ffcc00-set dmg ph all X|r Changes the physical damage for all players.
+|c00ffcc00-set dmg mg Y X|r Changes magic damage.
+|c00ffcc00-set dmg mg all X|r Changes magic damage for all players.'
+        Const : ReplaceableTextures\CommandButtons\BTNCrystalBall.blp
+    CreateQuestBJ
+        Preset: QuestTypeOptDiscovered
+        Const : 'Progress system'
+        Const : '- There is a progress system on the map.
+- Every time you win or lose, you get experience, which is spent on gaining new levels.
+- Each new level gives you new opportunities: bonus items, skins, new items in the rotation, and more.
+- The full list of bonuses can be viewed on our server in Discord.
+- At levels 1-5, you will get access to new shops.
+- From level 5, you will unlock hero skins.
+- Up to level 20, you will receive bonuses, and then only skins.'
+        Const : war3mapImported\PASBTNAchievement_BG_returnXflags_def_WSG.blp

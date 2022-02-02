@@ -1,0 +1,20 @@
+Database_NumberItems - до 37 (вкл.). (6 11 12 17 18 19 20 21 32 свободны)
+number[0] -.
+number[1] - количество убитых боссов.
+number[2] - 
+number[3] - 
+number[4] - лимит попыток, которые дают деньги
+number[5-8] - 
+number[9] - показатель золота за убийство босса.
+number[10-14] -
+number[15-18] -
+number[19-22] -
+number[23] -
+number[24] -
+number[25] - 
+number[26-29] - 
+number[30-37] -
+number[38-41] -
+number[42] -
+number[43-46] - 
+x

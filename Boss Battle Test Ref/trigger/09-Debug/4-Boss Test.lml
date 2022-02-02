@@ -1,0 +1,21 @@
+Event
+    TriggerRegisterEnterRectSimple
+        Call  : GetEntireMapRect
+Condition
+    OperatorCompareBoolean
+        Call  : IsUnitType
+            Call  : GetEnteringUnit
+            Preset: UnitTypeHero
+        Preset: OperatorEqualENE
+        Const : true
+Action
+    ForLoopAMultiple
+        Const : 1
+        Const : 6
+        Action
+            UnitAddItemByIdSwapped
+                Const : I003
+                Call  : GetEnteringUnit
+    UnitAddItemByIdSwapped
+        Const : I01A
+        Call  : GetEnteringUnit

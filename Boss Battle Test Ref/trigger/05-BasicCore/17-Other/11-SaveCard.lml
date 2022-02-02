@@ -1,0 +1,8 @@
+Event
+    TriggerRegisterGameSavedEventBJ
+Condition
+Action
+    DisplayTimedTextToForce
+        Call  : GetPlayersAll
+        Const : 20.00
+        Const : '|cffffcc00Warning!|r The map is not intended to be played after exiting a match. We recommend that you finish the game without loading the map. Otherwise, the map may not work correctly.'

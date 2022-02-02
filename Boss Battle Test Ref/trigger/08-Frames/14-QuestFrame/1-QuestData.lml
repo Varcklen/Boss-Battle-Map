@@ -1,0 +1,296 @@
+Event
+    TriggerRegisterTimerExpireEventBJ
+        Var   : StartTimer
+Condition
+Action
+    SetVariable
+        Var   : QuestItemNum
+        Const : 19
+    SetVariable
+        Array : QuestItem
+            Const : 1
+        Const : I06V
+    SetVariable
+        Array : QuestItem
+            Const : 2
+        Const : I09D
+    SetVariable
+        Array : QuestItem
+            Const : 3
+        Const : I098
+    SetVariable
+        Array : QuestItem
+            Const : 4
+        Const : I095
+    SetVariable
+        Array : QuestItem
+            Const : 5
+        Const : I097
+    SetVariable
+        Array : QuestItem
+            Const : 6
+        Const : I09B
+    SetVariable
+        Array : QuestItem
+            Const : 7
+        Const : I0BV
+    SetVariable
+        Array : QuestItem
+            Const : 8
+        Const : I0BX
+    SetVariable
+        Array : QuestItem
+            Const : 9
+        Const : I096
+    SetVariable
+        Array : QuestItem
+            Const : 10
+        Const : I09C
+    SetVariable
+        Array : QuestItem
+            Const : 11
+        Const : I08W
+    SetVariable
+        Array : QuestItem
+            Const : 12
+        Const : I09A
+    SetVariable
+        Array : QuestItem
+            Const : 13
+        Const : I0BW
+    SetVariable
+        Array : QuestItem
+            Const : 14
+        Const : I0EU
+    SetVariable
+        Array : QuestItem
+            Const : 15
+        Const : I080
+    SetVariable
+        Array : QuestItem
+            Const : 16
+        Const : I0B9
+    SetVariable
+        Array : QuestItem
+            Const : 17
+        Const : I099
+    SetVariable
+        Array : QuestItem
+            Const : 18
+        Const : I0GN
+    SetVariable
+        Array : QuestItem
+            Const : 19
+        Const : I0GP
+    SetVariable
+        Array : QuestNum
+            Const : 1
+        Const : 10
+    SetVariable
+        Array : QuestNum
+            Const : 2
+        Const : 100
+    SetVariable
+        Array : QuestNum
+            Const : 3
+        Const : 18
+    SetVariable
+        Array : QuestNum
+            Const : 4
+        Const : 100
+    SetVariable
+        Array : QuestNum
+            Const : 5
+        Const : 5
+    SetVariable
+        Array : QuestNum
+            Const : 6
+        Const : 100
+    SetVariable
+        Array : QuestNum
+            Const : 7
+        Const : 50
+    SetVariable
+        Array : QuestNum
+            Const : 8
+        Const : 25
+    SetVariable
+        Array : QuestNum
+            Const : 9
+        Const : 100
+    SetVariable
+        Array : QuestNum
+            Const : 10
+        Const : 40
+    SetVariable
+        Array : QuestNum
+            Const : 11
+        Const : 25
+    SetVariable
+        Array : QuestNum
+            Const : 13
+        Const : 15
+    SetVariable
+        Array : QuestNum
+            Const : 14
+        Const : 5
+    SetVariable
+        Array : QuestNum
+            Const : 15
+        Const : 7500
+    SetVariable
+        Array : QuestNum
+            Const : 16
+        Const : 30
+    SetVariable
+        Array : QuestNum
+            Const : 17
+        Const : 4
+    SetVariable
+        Array : QuestNum
+            Const : 18
+        Const : 20000
+    SetVariable
+        Array : QuestNum
+            Const : 19
+        Const : 4
+    SetVariable
+        Array : QuestItemString
+            Const : 1
+        Const : war3mapImported\BTNINV_Glyph_MinorWarrior.blp
+    SetVariable
+        Array : QuestItemString
+            Const : 2
+        Const : war3mapImported\BTNINV_Glyph_MajorDruid.blp
+    SetVariable
+        Array : QuestItemString
+            Const : 3
+        Const : war3mapImported\BTNINV_Glyph_MajorShaman.blp
+    SetVariable
+        Array : QuestItemString
+            Const : 4
+        Const : war3mapImported\BTNINV_Glyph_MajorHunter.blp
+    SetVariable
+        Array : QuestItemString
+            Const : 5
+        Const : war3mapImported\BTNINV_Glyph_MajorWarlock.blp
+    SetVariable
+        Array : QuestItemString
+            Const : 6
+        Const : war3mapImported\BTNINV_Glyph_MajorPaladin.blp
+    SetVariable
+        Array : QuestItemString
+            Const : 7
+        Const : war3mapImported\BTNINV_Glyph_MinorPriest.blp
+    SetVariable
+        Array : QuestItemString
+            Const : 8
+        Const : war3mapImported\BTNINV_Glyph_MinorMage.blp
+    SetVariable
+        Array : QuestItemString
+            Const : 9
+        Const : war3mapImported\BTNINV_Glyph_MajorMage.blp
+    SetVariable
+        Array : QuestItemString
+            Const : 10
+        Const : war3mapImported\BTNINV_Glyph_MajorRogue.blp
+    SetVariable
+        Array : QuestItemString
+            Const : 11
+        Const : war3mapImported\BTNINV_Glyph_MinorDruid.blp
+    SetVariable
+        Array : QuestItemString
+            Const : 12
+        Const : war3mapImported\BTNINV_Glyph_MajorPriest.blp
+    SetVariable
+        Array : QuestItemString
+            Const : 13
+        Const : war3mapImported\BTNINV_Glyph_MinorHunter.blp
+    SetVariable
+        Array : QuestItemString
+            Const : 14
+        Const : war3mapImported\BTNINV_Glyph_MinorDeathKnight.blp
+    SetVariable
+        Array : QuestItemString
+            Const : 15
+        Const : war3mapImported\BTNINV_Glyph_MinorRogue.blp
+    SetVariable
+        Array : QuestItemString
+            Const : 16
+        Const : war3mapImported\BTNINV_Glyph_MinorPaladin.blp
+    SetVariable
+        Array : QuestItemString
+            Const : 17
+        Const : war3mapImported\BTNINV_Glyph_MajorDeathKnight.blp
+    SetVariable
+        Array : QuestItemString
+            Const : 18
+        Const : war3mapImported\BTNINV_Glyph_MinorWarlock.blp
+    SetVariable
+        Array : QuestItemString
+            Const : 19
+        Const : war3mapImported\BTNINV_Glyph_MinorShaman.blp
+    SetVariable
+        Array : QuestItemCode
+            Const : 1
+        Const : sptw
+    SetVariable
+        Array : QuestItemCode
+            Const : 2
+        Const : shpng
+    SetVariable
+        Array : QuestItemCode
+            Const : 3
+        Const : sggg
+    SetVariable
+        Array : QuestItemCode
+            Const : 4
+        Const : dmcg
+    SetVariable
+        Array : QuestItemCode
+            Const : 5
+        Const : spig
+    SetVariable
+        Array : QuestItemCode
+            Const : 6
+        Const : mdgy
+    SetVariable
+        Array : QuestItemCode
+            Const : 7
+        Const : dmsh
+    SetVariable
+        Array : QuestItemCode
+            Const : 8
+        Const : itey
+    SetVariable
+        Array : QuestItemCode
+            Const : 9
+        Const : wbjg
+    SetVariable
+        Array : QuestItemCode
+            Const : 10
+        Const : whtm
+    SetVariable
+        Array : QuestItemCode
+            Const : 11
+        Const : kbzr
+    SetVariable
+        Array : QuestItemCode
+            Const : 14
+        Const : blck
+    SetVariable
+        Array : QuestItemCode
+            Const : 15
+        Const : hndm
+    SetVariable
+        Array : QuestItemCode
+            Const : 16
+        Const : lbcs
+    SetVariable
+        Array : QuestItemCode
+            Const : 17
+        Const : btpw
+    SetVariable
+        Array : QuestItemCode
+            Const : 19
+        Const : ewnt

@@ -1,0 +1,1441 @@
+Event
+    TriggerRegisterTimerExpireEventBJ
+        Var   : StartTimer
+Condition
+Action
+    SetVariable
+        Array : DB_HeroesFrame_Icon
+            Const : 1
+        Const : ReplaceableTextures\PassiveButtons\PASBTNCommand.blp
+    SetVariable
+        Array : DB_HeroesFrame_Icon
+            Const : 2
+        Const : ReplaceableTextures\PassiveButtons\PASBTNUnholyAura.blp
+    SetVariable
+        Array : DB_HeroesFrame_Icon
+            Const : 3
+        Const : ReplaceableTextures\PassiveButtons\PASBTNCleavingAttack.blp
+    SetVariable
+        Array : DB_HeroesFrame_Icon
+            Const : 4
+        Const : ReplaceableTextures\PassiveButtons\PASBTNEvasion.blp
+    SetVariable
+        Array : DB_HeroesFrame_Icon
+            Const : 5
+        Const : ReplaceableTextures\PassiveButtons\PASBTNPillage.blp
+    SetVariable
+        Array : DB_HeroesFrame_Icon
+            Const : 6
+        Const : ReplaceableTextures\PassiveButtons\PASBTNCriticalStrike.blp
+    SetVariable
+        Array : DB_HeroesFrame_Icon
+            Const : 7
+        Const : ReplaceableTextures\PassiveButtons\PASBTNThickFur.blp
+    SetVariable
+        Array : DB_HeroesFrame_Icon
+            Const : 8
+        Const : ReplaceableTextures\PassiveButtons\PASBTNMagicImmunity.blp
+    SetVariable
+        Array : DB_HeroesFrame_Icon
+            Const : 9
+        Const : ReplaceableTextures\PassiveButtons\PASBTNFrost.blp
+    SetVariable
+        Array : DB_HeroesFrame_Tooltip
+            Const : 1
+        Const : 'Encouragers - powerful warriors that strengthen their allies.|n|n|cffffcc00Main stat:|r |cffff3300Strength|r|n|cff00cc00- Health: +100.|n- Mana: +100.|r|n|cffff3300- Attack speed: -10%.|r'
+    SetVariable
+        Array : DB_HeroesFrame_Tooltip
+            Const : 2
+        Const : 'Defenders - strong warriors defending their allies.|n|n|cffffcc00- Main stat:|r |cffff3300Strength|r|n|cff00cc00- Health: +400.|n- Armor: +2.|r|n|cffff3300- Movement speed: -30.|n- Attack speed: -20%.|r'
+    SetVariable
+        Array : DB_HeroesFrame_Tooltip
+            Const : 3
+        Const : 'Rippers - skillful killers of stupid, inept and worthless minions.|n|n|cffffcc00- Main stat:|r |cffff3300Strength|r|n|cff00cc00- Attack speed: + 10%.|n- Attack power: +5.|r|n|cffff3300- Mana: -50.|r'
+    SetVariable
+        Array : DB_HeroesFrame_Tooltip
+            Const : 4
+        Const : 'Hybrids - special type of heroes that combine many types of heroes.|n|n|cffffcc00- Main stat:|r |cff00cc00Agility|r|n|cff00cc00- Do not have positive and negative effects.|r'
+    SetVariable
+        Array : DB_HeroesFrame_Tooltip
+            Const : 5
+        Const : 'Marauders - skillful dodgers who find gold in the most unexpected places.|n|n|cffffcc00- Main stat:|r |cff00cc00Agility|r|n|cff00cc00- Attack speed: +20%|r|n|cffff3300- Movement speed: -30.|r'
+    SetVariable
+        Array : DB_HeroesFrame_Tooltip
+            Const : 6
+        Const : 'Assassins - professional boss destroyers.|n|n|cffffcc00- Main stat:|r |cff00cc00Agility|r|n|cff00cc00- Attack power: +10.|r|n|cffff3300- Health: -100.|n- Armor: -2.|r'
+    SetVariable
+        Array : DB_HeroesFrame_Tooltip
+            Const : 7
+        Const : 'Elementalists - powerful magicians who use different powers.|n|n|cffffcc00- Main stat:|r |cff0099FFIntelligence|r|n|cff00cc00- Mana: +50.|n- Mana regeneration: +1.|n- Spell power: +10%.|r|n|cffff3300- Health: -50.|n- Attack speed: -10%.|n- Armor: - 1.|r'
+    SetVariable
+        Array : DB_HeroesFrame_Tooltip
+            Const : 8
+        Const : 'Healers - wizards who use their magic to support allies.|n|n|cffffcc00- Main stat:|r |cff0099FFIntelligence|r|n|cff00cc00- Health: +75.|n- Mana: +150.|r|n|cffff3300- Attack Speed: -20%.|n- Attack Power: -10. |r'
+    SetVariable
+        Array : DB_HeroesFrame_Tooltip
+            Const : 9
+        Const : 'Weakers - special type of mage that weakens enemies with their spells.|n|n|cffffcc00- Main stat:|r |cff0099FFIntelligence|r|n|cff00cc00- Mana: +150.|n- Movement speed: +30.|r|n|cffff3300- Health: -100.|r'
+    SetVariable
+        Array : DB_HeroesFrame_Name
+            Const : 1
+        Const : Encouragers
+    SetVariable
+        Array : DB_HeroesFrame_Name
+            Const : 2
+        Const : Defenders
+    SetVariable
+        Array : DB_HeroesFrame_Name
+            Const : 3
+        Const : Rippers
+    SetVariable
+        Array : DB_HeroesFrame_Name
+            Const : 4
+        Const : Hybrids
+    SetVariable
+        Array : DB_HeroesFrame_Name
+            Const : 5
+        Const : Marauders
+    SetVariable
+        Array : DB_HeroesFrame_Name
+            Const : 6
+        Const : Killers
+    SetVariable
+        Array : DB_HeroesFrame_Name
+            Const : 7
+        Const : Elementalists
+    SetVariable
+        Array : DB_HeroesFrame_Name
+            Const : 8
+        Const : Healers
+    SetVariable
+        Array : DB_HeroesFrame_Name
+            Const : 9
+        Const : Weakenings
+    CustomScriptCode
+        Const : 'set udg_DB_HeroFrame_Ability[1] = ''A0GD'''
+    CustomScriptCode
+        Const : 'set udg_DB_HeroFrame_Ability[2] = ''A088'''
+    CustomScriptCode
+        Const : 'set udg_DB_HeroFrame_Ability[3] = ''A05L'''
+    CustomScriptCode
+        Const : 'set udg_DB_HeroFrame_Ability[4] = ''A05Y'''
+    CustomScriptCode
+        Const : 'set udg_DB_HeroFrame_Ability[5] = ''A0GA'''
+    CustomScriptCode
+        Const : 'set udg_DB_HeroFrame_Ability[6] = ''A0GB'''
+    CustomScriptCode
+        Const : 'set udg_DB_HeroFrame_Ability[7] = ''A0GC'''
+    CustomScriptCode
+        Const : 'set udg_DB_HeroFrame_Ability[8] = ''A0AG'''
+    CustomScriptCode
+        Const : 'set udg_DB_HeroFrame_Ability[9] = ''A0GF'''
+    CommentString
+        Const : Buffers
+    SetVariable
+        Array : DB_HeroFrame_Number
+            Const : 1
+        Const : 8
+    SetVariable
+        Array : DB_HeroFrame_Buffer
+            Const : 0
+        Const : u002
+    SetVariable
+        Array : DB_HeroFrame_Buffer
+            Const : 1
+        Const : O00S
+    SetVariable
+        Array : DB_HeroFrame_Buffer
+            Const : 2
+        Const : O00L
+    SetVariable
+        Array : DB_HeroFrame_Buffer
+            Const : 3
+        Const : O010
+    SetVariable
+        Array : DB_HeroFrame_Buffer
+            Const : 4
+        Const : N054
+    SetVariable
+        Array : DB_HeroFrame_Buffer
+            Const : 5
+        Const : N05A
+    SetVariable
+        Array : DB_HeroFrame_Buffer
+            Const : 6
+        Const : N02H
+    SetVariable
+        Array : DB_HeroFrame_Buffer
+            Const : 7
+        Const : O00C
+    SetVariable
+        Array : DB_HeroFrame_Buffer
+            Const : 8
+        Const : N04E
+    SetVariable
+        Array : DB_HeroFrame_Buffer_Icon
+            Const : 1
+        Const : ReplaceableTextures\CommandButtons\BTNNagaMyrmidonRoyalGuard.blp
+    SetVariable
+        Array : DB_HeroFrame_Buffer_Icon
+            Const : 2
+        Const : ReplaceableTextures\CommandButtons\BTNPitLord.blp
+    SetVariable
+        Array : DB_HeroFrame_Buffer_Icon
+            Const : 3
+        Const : ReplaceableTextures\CommandButtons\BTNTuskaarBlack.blp
+    SetVariable
+        Array : DB_HeroFrame_Buffer_Icon
+            Const : 4
+        Const : ReplaceableTextures\CommandButtons\BTNDragonHawk.blp
+    SetVariable
+        Array : DB_HeroFrame_Buffer_Icon
+            Const : 5
+        Const : ReplaceableTextures\CommandButtons\BTNScout.blp
+    SetVariable
+        Array : DB_HeroFrame_Buffer_Icon
+            Const : 6
+        Const : ReplaceableTextures\CommandButtons\BTNMedivh.blp
+    SetVariable
+        Array : DB_HeroFrame_Buffer_Icon
+            Const : 7
+        Const : ReplaceableTextures\CommandButtons\BTNBlueDragonSpawn.blp
+    SetVariable
+        Array : DB_HeroFrame_Buffer_Icon
+            Const : 8
+        Const : war3mapImported\BTNHolyMage.blp
+    CommentString
+        Const : Deffenders
+    SetVariable
+        Array : DB_HeroFrame_Number
+            Const : 2
+        Const : 9
+    SetVariable
+        Array : DB_HeroFrame_Deffender
+            Const : 1
+        Const : N000
+    SetVariable
+        Array : DB_HeroFrame_Deffender
+            Const : 2
+        Const : N055
+    SetVariable
+        Array : DB_HeroFrame_Deffender
+            Const : 3
+        Const : N01Q
+    SetVariable
+        Array : DB_HeroFrame_Deffender
+            Const : 4
+        Const : N04C
+    SetVariable
+        Array : DB_HeroFrame_Deffender
+            Const : 5
+        Const : N04J
+    SetVariable
+        Array : DB_HeroFrame_Deffender
+            Const : 6
+        Const : N02O
+    SetVariable
+        Array : DB_HeroFrame_Deffender
+            Const : 7
+        Const : H01A
+    SetVariable
+        Array : DB_HeroFrame_Deffender
+            Const : 8
+        Const : N01P
+    SetVariable
+        Array : DB_HeroFrame_Deffender
+            Const : 9
+        Const : H01U
+    SetVariable
+        Array : DB_HeroFrame_Deffender_Icon
+            Const : 1
+        Const : ReplaceableTextures\CommandButtons\BTNFurbolgTracker.blp
+    SetVariable
+        Array : DB_HeroFrame_Deffender_Icon
+            Const : 2
+        Const : ReplaceableTextures\CommandButtons\BTNTheCaptain.blp
+    SetVariable
+        Array : DB_HeroFrame_Deffender_Icon
+            Const : 3
+        Const : ReplaceableTextures\CommandButtons\BTNTauren.blp
+    SetVariable
+        Array : DB_HeroFrame_Deffender_Icon
+            Const : 4
+        Const : ReplaceableTextures\CommandButtons\BTNSnapDragon.blp
+    SetVariable
+        Array : DB_HeroFrame_Deffender_Icon
+            Const : 5
+        Const : ReplaceableTextures\CommandButtons\BTNGreenDragon.blp
+    SetVariable
+        Array : DB_HeroFrame_Deffender_Icon
+            Const : 6
+        Const : ReplaceableTextures\CommandButtons\BTNInfernal.blp
+    SetVariable
+        Array : DB_HeroFrame_Deffender_Icon
+            Const : 7
+        Const : ReplaceableTextures\CommandButtons\BTNSkeletonWarrior.blp
+    SetVariable
+        Array : DB_HeroFrame_Deffender_Icon
+            Const : 8
+        Const : ReplaceableTextures\CommandButtons\BTNHeroCryptLord.blp
+    SetVariable
+        Array : DB_HeroFrame_Deffender_Icon
+            Const : 9
+        Const : ReplaceableTextures\CommandButtons\BTNDalaranReject.blp
+    CommentString
+        Const : Reapers
+    SetVariable
+        Array : DB_HeroFrame_Number
+            Const : 3
+        Const : 8
+    SetVariable
+        Array : DB_HeroFrame_Ripper
+            Const : 1
+        Const : N00N
+    SetVariable
+        Array : DB_HeroFrame_Ripper
+            Const : 2
+        Const : N02R
+    SetVariable
+        Array : DB_HeroFrame_Ripper
+            Const : 3
+        Const : N04B
+    SetVariable
+        Array : DB_HeroFrame_Ripper
+            Const : 4
+        Const : N028
+    SetVariable
+        Array : DB_HeroFrame_Ripper
+            Const : 5
+        Const : N014
+    SetVariable
+        Array : DB_HeroFrame_Ripper
+            Const : 6
+        Const : N00X
+    SetVariable
+        Array : DB_HeroFrame_Ripper
+            Const : 7
+        Const : N04I
+    SetVariable
+        Array : DB_HeroFrame_Ripper
+            Const : 8
+        Const : N03P
+    SetVariable
+        Array : DB_HeroFrame_Ripper_Icon
+            Const : 1
+        Const : ReplaceableTextures\CommandButtons\BTNHeroDeathKnight.blp
+    SetVariable
+        Array : DB_HeroFrame_Ripper_Icon
+            Const : 2
+        Const : ReplaceableTextures\CommandButtons\BTNBeastMaster.blp
+    SetVariable
+        Array : DB_HeroFrame_Ripper_Icon
+            Const : 3
+        Const : ReplaceableTextures\CommandButtons\BTNZergling.blp
+    SetVariable
+        Array : DB_HeroFrame_Ripper_Icon
+            Const : 4
+        Const : ReplaceableTextures\CommandButtons\BTNHeroDreadLord.blp
+    SetVariable
+        Array : DB_HeroFrame_Ripper_Icon
+            Const : 5
+        Const : ReplaceableTextures\CommandButtons\BTNGarithos.blp
+    SetVariable
+        Array : DB_HeroFrame_Ripper_Icon
+            Const : 6
+        Const : ReplaceableTextures\CommandButtons\BTNOneHeadedOgre.blp
+    SetVariable
+        Array : DB_HeroFrame_Ripper_Icon
+            Const : 7
+        Const : ReplaceableTextures\CommandButtons\BTNHeroDemonHunter.blp
+    SetVariable
+        Array : DB_HeroFrame_Ripper_Icon
+            Const : 8
+        Const : ReplaceableTextures\CommandButtons\BTNDruidOfTheClaw.blp
+    CommentString
+        Const : Hibryds
+    SetVariable
+        Array : DB_HeroFrame_Number
+            Const : 4
+        Const : 9
+    SetVariable
+        Array : DB_HeroFrame_Hybrid
+            Const : 1
+        Const : O00E
+    SetVariable
+        Array : DB_HeroFrame_Hybrid
+            Const : 2
+        Const : O00I
+    SetVariable
+        Array : DB_HeroFrame_Hybrid
+            Const : 3
+        Const : O00Z
+    SetVariable
+        Array : DB_HeroFrame_Hybrid
+            Const : 4
+        Const : O00N
+    SetVariable
+        Array : DB_HeroFrame_Hybrid
+            Const : 5
+        Const : O017
+    SetVariable
+        Array : DB_HeroFrame_Hybrid
+            Const : 6
+        Const : O01N
+    SetVariable
+        Array : DB_HeroFrame_Hybrid
+            Const : 7
+        Const : U00T
+    SetVariable
+        Array : DB_HeroFrame_Hybrid
+            Const : 8
+        Const : O00T
+    SetVariable
+        Array : DB_HeroFrame_Hybrid
+            Const : 9
+        Const : O01O
+    SetVariable
+        Array : DB_HeroFrame_Uniques
+            Const : 1
+        Const : A0IJ
+    SetVariable
+        Array : DB_HeroFrame_Uniques
+            Const : 2
+        Const : A0MW
+    SetVariable
+        Array : DB_HeroFrame_Uniques
+            Const : 3
+        Const : A0JJ
+    SetVariable
+        Array : DB_HeroFrame_Uniques
+            Const : 4
+        Const : A0FS
+    SetVariable
+        Array : DB_HeroFrame_Uniques
+            Const : 5
+        Const : A13G
+    SetVariable
+        Array : DB_HeroFrame_Uniques
+            Const : 6
+        Const : A0CR
+    SetVariable
+        Array : DB_HeroFrame_Uniques
+            Const : 7
+        Const : A0IP
+    SetVariable
+        Array : DB_HeroFrame_Uniques
+            Const : 8
+        Const : A0IS
+    SetVariable
+        Array : DB_HeroFrame_Uniques
+            Const : 9
+        Const : A1BD
+    SetVariable
+        Array : DB_HeroFrame_Hybrid_Icon
+            Const : 1
+        Const : ReplaceableTextures\CommandButtons\BTNEarthBrewmaster.blp
+    SetVariable
+        Array : DB_HeroFrame_Hybrid_Icon
+            Const : 2
+        Const : ReplaceableTextures\CommandButtons\BTNHeadhunter.blp
+    SetVariable
+        Array : DB_HeroFrame_Hybrid_Icon
+            Const : 3
+        Const : ReplaceableTextures\CommandButtons\BTNDryad.blp
+    SetVariable
+        Array : DB_HeroFrame_Hybrid_Icon
+            Const : 4
+        Const : war3mapImported\BTNSummonWaterElemental.blp
+    SetVariable
+        Array : DB_HeroFrame_Hybrid_Icon
+            Const : 5
+        Const : ReplaceableTextures\CommandButtons\BTNWitchDoctor.blp
+    SetVariable
+        Array : DB_HeroFrame_Hybrid_Icon
+            Const : 6
+        Const : ReplaceableTextures\CommandButtons\BTNHeroBloodElfPrince.blp
+    SetVariable
+        Array : DB_HeroFrame_Hybrid_Icon
+            Const : 7
+        Const : ReplaceableTextures\CommandButtons\BTNHeroLich.blp
+    SetVariable
+        Array : DB_HeroFrame_Hybrid_Icon
+            Const : 8
+        Const : ReplaceableTextures\CommandButtons\BTNUnbroken.blp
+    SetVariable
+        Array : DB_HeroFrame_Hybrid_Icon
+            Const : 9
+        Const : war3mapImported\BTNEasterWabbit.blp
+    CommentString
+        Const : Marauders
+    SetVariable
+        Array : DB_HeroFrame_Number
+            Const : 5
+        Const : 8
+    SetVariable
+        Array : DB_HeroFrame_Maraduer
+            Const : 1
+        Const : O00J
+    SetVariable
+        Array : DB_HeroFrame_Maraduer
+            Const : 2
+        Const : O00B
+    SetVariable
+        Array : DB_HeroFrame_Maraduer
+            Const : 3
+        Const : O015
+    SetVariable
+        Array : DB_HeroFrame_Maraduer
+            Const : 4
+        Const : O01A
+    SetVariable
+        Array : DB_HeroFrame_Maraduer
+            Const : 5
+        Const : O01L
+    SetVariable
+        Array : DB_HeroFrame_Maraduer
+            Const : 6
+        Const : O00Q
+    SetVariable
+        Array : DB_HeroFrame_Maraduer
+            Const : 7
+        Const : O019
+    SetVariable
+        Array : DB_HeroFrame_Maraduer
+            Const : 8
+        Const : O01I
+    SetVariable
+        Array : DB_HeroFrame_Maraduer_Icon
+            Const : 1
+        Const : ReplaceableTextures\CommandButtons\BTNForestTrollShadowPriest.blp
+    SetVariable
+        Array : DB_HeroFrame_Maraduer_Icon
+            Const : 2
+        Const : ReplaceableTextures\CommandButtons\BTNBandit.blp
+    SetVariable
+        Array : DB_HeroFrame_Maraduer_Icon
+            Const : 3
+        Const : ReplaceableTextures\CommandButtons\BTNHeroAlchemist.blp
+    SetVariable
+        Array : DB_HeroFrame_Maraduer_Icon
+            Const : 4
+        Const : ReplaceableTextures\CommandButtons\BTNKeeperOfTheGrove.blp
+    SetVariable
+        Array : DB_HeroFrame_Maraduer_Icon
+            Const : 5
+        Const : ReplaceableTextures\CommandButtons\BTNKeeperGhostBlue.blp
+    SetVariable
+        Array : DB_HeroFrame_Maraduer_Icon
+            Const : 6
+        Const : ReplaceableTextures\CommandButtons\BTNProudmoore.blp
+    SetVariable
+        Array : DB_HeroFrame_Maraduer_Icon
+            Const : 7
+        Const : ReplaceableTextures\CommandButtons\BTNAbomination.blp
+    SetVariable
+        Array : DB_HeroFrame_Maraduer_Icon
+            Const : 8
+        Const : ReplaceableTextures\CommandButtons\BTNMeatWagon.blp
+    CommentString
+        Const : Killers
+    SetVariable
+        Array : DB_HeroFrame_Number
+            Const : 6
+        Const : 9
+    SetVariable
+        Array : DB_HeroFrame_Killer
+            Const : 1
+        Const : N004
+    SetVariable
+        Array : DB_HeroFrame_Killer
+            Const : 2
+        Const : N019
+    SetVariable
+        Array : DB_HeroFrame_Killer
+            Const : 3
+        Const : N02K
+    SetVariable
+        Array : DB_HeroFrame_Killer
+            Const : 4
+        Const : N057
+    SetVariable
+        Array : DB_HeroFrame_Killer
+            Const : 5
+        Const : N02E
+    SetVariable
+        Array : DB_HeroFrame_Killer
+            Const : 6
+        Const : N04M
+    SetVariable
+        Array : DB_HeroFrame_Killer
+            Const : 7
+        Const : N02G
+    SetVariable
+        Array : DB_HeroFrame_Killer
+            Const : 8
+        Const : N032
+    SetVariable
+        Array : DB_HeroFrame_Killer
+            Const : 9
+        Const : N04K
+    SetVariable
+        Array : DB_HeroFrame_Killer_Icon
+            Const : 1
+        Const : ReplaceableTextures\CommandButtons\BTNNagaSummoner.blp
+    SetVariable
+        Array : DB_HeroFrame_Killer_Icon
+            Const : 2
+        Const : ReplaceableTextures\CommandButtons\BTNHeroBlademaster.blp
+    SetVariable
+        Array : DB_HeroFrame_Killer_Icon
+            Const : 3
+        Const : war3mapImported\BTNRifleman_Kul-Tiras_HD_noTC.blp
+    SetVariable
+        Array : DB_HeroFrame_Killer_Icon
+            Const : 4
+        Const : war3mapImported\BTNskinvaleera.blp
+    SetVariable
+        Array : DB_HeroFrame_Killer_Icon
+            Const : 5
+        Const : ReplaceableTextures\CommandButtons\BTNRifleman.blp
+    SetVariable
+        Array : DB_HeroFrame_Killer_Icon
+            Const : 6
+        Const : ReplaceableTextures\CommandButtons\BTNHeroWarden.blp
+    SetVariable
+        Array : DB_HeroFrame_Killer_Icon
+            Const : 7
+        Const : ReplaceableTextures\CommandButtons\BTNPriestessOfTheMoon.blp
+    SetVariable
+        Array : DB_HeroFrame_Killer_Icon
+            Const : 8
+        Const : ReplaceableTextures\CommandButtons\BTNBansheeRanger.blp
+    SetVariable
+        Array : DB_HeroFrame_Killer_Icon
+            Const : 9
+        Const : ReplaceableTextures\CommandButtons\BTNArchimonde.blp
+    CommentString
+        Const : Elementalists
+    SetVariable
+        Array : DB_HeroFrame_Number
+            Const : 7
+        Const : 8
+    SetVariable
+        Array : DB_HeroFrame_Elemental
+            Const : 1
+        Const : N039
+    SetVariable
+        Array : DB_HeroFrame_Elemental
+            Const : 2
+        Const : N04H
+    SetVariable
+        Array : DB_HeroFrame_Elemental
+            Const : 3
+        Const : N02P
+    SetVariable
+        Array : DB_HeroFrame_Elemental
+            Const : 4
+        Const : N046
+    SetVariable
+        Array : DB_HeroFrame_Elemental
+            Const : 5
+        Const : N02T
+    SetVariable
+        Array : DB_HeroFrame_Elemental
+            Const : 6
+        Const : N049
+    SetVariable
+        Array : DB_HeroFrame_Elemental
+            Const : 7
+        Const : N001
+    SetVariable
+        Array : DB_HeroFrame_Elemental
+            Const : 8
+        Const : N00Y
+    SetVariable
+        Array : DB_HeroFrame_Elemental_Icon
+            Const : 1
+        Const : ReplaceableTextures\CommandButtons\BTNWispSplode.blp
+    SetVariable
+        Array : DB_HeroFrame_Elemental_Icon
+            Const : 2
+        Const : ReplaceableTextures\CommandButtons\BTNShaman.blp
+    SetVariable
+        Array : DB_HeroFrame_Elemental_Icon
+            Const : 3
+        Const : ReplaceableTextures\CommandButtons\BTNHeroAvatarOfFlame.blp
+    SetVariable
+        Array : DB_HeroFrame_Elemental_Icon
+            Const : 4
+        Const : ReplaceableTextures\CommandButtons\BTNFootman.blp
+    SetVariable
+        Array : DB_HeroFrame_Elemental_Icon
+            Const : 5
+        Const : ReplaceableTextures\CommandButtons\BTNGuldan.blp
+    SetVariable
+        Array : DB_HeroFrame_Elemental_Icon
+            Const : 6
+        Const : ReplaceableTextures\CommandButtons\BTNVengeanceIncarnate.blp
+    SetVariable
+        Array : DB_HeroFrame_Elemental_Icon
+            Const : 7
+        Const : ReplaceableTextures\CommandButtons\BTNOwlBear.blp
+    SetVariable
+        Array : DB_HeroFrame_Elemental_Icon
+            Const : 8
+        Const : ReplaceableTextures\CommandButtons\BTNBanditMage.blp
+    CommentString
+        Const : Healers
+    SetVariable
+        Array : DB_HeroFrame_Number
+            Const : 8
+        Const : 9
+    SetVariable
+        Array : DB_HeroFrame_Healer
+            Const : 1
+        Const : N01M
+    SetVariable
+        Array : DB_HeroFrame_Healer
+            Const : 2
+        Const : N02S
+    SetVariable
+        Array : DB_HeroFrame_Healer
+            Const : 3
+        Const : N002
+    SetVariable
+        Array : DB_HeroFrame_Healer
+            Const : 4
+        Const : N02Q
+    SetVariable
+        Array : DB_HeroFrame_Healer
+            Const : 5
+        Const : N04A
+    SetVariable
+        Array : DB_HeroFrame_Healer
+            Const : 6
+        Const : N017
+    SetVariable
+        Array : DB_HeroFrame_Healer
+            Const : 7
+        Const : N038
+    SetVariable
+        Array : DB_HeroFrame_Healer
+            Const : 8
+        Const : N01R
+    SetVariable
+        Array : DB_HeroFrame_Healer
+            Const : 9
+        Const : N04W
+    SetVariable
+        Array : DB_HeroFrame_Healer_Icon
+            Const : 1
+        Const : ReplaceableTextures\CommandButtons\BTNHeroPaladin.blp
+    SetVariable
+        Array : DB_HeroFrame_Healer_Icon
+            Const : 2
+        Const : ReplaceableTextures\CommandButtons\BTNMurgulShadowCaster.blp
+    SetVariable
+        Array : DB_HeroFrame_Healer_Icon
+            Const : 3
+        Const : ReplaceableTextures\CommandButtons\BTNDruidOfTheTalon.blp
+    SetVariable
+        Array : DB_HeroFrame_Healer_Icon
+            Const : 4
+        Const : ReplaceableTextures\CommandButtons\BTNDranaiMage.blp
+    SetVariable
+        Array : DB_HeroFrame_Healer_Icon
+            Const : 5
+        Const : ReplaceableTextures\CommandButtons\BTNYouDirtyRat!.blp
+    SetVariable
+        Array : DB_HeroFrame_Healer_Icon
+            Const : 6
+        Const : ReplaceableTextures\CommandButtons\BTNCorruptedEnt.blp
+    SetVariable
+        Array : DB_HeroFrame_Healer_Icon
+            Const : 7
+        Const : ReplaceableTextures\CommandButtons\BTNHarpyWitch.blp
+    SetVariable
+        Array : DB_HeroFrame_Healer_Icon
+            Const : 8
+        Const : ReplaceableTextures\CommandButtons\BTNKelThuzad.blp
+    SetVariable
+        Array : DB_HeroFrame_Healer_Icon
+            Const : 9
+        Const : ReplaceableTextures\CommandButtons\BTNDestroyer.blp
+    CommentString
+        Const : Curses
+    SetVariable
+        Array : DB_HeroFrame_Number
+            Const : 9
+        Const : 8
+    SetVariable
+        Array : DB_HeroFrame_Debuffer
+            Const : 1
+        Const : O00K
+    SetVariable
+        Array : DB_HeroFrame_Debuffer
+            Const : 2
+        Const : O00X
+    SetVariable
+        Array : DB_HeroFrame_Debuffer
+            Const : 3
+        Const : O01Y
+    SetVariable
+        Array : DB_HeroFrame_Debuffer
+            Const : 4
+        Const : O018
+    SetVariable
+        Array : DB_HeroFrame_Debuffer
+            Const : 5
+        Const : O01J
+    SetVariable
+        Array : DB_HeroFrame_Debuffer
+            Const : 6
+        Const : O014
+    SetVariable
+        Array : DB_HeroFrame_Debuffer
+            Const : 7
+        Const : O00D
+    SetVariable
+        Array : DB_HeroFrame_Debuffer
+            Const : 8
+        Const : O016
+    SetVariable
+        Array : DB_HeroFrame_Debuffer_Icon
+            Const : 1
+        Const : ReplaceableTextures\CommandButtons\BTNHeroTinker.blp
+    SetVariable
+        Array : DB_HeroFrame_Debuffer_Icon
+            Const : 2
+        Const : ReplaceableTextures\CommandButtons\BTNSatyrTrickster.blp
+    SetVariable
+        Array : DB_HeroFrame_Debuffer_Icon
+            Const : 3
+        Const : ReplaceableTextures\CommandButtons\BTNWindSerpent.blp
+    SetVariable
+        Array : DB_HeroFrame_Debuffer_Icon
+            Const : 4
+        Const : ReplaceableTextures\CommandButtons\BTNPriest.blp
+    SetVariable
+        Array : DB_HeroFrame_Debuffer_Icon
+            Const : 5
+        Const : ReplaceableTextures\CommandButtons\BTNRevenant.blp
+    SetVariable
+        Array : DB_HeroFrame_Debuffer_Icon
+            Const : 6
+        Const : war3mapImported\BTNKingOfGhouls_Icon.blp
+    SetVariable
+        Array : DB_HeroFrame_Debuffer_Icon
+            Const : 7
+        Const : BTNSpell_Shadow_SummonVoidWalker.blp
+    SetVariable
+        Array : DB_HeroFrame_Debuffer_Icon
+            Const : 8
+        Const : ReplaceableTextures\CommandButtons\BTNForgottenOne.blp
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 1
+        Const : 'by Varcklen'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 2
+        Const : 'by Varcklen'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 3
+        Const : 'by Varcklen'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 4
+        Const : 'by Varcklen'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 5
+        Const : 'by Varcklen'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 6
+        Const : 'by Cotya_Ra'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 7
+        Const : 'by Varcklen'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 8
+        Const : 'by Varcklen'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 9
+        Const : 'by Varcklen'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 10
+        Const : 'by Varcklen'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 11
+        Const : 'by Varcklen'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 12
+        Const : 'by Cotya_Ra'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 13
+        Const : 'by Varcklen'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 14
+        Const : 'by Varcklen'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 15
+        Const : 'by Varcklen'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 16
+        Const : 'by Cotya_Ra'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 17
+        Const : 'by Varcklen'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 18
+        Const : 'by Varcklen'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 19
+        Const : 'by Varcklen'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 20
+        Const : 'by Varcklen'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 21
+        Const : 'by Varcklen'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 22
+        Const : 'by Varcklen'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 23
+        Const : 'by Varcklen'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 24
+        Const : 'by Varcklen'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 25
+        Const : 'by Varcklen'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 26
+        Const : 'by Varcklen'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 27
+        Const : 'by Varcklen'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 28
+        Const : 'by Varcklen'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 29
+        Const : 'by pashtet'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 30
+        Const : 'by VAT01'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 31
+        Const : 'by Varcklen   |cffffcc00up to 4 heroes|r'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 32
+        Const : 'by Varcklen'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 33
+        Const : 'by Varcklen'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 34
+        Const : 'by Varcklen   |cffffcc00up to 4 heroes|r'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 35
+        Const : 'by regint'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 36
+        Const : 'by ZiHeLL'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 37
+        Const : 'by Varcklen'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 38
+        Const : 'by LightBeam'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 39
+        Const : 'by Sheepy'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 40
+        Const : 'by Shkolion and h3ts'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 41
+        Const : 'by Sheepy'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 42
+        Const : 'by ZiHeLL'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 43
+        Const : 'by Ratman'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 44
+        Const : 'by Infoneral'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 45
+        Const : 'by Rena'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 46
+        Const : 'by Eric'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 47
+        Const : 'by Rena'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 48
+        Const : 'by Rena'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 49
+        Const : 'by Sheepy'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 50
+        Const : 'by ZiHeLL'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 51
+        Const : 'by Mike'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 52
+        Const : 'by Wondershovel '
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 53
+        Const : 'by ZiHeLL'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 54
+        Const : 'by Mike'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 55
+        Const : 'by Leviolon'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 56
+        Const : 'by ZiHeLL'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 57
+        Const : 'by vatk0end'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 58
+        Const : 'by Yoti Coyote'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 59
+        Const : 'by Yoti Coyote'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 60
+        Const : 'by Lichloved'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 61
+        Const : 'by Lichloved'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 62
+        Const : 'by faceroll'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 63
+        Const : 'by faceroll'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 64
+        Const : 'by stonebludgeon'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 65
+        Const : 'by SkifterOk'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 66
+        Const : 'by ZiHeLL'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 67
+        Const : 'by ZiHeLL'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 68
+        Const : 'by VAT01'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 69
+        Const : 'by Yoti Coyote'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 70
+        Const : 'by faceroll and ZiHeLL'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 71
+        Const : 'by ZiHeLL'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 72
+        Const : 'by ZiHeLL'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 73
+        Const : 'by ZiHeLL'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 74
+        Const : 'by faceroll'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 75
+        Const : 'by ZiHeLL'
+    SetVariable
+        Array : DB_Hero_Avtor
+            Const : 76
+        Const : 'by Rena'
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 1
+        Const : |cffff3300Hard|r
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 2
+        Const : |cff00cc00Easy|r
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 3
+        Const : |cffffcc00Medium|r
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 4
+        Const : |cffffcc00Medium|r
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 5
+        Const : '|cffff3300Hard|r      |cffff1493Undead|r'
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 6
+        Const : |cff00cc00Easy|r
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 7
+        Const : |cff00cc00Easy|r
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 8
+        Const : '|cffffcc00Medium|r      |cffff1493Undead|r'
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 9
+        Const : '|cffff3300Hard|r      |cffff1493Undead|r'
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 10
+        Const : |cffffcc00Medium|r
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 11
+        Const : '|cff00cc00Easy|r      |cffff1493Undead|r'
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 12
+        Const : '|cffff3300Hard|r      |cffff1493Undead|r'
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 13
+        Const : |cffff3300Hard|r
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 14
+        Const : |cffffcc00Medium|r
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 15
+        Const : |cffffcc00Medium|r
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 16
+        Const : |cffffcc00Medium|r
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 17
+        Const : |cff00cc00Easy|r
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 18
+        Const : |cff00cc00Easy|r
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 19
+        Const : |cffff3300Hard|r
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 20
+        Const : |cff00cc00Easy|r
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 21
+        Const : |cff00cc00Easy|r
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 22
+        Const : |cff00cc00Easy|r
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 23
+        Const : |cff00cc00Easy|r
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 24
+        Const : |cffffcc00Medium|r
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 25
+        Const : '|cffff3300Hard|r      |cffff1493Undead|r'
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 26
+        Const : '|cffff3300Hard|r      |cffff1493Undead|r'
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 27
+        Const : |cffff3300Hard|r
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 28
+        Const : |cffff3300Hard|r
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 29
+        Const : |cff00cc00Easy|r
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 30
+        Const : |cff00cc00Easy|r
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 31
+        Const : |cffff3300Hard|r
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 32
+        Const : |cff00cc00Easy|r
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 33
+        Const : |cffffcc00Medium|r
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 34
+        Const : |cffffcc00Medium|r
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 35
+        Const : '|cffff3300Hard|r      |cffff1493Undead|r'
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 36
+        Const : |cffffcc00Medium|r
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 37
+        Const : |cffffcc00Medium|r
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 38
+        Const : '|cffffcc00Medium|r             |cff0099FFIntelligence|r'
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 39
+        Const : |cffffcc00Medium|r
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 40
+        Const : '|cffffcc00Medium|r      |cffff1493Undead|r'
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 41
+        Const : '|cffff3300Hard|r      |cffff1493Undead|r'
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 42
+        Const : |cffffcc00Medium|r
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 43
+        Const : |cffffcc00Medium|r
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 44
+        Const : |cffffcc00Medium|r
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 45
+        Const : |cffff3300Hard|r
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 46
+        Const : '|cffffcc00Medium|r             |cff0099FFIntelligence|r'
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 47
+        Const : |cff00cc00Easy|r
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 48
+        Const : |cffffcc00Medium|r
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 49
+        Const : '|cffff3300Hard|r                  |cff0099FFIntelligence|r'
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 50
+        Const : |cffffcc00Medium|r
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 51
+        Const : '|cffff3300Hard|r     |cffff1493Undead|r      |cffFF0000Strenght|r'
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 52
+        Const : |cff00cc00Easy|r
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 53
+        Const : |cffff3300Hard|r
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 54
+        Const : |cffffcc00Medium|r
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 55
+        Const : '|cffff3300Hard|r                  |cff0099FFIntelligence|r'
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 56
+        Const : |cffffcc00Medium|r
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 57
+        Const : |cffffcc00Medium|r
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 58
+        Const : |cffff3300Hard|r
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 59
+        Const : '|cffff3300Hard|r     |cffff1493Undead|r'
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 60
+        Const : '|cffffcc00Medium|r      |cffff1493Undead|r'
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 61
+        Const : '|cffffcc00Medium|r      |cffff1493Undead|r'
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 62
+        Const : '|cffffcc00Medium|r             |cff0099FFIntelligence|r'
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 63
+        Const : |cff00cc00Easy|r
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 64
+        Const : |cff00cc00Easy|r
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 65
+        Const : '|cffffcc00Medium|r             |cff0099FFIntelligence|r'
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 66
+        Const : |cffffcc00Medium|r
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 67
+        Const : '|cffffcc00Medium|r             |cff0099FFIntelligence|r'
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 68
+        Const : |cff00cc00Easy|r
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 69
+        Const : |cffffcc00Medium|r
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 70
+        Const : '|cffffcc00Medium|r             |cff0099FFIntelligence|r'
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 71
+        Const : '|cffff3300Hard|r                  |cff0099FFIntelligence|r'
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 72
+        Const : |cffffcc00Medium|r
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 73
+        Const : |cffffcc00Medium|r
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 74
+        Const : |cffffcc00Medium|r
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 75
+        Const : |cffff3300Hard|r
+    SetVariable
+        Array : DB_Hero_Hard
+            Const : 76
+        Const : |cff00cc00Easy|r

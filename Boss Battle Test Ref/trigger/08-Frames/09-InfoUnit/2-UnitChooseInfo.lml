@@ -1,0 +1,224 @@
+Event
+    TriggerRegisterTimerExpireEventBJ
+        Var   : StartTimer
+Condition
+Action
+    SetVariable
+        Var   : DB_Seller_Number
+        Const : 18
+    SetVariable
+        Array : DB_Seller
+            Const : 1
+        Const : h00G
+    SetVariable
+        Array : DB_Seller
+            Const : 2
+        Const : h01G
+    SetVariable
+        Array : DB_Seller
+            Const : 3
+        Const : h00P
+    SetVariable
+        Array : DB_Seller
+            Const : 4
+        Const : h016
+    SetVariable
+        Array : DB_Seller
+            Const : 5
+        Const : h019
+    SetVariable
+        Array : DB_Seller
+            Const : 6
+        Const : h00A
+    SetVariable
+        Array : DB_Seller
+            Const : 7
+        Const : n00G
+    SetVariable
+        Array : DB_Seller
+            Const : 8
+        Const : n01L
+    SetVariable
+        Array : DB_Seller
+            Const : 9
+        Const : h007
+    SetVariable
+        Array : DB_Seller
+            Const : 10
+        Const : h01T
+    SetVariable
+        Array : DB_Seller
+            Const : 11
+        Const : h00E
+    SetVariable
+        Array : DB_Seller
+            Const : 12
+        Const : h00D
+    SetVariable
+        Array : DB_Seller
+            Const : 13
+        Const : h00H
+    SetVariable
+        Array : DB_Seller
+            Const : 14
+        Const : h00V
+    SetVariable
+        Array : DB_Seller
+            Const : 15
+        Const : h00U
+    SetVariable
+        Array : DB_Seller
+            Const : 16
+        Const : h00T
+    SetVariable
+        Array : DB_Seller
+            Const : 17
+        Const : h01B
+    SetVariable
+        Array : DB_Seller
+            Const : 18
+        Const : h027
+    SetVariable
+        Array : DB_Seller_Text
+            Const : 1
+        Const : 'Allows you to change the artifact for random, buy a random artifact or buy dubious goods.'
+    SetVariable
+        Array : DB_Seller_Text
+            Const : 2
+        Const : 'Sells artifacts at a great price. Assortment updated after boss victory.'
+    SetVariable
+        Array : DB_Seller_Text
+            Const : 3
+        Const : 'Sells quests. If you complete the task, you will receive a valuable reward.|n|nIt disappears after the victory of the fourth boss.'
+    SetVariable
+        Array : DB_Seller_Text
+            Const : 4
+        Const : 'Allows you to significantly change the gameplay on the map.'
+    SetVariable
+        Array : DB_Seller_Text
+            Const : 5
+        Const : 'Allows you to complicate the game, and also provides additional modifiers.'
+    SetVariable
+        Array : DB_Seller_Text
+            Const : 6
+        Const : 'Allows you to go to various arenas for earning gold and stats.'
+    SetVariable
+        Array : DB_Seller_Text
+            Const : 7
+        Const : 'For a fee, destroys the item in your inventory.'
+    SetVariable
+        Array : DB_Seller_Text
+            Const : 8
+        Const : 'For a fee, destroys the item in your inventory.'
+    SetVariable
+        Array : DB_Seller_Text
+            Const : 9
+        Const : 'Sells books enhancing your hero.'
+    SetVariable
+        Array : DB_Seller_Text
+            Const : 10
+        Const : 'Sells consumables for your hero.'
+    SetVariable
+        Array : DB_Seller_Text
+            Const : 11
+        Const : 'Tells about different sets and tags on the map.'
+    SetVariable
+        Array : DB_Seller_Text
+            Const : 12
+        Const : 'Describes the abilities of bosses with which you can fight.'
+    SetVariable
+        Array : DB_Seller_Text
+            Const : 13
+        Const : 'Conducts exchanges between players. To use, you need to put an artifact, choose a player’s color, have 125 gold and click "Make an exchange".'
+    SetVariable
+        Array : DB_Seller_Text
+            Const : 14
+        Const : 'Conducts exchanges between players. To use, you need to put an artifact, choose a player’s color, have 125 gold and click "Make an exchange".'
+    SetVariable
+        Array : DB_Seller_Text
+            Const : 15
+        Const : 'Conducts exchanges between players. To use, you need to put an artifact, choose a player’s color, have 125 gold and click "Make an exchange".'
+    SetVariable
+        Array : DB_Seller_Text
+            Const : 16
+        Const : 'Conducts exchanges between players. To use, you need to put an artifact, choose a player’s color, have 125 gold and click "Make an exchange".'
+    SetVariable
+        Array : DB_Seller_Text
+            Const : 17
+        Const : 'All your bonuses that you received for the experience gained are displayed here.'
+    SetVariable
+        Array : DB_Seller_Text
+            Const : 18
+        Const : 'Sells |cff8080ffspecial|r abilities for heroes.'
+    SetVariable
+        Array : DB_Seller_Icon
+            Const : 1
+        Const : ReplaceableTextures\CommandButtons\BTNAcolyte.blp
+    SetVariable
+        Array : DB_Seller_Icon
+            Const : 2
+        Const : ReplaceableTextures\CommandButtons\BTNDarkTroll.blp
+    SetVariable
+        Array : DB_Seller_Icon
+            Const : 3
+        Const : ReplaceableTextures\CommandButtons\BTNTheCaptain.blp
+    SetVariable
+        Array : DB_Seller_Icon
+            Const : 4
+        Const : ReplaceableTextures\CommandButtons\BTNShaman.blp
+    SetVariable
+        Array : DB_Seller_Icon
+            Const : 5
+        Const : ReplaceableTextures\CommandButtons\BTNDruidOfTheClaw.blp
+    SetVariable
+        Array : DB_Seller_Icon
+            Const : 6
+        Const : ReplaceableTextures\CommandButtons\BTNAbomination.blp
+    SetVariable
+        Array : DB_Seller_Icon
+            Const : 7
+        Const : ReplaceableTextures\CommandButtons\BTNAmmoDump.blp
+    SetVariable
+        Array : DB_Seller_Icon
+            Const : 8
+        Const : ReplaceableTextures\CommandButtons\BTNClockWerkGoblin.blp
+    SetVariable
+        Array : DB_Seller_Icon
+            Const : 9
+        Const : ReplaceableTextures\CommandButtons\BTNArcaneSanctum.blp
+    SetVariable
+        Array : DB_Seller_Icon
+            Const : 10
+        Const : ReplaceableTextures\CommandButtons\BTNWitchDoctor.blp
+    SetVariable
+        Array : DB_Seller_Icon
+            Const : 11
+        Const : ReplaceableTextures\CommandButtons\BTNTuskaarGold.blp
+    SetVariable
+        Array : DB_Seller_Icon
+            Const : 12
+        Const : ReplaceableTextures\CommandButtons\BTNOrcWarlock.blp
+    SetVariable
+        Array : DB_Seller_Icon
+            Const : 13
+        Const : ReplaceableTextures\CommandButtons\BTNMedivh.blp
+    SetVariable
+        Array : DB_Seller_Icon
+            Const : 14
+        Const : ReplaceableTextures\CommandButtons\BTNMedivh.blp
+    SetVariable
+        Array : DB_Seller_Icon
+            Const : 15
+        Const : ReplaceableTextures\CommandButtons\BTNMedivh.blp
+    SetVariable
+        Array : DB_Seller_Icon
+            Const : 16
+        Const : ReplaceableTextures\CommandButtons\BTNMedivh.blp
+    SetVariable
+        Array : DB_Seller_Icon
+            Const : 17
+        Const : ReplaceableTextures\CommandButtons\BTNNightElfCaptureFlag.blp
+    SetVariable
+        Array : DB_Seller_Icon
+            Const : 18
+        Const : ReplaceableTextures\CommandButtons\BTNArcaneVault.blp

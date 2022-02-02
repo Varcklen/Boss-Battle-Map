@@ -1,0 +1,22 @@
+unit[48-49] -
+unit[50] - 
+unit[51-52] - 
+unit[53] 
+unit[54] -
+unit[55] -
+unit[56] -
+unit[57-58] - юниты на состязании.
+unit[59] - 
+unit[60-63] - 
+unit[64-67] -
+unit[68] - 
+unit[69] - 
+unit[70] - 
+unit[71-72] -
+unit[73] - 
+unit[73] 
+unit[75] - 
+unit[76] -
+unit[77] -
+
++
