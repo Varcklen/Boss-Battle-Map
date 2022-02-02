@@ -128,6 +128,7 @@ function CreateUnitsForPlayer0 takes nothing returns nothing
     set u=BlzCreateUnitWithSkin(p, 'hmpr', 878.9, - 1355.9, 280.443, 'hmpr')
     set u=BlzCreateUnitWithSkin(p, 'hmpr', 1157.6, - 1185.1, 100.495, 'hmpr')
     set u=BlzCreateUnitWithSkin(p, 'hmpr', 1322.0, - 1270.0, 354.781, 'hmpr')
+    set u=BlzCreateUnitWithSkin(p, 'Nkjx', 112.8, - 825.1, 277.710, 'Nkjx')
 endfunction
 
 //===========================================================================
@@ -142,7 +143,7 @@ endfunction
 //===========================================================================
 function CreateAllUnits takes nothing returns nothing
     call CreatePlayerBuildings()
-    call CreatePlayerUnits()
+    call CreateUnitsForPlayer0() // INLINED!!
 endfunction
 
 //***************************************************************************
@@ -204,7 +205,7 @@ function InitTrig_HandleCounter takes nothing returns nothing
 endfunction
 
 function Trig_Handle_Actions takes nothing returns nothing
-    call InitTrig_HandleCounter()
+    call TimerStart(CreateTimer(), 0, false, function HandleCounter_Actions) // INLINED!!
 endfunction
 
 //===========================================================================
@@ -333,7 +334,7 @@ function main takes nothing returns nothing
     call SetAmbientNightSound("LordaeronSummerNight")
     call SetMapMusic("Music", true, 0)
     call CreateRegions()
-    call InitUpgrades()
+    call InitUpgrades_Player0() // INLINED!!
     call CreateAllItems()
     call CreateAllUnits()
     call InitBlizzard()
@@ -341,7 +342,7 @@ function main takes nothing returns nothing
 
     call InitGlobals()
     call InitCustomTriggers()
-    call RunInitializationTriggers()
+    call ConditionalTriggerExecute(gg_trg_Handle) // INLINED!!
 
 endfunction
 
