@@ -57,7 +57,7 @@ function Trig_ShadowArcherQ_Actions takes nothing returns nothing
     call RemoveSavedInteger( udg_hash, GetHandleId( target ), StringHash( "shdq" ) )
 
     call DestroyEffect( AddSpecialEffectTarget("war3mapImported\\Soul Discharge.mdx", target, "origin" ) )
-    set bonus = R2I(BlzGetUnitBaseDamage(target, 0)*SHADOW_ARCHER_Q_ATTACK_BONUS)
+    set bonus = R2I(GetUnitDamage(target)*SHADOW_ARCHER_Q_ATTACK_BONUS)
     call BlzSetUnitBaseDamage( target, BlzGetUnitBaseDamage(target, 0) + bonus, 0 )
     call UnitAddAbility( target, 'A0FV')
     

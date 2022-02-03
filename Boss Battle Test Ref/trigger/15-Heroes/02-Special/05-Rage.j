@@ -45,7 +45,7 @@ function Trig_Rage_Actions takes nothing returns nothing
         set b = b*2
     endif
     call DestroyEffect( AddSpecialEffectTarget("Abilities\\Spells\\NightElf\\BattleRoar\\RoarCaster.mdl", caster, "origin" ) )
-    set r = R2I(BlzGetUnitBaseDamage(caster, 0)*b)
+    set r = R2I(GetUnitDamage(caster)*b)
     set rsum = LoadInteger( udg_hash, GetHandleId( caster ), StringHash( "rage" ) ) + r
     call BlzSetUnitBaseDamage( caster, BlzGetUnitBaseDamage(caster, 0) + r, 0 )
     call UnitAddAbility( caster, 'A19T')

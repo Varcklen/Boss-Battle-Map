@@ -55,7 +55,7 @@ function Trig_Chrysolite_of_Control_Actions takes nothing returns nothing
         call UnitAddAbility( target, 'A19V' )
     
         set hp = BlzGetUnitMaxHP(target)
-        set at = BlzGetUnitBaseDamage(target, 0)
+        set at = GetUnitDamage(target)
         call BlzSetUnitMaxHP( target, BlzGetUnitMaxHP(target) + hp )
         call SetUnitState(target, UNIT_STATE_LIFE, GetUnitState(target, UNIT_STATE_LIFE) + hp)
         call BlzSetUnitBaseDamage( target, BlzGetUnitBaseDamage(target, 0) + at, 0 )

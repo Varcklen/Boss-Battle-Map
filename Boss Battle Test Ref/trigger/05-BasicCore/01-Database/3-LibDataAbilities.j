@@ -112,6 +112,8 @@ function DataAbilities takes nothing returns nothing
     set udg_DB_Ability_Special[BaseNum()] = 'A0GT'
     set udg_DB_Ability_Special[BaseNum()] = 'A12G'
     set udg_DB_Ability_Special[BaseNum()] = 'A12Y'
+    set udg_DB_Ability_Special[BaseNum()] = 'AZ00'
+    set udg_DB_Ability_Special[BaseNum()] = 'AZ01'
     set udg_Database_NumberItems[37] = udg_base
     
     // Умение

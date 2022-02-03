@@ -29,7 +29,7 @@ function Trig_Elixir_of_Longevity_Actions takes nothing returns nothing
             if unitst( u, caster, "ally" ) and not(IsUnitType( u, UNIT_TYPE_HERO)) and not( IsUnitType(u, UNIT_TYPE_ANCIENT) ) and GetUnitTypeId(u) != 'u00X' then
                 call healst( caster, u, 100 )
                 call DestroyEffect( AddSpecialEffectTarget( "Abilities\\Spells\\Human\\HolyBolt\\HolyBoltSpecialArt.mdl", u, "origin" ) )
-                call BlzSetUnitBaseDamage( u, BlzGetUnitBaseDamage(u, 0)+IMaxBJ(1,R2I(BlzGetUnitBaseDamage(u, 0)*0.15)), 0 )
+                call BlzSetUnitBaseDamage( u, BlzGetUnitBaseDamage(u, 0)+IMaxBJ(1,R2I(GetUnitDamage(u)*0.15)), 0 )
             endif
             call GroupRemoveUnit(g,u)
             set u = FirstOfGroup(g)

@@ -13,7 +13,7 @@ function Trig_Pentagram_Actions takes nothing returns nothing
 
     	call BlzSetUnitMaxHP( udg_Event_PlayerMinionSummon_Unit, R2I(BlzGetUnitMaxHP(udg_Event_PlayerMinionSummon_Unit) + hp ) )
         call SetUnitLifeBJ( udg_Event_PlayerMinionSummon_Unit, GetUnitStateSwap(UNIT_STATE_LIFE, udg_Event_PlayerMinionSummon_Unit) + R2I(hp) )
-    	call BlzSetUnitBaseDamage( udg_Event_PlayerMinionSummon_Unit, R2I(BlzGetUnitBaseDamage(udg_Event_PlayerMinionSummon_Unit, 0) * 2), 0 )
+    	call BlzSetUnitBaseDamage( udg_Event_PlayerMinionSummon_Unit, R2I(GetUnitDamage(udg_Event_PlayerMinionSummon_Unit) * 2) - GetUnitAvgDiceDamage(udg_Event_PlayerMinionSummon_Unit), 0 )
     	call DestroyEffect( AddSpecialEffectTarget("Abilities\\Spells\\NightElf\\BattleRoar\\RoarCaster.mdl", udg_Event_PlayerMinionSummon_Unit, "origin" ) )
     else
         call SaveInteger( udg_hash, id, StringHash( "pent" ), s )

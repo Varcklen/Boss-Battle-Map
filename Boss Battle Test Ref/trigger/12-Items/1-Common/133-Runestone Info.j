@@ -4,7 +4,7 @@ endfunction
 
 function Trig_Runestone_Info_Actions takes nothing returns nothing
     local real hp = BlzGetUnitMaxHP(udg_Event_PlayerMinionSummon_Unit)*0.4
-    local real at = BlzGetUnitBaseDamage(udg_Event_PlayerMinionSummon_Unit, 0)*0.4
+    local real at = GetUnitDamage(udg_Event_PlayerMinionSummon_Unit)*0.4
     
     call DestroyEffect( AddSpecialEffectTarget( "Abilities\\Spells\\Undead\\VampiricAura\\VampiricAuraTarget.mdl", udg_Event_PlayerMinionSummon_Unit, "origin") )
     call BlzSetUnitMaxHP( udg_Event_PlayerMinionSummon_Unit, R2I(BlzGetUnitMaxHP(udg_Event_PlayerMinionSummon_Unit) + hp) )

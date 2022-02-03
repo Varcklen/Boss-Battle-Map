@@ -620,6 +620,12 @@ library BuffDeleteLib requires SpdLibLib, ShamanBallLib, MajyteLib, LuckLib, Mul
             call UnitRemoveAbility( u, 'A0GX' )  
             call UnitRemoveAbility( u, 'B06F' )
         endif
+        //zihi adds
+        if GetUnitAbilityLevel(u, 'BZ02') > 0 then
+            call UnitRemoveAbility( u, 'AZ02' )  
+            call UnitRemoveAbility( u, 'BZ02' )
+        endif
+        //zihi stops
         if GetUnitAbilityLevel(u, 'B038') > 0 then
             call BlzSetUnitBaseDamage( u, BlzGetUnitBaseDamage(u, 0) - LoadInteger( udg_hash, GetHandleId( u ), StringHash( "rage" ) ), 0 )
             call UnitRemoveAbility( u, 'A19T' )

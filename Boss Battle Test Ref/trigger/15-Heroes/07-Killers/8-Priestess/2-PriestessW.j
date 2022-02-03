@@ -51,7 +51,7 @@ function Trig_PriestessW_Actions takes nothing returns nothing
             set u = FirstOfGroup(g)
             exitwhen u == null
             if BlzGetUnitBaseDamage(u, 0) < 10000 then
-                call BlzSetUnitBaseDamage( u, R2I(BlzGetUnitBaseDamage(u, 0) + (BlzGetUnitBaseDamage(u, 0)*b)), 0 )
+                call BlzSetUnitBaseDamage( u, R2I(BlzGetUnitBaseDamage(u, 0) + (GetUnitDamage(u)*b)), 0 )
                 call DestroyEffect( AddSpecialEffectTarget("Abilities\\Spells\\NightElf\\BattleRoar\\RoarCaster.mdl", u, "origin" ) )
             endif
             call GroupRemoveUnit(g,u)
@@ -62,7 +62,7 @@ function Trig_PriestessW_Actions takes nothing returns nothing
     
         set b = 0.1+(0.1*lvl)
         call DestroyEffect( AddSpecialEffectTarget("Abilities\\Spells\\NightElf\\BattleRoar\\RoarCaster.mdl", caster, "origin" ) )
-        set r = R2I(BlzGetUnitBaseDamage(caster, 0)*b)
+        set r = R2I(GetUnitDamage(caster)*b)
         set rsum = LoadInteger( udg_hash, GetHandleId( caster ), StringHash( "prsw" ) ) + r
         call BlzSetUnitBaseDamage( caster, BlzGetUnitBaseDamage(caster, 0) + r, 0 )
         call UnitAddAbility( caster, 'A03W')

@@ -11,7 +11,7 @@ function Trig_Teddy_Bear_Actions takes nothing returns nothing
     if GetUnitTypeId(myUnit) == ID_SHEEP then
     	call BlzSetUnitMaxHP( myUnit, R2I(BlzGetUnitMaxHP(myUnit) + hp ) )
         call SetUnitLifeBJ( myUnit, GetUnitState(myUnit, UNIT_STATE_LIFE) + R2I(hp) )
-    	call BlzSetUnitBaseDamage( myUnit, R2I(BlzGetUnitBaseDamage(myUnit, 0) * 2), 0 )
+    	call BlzSetUnitBaseDamage( myUnit, R2I(GetUnitDamage(myUnit) * 2)-GetUnitAvgDiceDamage(myUnit), 0 )
     endif
     
     set myUnit = null

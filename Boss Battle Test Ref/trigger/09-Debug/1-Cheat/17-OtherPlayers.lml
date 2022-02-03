@@ -119,7 +119,7 @@ Action
                             Call  : GetForLoopIndexA
                 Action
                     DoNothing
-    Disab: CreateItemLoc
+    CreateItemLoc
         Const : I083
         Call  : GetRectCenter
             Var   : gg_rct_HeroTp

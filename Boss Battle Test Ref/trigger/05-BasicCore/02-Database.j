@@ -33,6 +33,8 @@ globals
     
     boolean DEBUG = false
     unit UNIT_BUFF = null
+    
+    real array HardModAspd[7]//скорость атаки в модах
 endglobals
 
 function Trig_Database_Actions takes nothing returns nothing
@@ -112,6 +114,14 @@ function Trig_Database_Actions takes nothing returns nothing
     set udg_HardModBonus[3] = 'A05S'
     set udg_HardModBonus[4] = 'A07Q'
     
+    set HardModAspd[0]=1.0
+    set HardModAspd[1]=1.2
+    set HardModAspd[2]=1.4
+    set HardModAspd[3]=1.6
+    set HardModAspd[4]=1.8
+    set HardModAspd[5]=2.
+    set HardModAspd[6]=2.2
+            
     // Set color
     set udg_DB_AllSet = 9
     set udg_DB_Set_Color[1] = "|cffb18904"

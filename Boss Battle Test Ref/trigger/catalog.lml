@@ -484,6 +484,9 @@
     58-Wave: Wave
         Disab
     59-Other: Other
+    60------------------------: -----------------------
+        Comment
+    61-SmartUnitDamageLib: SmartUnitDamageLib
 05-BasicCore: BasicCore
     01-Database: Database
         1-LibDataItems: LibDataItems
@@ -835,13 +838,13 @@
         038-Fairing: Fairing
         '039-Fish Soup': 'Fish Soup'
         '040-Filosofy Potion': 'Filosofy Potion'
-        '041-Eclipse Cloak': 'Eclipse Cloak'
-        042-Fool: Fool
-        043-FutureBall: FutureBall
-        '044-Fire show': 'Fire show'
-        '045-Fake Coin': 'Fake Coin'
-        046----------------------------: ---------------------------
+        041-Fool: Fool
+        042-FutureBall: FutureBall
+        '043-Fire show': 'Fire show'
+        '044-Fake Coin': 'Fake Coin'
+        045----------------------------: ---------------------------
             Comment
+        '046-Eclipse Cloak': 'Eclipse Cloak'
         047-Energizer: Energizer
         '048-Exp Drain': 'Exp Drain'
         '049-Explosive Moss': 'Explosive Moss'
@@ -1376,6 +1379,8 @@
         26-Multicast: Multicast
         '27-Unholy Bless': 'Unholy Bless'
         28-Incineration: Incineration
+        29-Masochism: Masochism
+        30-SoulMarry: SoulMarry
     03-Other: Other
         1-Poof: Poof
         2-Superbots: Superbots
