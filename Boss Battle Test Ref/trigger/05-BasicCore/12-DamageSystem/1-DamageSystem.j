@@ -18,15 +18,18 @@ function Trig_DamageSystem_Actions takes nothing returns nothing
 	set udg_DamageHealLoop = false
 	set udg_DamageEventType = 0
     
+    //Событие, чтобы изменить udg_DamageEventAmount
     set Event_OnDamageChange_StaticDamage = udg_DamageEventAmount
     set Event_OnDamageChange_Real = 0.00
     set Event_OnDamageChange_Real = 1.00
     set Event_OnDamageChange_Real = 0.00
-     
+    
+    // Obsolete. Do not use
     set udg_DamageModifierEvent = 0.00
 	set udg_DamageModifierEvent = 1.00
 	set udg_DamageModifierEvent = 0.00
 
+    //Событие, чтобы добавить модификаторы, не меняющие udg_DamageEventAmount (например вампиризм или запуск волны)
 	set udg_AfterDamageEvent = 0.00
 	set udg_AfterDamageEvent = 1.00
 	set udg_AfterDamageEvent = 0.00

@@ -699,15 +699,6 @@ function Trig_Set_Damage_Actions takes nothing returns nothing
         set udg_DamageEventAmount = 0
     endif
     
-    //zi adds
-    if GetUnitAbilityLevel(udg_DamageEventTarget, 'BZ02') > 0 and udg_DamageEventAmount > 0 then
-        call healst(udg_DamageEventTarget, null, udg_DamageEventAmount)
-        call UnitRemoveAbility( udg_DamageEventTarget, 'AZ02' )
-        call UnitRemoveAbility( udg_DamageEventTarget, 'BZ02' )
-        set udg_DamageEventAmount = 0
-    endif
-    //zi stops
-    
     if GetUnitAbilityLevel(udg_DamageEventTarget, 'B08M') > 0 then
         set udg_DamageEventAmount = 0
     endif

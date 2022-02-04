@@ -1,0 +1,28 @@
+[com] - Made with community feedback.
+[cns] - Made with consuls feedback.
+[Zi] - made by Zihell.
+[Va] - made by Varcklen.
+
+ITEMS
+______________________________
+
+HEROES
+______________________________
+
+BOSSES
+______________________________
+
+BONUSES
+______________________________
+
+[Zi]- Modifiers now adjust attack cooldown instead of attack speed -> Attack speed recuction effects now work correctlier
+
+OTHER
+______________________________
+
+[Zi]- Added 2 new specials. [: Soul Marriage, Masochism]
+
+BUGS
+______________________________
+
+[Zi]- Unit base damage multipliers now work correctly.
