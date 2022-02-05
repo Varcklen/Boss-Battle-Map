@@ -20,6 +20,7 @@ scope SoulMarry
             set caster = GetSpellAbilityUnit()
         endif
         call heroswap()
+        call shield(caster, caster, 100*(udg_Heroes_Amount-CountUnitsInGroup(udg_DeadHero)), 60)
         set caster = null
     endfunction
 

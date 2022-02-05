@@ -9,20 +9,27 @@ ______________________________
 HEROES
 ______________________________
 
+[Zi]- Lycanthrope R (Glaubenskraft and Blood for Blood) duration reduced: 5/7/9/11/13 -> 6/7/8/9/10.
+[Zi]- Infernal E: plates (item form) are now 33% bigger.
+[Zi]- Infernal W: no longer requires hero level 2 as it does not require plates to function.
+[Zi]- Outcast W (Demonic Blast) cooldown increased: 4 -> 5.
+[Zi]- Outcast W (Demonic Blast) mana cost decreased: 40 -> 25.
+
 BOSSES
 ______________________________
 
 BONUSES
 ______________________________
 
-[Zi]- Modifiers now adjust attack cooldown instead of attack speed -> Attack speed recuction effects now work correctlier
+[Zi]- Modifiers now adjust attack cooldown instead of attack speed -> Attack speed reduction effects now work correctlier
 
 OTHER
 ______________________________
 
-[Zi]- Added 2 new specials. [: Soul Marriage, Masochism]
+[Zi]- Added 4 new specials. [: Soul Marriage, Masochism, Last Rites, Left the Game]
 
 BUGS
 ______________________________
 
 [Zi]- Unit base damage multipliers now work correctly.
+[Zi]- Lycanthrope E now uses actual buff duration of Lycanthrope R instead of 15 seconds.
