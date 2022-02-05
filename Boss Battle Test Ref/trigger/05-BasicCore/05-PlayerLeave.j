@@ -180,6 +180,8 @@ function Trig_PlayerLeave_Actions takes nothing returns nothing
         set udg_fightlogic[cyclA] = false
         set cyclA = cyclA + 1
     endloop
+    call BlzFrameSetTexture(butbk, "ReplaceableTextures\\CommandButtons\\BTNArcaniteMelee.blp", 0, true)
+    
     if not( udg_logic[43] ) and not( udg_logic[1] ) then
         call StartSound( gg_snd_SpellbreakerWarcry1 )
         set udg_DPS[i] = 0

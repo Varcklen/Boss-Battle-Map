@@ -14,71 +14,15 @@ scope CircusW initializer init
         private constant integer SPEED = 30
         
         private constant string WAVE_ANIMATION = "Abilities\\Spells\\Orc\\Shockwave\\ShockwaveMissile.mdl"
+        
+        private trigger Wave_Use = null
     endglobals
 
     function Trig_CircusW_Conditions takes nothing returns boolean
         return GetSpellAbilityId() == ID_ABILITY
     endfunction
-
-    /*function CircusWCast takes nothing returns nothing
-        local integer id = GetHandleId( GetExpiredTimer() )
-        local integer counter = LoadInteger( udg_hash, id, StringHash( "crcw" ) ) 
-        local unit dummy = LoadUnitHandle( udg_hash, id, StringHash( "crcw" ) )
-        local unit caster = LoadUnitHandle( udg_hash, id, StringHash( "crcwcs" ) )
-        local unit u
-        local real NewX = GetUnitX( dummy ) + 30 * Cos( 0.017 * GetUnitFacing( dummy ) )
-        local real NewY = GetUnitY( dummy ) + 30 * Sin( 0.017 * GetUnitFacing( dummy ) )
-        local real currentDamage = LoadReal( udg_hash, id, StringHash( "crcw" ) )
-        local real d = currentDamage
-        local group nodmg = LoadGroupHandle( udg_hash, GetHandleId( caster ), StringHash( "crcwg" ) )
-        local group g = CreateGroup()
-
-        if counter >= 30 or GetUnitState( dummy, UNIT_STATE_LIFE) <= 0.405 then
-            call RemoveUnit( dummy )
-            call GroupClear( nodmg )
-        call SaveGroupHandle( udg_hash, GetHandleId( caster ), StringHash( "crcwg" ), nodmg )
-            call DestroyGroup( nodmg )
-            call FlushChildHashtable( udg_hash, id )
-            call DestroyTimer( GetExpiredTimer() )
-        else
-            call SetUnitPosition( dummy, NewX, NewY )
-            call SaveInteger( udg_hash, id, StringHash( "crcw" ), counter + 1)
-            call GroupEnumUnitsInRange( g, GetUnitX( dummy ), GetUnitY( dummy ), 100, null )
-            loop
-                set u = FirstOfGroup(g)
-                exitwhen u == null
-                if unitst( u, caster, "enemy" ) and not( IsUnitInGroup( u, nodmg ) ) then
-                    if GetUnitAbilityLevel( u, 'B1B1') > 0 then
-                        set currentDamage = currentDamage + d
-                    endif
-                    if GetUnitAbilityLevel( u, 'B1B2') > 0 then
-                        set currentDamage = currentDamage + d
-                    endif
-                    if GetUnitAbilityLevel( u, 'B1B3') > 0 then
-                        set currentDamage = currentDamage + d
-                    endif
-                    if GetUnitAbilityLevel( u, 'B1B4') > 0 then
-                        set currentDamage = currentDamage + d
-                    endif
-                    call DemomanCurse( caster, u )
-                    call UnitDamageTarget( dummy, u, currentDamage, true, false, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_MAGIC, WEAPON_TYPE_WHOKNOWS )
-                    call GroupAddUnit( nodmg, u )
-                endif
-                call GroupRemoveUnit(g,u)
-                set u = FirstOfGroup(g)
-            endloop
-        call SaveGroupHandle( udg_hash, GetHandleId( caster ), StringHash( "crcwg" ), nodmg )
-        endif
-        
-        call GroupClear( g )
-        call DestroyGroup( g )
-        set u = null
-        set g = null
-        set dummy = null
-        set caster = null
-    endfunction*/
     
-    private function DealDamage takes effect wave, integer id returns nothing
+    /*private function DealDamage takes effect wave, integer id returns nothing
         local group g = CreateGroup()
         local unit u
         local real currentDamage
@@ -180,6 +124,32 @@ scope CircusW initializer init
         set wave = null
         set caster = null
         set affected = null
+    endfunction*/
+    
+    private function DealDamage takes nothing returns nothing
+        local unit caster = Event_WaveHit_Caster
+        local unit target = Event_WaveHit_Target
+        local real damage = LoadReal( udg_hash, GetHandleId(Event_WaveHit_Wave), StringHash( "crcwd" ) )
+        local real currentDamage = damage
+        
+        if GetUnitAbilityLevel( target, 'B1B1') > 0 then
+            set currentDamage = currentDamage + damage
+        endif
+        if GetUnitAbilityLevel( target, 'B1B2') > 0 then
+            set currentDamage = currentDamage + damage
+        endif
+        if GetUnitAbilityLevel( target, 'B1B3') > 0 then
+            set currentDamage = currentDamage + damage
+        endif
+        if GetUnitAbilityLevel( target, 'B1B4') > 0 then
+            set currentDamage = currentDamage + damage
+        endif
+        call DemomanCurse( caster, target )
+        set IsDisableSpellPower = true
+        call UnitTakeDamage(caster, target, currentDamage, DAMAGE_TYPE_MAGIC)
+                
+        set caster = null
+        set target = null
     endfunction
 
     function Trig_CircusW_Actions takes nothing returns nothing
@@ -187,7 +157,8 @@ scope CircusW initializer init
         local real damage
         local unit caster
         local integer lvl
-        local group affected = CreateGroup()
+        local group affected
+        local effect wave
         
         if CastLogic() then
             set caster = udg_Caster
@@ -202,16 +173,20 @@ scope CircusW initializer init
         endif
 
         set damage = (DAMAGE_FIRST_LEVEL+(DAMAGE_LEVEL_BONUS*lvl)) * GetUnitSpellPower(caster)
+        set affected = CreateGroup()
         
         set i = 1
         loop
             exitwhen i > WAVES
-            call CreateWave(caster, ANGLE_DIFFERENCE * i, damage, affected)
+            //call CreateWave(caster, ANGLE_DIFFERENCE * i, damage, affected)
+            set wave = Wave_CreateWave( caster, GetUnitX(caster), GetUnitY(caster), ANGLE_DIFFERENCE * i, TICK, AREA, FLIGHT_LENGTH, SPEED, TARGET_ENEMY, WAVE_BASE_ANIMATION, Wave_Use, affected )
+            call SaveReal( udg_hash, GetHandleId(wave), StringHash( "crcwd" ), damage)
             set i = i + 1
         endloop
         
         set affected = null
         set caster = null
+        set wave = null
     endfunction
 
     //===========================================================================
@@ -220,6 +195,9 @@ scope CircusW initializer init
         call TriggerRegisterAnyUnitEventBJ( gg_trg_CircusW, EVENT_PLAYER_UNIT_SPELL_EFFECT )
         call TriggerAddCondition( gg_trg_CircusW, Condition( function Trig_CircusW_Conditions ) )
         call TriggerAddAction( gg_trg_CircusW, function Trig_CircusW_Actions )
+        
+        set Wave_Use = CreateTrigger()
+        call TriggerAddAction( Wave_Use, function DealDamage )
     endfunction
 
 endscope

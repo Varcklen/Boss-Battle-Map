@@ -23,13 +23,6 @@ function Trig_Endgame_Actions takes nothing returns nothing
 	set udg_Boss_Random = GetRandomInt( 1, 5 )
 	set udg_Player_Readiness = udg_Heroes_Amount
     call TriggerExecute( gg_trg_StartFight )
-    
-    set i = 0
-    loop
-        exitwhen i > 3
-        call MMD_FlagPlayer(Player( i ), MMD_FLAG_PRACTICING)
-        set i = i + 1
-    endloop
 endfunction
 
 //===========================================================================

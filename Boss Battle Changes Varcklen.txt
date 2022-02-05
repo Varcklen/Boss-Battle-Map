@@ -1,0 +1,34 @@
+[com] - Made with community feedback.
+[cns] - Made with consuls feedback.
+
+ITEMS
+______________________________
+
+HEROES
+______________________________
+
+BOSSES
+______________________________
+
+BONUSES
+______________________________
+
+OTHER
+______________________________
+
+[com]- The "Runestone Kusa" artifact can now be obtained from the "Pandora's Box" artifact.
+
+- Changed the calculation of the percentage of luck.
+
+BUGS
+______________________________
+
+[com]- Fixed a visual issue where the "Readiness" button icon would not change when the player left the game but your hero was ready to fight.
+
+[com]- Fixed an issue where the "Night of the Werewolves" (Lycanthrope Druid) ability, when hit by the "Aspect of Varcolac" aspect, would grant a permanent agility bonus.
+
+[com]- Fixed an issue that caused "Beginner's Luck" (Gambler) to not work on the copy of the hero created by "Double Down" (Gambler).
+
+- The "War" boss code has been optimized.
+
+- Tooltip in Jule's shop has been changed.

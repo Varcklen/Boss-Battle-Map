@@ -19,12 +19,14 @@ function Trig_ChaosLordQ_Actions takes nothing returns nothing
         set lvl = GetUnitAbilityLevel(GetSpellAbilityUnit(), GetSpellAbilityId())
     endif
     
-    set udg_RandomLogic = true
+    /*set udg_RandomLogic = true
     set udg_Caster = caster
     set udg_Level = lvl
     set RandomMode = true
     call TriggerExecute( udg_DB_Trigger_One[GetRandomInt( 1, udg_Database_NumberItems[14])] )
-    set RandomMode = false
+    set RandomMode = false*/
+    
+    call CastRandomAbility(caster, lvl, udg_DB_Trigger_One[GetRandomInt( 1, udg_Database_NumberItems[14])] )
     
     set caster = null
 endfunction

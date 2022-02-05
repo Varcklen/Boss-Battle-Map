@@ -150,9 +150,9 @@ library AspectFrames initializer init requires Tooltip, Aspects
         local player owner = GetTriggerPlayer()
         local integer playerIndex = GetPlayerId(owner)
     
-        if GetLocalPlayer() == owner then
+        /*if GetLocalPlayer() == owner then
             call BlzFrameSetVisible( TooltipBackdrop, true )
-        endif
+        endif*/
         call Tooltip_SetLocalTooltipText(owner, AspectName[playerIndex][index], AspectDescription[playerIndex][index])
         
         set owner = null

@@ -692,7 +692,7 @@ Action
     SetVariable
         Array : DB_HeroFrame_Healer
             Const : 1
-        Const : N01M
+        Const : N002
     SetVariable
         Array : DB_HeroFrame_Healer
             Const : 2
@@ -700,7 +700,7 @@ Action
     SetVariable
         Array : DB_HeroFrame_Healer
             Const : 3
-        Const : N002
+        Const : N01M
     SetVariable
         Array : DB_HeroFrame_Healer
             Const : 4
@@ -728,7 +728,7 @@ Action
     SetVariable
         Array : DB_HeroFrame_Healer_Icon
             Const : 1
-        Const : ReplaceableTextures\CommandButtons\BTNHeroPaladin.blp
+        Const : ReplaceableTextures\CommandButtons\BTNDruidOfTheTalon.blp
     SetVariable
         Array : DB_HeroFrame_Healer_Icon
             Const : 2
@@ -736,7 +736,7 @@ Action
     SetVariable
         Array : DB_HeroFrame_Healer_Icon
             Const : 3
-        Const : ReplaceableTextures\CommandButtons\BTNDruidOfTheTalon.blp
+        Const : ReplaceableTextures\CommandButtons\BTNHeroPaladin.blp
     SetVariable
         Array : DB_HeroFrame_Healer_Icon
             Const : 4
@@ -1158,7 +1158,7 @@ Action
     SetVariable
         Array : DB_Hero_Hard
             Const : 6
-        Const : |cff00cc00Easy|r
+        Const : |cffffcc00Medium|r
     SetVariable
         Array : DB_Hero_Hard
             Const : 7
@@ -1174,7 +1174,7 @@ Action
     SetVariable
         Array : DB_Hero_Hard
             Const : 10
-        Const : |cffffcc00Medium|r
+        Const : |cff00cc00Easy|r
     SetVariable
         Array : DB_Hero_Hard
             Const : 11
