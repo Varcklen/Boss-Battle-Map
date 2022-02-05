@@ -999,6 +999,7 @@ function DataItems takes nothing returns nothing
     set DB_SetItems[5][BaseNum()] = 'I06N'
     set DB_SetItems[5][BaseNum()] = 'I02G'
     set DB_SetItems[5][BaseNum()] = 'I00O'
+    set DB_SetItems[5][BaseNum()] = 'I02H'
     set DB_SetItems[5][BaseNum()] = 'I02Z'
     set DB_SetItems[5][BaseNum()] = 'I00M'
     set DB_SetItems[5][BaseNum()] = 'I078'
@@ -1020,7 +1021,6 @@ function DataItems takes nothing returns nothing
     set DB_SetItems[5][BaseNum()] = 'I01Y'
     set DB_SetItems[5][BaseNum()] = 'I01C'
     set DB_SetItems[5][BaseNum()] = 'I01K'
-    set DB_SetItems[5][BaseNum()] = 'I02H'
     set udg_DB_SetItems_Num[5] = udg_base
     
     // Луна

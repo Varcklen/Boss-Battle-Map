@@ -1,5 +1,3 @@
-//TESH.scrollpos=0
-//TESH.alwaysfold=0
 function Trig_Ent2_Conditions takes nothing returns boolean
     return GetUnitTypeId(udg_DamageEventTarget) == 'e006' and GetUnitLifePercent(udg_DamageEventTarget) <= 50
 endfunction

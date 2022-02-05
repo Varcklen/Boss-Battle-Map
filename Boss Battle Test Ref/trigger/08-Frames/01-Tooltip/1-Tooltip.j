@@ -9,6 +9,8 @@ library Tooltip initializer init
         private constant real TOOLTIP_NAME_RETREAT = TOOLTIP_NAME_SIZE*0.008
         
         private constant string TOOLTIP_NAME_COLOR = "|cffffcc00"
+        
+        private trigger TempTrigger = null
     endglobals
     
     public function SetLocalTooltipText takes player localPlayer, string newName, string newDescription returns nothing 
@@ -28,20 +30,39 @@ library Tooltip initializer init
         endif
     endfunction
 
+    private function TooltipEnable takes nothing returns nothing 
+        if GetLocalPlayer() == GetTriggerPlayer() then
+            call BlzFrameSetVisible( TooltipBackdrop, true )
+        endif
+    endfunction
+
     public function AddEvent takes framehandle frameToAdd, code codeEnter returns trigger
-        local trigger trig = CreateTrigger()
         local trigger trigExit = CreateTrigger()
         
-        call BlzTriggerRegisterFrameEvent(trig, frameToAdd, FRAMEEVENT_MOUSE_ENTER)
-        call TriggerAddAction( trig, codeEnter )
+        set TempTrigger = CreateTrigger()
+        call BlzTriggerRegisterFrameEvent(TempTrigger, frameToAdd, FRAMEEVENT_MOUSE_ENTER)
+        call TriggerAddAction( TempTrigger, codeEnter )
+        call TriggerAddAction( TempTrigger, function TooltipEnable )
         
         call BlzTriggerRegisterFrameEvent(trigExit, frameToAdd, FRAMEEVENT_MOUSE_LEAVE)
         call TriggerAddAction( trigExit, function TooltipDisable )
         
         set frameToAdd = null
         set codeEnter = null
-        return trig
+        set trigExit = null
+        return TempTrigger
     endfunction
+    
+    public function AddMouseEvent takes framehandle frameToAdd, code codeEnter, code codeUse, integer index returns trigger
+        
+        set TempTrigger = CreateTrigger()
+        call BlzTriggerRegisterFrameEvent(TempTrigger, frameToAdd, FRAMEEVENT_CONTROL_CLICK) 
+        call TriggerAddAction(TempTrigger, codeUse)
+        call Tooltip_AddEvent(frameToAdd, codeEnter )
+        call SaveInteger(udg_hash, GetHandleId(frameToAdd), StringHash("index"), index )
+        
+        return TempTrigger
+     endfunction
 
     private function init takes nothing returns nothing 
         set TooltipBackdrop = BlzCreateFrame( "QuestButtonBaseTemplate", BlzGetOriginFrame(ORIGIN_FRAME_GAME_UI,0), 0, 0 )

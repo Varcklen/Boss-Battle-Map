@@ -423,70 +423,73 @@
     01-List: List
     02-Text: Text
     03-Spd: Spd
-    04-Luck: Luck
-    05-Money: Money
-    06-Luckylogic: Luckylogic
-    07-Unitst: Unitst
-    08-Mathst: Mathst
-    09-Health: Health
-    10-Combat: Combat
-    11-Trigger: Trigger
-    12-Conditions: Conditions
-    13-GroupLib: GroupLib
-    '14-Special Effect': 'Special Effect'
-    15-DeathLib: DeathLib
-    16-PauseLib: PauseLib
-    17-DealDamageLib: DealDamageLib
-    18-BerserkLib: BerserkLib
-    19-QuestDiscLib: QuestDiscLib
-    20-CorrectPlayerLib: CorrectPlayerLib
-    21------------------------: -----------------------
-        Comment
-    22-Timebonus: Timebonus
-    23-RandomTarget: RandomTarget
-    24-AnyHasLvLLib: AnyHasLvLLib
-    25-ItemRandomizerLib: ItemRandomizerLib
-    26-SetRaritySpawnLib: SetRaritySpawnLib
-    27-SetStableToolLib: SetStableToolLib
-    28-CreateCopyUnitLib: CreateCopyUnitLib
-    29-BuffDeleteLib: BuffDeleteLib
-    30-NullingAbility: NullingAbility
-    31-Repick: Repick
-    32------------------------: -----------------------
-        Comment
-    33-Inventory: Inventory
-    34-CommonTimer: CommonTimer
-    35-ReduceCooldown: ReduceCooldown
-    36-Shieldst: Shieldst
-    37-Healst: Healst
-    38-Manast: Manast
-    39-Dummyspawn: Dummyspawn
-    40-ChangeToolLib: ChangeToolLib
-    41------------------------: -----------------------
-        Comment
-    42-RessurectLib: RessurectLib
-    43-ChainHealLib: ChainHealLib
-    44-StunLib: StunLib
-    45-PolyLib: PolyLib
-    46-EnvironmentLib: EnvironmentLib
-    47-HeroSwapLib: HeroSwapLib
-    48-SpecAnimLib: SpecAnimLib
-    49-StatLib: StatLib
-    50-UniquesLib: UniquesLib
-    51-SpecialLib: SpecialLib
-    52-BattleRessurectLib: BattleRessurectLib
-    53-TimePlayLib: TimePlayLib
-    54-CorruptedLib: CorruptedLib
-    55-BuffsLib: BuffsLib
-    56-BuffsAllLib: BuffsAllLib
-    57-StartTimer: StartTimer
-        Run
-    58-Wave: Wave
+    '04-Enum TargetRelation': 'Enum TargetRelation'
         Disab
-    59-Other: Other
-    60------------------------: -----------------------
+    05-Luck: Luck
+    06-Money: Money
+    07-Luckylogic: Luckylogic
+    08-Unitst: Unitst
+    09-Mathst: Mathst
+    10-Health: Health
+    11-Combat: Combat
+    12-Trigger: Trigger
+    13-Conditions: Conditions
+    14-GroupLib: GroupLib
+    '15-Special Effect': 'Special Effect'
+    16-DeathLib: DeathLib
+    17-PauseLib: PauseLib
+    18-DealDamageLib: DealDamageLib
+    19-BerserkLib: BerserkLib
+    20-QuestDiscLib: QuestDiscLib
+    21-CorrectPlayerLib: CorrectPlayerLib
+    22------------------------: -----------------------
         Comment
-    61-SmartUnitDamageLib: SmartUnitDamageLib
+    23-Timebonus: Timebonus
+    24-RandomTarget: RandomTarget
+    25-AnyHasLvLLib: AnyHasLvLLib
+    26-ItemRandomizerLib: ItemRandomizerLib
+    27-SetRaritySpawnLib: SetRaritySpawnLib
+    28-SetStableToolLib: SetStableToolLib
+    29-CreateCopyUnitLib: CreateCopyUnitLib
+    30-BuffDeleteLib: BuffDeleteLib
+    31-NullingAbility: NullingAbility
+    32-Repick: Repick
+    33------------------------: -----------------------
+        Comment
+    34-Inventory: Inventory
+    35-CommonTimer: CommonTimer
+    36-ReduceCooldown: ReduceCooldown
+    37-Shieldst: Shieldst
+    38-Healst: Healst
+    39-Manast: Manast
+    40-Dummyspawn: Dummyspawn
+    41-ChangeToolLib: ChangeToolLib
+    42------------------------: -----------------------
+        Comment
+    43-RessurectLib: RessurectLib
+    44-CastRandomAbility: CastRandomAbility
+    45-Lightning: Lightning
+    46-ChainHealLib: ChainHealLib
+    47-StunLib: StunLib
+    48-PolyLib: PolyLib
+    49-EnvironmentLib: EnvironmentLib
+    50-HeroSwapLib: HeroSwapLib
+    51-SpecAnimLib: SpecAnimLib
+    52-StatLib: StatLib
+    53-UniquesLib: UniquesLib
+    54-SpecialLib: SpecialLib
+    55-BattleRessurectLib: BattleRessurectLib
+    56-TimePlayLib: TimePlayLib
+    57-CorruptedLib: CorruptedLib
+    58-BuffsLib: BuffsLib
+    59-BuffsAllLib: BuffsAllLib
+    60-StartTimer: StartTimer
+        Run
+    61-Wave: Wave
+    62-Other: Other
+    63------------------------: -----------------------
+        Comment
+    64-SmartUnitDamageLib: SmartUnitDamageLib
 05-BasicCore: BasicCore
     01-Database: Database
         1-LibDataItems: LibDataItems
@@ -1290,11 +1293,12 @@
             Disab
         07-ItemTimedG: ItemTimedG
         08-ExtraExp: ExtraExp
-        '09-Book of Oblivion': 'Book of Oblivion'
-        10-Delbook: Delbook
-        11-DarkSmoke: DarkSmoke
-        12-ResMag: ResMag
-        13-Rocks: Rocks
+        '09-Book of OblivionLib': 'Book of OblivionLib'
+        '10-Book of Oblivion': 'Book of Oblivion'
+        11-Delbook: Delbook
+        12-DarkSmoke: DarkSmoke
+        13-ResMag: ResMag
+        14-Rocks: Rocks
     7-Sets: Sets
         01-SetCountLib: SetCountLib
         02-MechG: MechG
@@ -1381,8 +1385,6 @@
         28-Incineration: Incineration
         29-Masochism: Masochism
         30-SoulMarry: SoulMarry
-        '31-Last Rites': 'Last Rites'
-        '32-Left the Game': 'Left the Game'
     03-Other: Other
         1-Poof: Poof
         2-Superbots: Superbots

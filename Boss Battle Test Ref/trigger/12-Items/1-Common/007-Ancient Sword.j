@@ -13,6 +13,8 @@ scope AncientSword initializer init
         private constant integer SPEED = 44
         
         private constant string WAVE_ANIMATION = "Abilities\\Spells\\Orc\\Shockwave\\ShockwaveMissile.mdl"
+        
+        private trigger Wave_Use = null
     endglobals
     
     function Trig_Ancient_Sword_Conditions takes nothing returns boolean
@@ -26,7 +28,7 @@ scope AncientSword initializer init
         return true
     endfunction
     
-    private function DealDamage takes effect wave, group nodmg, unit caster, real damage returns nothing
+    /*private function DealDamage takes effect wave, group nodmg, unit caster, real damage returns nothing
         local group g = CreateGroup()
         local unit u
         
@@ -78,17 +80,29 @@ scope AncientSword initializer init
         set wave = null
         set caster = null
         set nodmg = null
+    endfunction*/
+    
+    private function Use takes nothing returns nothing
+        local unit caster = Event_WaveHit_Caster
+        local unit target = Event_WaveHit_Target
+        local real damage = LoadReal( udg_hash, GetHandleId(Event_WaveHit_Wave), StringHash( "anss" ) )
+        
+        set IsDisableSpellPower = true
+        call UnitTakeDamage(caster, target, damage, DAMAGE_TYPE_MAGIC)
+                
+        set caster = null
+        set target = null
     endfunction
     
     function Trig_Ancient_Sword_Actions takes nothing returns nothing
         local unit caster = udg_DamageEventSource
         local unit target = udg_DamageEventTarget
         local effect wave
-        local real yaw
+        //local real yaw
         local real damage = DAMAGE * GetUnitSpellPower(caster)
-        local integer id
+        //local integer id
 
-        set wave = AddSpecialEffect( WAVE_ANIMATION, GetUnitX(caster), GetUnitY(caster))
+        /*set wave = AddSpecialEffect( WAVE_ANIMATION, GetUnitX(caster), GetUnitY(caster))
         set yaw = Deg2Rad(AngleBetweenUnits(target, caster))
         call BlzSetSpecialEffectYaw( wave, yaw )
         
@@ -96,7 +110,10 @@ scope AncientSword initializer init
         call SaveUnitHandle( udg_hash, id, StringHash( "anssc" ), caster )
         call SaveReal( udg_hash, id, StringHash( "anss" ), damage )
         call SaveReal( udg_hash, id, StringHash( "anssy" ), yaw )
-        call SaveGroupHandle( udg_hash, id, StringHash( "anssg" ), CreateGroup() )
+        call SaveGroupHandle( udg_hash, id, StringHash( "anssg" ), CreateGroup() )*/
+        
+        set wave = Wave_CreateWave( caster, GetUnitX(caster), GetUnitY(caster), GetUnitFacing(caster), TICK, AREA, FLIGHT_LENGTH, SPEED, TARGET_ENEMY, WAVE_BASE_ANIMATION, Wave_Use, null )
+        call SaveReal( udg_hash, GetHandleId(wave), StringHash( "anss" ), damage)
         
         set wave = null
         set caster = null
@@ -106,6 +123,9 @@ scope AncientSword initializer init
     //===========================================================================
     private function init takes nothing returns nothing
         call CreateEventTrigger( "udg_AfterDamageEvent", function Trig_Ancient_Sword_Actions, function Trig_Ancient_Sword_Conditions )
+        
+        set Wave_Use = CreateTrigger()
+        call TriggerAddAction( Wave_Use, function Use )
     endfunction
 endscope
 

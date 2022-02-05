@@ -1,0 +1,2 @@
+Base damage getter that accounts for the one die one side portion of damage that is ignored otherwise
+Updated all damage functions i remember about 

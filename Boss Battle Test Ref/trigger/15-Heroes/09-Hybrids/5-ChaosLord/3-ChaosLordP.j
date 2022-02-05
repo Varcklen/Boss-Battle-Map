@@ -3,18 +3,7 @@ function Trig_ChaosLordP_Conditions takes nothing returns boolean
 endfunction
 
 function Trig_ChaosLordP_Actions takes nothing returns nothing
-    local integer rand = GetRandomInt( 1, 3 )
-    
-    set udg_RandomLogic = true
-    set udg_Caster = GetSpellAbilityUnit()
-    set udg_Level = GetRandomInt( 1, 5 )
-    if rand == 1 then
-        call TriggerExecute( udg_DB_Trigger_One[GetRandomInt( 1, udg_Database_NumberItems[14])] )
-    elseif rand == 2 then
-        call TriggerExecute( udg_DB_Trigger_Two[GetRandomInt( 1, udg_Database_NumberItems[15])] )
-    else
-        call TriggerExecute( udg_DB_Trigger_Three[GetRandomInt( 1, udg_Database_NumberItems[16])] )
-    endif
+    call CastRandomAbility(GetSpellAbilityUnit(), GetRandomInt( 1, 5 ), udg_DB_Trigger_One[GetRandomInt( 1, udg_Database_NumberItems[13 + GetRandomInt( 1, 3 )])] )
 endfunction
 
 //===========================================================================

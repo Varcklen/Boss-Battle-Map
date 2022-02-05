@@ -31,6 +31,8 @@ globals
     
     constant integer ID_SHEEP = 'n03N' 
     
+    constant string DEATH_AREA = "war3mapImported\\AuraOfDeath.mdx"
+    
     boolean DEBUG = false
     unit UNIT_BUFF = null
     
@@ -44,7 +46,7 @@ function Trig_Database_Actions takes nothing returns nothing
     set udg_perc = "%"
     set udg_Version = "1.4.5n"
     set udg_UntilFirstFight = true
-
+    
     set udg_hash = InitHashtable( )
     set udg_rain = AddWeatherEffect(GetWorldBounds(), 'RAhr')
     

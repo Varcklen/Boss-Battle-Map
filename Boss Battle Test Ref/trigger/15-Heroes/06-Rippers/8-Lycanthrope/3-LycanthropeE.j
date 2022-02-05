@@ -142,6 +142,7 @@ scope LycanthropeE initializer init
         
         if Aspects_IsHeroAspectActive(hero, ASPECT_03) then
             set agilityBonus = agilityBonus + ALT_AGILITY_BONUS_PER_ATTACK
+            set bonusAgility = bonusAgility + ALT_AGILITY_BONUS_PER_ATTACK
         endif
         
         call statst(hero, 0, agilityBonus, 0, 0, false )

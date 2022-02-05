@@ -1,74 +1,48 @@
-function Trig_War1_Conditions takes nothing returns boolean
-    return GetUnitTypeId(udg_DamageEventTarget) == 'o011'
-endfunction
+scope War01 initializer init
 
-function War1Light takes nothing returns nothing
-    local integer id = GetHandleId( GetExpiredTimer() )
-    call DestroyLightning( LoadLightningHandle( udg_hash, id, StringHash( "enba" ) ) )
-    call FlushChildHashtable( udg_hash, id )
-endfunction
-
-function War1Cast takes nothing returns nothing
-    local integer id = GetHandleId( GetExpiredTimer() )
-    local integer id1
-    local unit boss = LoadUnitHandle( udg_hash, id, StringHash( "bswr" ) )
-    local lightning l
-    local integer cyclA
-    local unit u = null
-    
-    if GetUnitState( boss, UNIT_STATE_LIFE) <= 0.405 or not( udg_fightmod[0] ) then
-        call DestroyTimer( GetExpiredTimer() )
-        call FlushChildHashtable( udg_hash, id )
-    else
-        set cyclA = 1
-        loop
-            exitwhen cyclA > 4
-            if GetUnitState( udg_hero[cyclA], UNIT_STATE_LIFE ) > 0.405 and GetUnitLifePercent(udg_hero[cyclA]) >= GetUnitLifePercent(udg_hero[cyclA - 1] ) and GetUnitLifePercent(udg_hero[cyclA]) >= GetUnitLifePercent(udg_hero[cyclA - 2] ) and GetUnitLifePercent(udg_hero[cyclA]) >= GetUnitLifePercent(udg_hero[cyclA - 3] ) then
-                set u = udg_hero[cyclA]
-            endif
-            set cyclA = cyclA + 1
-        endloop
+    globals
+        public constant integer ID_BOSS = 'o011'
         
-        if u != null then
-            set l = AddLightningEx("AFOD", true, GetUnitX(boss), GetUnitY(boss), GetUnitFlyHeight(boss) + 50, GetUnitX(u), GetUnitY(u), GetUnitFlyHeight(u) + 50 )
-            
-            set id1 = GetHandleId( l )
-            if LoadTimerHandle( udg_hash, id1, StringHash( "enba" ) ) == null  then
-                call SaveTimerHandle( udg_hash, id1, StringHash( "enba" ), CreateTimer() )
+        private constant real LIGHTNING_LIFE_TIME = 0.5
+        private constant integer LIGHTNING_Z_DEVIATION = 50
+        private constant integer CONSUMED_PERCENT_HEALTH = -50
+        private constant integer COOLDOWN = 20
+    endglobals
+
+    function Trig_War1_Conditions takes nothing returns boolean
+        return GetUnitTypeId(udg_DamageEventTarget) == ID_BOSS
+    endfunction
+
+    function War1Cast takes nothing returns nothing
+        local integer id = GetHandleId( GetExpiredTimer() )
+        local unit boss = LoadUnitHandle( udg_hash, id, StringHash( "bswr" ) )
+        local unit u = null
+        
+        if IsUnitDead(boss) or not( udg_fightmod[0] ) then
+            call FlushChildHashtable( udg_hash, id )
+            call DestroyTimer( GetExpiredTimer() )
+        else
+            set u = HeroMoreHP(null)
+            if u != null then
+                call Lightning_CreateLightning("AFOD", GetUnitX(boss), GetUnitY(boss), GetUnitFlyHeight(boss) + LIGHTNING_Z_DEVIATION, GetUnitX(u), GetUnitY(u), GetUnitFlyHeight(u) + LIGHTNING_Z_DEVIATION, LIGHTNING_LIFE_TIME )
+                call DestroyEffect( AddSpecialEffect("Objects\\Spawnmodels\\Orc\\OrcSmallDeathExplode\\OrcSmallDeathExplode.mdl", GetUnitX( u ), GetUnitY( u ) ) )
+                call AddHealthPercent( u, CONSUMED_PERCENT_HEALTH )
             endif
-            set id1 = GetHandleId( LoadTimerHandle( udg_hash, id1, StringHash( "enba" ) ) ) 
-            call SaveLightningHandle( udg_hash, id1, StringHash( "enba" ), l )
-            call TimerStart( LoadTimerHandle( udg_hash, GetHandleId( l ), StringHash( "enba" ) ), 0.5, false, function War1Light )
-            
-            call DestroyEffect( AddSpecialEffect("Objects\\Spawnmodels\\Orc\\OrcSmallDeathExplode\\OrcSmallDeathExplode.mdl", GetUnitX( u ), GetUnitY( u ) ) )
-            call SetUnitState( u, UNIT_STATE_LIFE, RMaxBJ(0,GetUnitState( u, UNIT_STATE_LIFE) - ( GetUnitState( u, UNIT_STATE_MAX_LIFE) * 0.5 ) ) )
         endif
-    endif
-    
-    set l = null
-    set u = null
-    set boss = null
-endfunction 
+        
+        set u = null
+        set boss = null
+    endfunction 
 
-function Trig_War1_Actions takes nothing returns nothing
-    local integer id = GetHandleId( udg_DamageEventTarget )
+    function Trig_War1_Actions takes nothing returns nothing
+        call DisableTrigger( GetTriggeringTrigger() )
+        call InvokeTimerWithUnit(udg_DamageEventTarget, "bswr", bosscast(COOLDOWN), true, function War1Cast)
+    endfunction
 
-    call DisableTrigger( GetTriggeringTrigger() )
-    
-    if LoadTimerHandle( udg_hash, id, StringHash( "bswr" ) ) == null  then
-        call SaveTimerHandle( udg_hash, id, StringHash( "bswr" ), CreateTimer() )
-    endif
-	set id = GetHandleId( LoadTimerHandle( udg_hash, id, StringHash( "bswr" ) ) ) 
-    call SaveUnitHandle( udg_hash, id, StringHash( "bswr" ), udg_DamageEventTarget )
-	call TimerStart( LoadTimerHandle( udg_hash, GetHandleId( udg_DamageEventTarget ), StringHash( "bswr" ) ), bosscast(20), true, function War1Cast )
-endfunction
+    //===========================================================================
+    private function init takes nothing returns nothing
+        set gg_trg_War1 = CreateEventTrigger( "udg_AfterDamageEvent", function Trig_War1_Actions, function Trig_War1_Conditions )
+        call DisableTrigger( gg_trg_War1 )
+    endfunction
 
-//===========================================================================
-function InitTrig_War1 takes nothing returns nothing
-    set gg_trg_War1 = CreateTrigger(  )
-    call DisableTrigger( gg_trg_War1 )
-    call TriggerRegisterVariableEvent( gg_trg_War1, "udg_AfterDamageEvent", EQUAL, 1.00 )
-    call TriggerAddCondition( gg_trg_War1, Condition( function Trig_War1_Conditions ) )
-    call TriggerAddAction( gg_trg_War1, function Trig_War1_Actions )
-endfunction
-
+endscope

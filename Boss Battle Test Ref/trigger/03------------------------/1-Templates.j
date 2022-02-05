@@ -131,4 +131,14 @@ scope DruidQ initializer init
         call CreateEventTrigger( "Event_DeleteBuff_Real", function DeleteBuff, function DeleteBuff_Conditions )
     endfunction
 endscope
+
+    private function Use takes nothing returns nothing
+        local unit caster = Event_WaveHit_Caster
+        local unit target = Event_WaveHit_Target
+        local real damage = LoadReal( udg_hash, GetHandleId(Event_WaveHit_Wave), StringHash( "" ) )
+        
+                
+        set caster = null
+        set target = null
+    endfunction
     
