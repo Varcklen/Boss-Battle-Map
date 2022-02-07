@@ -120,6 +120,14 @@ Action
                 Action
                     DoNothing
     CreateItemLoc
-        Const : I083
+        Const : IZ02
+        Call  : GetRectCenter
+            Var   : gg_rct_HeroTp
+    CreateItemLoc
+        Const : IZ01
+        Call  : GetRectCenter
+            Var   : gg_rct_HeroTp
+    CreateItemLoc
+        Const : I0FV
         Call  : GetRectCenter
             Var   : gg_rct_HeroTp

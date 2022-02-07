@@ -19,7 +19,7 @@ function BaseNum takes nothing returns integer
 endfunction
 
 function DataItems takes nothing returns nothing
-    // Обычный
+    // Обычный. 0+
     set udg_base = 0
     set DB_Items[1][BaseNum()] = 'I0AK'
     set DB_Items[1][BaseNum()] = 'I0AM'
@@ -82,7 +82,7 @@ function DataItems takes nothing returns nothing
     set DB_Items[1][BaseNum()] = 'I0H8'
     set udg_Database_NumberItems[1] = udg_base
     
-    // Обычный. I пак
+    // Обычный. I пак. 6+
     set udg_base = 0
     set udg_DB_Item_ForLvL1_Common[BaseNum()] = 'I0CI'
     set udg_DB_Item_ForLvL1_Common[BaseNum()] = 'I02C'
@@ -157,7 +157,7 @@ function DataItems takes nothing returns nothing
     set udg_DB_Item_ForLvL1_Common[BaseNum()] = 'I07O'
     set udg_DB_NumLvLItems[1] = udg_base
 
-    // Обычные. II пак
+    // Обычные. II пак. 8+
     set udg_base = 0
     set udg_DB_Item_ForLvL2_Common[BaseNum()] = 'I07F'
     set udg_DB_Item_ForLvL2_Common[BaseNum()] = 'I04Y'
@@ -234,9 +234,10 @@ function DataItems takes nothing returns nothing
     set udg_DB_Item_ForLvL2_Common[BaseNum()] = 'I0GA'
     set udg_DB_Item_ForLvL2_Common[BaseNum()] = 'I069'
     set udg_DB_Item_ForLvL2_Common[BaseNum()] = 'I07M'
+    set udg_DB_Item_ForLvL2_Common[BaseNum()] = 'IZ00'
     set udg_DB_NumLvLItems[2] = udg_base
 
-    // Обычные. III пак
+    // Обычные. III пак. 11+
     set udg_base = 0
     set udg_DB_Item_ForLvL3_Common[BaseNum()] = 'I08E'
     set udg_DB_Item_ForLvL3_Common[BaseNum()] = 'I0E2'
@@ -464,6 +465,7 @@ function DataItems takes nothing returns nothing
     set udg_DB_Item_ForLvL3_Rare[BaseNum()] = 'I0GI'
     set udg_DB_Item_ForLvL3_Rare[BaseNum()] = 'I0GK'
     set udg_DB_Item_ForLvL3_Rare[BaseNum()] = 'I0CN'
+    set udg_DB_Item_ForLvL3_Rare[BaseNum()] = 'IZ02'
     set udg_DB_NumLvLItems[6] = udg_base
 
     
@@ -535,6 +537,7 @@ function DataItems takes nothing returns nothing
     set udg_DB_Item_ForLvL3_Legendary[BaseNum()] = 'I02K'
     set udg_DB_Item_ForLvL3_Legendary[BaseNum()] = 'I07I'
     set udg_DB_Item_ForLvL3_Legendary[BaseNum()] = 'I0GY'
+    set udg_DB_Item_ForLvL3_Legendary[BaseNum()] = 'IZ01'
     set udg_DB_NumLvLItems[9] = udg_base
     
     
@@ -753,6 +756,7 @@ function DataItems takes nothing returns nothing
     set udg_DB_Item_Activate[BaseNum()] = 'I0G9'
     set udg_DB_Item_Activate[BaseNum()] = 'I0GE'
     set udg_DB_Item_Activate[BaseNum()] = 'I0GR'
+    set udg_DB_Item_Activate[BaseNum()] = 'IZ01'
     set udg_Database_NumberItems[31] = udg_base
 
     // Порченные
@@ -837,6 +841,7 @@ function DataItems takes nothing returns nothing
     set udg_DB_Item_Destroyed[BaseNum()] = 'I0GK'
     set udg_DB_Item_Destroyed[BaseNum()] = 'I0GL'
     set udg_DB_Item_Destroyed[BaseNum()] = 'I0GM'
+    set udg_DB_Item_Destroyed[BaseNum()] = 'IZ02'
     set udg_Database_NumberItems[29] = udg_base
     
     // Овечьи артефакты
@@ -891,6 +896,7 @@ function DataItems takes nothing returns nothing
     set DB_SetItems[1][BaseNum()] = 'I052'
     set DB_SetItems[1][BaseNum()] = 'I01F'
     set DB_SetItems[1][BaseNum()] = 'I0GG'
+    set DB_SetItems[1][BaseNum()] = 'IZ00'
     set udg_DB_SetItems_Num[1] = udg_base
     
     // Оружие
@@ -1144,6 +1150,7 @@ function DataItems takes nothing returns nothing
     set DB_SetItems[9][BaseNum()] = 'I0GF'
     set DB_SetItems[9][BaseNum()] = 'I0GH'
     set DB_SetItems[9][BaseNum()] = 'I0GR'
+    set DB_SetItems[9][BaseNum()] = 'IZ01'
     set udg_DB_SetItems_Num[9] = udg_base
     
     ///???

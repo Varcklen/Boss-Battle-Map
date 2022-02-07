@@ -6,6 +6,8 @@
 ITEMS
 ______________________________
 
+[Zi]- 3 New items: Sacred Stone, legendary, crystal; Mechamechanizer, common, mech; Bob's Gratitude, rare, corrupted
+
 HEROES
 ______________________________
 
@@ -27,9 +29,13 @@ OTHER
 ______________________________
 
 [Zi]- Added 4 new specials. [: Soul Marriage, Masochism, Last Rites, Left the Game]
+[Zi]- Buff tooltips are now more consistent with wording.
+[Zi]- Changed Farik the Tricky tooltip to emphasize it does not stack with copies of itself.
 
 BUGS
 ______________________________
 
+[Zi]- Amalgam: tooltip fixed (Coldown -> Cooldown)
+[Zi]- Credit card now states "Corrupted" tag correctly.
 [Zi]- Unit base damage multipliers now work correctly.
 [Zi]- Lycanthrope E now uses actual buff duration of Lycanthrope R instead of 15 seconds.

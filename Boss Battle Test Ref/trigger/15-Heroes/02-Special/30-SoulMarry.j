@@ -8,8 +8,19 @@ scope SoulMarry
         return GetSpellAbilityId() == ID_SOULMARRY_ABILITY and combat( GetSpellAbilityUnit(), true, GetSpellAbilityId() ) and not(udg_fightmod[3])
     endfunction
 
+    function SoulMarryEnd takes nothing returns nothing
+        local integer id = GetHandleId( GetExpiredTimer() )
+        local unit u = LoadUnitHandle( udg_hash, id, StringHash( "zsoma" ) )
+    
+        call heroswap()
+        call shield(u, u, 100*CountUnitsInGroup(udg_otryad), 60)
+        call FlushChildHashtable( udg_hash, id )
+        set u = null
+    endfunction
+
     function Trig_SoulMarry_Actions takes nothing returns nothing
         local unit caster
+        local integer id
         
         if CastLogic() then
             set caster = udg_Caster
@@ -19,7 +30,13 @@ scope SoulMarry
         else
             set caster = GetSpellAbilityUnit()
         endif
-        call heroswap()
+        set id = GetHandleId( caster )
+        if LoadTimerHandle( udg_hash, id, StringHash( "zsoma" ) ) == null  then
+            call SaveTimerHandle( udg_hash, id, StringHash( "zsoma" ), CreateTimer() )
+        endif
+        set id = GetHandleId( LoadTimerHandle( udg_hash, id, StringHash( "zsoma" ) ) ) 
+        call SaveUnitHandle( udg_hash, id, StringHash( "zsoma" ), caster )
+        call TimerStart( LoadTimerHandle( udg_hash, GetHandleId(caster), StringHash( "zsoma" ) ), 0.01, false, function SoulMarryEnd )
         set caster = null
     endfunction
 
