@@ -442,54 +442,55 @@
     19-BerserkLib: BerserkLib
     20-QuestDiscLib: QuestDiscLib
     21-CorrectPlayerLib: CorrectPlayerLib
-    22------------------------: -----------------------
+    '22-Stack Abilities': 'Stack Abilities'
+    23------------------------: -----------------------
         Comment
-    23-Timebonus: Timebonus
-    24-RandomTarget: RandomTarget
-    25-AnyHasLvLLib: AnyHasLvLLib
-    26-ItemRandomizerLib: ItemRandomizerLib
-    27-SetRaritySpawnLib: SetRaritySpawnLib
-    28-SetStableToolLib: SetStableToolLib
-    29-CreateCopyUnitLib: CreateCopyUnitLib
-    30-BuffDeleteLib: BuffDeleteLib
-    31-NullingAbility: NullingAbility
-    32-Repick: Repick
-    33------------------------: -----------------------
+    24-Timebonus: Timebonus
+    25-RandomTarget: RandomTarget
+    26-AnyHasLvLLib: AnyHasLvLLib
+    27-ItemRandomizerLib: ItemRandomizerLib
+    28-SetRaritySpawnLib: SetRaritySpawnLib
+    29-SetStableToolLib: SetStableToolLib
+    30-CreateCopyUnitLib: CreateCopyUnitLib
+    31-BuffDeleteLib: BuffDeleteLib
+    32-NullingAbility: NullingAbility
+    33-Repick: Repick
+    34------------------------: -----------------------
         Comment
-    34-Inventory: Inventory
-    35-CommonTimer: CommonTimer
-    36-ReduceCooldown: ReduceCooldown
-    37-Shieldst: Shieldst
-    38-Healst: Healst
-    39-Manast: Manast
-    40-Dummyspawn: Dummyspawn
-    41-ChangeToolLib: ChangeToolLib
-    42------------------------: -----------------------
+    35-Inventory: Inventory
+    36-CommonTimer: CommonTimer
+    37-ReduceCooldown: ReduceCooldown
+    38-Shieldst: Shieldst
+    39-Healst: Healst
+    40-Manast: Manast
+    41-Dummyspawn: Dummyspawn
+    42-ChangeToolLib: ChangeToolLib
+    43------------------------: -----------------------
         Comment
-    43-RessurectLib: RessurectLib
-    44-CastRandomAbility: CastRandomAbility
-    45-Lightning: Lightning
-    46-ChainHealLib: ChainHealLib
-    47-StunLib: StunLib
-    48-PolyLib: PolyLib
-    49-EnvironmentLib: EnvironmentLib
-    50-HeroSwapLib: HeroSwapLib
-    51-SpecAnimLib: SpecAnimLib
-    52-StatLib: StatLib
-    53-UniquesLib: UniquesLib
-    54-SpecialLib: SpecialLib
-    55-BattleRessurectLib: BattleRessurectLib
-    56-TimePlayLib: TimePlayLib
-    57-CorruptedLib: CorruptedLib
-    58-BuffsLib: BuffsLib
-    59-BuffsAllLib: BuffsAllLib
-    60-StartTimer: StartTimer
+    44-RessurectLib: RessurectLib
+    45-CastRandomAbility: CastRandomAbility
+    46-Lightning: Lightning
+    47-ChainHealLib: ChainHealLib
+    48-StunLib: StunLib
+    49-PolyLib: PolyLib
+    50-EnvironmentLib: EnvironmentLib
+    51-HeroSwapLib: HeroSwapLib
+    52-SpecAnimLib: SpecAnimLib
+    53-StatLib: StatLib
+    54-UniquesLib: UniquesLib
+    55-SpecialLib: SpecialLib
+    56-BattleRessurectLib: BattleRessurectLib
+    57-TimePlayLib: TimePlayLib
+    58-CorruptedLib: CorruptedLib
+    59-BuffsLib: BuffsLib
+    60-BuffsAllLib: BuffsAllLib
+    61-StartTimer: StartTimer
         Run
-    61-Wave: Wave
-    62-Other: Other
-    63------------------------: -----------------------
+    62-Wave: Wave
+    63-Other: Other
+    64------------------------: -----------------------
         Comment
-    64-SmartUnitDamageLib: SmartUnitDamageLib
+    65-SmartUnitDamageLib: SmartUnitDamageLib
 05-BasicCore: BasicCore
     01-Database: Database
         1-LibDataItems: LibDataItems
@@ -774,6 +775,11 @@
         18-Exchange: Exchange
             Closed
         19-Half: Half
+            Closed
+        20-CastRandom: CastRandom
+        21-Cast: Cast
+            Closed
+        22-ManaReg: ManaReg
             Closed
     2-Handle: Handle
         Disab
@@ -1255,6 +1261,7 @@
             20-OrbTreantHeal: OrbTreantHeal
             21-OrbHeresy: OrbHeresy
             '22-OrbDesecrated Land': 'OrbDesecrated Land'
+            '23-Orb Cenarius': 'Orb Cenarius'
         77----------------------------: ---------------------------
             Comment
         78-GL: GL
@@ -1688,7 +1695,8 @@
         1-Incarnation: Incarnation
             1-IncarnationQ: IncarnationQ
             2-IncarnationW: IncarnationW
-            3-IncarnationR: IncarnationR
+            3-IncarnationE: IncarnationE
+            4-IncarnationR: IncarnationR
         2-Hronomant: Hronomant
             1-HronoQ: HronoQ
             2-HronoW: HronoW
@@ -1748,7 +1756,7 @@
             1-MentorQ: MentorQ
             2-MentorQEffect: MentorQEffect
             3-MentorW: MentorW
-            4-MentorPas: MentorPas
+            4-MentorE: MentorE
             5-MentorR: MentorR
         5-Morloc: Morloc
             1-MorlocQ: MorlocQ

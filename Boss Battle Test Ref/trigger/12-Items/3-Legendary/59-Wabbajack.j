@@ -5,15 +5,12 @@ endfunction
 function Trig_Wabbajack_Actions takes nothing returns nothing
     local integer rand = GetRandomInt( 1, 3 )
     
-    set udg_RandomLogic = true
-    set udg_Caster = GetSpellAbilityUnit()
-    set udg_Level = 3
     if rand == 1 then
-        call TriggerExecute( udg_DB_Trigger_One[GetRandomInt( 1, udg_Database_NumberItems[14])] )
+        call CastRandomAbility(GetSpellAbilityUnit(), 3, udg_DB_Trigger_One[GetRandomInt( 1, udg_Database_NumberItems[14])] )
     elseif rand == 2 then
-        call TriggerExecute( udg_DB_Trigger_Two[GetRandomInt( 1, udg_Database_NumberItems[15])] )
+        call CastRandomAbility(GetSpellAbilityUnit(), 3, udg_DB_Trigger_Two[GetRandomInt( 1, udg_Database_NumberItems[15])] )
     else
-        call TriggerExecute( udg_DB_Trigger_Three[GetRandomInt( 1, udg_Database_NumberItems[16])] )
+        call CastRandomAbility(GetSpellAbilityUnit(), 3, udg_DB_Trigger_Three[GetRandomInt( 1, udg_Database_NumberItems[16])] )
     endif
 endfunction
 

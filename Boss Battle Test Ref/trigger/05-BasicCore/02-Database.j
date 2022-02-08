@@ -47,7 +47,9 @@ function Trig_Database_Actions takes nothing returns nothing
     set udg_Version = "1.4.5n"
     set udg_UntilFirstFight = true
     
-    set udg_hash = InitHashtable( )
+    if udg_hash == null then
+        set udg_hash = InitHashtable()
+    endif
     set udg_rain = AddWeatherEffect(GetWorldBounds(), 'RAhr')
     
     set UNIT_BUFF = gg_unit_u00F_0006
@@ -75,7 +77,6 @@ function Trig_Database_Actions takes nothing returns nothing
     set udg_Captions[BaseNum()] = "~Rik"
     set udg_Captions[BaseNum()] = "2kxaoc"
     set udg_Captions[BaseNum()] = "Azazelk0"
-    set udg_Captions[BaseNum()] = "ZiHeLL"
     set udg_Captions[BaseNum()] = "Ratman"
     set udg_Captions[BaseNum()] = "Sheepy"
     set udg_Captions[BaseNum()] = "Rena"

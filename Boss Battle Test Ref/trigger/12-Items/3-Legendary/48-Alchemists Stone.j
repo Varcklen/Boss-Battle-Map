@@ -31,6 +31,7 @@ scope AlchemistsStone initializer init
 
     private function GetItem takes unit caster, integer element1, integer element2 returns nothing
         local integer potion = 0
+        local item it
         
         if element1 == ALCHEMISTS_STONE_FIRE then
             set potion = potion + 1
@@ -47,13 +48,14 @@ scope AlchemistsStone initializer init
             set potion = potion + 4
         endif
         
-        set bj_lastCreatedItem = CreateItem( Alchemists_Stone_Potions[potion], GetUnitX(caster), GetUnitY(caster) )
-        call UnitAddItem(caster, bj_lastCreatedItem )
-        call BlzSetItemIntegerFieldBJ( bj_lastCreatedItem, ITEM_IF_NUMBER_OF_CHARGES, ALCHEMISTS_STONE_BONUS_CHARGES )
-        call UnitRemoveItem(caster, bj_lastCreatedItem)
-        call UnitAddItem(caster, bj_lastCreatedItem)
+        set it = CreateItem( Alchemists_Stone_Potions[potion], GetUnitX(caster), GetUnitY(caster) )
+        call UnitAddItem(caster, it )
+        call BlzSetItemIntegerFieldBJ( it, ITEM_IF_NUMBER_OF_CHARGES, ALCHEMISTS_STONE_BONUS_CHARGES )
+        call UnitRemoveItem(caster, it)
+        call UnitAddItem(caster, it)
     
         set caster = null
+        set it = null
     endfunction
 
     function Trig_Alchemists_Stone_Actions takes nothing returns nothing

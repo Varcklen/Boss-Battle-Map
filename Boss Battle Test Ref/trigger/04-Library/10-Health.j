@@ -137,6 +137,12 @@ library Health requires Inventory
         set whichUnit = null
         return isFull
     endfunction
+    
+    function IsUnitManaIsFull takes unit whichUnit returns boolean
+        local boolean isFull = GetUnitState(whichUnit, UNIT_STATE_MANA) == GetUnitState(whichUnit, UNIT_STATE_MAX_MANA)
+        set whichUnit = null
+        return isFull
+    endfunction
 
     function AddHealthPercent takes unit whichUnit, integer percent returns real
         local real value    = GetUnitState(whichUnit, UNIT_STATE_LIFE)

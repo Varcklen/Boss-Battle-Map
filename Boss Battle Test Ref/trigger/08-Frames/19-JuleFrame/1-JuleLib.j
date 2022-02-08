@@ -11,6 +11,13 @@ library JuleLib requires ItemRandomizerLib
         
         public string array Item_Name[ITEMS_COUNT_ARRAYS]
         public string array Item_Description[ITEMS_COUNT_ARRAYS]
+        
+        private constant real DISCOUNT_MIN = 0.2
+        private constant integer DISCOUNT_CHANCE = 4
+        private constant real DISCOUNT = 0.3
+        
+        private constant integer SUPER_DISCOUNT_CHANCE = 1
+        private constant real SUPER_DISCOUNT = 0.6
     endglobals
 
     function JuleCast takes nothing returns nothing
@@ -97,18 +104,16 @@ library JuleLib requires ItemRandomizerLib
         
         set cost = cost - R2I(count*j)
         
-        if GetRandomInt(1,100) == 1 then
-            set cost = cost - R2I(0.6*j)
-        elseif GetRandomInt(1,100) <= 4 or (number == 1 and cond) then
-            set cost = cost - R2I(0.3*j)
+        if GetRandomInt(1,100) == SUPER_DISCOUNT_CHANCE then
+            set cost = cost - R2I(SUPER_DISCOUNT*j)
+        elseif GetRandomInt(1,100) <= DISCOUNT_CHANCE or (number == 1 and cond) then
+            set cost = cost - R2I(DISCOUNT*j)
         endif
         if udg_modbad[9] then
             set cost = cost + R2I(0.1*j)
         endif
         
-        if cost < 0.2*j then
-            set cost = R2I(0.2*j)
-        endif
+        set cost = R2I(RMaxBJ(DISCOUNT_MIN*j, cost))
         return cost
     endfunction
 

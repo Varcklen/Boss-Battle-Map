@@ -9,16 +9,13 @@ function SheogorathCast takes nothing returns nothing
     local integer rand
 
     if GetUnitState( caster, UNIT_STATE_LIFE) > 0.405 then 
-	set rand = GetRandomInt( 1, 3 )
-        set udg_RandomLogic = true
-        set udg_Caster = caster
-        set udg_Level = GetRandomInt( 1, 5 )
+        set rand = GetRandomInt( 1, 3 )
         if rand == 1 then
-            call TriggerExecute( udg_DB_Trigger_One[GetRandomInt( 1, udg_Database_NumberItems[14])] )
+            call CastRandomAbility(caster, GetRandomInt( 1, 5 ), udg_DB_Trigger_One[GetRandomInt( 1, udg_Database_NumberItems[14])] )
         elseif rand == 2 then
-            call TriggerExecute( udg_DB_Trigger_Two[GetRandomInt( 1, udg_Database_NumberItems[15])] )
+            call CastRandomAbility(caster, GetRandomInt( 1, 5 ), udg_DB_Trigger_Two[GetRandomInt( 1, udg_Database_NumberItems[15])] )
         else
-            call TriggerExecute( udg_DB_Trigger_Three[GetRandomInt( 1, udg_Database_NumberItems[16])] )
+            call CastRandomAbility(caster, GetRandomInt( 1, 5 ), udg_DB_Trigger_Three[GetRandomInt( 1, udg_Database_NumberItems[16])] )
         endif
     endif
     if counter > 0 and GetUnitState( caster, UNIT_STATE_LIFE) > 0.405 and GetUnitAbilityLevel( caster, 'A17E' ) > 0 and not( IsUnitLoaded( caster ) ) then

@@ -38,26 +38,33 @@ function Cap3 takes nothing returns nothing
 endfunction
 
 function Cap2 takes nothing returns nothing
-if udg_logic[43] then
-    call DisplayTimedTextToForce( bj_FORCE_ALL_PLAYERS, 40, "|cffffcc00Discord.me:|r" )
-    call DisplayTimedTextToForce( bj_FORCE_ALL_PLAYERS, 40, "discord.me/bbwc3" )
-    call TimerStart( CreateTimer(), 4, false, function Cap3 )
-endif
+    if udg_logic[43] then
+        call DisplayTimedTextToForce( bj_FORCE_ALL_PLAYERS, 40, "|cffffcc00Discord.me:|r" )
+        call DisplayTimedTextToForce( bj_FORCE_ALL_PLAYERS, 40, "discord.me/bbwc3" )
+        call TimerStart( CreateTimer(), 4, false, function Cap3 )
+    endif
 endfunction
 
 function Cap1 takes nothing returns nothing
-if udg_logic[43] then
-    call DisplayTimedTextToForce( bj_FORCE_ALL_PLAYERS, 40, "|cffffcc00Discord:|r" )
-    call DisplayTimedTextToForce( bj_FORCE_ALL_PLAYERS, 40, "discordapp.com/invite/KVfrcby" )
-    call TimerStart( CreateTimer(), 4, false, function Cap2 )
-endif
+    if udg_logic[43] then
+        call DisplayTimedTextToForce( bj_FORCE_ALL_PLAYERS, 40, "|cffffcc00Discord:|r" )
+        call DisplayTimedTextToForce( bj_FORCE_ALL_PLAYERS, 40, "discordapp.com/invite/KVfrcby" )
+        call TimerStart( CreateTimer(), 4, false, function Cap2 )
+    endif
+endfunction
+
+function Cap1E takes nothing returns nothing
+    call DisplayTimedTextToForce( bj_FORCE_ALL_PLAYERS, 10.00, "|cffffcc00Assistant:|r" )
+    call DisplayTimedTextToForce( bj_FORCE_ALL_PLAYERS, 10.00, "ZiHeLL" )
+    
+    call TimerStart( CreateTimer(), 2, false, function Cap2 )
 endfunction
 
 function Trig_Caption_Actions takes nothing returns nothing
     call DisplayTimedTextToForce( bj_FORCE_ALL_PLAYERS, 10.00, "|cffffcc00Map creator:|r" )
     call DisplayTimedTextToForce( bj_FORCE_ALL_PLAYERS, 10.00, "Varcklen" )
     
-    call TimerStart( CreateTimer(), 2, false, function Cap1 )
+    call TimerStart( CreateTimer(), 2, false, function Cap1E )
 endfunction
 
 //===========================================================================

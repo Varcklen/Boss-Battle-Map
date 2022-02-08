@@ -15,6 +15,9 @@ function CheatEnable takes nothing returns nothing
     call EnableTrigger( gg_trg_OtherPlayers )
     call EnableTrigger( gg_trg_Exchange )
     call EnableTrigger( gg_trg_Half )
+    call EnableTrigger( gg_trg_CastRandom )
+    call EnableTrigger( gg_trg_ManaReg )
+    call EnableTrigger( gg_trg_Cast )
 endfunction
 
 function Trig_CheatPas_Actions takes nothing returns nothing

@@ -96,16 +96,11 @@ scope MarshalE initializer Triggs
     endfunction
     
     private function StartFight_Conditions takes nothing returns boolean
-        return GetUnitAbilityLevel( udg_FightEnd_Unit, 'A0F7') > 0
+        return IsUnitHasAbility( Event_DeleteBuff_Unit, EFFECT)
     endfunction
     
     private function StartFight takes nothing returns nothing
-        local unit hero = udg_FightEnd_Unit
-
-        call UnitAddAbility(hero, 'A0G0')
-        call UnitAddAbility(hero, 'B06B')
-        
-        set hero = null
+        call RemoveEffect( Event_DeleteBuff_Unit, EFFECT, BUFF )
     endfunction
 
     private function Triggs takes nothing returns nothing

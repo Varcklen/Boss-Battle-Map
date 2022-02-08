@@ -1034,6 +1034,11 @@ function madness takes unit caster, integer lvl returns nothing
     set caster = null
 endfunction
 
+globals
+    real Event_CooldownReset_Real
+    unit Event_CooldownReset_Hero
+endglobals
+
 // Cброс перезарядки
 function coldstop takes unit u returns nothing
     local integer unitId =  GetHandleId( u )
@@ -1058,22 +1063,26 @@ function coldstop takes unit u returns nothing
     if inv(u, 'I0FL') > 0 then
         call SaveBoolean( udg_hash, unitId, StringHash( "orbcn" ), false )
     endif
-    if GetUnitAbilityLevel( u, 'A1BK') > 0 then
+    /*if GetUnitAbilityLevel( u, 'A1BK') > 0 then
         call SaveInteger( udg_hash, unitId, StringHash( "dualch" ), 3 )
         if GetLocalPlayer() == GetOwningPlayer(u) then
             call BlzFrameSetText( dualtext, I2S(3) )
         endif
-    endif
+    endif*/
     if GetUnitAbilityLevel( u, 'A0OE') > 0 then
         call SaveInteger( udg_hash, unitId, StringHash( "entqch" ), 3 )
         if GetLocalPlayer() == GetOwningPlayer(u) then
-            call BlzFrameSetText( dualtext, I2S(CorruptedEntQ_CHARGE_LIMIT) )
+            call BlzFrameSetText( entQText, I2S(CorruptedEntQ_CHARGE_LIMIT) )
         endif
     endif
     
 	//if inv( u, 'I0B3') > 0 then
 		//call SaveBoolean( udg_hash, unitId, StringHash( "drct" ), false )
 	//endif
+    set Event_CooldownReset_Hero = u
+    set Event_CooldownReset_Real = 0.00
+    set Event_CooldownReset_Real = 1.00
+    set Event_CooldownReset_Real = 0.00
 
     call UnitResetCooldown( u )
     

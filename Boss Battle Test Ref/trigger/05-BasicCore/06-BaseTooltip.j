@@ -406,6 +406,7 @@ scope BaseTooltip initializer init
         set rpkmod = BlzCreateFrameByType("BACKDROP", "", BlzGetOriginFrame(ORIGIN_FRAME_GAME_UI, 0), "StandartFrameTemplate", 0)
         call BlzFrameSetSize(rpkmod, 0.04, 0.04)
         call BlzFrameSetTexture(rpkmod, "ReplaceableTextures\\CommandButtons\\BTNDispelMagic.blp", 0, true)
+        call BlzFrameSetLevel( rpkmod, -1 )
         
         set reselectionButton = BlzCreateFrameByType("GLUEBUTTON", "", rpkmod, "ScoreScreenTabButtonTemplate", 0)
         call BlzFrameSetSize( reselectionButton, 0.04, 0.04 )

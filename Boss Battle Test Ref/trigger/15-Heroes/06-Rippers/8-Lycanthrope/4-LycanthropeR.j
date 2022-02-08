@@ -3,8 +3,8 @@ scope LycanthropeR initializer init
     globals
         private constant integer ID_ABILITY = 'A1CN'
         
-        private constant integer DURATION_FIRST_LEVEL = 5
-        private constant integer DURATION_LEVEL_BONUS = 1
+        private constant integer DURATION_FIRST_LEVEL = 3
+        private constant integer DURATION_LEVEL_BONUS = 2
         private constant integer TICK = 1
         private constant integer COST = 125
         
