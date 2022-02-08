@@ -575,7 +575,7 @@ function DataAbilities takes nothing returns nothing
     set udg_Database_EarringSpell[59] = 'A05G'
     set udg_Database_EarringSpell[60] = 'A05F'
     set udg_Database_EarringSpell[61] = 'A149'
-    set udg_Database_EarringSpell[62] = 'A02U'
+    set udg_Database_EarringSpell[62] = 'AV00'
     set udg_Database_EarringSpell[63] = 'A07R'
     set udg_Database_EarringSpell[64] = 'A0JN'
     set udg_Database_EarringSpell[65] = 'A09Y'

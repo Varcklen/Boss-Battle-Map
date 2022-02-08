@@ -6,14 +6,14 @@ Action
     CreateQuestBJ
         Preset: QuestTypeReqDiscovered
         Const : Information
-        Const : '|cffffcc00PayPal:|r 
+        Const : '|cffffcc00Author:|r Varcklen
+|cffffcc00Assistant:|r ZiHeLL  
+|cffffcc00PayPal:|r 
 www.paypal.me/bbwc3
 |cffffcc00Patreon:|r 
 www.patreon.com/bbwc3
-|cffffcc00Yandex.Money:|r 
-410019801341552
-|c00ffcc00Our Discord:|r discordapp.com/invite/KVfrcby
-|c00ffcc00Our Discord.me:|r discord.me/bbwc3
+|c00ffcc00Discord:|r discordapp.com/invite/KVfrcby
+|c00ffcc00Discord.me:|r discord.me/bbwc3
 The icons are taken from the game World of Warcraft.'
         Const : ReplaceableTextures\CommandButtons\BTNSelectHeroOn.blp
     CreateQuestBJ
