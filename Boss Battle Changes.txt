@@ -39,3 +39,4 @@ ______________________________
 [Zi]- Credit card now states "Corrupted" tag correctly.
 [Zi]- Unit base damage multipliers now work correctly.
 [Zi]- Lycanthrope E now uses actual buff duration of Lycanthrope R instead of 15 seconds.
+[Zi]- Peacelock E (Malicious Kindness) no longer requires level skips.
