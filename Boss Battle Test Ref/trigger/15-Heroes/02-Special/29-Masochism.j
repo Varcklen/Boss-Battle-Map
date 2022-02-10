@@ -37,6 +37,21 @@ scope Masochism
         
         set hero = null
     endfunction
+    
+    
+    //Delete Buff
+    private function DeleteBuff_Conditions takes nothing returns boolean
+        return GetUnitAbilityLevel( Event_DeleteBuff_Unit, 'AZ02') > 0
+    endfunction
+    
+    private function DeleteBuff takes nothing returns nothing
+        local unit hero = Event_DeleteBuff_Unit
+
+        call UnitRemoveAbility( hero, 'AZ02' )
+        call UnitRemoveAbility( hero, 'BZ02' )
+        
+        set hero = null
+    endfunction
 
     //===========================================================================
     function InitTrig_Masochism takes nothing returns nothing
@@ -46,6 +61,7 @@ scope Masochism
         call TriggerAddAction( gg_trg_Masochism, function Trig_Masochism_Actions )
         
         call CreateEventTrigger( "Event_OnDamageChange_Real", function OnDamageChange, function OnDamageChange_Conditions )
+        call CreateEventTrigger( "Event_DeleteBuff_Real", function DeleteBuff, function DeleteBuff_Conditions )
     endfunction
 
 endscope

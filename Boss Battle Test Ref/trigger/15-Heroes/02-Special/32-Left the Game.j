@@ -68,7 +68,7 @@ scope LeftTheGame
 
         if found then    
             //call BlzStartUnitAbilityCooldown( caster, AbilInQ, BlzGetUnitAbilityCooldownRemaining(caster, AbilInQ) * (1-MULTIPLIER) )
-            call BlzStartUnitAbilityCooldown( caster, AbilInQ, RMaxBJ(0.,BlzGetUnitAbilityCooldownRemaining(caster, AbilInQ) - BlzGetUnitAbilityCooldown(caster, AbilInQ, GetUnitAbilityLevel( caster, AbilInQ)) * MULTIPLIER ))
+            call BlzStartUnitAbilityCooldown( caster, AbilInQ, RMaxBJ( 0., BlzGetUnitAbilityCooldownRemaining( caster, AbilInQ ) - BlzGetUnitAbilityCooldown( caster, AbilInQ, GetUnitAbilityLevel( caster, AbilInQ ) - 1 ) * MULTIPLIER ))
             //call DestroyEffect( AddSpecialEffectTarget( ANIMATION, caster, "chest" ) )
             call DestroyEffect( AddSpecialEffectTarget( ANIMATION, caster, "overhead" ) )
             

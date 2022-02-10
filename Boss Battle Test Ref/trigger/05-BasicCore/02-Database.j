@@ -44,7 +44,7 @@ function Trig_Database_Actions takes nothing returns nothing
     local integer cyclAEnd
     
     set udg_perc = "%"
-    set udg_Version = "1.4.5o"
+    set udg_Version = "1.4.5o (Pre2)"
     set udg_UntilFirstFight = true
     
     if udg_hash == null then

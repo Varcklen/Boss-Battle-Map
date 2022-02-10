@@ -19,6 +19,9 @@ scope LycanthropeE initializer init
         
         private constant string ANIMATION = "Abilities\\Spells\\Items\\AIam\\AIamTarget.mdl"
         
+        private constant integer R_DURATION_FIRST_LEVEL = 5
+        private constant integer R_DURATION_LEVEL_BONUS = 1
+        
         private unit GetUnit = null
     endglobals
     
@@ -68,7 +71,7 @@ scope LycanthropeE initializer init
                         set udg_Caster = caster
                         set udg_Level = level
                         set udg_CastLogic = true
-                        set udg_Time = 15
+                        set udg_Time = R_DURATION_FIRST_LEVEL + (level * R_DURATION_LEVEL_BONUS)
                         set WolfMode = true
                         call TriggerExecute( gg_trg_LycanthropeR )
                         set WolfMode = false

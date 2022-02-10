@@ -490,8 +490,8 @@
     63-Other: Other
     64------------------------: -----------------------
         Comment
-    64-SmartUnitDamageLib: SmartUnitDamageLib
-    65-IsSetItemLib: IsSetItemLib
+    65-SmartUnitDamageLib: SmartUnitDamageLib
+    66-IsSetItemLib: IsSetItemLib
 05-BasicCore: BasicCore
     01-Database: Database
         1-LibDataItems: LibDataItems
@@ -1265,14 +1265,14 @@
             21-OrbHeresy: OrbHeresy
             '22-OrbDesecrated Land': 'OrbDesecrated Land'
             '23-Orb Cenarius': 'Orb Cenarius'
-        77----------------------------: ---------------------------
         78----------------------------: ---------------------------
+        79----------------------------: ---------------------------
             Comment
-        79-GL: GL
-        80-GiveLvL: GiveLvL
-        '81-Granite Science': 'Granite Science'
-        '82-Statuette Svirel': 'Statuette Svirel'
-        83-Papirus: Papirus
+        80-GL: GL
+        81-GiveLvL: GiveLvL
+        '82-Granite Science': 'Granite Science'
+        '83-Statuette Svirel': 'Statuette Svirel'
+        84-Papirus: Papirus
     4-Potions: Potions
         01-EarthPot: EarthPot
         02-WaterPot: WaterPot
@@ -1378,8 +1378,11 @@
         13-Dualism: Dualism
         14-Dualism: Dualism
             1-DualismVision: DualismVision
+                Disab
             2-DualismCharges: DualismCharges
+                Disab
             3-DualismFrame: DualismFrame
+                Disab
         15-Cannibalism: Cannibalism
         '16-Time rift': 'Time rift'
         '17-Sheep cannon': 'Sheep cannon'

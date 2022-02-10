@@ -30,8 +30,6 @@ scope SoulMarry
         else
             set caster = GetSpellAbilityUnit()
         endif
-        call heroswap()
-        call shield(caster, caster, 100*(udg_Heroes_Amount-CountUnitsInGroup(udg_DeadHero)), 60)
         set id = GetHandleId( caster )
         if LoadTimerHandle( udg_hash, id, StringHash( "zsoma" ) ) == null  then
             call SaveTimerHandle( udg_hash, id, StringHash( "zsoma" ), CreateTimer() )

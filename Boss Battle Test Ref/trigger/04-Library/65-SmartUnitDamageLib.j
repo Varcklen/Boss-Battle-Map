@@ -1,7 +1,7 @@
 library SmartUnitDamageLib
 
     function GetUnitAvgDiceDamage takes unit u returns integer
-        local integer damage = R2I( (BlzGetUnitDiceNumber(u, 0) * BlzGetUnitDiceSides(u, 0) + 1) / 2)
+        local integer damage = R2I( (BlzGetUnitDiceNumber(u, 0) * (BlzGetUnitDiceSides(u, 0) + 1)) / 2) 
         set u = null
         return damage
     endfunction
