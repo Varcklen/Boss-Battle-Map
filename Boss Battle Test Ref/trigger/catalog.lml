@@ -442,54 +442,56 @@
     19-BerserkLib: BerserkLib
     20-QuestDiscLib: QuestDiscLib
     21-CorrectPlayerLib: CorrectPlayerLib
-    22------------------------: -----------------------
+    '22-Stack Abilities': 'Stack Abilities'
+    23------------------------: -----------------------
         Comment
-    23-Timebonus: Timebonus
-    24-RandomTarget: RandomTarget
-    25-AnyHasLvLLib: AnyHasLvLLib
-    26-ItemRandomizerLib: ItemRandomizerLib
-    27-SetRaritySpawnLib: SetRaritySpawnLib
-    28-SetStableToolLib: SetStableToolLib
-    29-CreateCopyUnitLib: CreateCopyUnitLib
-    30-BuffDeleteLib: BuffDeleteLib
-    31-NullingAbility: NullingAbility
-    32-Repick: Repick
-    33------------------------: -----------------------
+    24-Timebonus: Timebonus
+    25-RandomTarget: RandomTarget
+    26-AnyHasLvLLib: AnyHasLvLLib
+    27-ItemRandomizerLib: ItemRandomizerLib
+    28-SetRaritySpawnLib: SetRaritySpawnLib
+    29-SetStableToolLib: SetStableToolLib
+    30-CreateCopyUnitLib: CreateCopyUnitLib
+    31-BuffDeleteLib: BuffDeleteLib
+    32-NullingAbility: NullingAbility
+    33-Repick: Repick
+    34------------------------: -----------------------
         Comment
-    34-Inventory: Inventory
-    35-CommonTimer: CommonTimer
-    36-ReduceCooldown: ReduceCooldown
-    37-Shieldst: Shieldst
-    38-Healst: Healst
-    39-Manast: Manast
-    40-Dummyspawn: Dummyspawn
-    41-ChangeToolLib: ChangeToolLib
-    42------------------------: -----------------------
+    35-Inventory: Inventory
+    36-CommonTimer: CommonTimer
+    37-ReduceCooldown: ReduceCooldown
+    38-Shieldst: Shieldst
+    39-Healst: Healst
+    40-Manast: Manast
+    41-Dummyspawn: Dummyspawn
+    42-ChangeToolLib: ChangeToolLib
+    43------------------------: -----------------------
         Comment
-    43-RessurectLib: RessurectLib
-    44-CastRandomAbility: CastRandomAbility
-    45-Lightning: Lightning
-    46-ChainHealLib: ChainHealLib
-    47-StunLib: StunLib
-    48-PolyLib: PolyLib
-    49-EnvironmentLib: EnvironmentLib
-    50-HeroSwapLib: HeroSwapLib
-    51-SpecAnimLib: SpecAnimLib
-    52-StatLib: StatLib
-    53-UniquesLib: UniquesLib
-    54-SpecialLib: SpecialLib
-    55-BattleRessurectLib: BattleRessurectLib
-    56-TimePlayLib: TimePlayLib
-    57-CorruptedLib: CorruptedLib
-    58-BuffsLib: BuffsLib
-    59-BuffsAllLib: BuffsAllLib
-    60-StartTimer: StartTimer
+    44-RessurectLib: RessurectLib
+    45-CastRandomAbility: CastRandomAbility
+    46-Lightning: Lightning
+    47-ChainHealLib: ChainHealLib
+    48-StunLib: StunLib
+    49-PolyLib: PolyLib
+    50-EnvironmentLib: EnvironmentLib
+    51-HeroSwapLib: HeroSwapLib
+    52-SpecAnimLib: SpecAnimLib
+    53-StatLib: StatLib
+    54-UniquesLib: UniquesLib
+    55-SpecialLib: SpecialLib
+    56-BattleRessurectLib: BattleRessurectLib
+    57-TimePlayLib: TimePlayLib
+    58-CorruptedLib: CorruptedLib
+    59-BuffsLib: BuffsLib
+    60-BuffsAllLib: BuffsAllLib
+    61-StartTimer: StartTimer
         Run
-    61-Wave: Wave
-    62-Other: Other
-    63------------------------: -----------------------
+    62-Wave: Wave
+    63-Other: Other
+    64------------------------: -----------------------
         Comment
-    64-SmartUnitDamageLib: SmartUnitDamageLib
+    65-SmartUnitDamageLib: SmartUnitDamageLib
+    66-IsSetItemLib: IsSetItemLib
 05-BasicCore: BasicCore
     01-Database: Database
         1-LibDataItems: LibDataItems
@@ -775,6 +777,11 @@
             Closed
         19-Half: Half
             Closed
+        20-CastRandom: CastRandom
+        21-Cast: Cast
+            Closed
+        22-ManaReg: ManaReg
+            Closed
     2-Handle: Handle
         Disab
         Run
@@ -997,162 +1004,163 @@
         '004-Big Red Button': 'Big Red Button'
         005-BloodStone: BloodStone
         '006-Blood Knife': 'Blood Knife'
-        007-BoomSub: BoomSub
-        '008-Box Knight': 'Box Knight'
-        '009-Box Mage': 'Box Mage'
-        '010-Box Bandit': 'Box Bandit'
-        '011-Box Paragon': 'Box Paragon'
-        '012-Box Thief': 'Box Thief'
-        013-BannerA: BannerA
-        014-Brainfruit: Brainfruit
-        015-Billy: Billy
-        016----------------------------: ---------------------------
+        007-BobsGratitude: BobsGratitude
+        008-BoomSub: BoomSub
+        '009-Box Knight': 'Box Knight'
+        '010-Box Mage': 'Box Mage'
+        '011-Box Bandit': 'Box Bandit'
+        '012-Box Paragon': 'Box Paragon'
+        '013-Box Thief': 'Box Thief'
+        014-BannerA: BannerA
+        015-Brainfruit: Brainfruit
+        016-Billy: Billy
+        017----------------------------: ---------------------------
             Comment
-        017-CiberBook: CiberBook
-        018-ChaosTot: ChaosTot
-        019-ChaosTotem: ChaosTotem
-        020-Contract: Contract
-        021-Courage: Courage
-        '022-Credit Card': 'Credit Card'
-        '023-Chrysolite of Control': 'Chrysolite of Control'
-        '024-Celestial Quartz': 'Celestial Quartz'
-        '025-Crystal Barrier': 'Crystal Barrier'
-        '026-Crystal BarrierDmg': 'Crystal BarrierDmg'
-        '027-Camouflage paint': 'Camouflage paint'
-        '028-Coal Gift': 'Coal Gift'
-        '029-Cut Diamond': 'Cut Diamond'
-        030----------------------------: ---------------------------
+        018-CiberBook: CiberBook
+        019-ChaosTot: ChaosTot
+        020-ChaosTotem: ChaosTotem
+        021-Contract: Contract
+        022-Courage: Courage
+        '023-Credit Card': 'Credit Card'
+        '024-Chrysolite of Control': 'Chrysolite of Control'
+        '025-Celestial Quartz': 'Celestial Quartz'
+        '026-Crystal Barrier': 'Crystal Barrier'
+        '027-Crystal BarrierDmg': 'Crystal BarrierDmg'
+        '028-Camouflage paint': 'Camouflage paint'
+        '029-Coal Gift': 'Coal Gift'
+        '030-Cut Diamond': 'Cut Diamond'
+        031----------------------------: ---------------------------
             Comment
-        031-DiabloAggro: DiabloAggro
-        032-Dushvorot: Dushvorot
-        '033-Dark Pearl': 'Dark Pearl'
-        034-Discoball: Discoball
-        '035-Dream Catcher': 'Dream Catcher'
-        036-Ditto: Ditto
-        '037-Ditto Transform': 'Ditto Transform'
-        038----------------------------: ---------------------------
+        032-DiabloAggro: DiabloAggro
+        033-Dushvorot: Dushvorot
+        '034-Dark Pearl': 'Dark Pearl'
+        035-Discoball: Discoball
+        '036-Dream Catcher': 'Dream Catcher'
+        037-Ditto: Ditto
+        '038-Ditto Transform': 'Ditto Transform'
+        039----------------------------: ---------------------------
             Comment
-        039-GBSummon: GBSummon
-        '040-Gaze Burning Totem': 'Gaze Burning Totem'
-        '041-Goblin manual': 'Goblin manual'
-        042----------------------------: ---------------------------
+        040-GBSummon: GBSummon
+        '041-Gaze Burning Totem': 'Gaze Burning Totem'
+        '042-Goblin manual': 'Goblin manual'
+        043----------------------------: ---------------------------
             Comment
-        '043-Fire in Bottle': 'Fire in Bottle'
-        '044-Farelo Fiery': 'Farelo Fiery'
-        '045-Fortune deck': 'Fortune deck'
-        046----------------------------: ---------------------------
+        '044-Fire in Bottle': 'Fire in Bottle'
+        '045-Farelo Fiery': 'Farelo Fiery'
+        '046-Fortune deck': 'Fortune deck'
+        047----------------------------: ---------------------------
             Comment
-        '047-Elixir of Acumen': 'Elixir of Acumen'
-        '048-Elune Ring': 'Elune Ring'
-        049----------------------------: ---------------------------
+        '048-Elixir of Acumen': 'Elixir of Acumen'
+        '049-Elune Ring': 'Elune Ring'
+        050----------------------------: ---------------------------
             Comment
-        '050-Infusion Phiks': 'Infusion Phiks'
-        '051-Insatiable flame': 'Insatiable flame'
-        '052-Insatiable flameCast': 'Insatiable flameCast'
-        053-Hermit: Hermit
-        054-KillAltar: KillAltar
-        '055-Living mana': 'Living mana'
-        '056-Liquid Sulfur': 'Liquid Sulfur'
-        057-Ladybug: Ladybug
-        058-Jagot: Jagot
-        059-JagotCast: JagotCast
-        060----------------------------: ---------------------------
+        '051-Infusion Phiks': 'Infusion Phiks'
+        '052-Insatiable flame': 'Insatiable flame'
+        '053-Insatiable flameCast': 'Insatiable flameCast'
+        054-Hermit: Hermit
+        055-KillAltar: KillAltar
+        '056-Living mana': 'Living mana'
+        '057-Liquid Sulfur': 'Liquid Sulfur'
+        058-Ladybug: Ladybug
+        059-Jagot: Jagot
+        060-JagotCast: JagotCast
+        061----------------------------: ---------------------------
             Comment
-        '061-Mana Crystal': 'Mana Crystal'
-        062-MajyteLib: MajyteLib
-        063-Majyte: Majyte
-        '064-Muta Mushroom': 'Muta Mushroom'
-        '065-Magic Totem': 'Magic Totem'
-        066-Manashtorm: Manashtorm
-        '067-Mimic potion': 'Mimic potion'
-        '068-Miracle Wall': 'Miracle Wall'
-        '069-Magician Boots': 'Magician Boots'
-        '070-Magic Amplifier': 'Magic Amplifier'
-        '071-Magic Dispenser': 'Magic Dispenser'
-        '072-Magic Absorber': 'Magic Absorber'
-        '073-Midas Ring': 'Midas Ring'
-        '074-Magic Fern': 'Magic Fern'
-        075----------------------------: ---------------------------
+        '062-Mana Crystal': 'Mana Crystal'
+        063-MajyteLib: MajyteLib
+        064-Majyte: Majyte
+        '065-Muta Mushroom': 'Muta Mushroom'
+        '066-Magic Totem': 'Magic Totem'
+        067-Manashtorm: Manashtorm
+        '068-Mimic potion': 'Mimic potion'
+        '069-Miracle Wall': 'Miracle Wall'
+        '070-Magician Boots': 'Magician Boots'
+        '071-Magic Amplifier': 'Magic Amplifier'
+        '072-Magic Dispenser': 'Magic Dispenser'
+        '073-Magic Absorber': 'Magic Absorber'
+        '074-Midas Ring': 'Midas Ring'
+        '075-Magic Fern': 'Magic Fern'
+        076----------------------------: ---------------------------
             Comment
-        '076-Nehalenas Eye': 'Nehalenas Eye'
-        077----------------------------: ---------------------------
+        '077-Nehalenas Eye': 'Nehalenas Eye'
+        078----------------------------: ---------------------------
             Comment
-        078-OldHealer: OldHealer
-        079-OrbArcane: OrbArcane
-        080-OrbFire: OrbFire
-        081-OrbNature: OrbNature
-        082-OrbLight: OrbLight
-        '083-Orb of Shadow': 'Orb of Shadow'
-        084----------------------------: ---------------------------
+        079-OldHealer: OldHealer
+        080-OrbArcane: OrbArcane
+        081-OrbFire: OrbFire
+        082-OrbNature: OrbNature
+        083-OrbLight: OrbLight
+        '084-Orb of Shadow': 'Orb of Shadow'
+        085----------------------------: ---------------------------
             Comment
-        085-PadavanBook: PadavanBook
-        086-Prism: Prism
-        087-PrismRed: PrismRed
-        088-PrismBlue: PrismBlue
-        089-PrismGreen: PrismGreen
-        090-PrismPurple: PrismPurple
-        091-PotionStuff: PotionStuff
-        '092-Plush doll': 'Plush doll'
-        093-Pentagram: Pentagram
-        '094-Prophet Mask': 'Prophet Mask'
-        '095-Pact of Fire': 'Pact of Fire'
-        '096-Plaiful Spirit': 'Plaiful Spirit'
-        '097-Pendant of Knowledge': 'Pendant of Knowledge'
-        '098-Pocket Galaxy': 'Pocket Galaxy'
-        099----------------------------: ---------------------------
+        086-PadavanBook: PadavanBook
+        087-Prism: Prism
+        088-PrismRed: PrismRed
+        089-PrismBlue: PrismBlue
+        090-PrismGreen: PrismGreen
+        091-PrismPurple: PrismPurple
+        092-PotionStuff: PotionStuff
+        '093-Plush doll': 'Plush doll'
+        094-Pentagram: Pentagram
+        '095-Prophet Mask': 'Prophet Mask'
+        '096-Pact of Fire': 'Pact of Fire'
+        '097-Plaiful Spirit': 'Plaiful Spirit'
+        '098-Pendant of Knowledge': 'Pendant of Knowledge'
+        '099-Pocket Galaxy': 'Pocket Galaxy'
+        100----------------------------: ---------------------------
             Comment
-        '100-Raging Fire': 'Raging Fire'
-        101-RikGreed: RikGreed
-        '102-Ring of Addiction': 'Ring of Addiction'
-        103-Refresher: Refresher
-        '104-Ring of Power': 'Ring of Power'
-        '105-Runestone Brib': 'Runestone Brib'
-        '106-Runestone Glas': 'Runestone Glas'
-        '107-Runestone Zirik': 'Runestone Zirik'
-        108----------------------------: ---------------------------
+        '101-Raging Fire': 'Raging Fire'
+        102-RikGreed: RikGreed
+        '103-Ring of Addiction': 'Ring of Addiction'
+        104-Refresher: Refresher
+        '105-Ring of Power': 'Ring of Power'
+        '106-Runestone Brib': 'Runestone Brib'
+        '107-Runestone Glas': 'Runestone Glas'
+        '108-Runestone Zirik': 'Runestone Zirik'
+        109----------------------------: ---------------------------
             Comment
-        109-Superbot: Superbot
-        110-Star: Star
-        111-Sun: Sun
-        '112-Sea Pearl': 'Sea Pearl'
-        '113-Shadow gem': 'Shadow gem'
-        114-Spy: Spy
-        '115-Sheep Mantle': 'Sheep Mantle'
-        '116-Sphere Abyss': 'Sphere Abyss'
-        '117-Sheep tear': 'Sheep tear'
-        '118-Stim Injector': 'Stim Injector'
-        '119-Steam generator': 'Steam generator'
-        '120-Strange Tail': 'Strange Tail'
-        '121-Soul Crystal': 'Soul Crystal'
-        '122-Staff of Phenomenal Power': 'Staff of Phenomenal Power'
-        123----------------------------: ---------------------------
+        110-Superbot: Superbot
+        111-Star: Star
+        112-Sun: Sun
+        '113-Sea Pearl': 'Sea Pearl'
+        '114-Shadow gem': 'Shadow gem'
+        115-Spy: Spy
+        '116-Sheep Mantle': 'Sheep Mantle'
+        '117-Sphere Abyss': 'Sphere Abyss'
+        '118-Sheep tear': 'Sheep tear'
+        '119-Stim Injector': 'Stim Injector'
+        '120-Steam generator': 'Steam generator'
+        '121-Strange Tail': 'Strange Tail'
+        '122-Soul Crystal': 'Soul Crystal'
+        '123-Staff of Phenomenal Power': 'Staff of Phenomenal Power'
+        124----------------------------: ---------------------------
             Comment
-        '124-Tree Shield': 'Tree Shield'
-        '125-Totem of Strenght': 'Totem of Strenght'
-        '126-Totem Power': 'Totem Power'
-        '127-Tarot Dopelganger': 'Tarot Dopelganger'
-        '128-Treasure Map': 'Treasure Map'
-        '129-Tear of Asha': 'Tear of Asha'
-        '130-Twilight Meat': 'Twilight Meat'
-        131-Tassardar: Tassardar
-        132----------------------------: ---------------------------
+        '125-Tree Shield': 'Tree Shield'
+        '126-Totem of Strenght': 'Totem of Strenght'
+        '127-Totem Power': 'Totem Power'
+        '128-Tarot Dopelganger': 'Tarot Dopelganger'
+        '129-Treasure Map': 'Treasure Map'
+        '130-Tear of Asha': 'Tear of Asha'
+        '131-Twilight Meat': 'Twilight Meat'
+        132-Tassardar: Tassardar
+        133----------------------------: ---------------------------
             Comment
-        133-UtiPuti: UtiPuti
-        134-Ventusit: Ventusit
-        135-VampBlood: VampBlood
-        '136-VIP card': 'VIP card'
-        '137-Volatile Water': 'Volatile Water'
-        '138-Warrior Belt': 'Warrior Belt'
-        '139-World Clock': 'World Clock'
-        '140-Wheel of Fortune': 'Wheel of Fortune'
-        141----------------------------: ---------------------------
+        134-UtiPuti: UtiPuti
+        135-Ventusit: Ventusit
+        136-VampBlood: VampBlood
+        '137-VIP card': 'VIP card'
+        '138-Volatile Water': 'Volatile Water'
+        '139-Warrior Belt': 'Warrior Belt'
+        '140-World Clock': 'World Clock'
+        '141-Wheel of Fortune': 'Wheel of Fortune'
+        142----------------------------: ---------------------------
             Comment
-        '142-Yoric Skull': 'Yoric Skull'
-        '143-Yoric Skull Death': 'Yoric Skull Death'
-        '144-Yah tear': 'Yah tear'
-        145----------------------------: ---------------------------
+        '143-Yoric Skull': 'Yoric Skull'
+        '144-Yoric Skull Death': 'Yoric Skull Death'
+        '145-Yah tear': 'Yah tear'
+        146----------------------------: ---------------------------
             Comment
-        146-Zuma: Zuma
+        147-Zuma: Zuma
     3-Legendary: Legendary
         01-AlonePotion: AlonePotion
         '02-Blood of the Ancient': 'Blood of the Ancient'
@@ -1205,34 +1213,35 @@
         '48-Alchemists Stone': 'Alchemists Stone'
         '49-Chameleon Eye': 'Chameleon Eye'
         50-Felweed: Felweed
-        51----------------------------: ---------------------------
+        51-SuperSeven: SuperSeven
+        52----------------------------: ---------------------------
             Comment
-        52-SLCG: SLCG
-        53-ESPN: ESPN
-        54-DMCG: DMCG
-        55-WBJG: WBJG
-        56-SPIG: SPIG
-        57-WitcherMed: WitcherMed
-        '58-Dead Mans Chest': 'Dead Mans Chest'
-        59-Wabbajack: Wabbajack
-        60-Sandro: Sandro
-        61-GrayGuard: GrayGuard
-        62-EyeCore: EyeCore
-        63-DagotUr: DagotUr
-        64-Kobzar: Kobzar
-        '65-Pandoras bag': 'Pandoras bag'
-        66-MidasHand: MidasHand
-        '67-Scientist Card': 'Scientist Card'
-        68-IkarosSwap: IkarosSwap
-        69-IkarosQuest: IkarosQuest
-        '70-Ikaros Mudstone': 'Ikaros Mudstone'
-        71-Battlemaster: Battlemaster
-        '72-Battlemaster Bulwark': 'Battlemaster Bulwark'
-        73-Pacifist: Pacifist
-        74-Enlightenment: Enlightenment
-        75----------------------------: ---------------------------
+        53-SLCG: SLCG
+        54-ESPN: ESPN
+        55-DMCG: DMCG
+        56-WBJG: WBJG
+        57-SPIG: SPIG
+        58-WitcherMed: WitcherMed
+        '59-Dead Mans Chest': 'Dead Mans Chest'
+        60-Wabbajack: Wabbajack
+        61-Sandro: Sandro
+        62-GrayGuard: GrayGuard
+        63-EyeCore: EyeCore
+        64-DagotUr: DagotUr
+        65-Kobzar: Kobzar
+        '66-Pandoras bag': 'Pandoras bag'
+        67-MidasHand: MidasHand
+        '68-Scientist Card': 'Scientist Card'
+        69-IkarosSwap: IkarosSwap
+        70-IkarosQuest: IkarosQuest
+        '71-Ikaros Mudstone': 'Ikaros Mudstone'
+        72-Battlemaster: Battlemaster
+        '73-Battlemaster Bulwark': 'Battlemaster Bulwark'
+        74-Pacifist: Pacifist
+        75-Enlightenment: Enlightenment
+        76----------------------------: ---------------------------
             Comment
-        76-Orbs: Orbs
+        77-Orbs: Orbs
             01-OrbRagnaros: OrbRagnaros
             02-OrbFrostFire: OrbFrostFire
             03-OrbManaburn: OrbManaburn
@@ -1255,13 +1264,15 @@
             20-OrbTreantHeal: OrbTreantHeal
             21-OrbHeresy: OrbHeresy
             '22-OrbDesecrated Land': 'OrbDesecrated Land'
-        77----------------------------: ---------------------------
+            '23-Orb Cenarius': 'Orb Cenarius'
+        78----------------------------: ---------------------------
+        79----------------------------: ---------------------------
             Comment
-        78-GL: GL
-        79-GiveLvL: GiveLvL
-        '80-Granite Science': 'Granite Science'
-        '81-Statuette Svirel': 'Statuette Svirel'
-        82-Papirus: Papirus
+        80-GL: GL
+        81-GiveLvL: GiveLvL
+        '82-Granite Science': 'Granite Science'
+        '83-Statuette Svirel': 'Statuette Svirel'
+        84-Papirus: Papirus
     4-Potions: Potions
         01-EarthPot: EarthPot
         02-WaterPot: WaterPot
@@ -1367,8 +1378,11 @@
         13-Dualism: Dualism
         14-Dualism: Dualism
             1-DualismVision: DualismVision
+                Disab
             2-DualismCharges: DualismCharges
+                Disab
             3-DualismFrame: DualismFrame
+                Disab
         15-Cannibalism: Cannibalism
         '16-Time rift': 'Time rift'
         '17-Sheep cannon': 'Sheep cannon'
@@ -1690,7 +1704,8 @@
         1-Incarnation: Incarnation
             1-IncarnationQ: IncarnationQ
             2-IncarnationW: IncarnationW
-            3-IncarnationR: IncarnationR
+            3-IncarnationE: IncarnationE
+            4-IncarnationR: IncarnationR
         2-Hronomant: Hronomant
             1-HronoQ: HronoQ
             2-HronoW: HronoW
@@ -1750,7 +1765,7 @@
             1-MentorQ: MentorQ
             2-MentorQEffect: MentorQEffect
             3-MentorW: MentorW
-            4-MentorPas: MentorPas
+            4-MentorE: MentorE
             5-MentorR: MentorR
         5-Morloc: Morloc
             1-MorlocQ: MorlocQ

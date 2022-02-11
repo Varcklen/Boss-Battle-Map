@@ -55,7 +55,7 @@ function SpiderPlay takes nothing returns nothing
                 call SetUnitAbilityLevel( boss, 'A0DT', i )
                 call SetUnitAbilityLevel( boss, 'A0E8', i )
             endif	
-	    call BlzSetUnitBaseDamage( boss, R2I(BlzGetUnitBaseDamage(boss, 0)*1.2), 0 )
+	    call BlzSetUnitBaseDamage( boss, R2I(GetUnitDamage(boss)*1.2-GetUnitAvgDiceDamage(boss)), 0 )
         endif
         call SaveInteger( udg_hash, id, StringHash( "bssqbf" ), i )
     endif

@@ -352,7 +352,7 @@ function DataAbilities takes nothing returns nothing
     set udg_DB_Trigger_Two[55] = gg_trg_WagonW
     set udg_DB_Trigger_Two[56] = gg_trg_FallenOneW
     set udg_DB_Trigger_Two[57] = gg_trg_MephistarW
-    set udg_DB_Trigger_Two[58] = gg_trg_SunKingWxxx
+    set udg_DB_Trigger_Two[58] = gg_trg_SunKingW
     set udg_DB_Trigger_Two[59] = gg_trg_ArmsW
     set udg_DB_Trigger_Two[60] = gg_trg_JesterW
     set udg_DB_Trigger_Two[61] = gg_trg_KeeperW
@@ -364,7 +364,7 @@ function DataAbilities takes nothing returns nothing
     set udg_DB_Trigger_Two[67] = gg_trg_The_PlagueW
     
     // Триггеры способности №3
-    set udg_Database_NumberItems[16] = 73
+    set udg_Database_NumberItems[16] = 72
     set udg_DB_Trigger_Three[1] = gg_trg_BeornR
     set udg_DB_Trigger_Three[2] = gg_trg_OwlR
     set udg_DB_Trigger_Three[3] = gg_trg_DruidR
@@ -408,7 +408,7 @@ function DataAbilities takes nothing returns nothing
     set udg_DB_Trigger_Three[41] = gg_trg_IncarnationR
     set udg_DB_Trigger_Three[42] = gg_trg_ShamanE
     set udg_DB_Trigger_Three[43] = gg_trg_ShamanR
-    set udg_DB_Trigger_Three[44] = gg_trg_GamblerE
+    set udg_DB_Trigger_Three[44] = gg_trg_The_PlagueR
     set udg_DB_Trigger_Three[45] = gg_trg_GamblerR
     set udg_DB_Trigger_Three[46] = gg_trg_ShoggothR
     set udg_DB_Trigger_Three[47] = gg_trg_Troll_MageE
@@ -437,7 +437,6 @@ function DataAbilities takes nothing returns nothing
     set udg_DB_Trigger_Three[70] = gg_trg_BardR
     set udg_DB_Trigger_Three[71] = gg_trg_CorruptedEntR
     set udg_DB_Trigger_Three[72] = gg_trg_LycanthropeR
-    set udg_DB_Trigger_Three[73] = gg_trg_The_PlagueR
     
     // First spell
     set udg_DB_Hero_FirstSpell[1] = 'A0OC'
@@ -578,7 +577,7 @@ function DataAbilities takes nothing returns nothing
     set udg_Database_EarringSpell[59] = 'A05G'
     set udg_Database_EarringSpell[60] = 'A05F'
     set udg_Database_EarringSpell[61] = 'A149'
-    set udg_Database_EarringSpell[62] = 'A02U'
+    set udg_Database_EarringSpell[62] = 'AV00'
     set udg_Database_EarringSpell[63] = 'A07R'
     set udg_Database_EarringSpell[64] = 'A0JN'
     set udg_Database_EarringSpell[65] = 'A09Y'

@@ -260,6 +260,21 @@ library ItemRandomizerLib requires SetRaritySpawnLib
         set caster = null
         return udg_ItemBuf
     endfunction
+    
+    function ItemRandomizerSet takes unit caster, integer it, integer settag, integer salvage returns item
+        local integer rand = GetRandomInt(1, udg_DB_SetItems_Num[settag])
+        set udg_ItemBuf = null
+        set udg_ItemBuf = CreateItem(DB_SetItems[settag][rand], GetUnitX(caster), GetUnitY(caster) )
+        if it == GetItemTypeId(udg_ItemBuf) then
+            call SetPlayerState(GetOwningPlayer(caster), PLAYER_STATE_RESOURCE_GOLD, GetPlayerState(GetOwningPlayer(caster), PLAYER_STATE_RESOURCE_GOLD) + salvage )
+        endif
+        if udg_ItemBuf != null then
+            call UnitAddItem( caster, udg_ItemBuf )
+            set bj_lastCreatedItem = udg_ItemBuf
+        endif
+        set caster = null
+        return udg_ItemBuf
+    endfunction
 
     function ItemRandomizer takes unit caster, string str returns item
         local integer rand = GetRandomInt(1, 100)

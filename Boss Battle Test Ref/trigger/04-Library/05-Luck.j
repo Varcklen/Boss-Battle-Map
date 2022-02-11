@@ -14,7 +14,7 @@ library LuckLib requires Multiboard
             set lk = lk + ( SquareRoot(cyclA ) / ( cyclA + 1 ) )
             set cyclA = cyclA + 1
         endloop*/
-        set lk = ( SquareRoot( udg_lucky[i] ) * 2 ) - 2
+        set lk = RMaxBJ(0, ( SquareRoot( udg_lucky[i] ) * 2 ) - 2 )
         set udg_luckychance[i] = R2I( lk )
 
         call MultiSetValue( udg_multi, ( udg_Multiboard_Position[i] * 3 ) - 1, 5,  I2S(udg_luckychance[i]) + udg_perc + " (" + I2S( udg_lucky[i] ) + ")")
@@ -43,7 +43,7 @@ library LuckLib requires Multiboard
             set lk = lk + ( SquareRoot( cyclA ) / ( cyclA + 1 ) )
             set cyclA = cyclA + 1
         endloop*/
-        set lk = ( SquareRoot( udg_lucky[i] ) * 2 ) - 2
+        set lk = RMaxBJ(0, ( SquareRoot( udg_lucky[i] ) * 2 ) - 2 )
         set udg_luckychance[i] = R2I( lk )
 
         call MultiSetValue( udg_multi, ( udg_Multiboard_Position[i] * 3 ) - 1, 5,  I2S(udg_luckychance[i]) + udg_perc + " (" + I2S( udg_lucky[i] ) + ")")

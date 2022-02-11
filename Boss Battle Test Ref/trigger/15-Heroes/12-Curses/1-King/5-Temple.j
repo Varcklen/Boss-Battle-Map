@@ -15,7 +15,7 @@ function TempleCast takes nothing returns nothing
         set bj_lastCreatedUnit = CreateUnit( GetOwningPlayer( caster ), 'u01K', GetUnitX( caster ) + GetRandomReal( 0, 200 ), GetUnitY( caster ) + GetRandomReal( 0, 200 ), GetRandomReal( 0, 360 ) )
         call UnitApplyTimedLife( bj_lastCreatedUnit , 'BTLF', 15 )
         if r > 1 then
-            call BlzSetUnitBaseDamage( bj_lastCreatedUnit, R2I(BlzGetUnitBaseDamage(bj_lastCreatedUnit, 0) * r), 0 )
+            call BlzSetUnitBaseDamage( bj_lastCreatedUnit, R2I(GetUnitDamage(bj_lastCreatedUnit) * r - GetUnitAvgDiceDamage(bj_lastCreatedUnit)), 0 )
             call BlzSetUnitMaxHP( bj_lastCreatedUnit, R2I(BlzGetUnitMaxHP(bj_lastCreatedUnit) * r) )
             call SetUnitState(bj_lastCreatedUnit, UNIT_STATE_LIFE, GetUnitState(bj_lastCreatedUnit, UNIT_STATE_MAX_LIFE))
             call SetUnitScale( bj_lastCreatedUnit, 1.5, 1.5, 1.5 )

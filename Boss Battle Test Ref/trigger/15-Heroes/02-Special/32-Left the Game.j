@@ -5,7 +5,7 @@ scope LeftTheGame
         private constant integer MP_COST = 25
         private constant real MULTIPLIER = 0.25
         
-        private constant string ANIMATION = "ColdRitual.mdx"
+        private constant string ANIMATION = "MechanicGears.mdx"
     endglobals
 
     function Trig_Left_the_Game_Conditions takes nothing returns boolean
@@ -35,21 +35,16 @@ scope LeftTheGame
             set caster = udg_Caster
         elseif RandomLogic() then
             set caster = udg_Caster
+            if not(IsUnitInGroup(caster, udg_heroinfo)) then
+                return
+            endif
             call textst( udg_string[0] + GetObjectName(ID_ABILITY), caster, 64, 90, 10, 1.5 )
         else
             set caster = GetSpellAbilityUnit()
         endif
         
-        /*Если это где-то хранится, было бы неплохо знать, где; я нашел...
-        loop
-            exitwhen cyclA > udg_Database_InfoNumberHeroes
-            if GetUnitTypeId( caster ) == udg_Database_Hero[cyclA] then
-                set pointer = cyclA
-            endif
-            set cyclA = cyclA + 1
-        endloop*/
         set pointer = udg_HeroNum[GetUnitUserData(caster)]
-        //set found = false
+        
         //Спагетти, не смотреть
         set AbilInQ = udg_DB_Hero_FirstSpell[pointer]
         if GetUnitAbilityLevel( caster, AbilInQ ) > 0 and BlzGetUnitAbilityCooldownRemaining( caster, AbilInQ ) > 0 then
@@ -72,10 +67,11 @@ scope LeftTheGame
         endif
 
         if found then    
-            call BlzStartUnitAbilityCooldown( caster, AbilInQ, BlzGetUnitAbilityCooldownRemaining(caster, AbilInQ) * (1-MULTIPLIER) )
-            //call BlzStartUnitAbilityCooldown( caster, AbilInQ, RMaxBJ(0.,BlzGetUnitAbilityCooldownRemaining(caster, AbilInQ) - BlzGetUnitAbilityCooldown(caster, AbilInQ, GetUnitAbilityLevel( caster, AbilInQ)) * MULTIPLIER ))
-            call DestroyEffect( AddSpecialEffectTarget( ANIMATION, caster, "chest" ) )
-          
+            //call BlzStartUnitAbilityCooldown( caster, AbilInQ, BlzGetUnitAbilityCooldownRemaining(caster, AbilInQ) * (1-MULTIPLIER) )
+            call BlzStartUnitAbilityCooldown( caster, AbilInQ, RMaxBJ( 0., BlzGetUnitAbilityCooldownRemaining( caster, AbilInQ ) - BlzGetUnitAbilityCooldown( caster, AbilInQ, GetUnitAbilityLevel( caster, AbilInQ ) - 1 ) * MULTIPLIER ))
+            //call DestroyEffect( AddSpecialEffectTarget( ANIMATION, caster, "chest" ) )
+            call DestroyEffect( AddSpecialEffectTarget( ANIMATION, caster, "overhead" ) )
+            
         elseif GetSpellAbilityId() == ID_ABILITY then
             set id = GetHandleId( caster )
             if LoadTimerHandle( udg_hash, id, StringHash( "zltgcz" ) ) == null then

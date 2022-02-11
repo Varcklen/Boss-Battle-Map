@@ -20,7 +20,7 @@ endfunction
 
 function DruidR_Alternative takes unit caster, integer boarsSummoned, real x, real y returns nothing
     local unit dummyPig = CreateUnit( GetOwningPlayer( caster ), DRUID_R_BOAR_ID, x, y, 0 )
-    local integer pigDamage = boarsSummoned * BlzGetUnitBaseDamage(dummyPig, 0)
+    local integer pigDamage = boarsSummoned * GetUnitDamage(dummyPig)
     local integer pigHealth = boarsSummoned * BlzGetUnitMaxHP(dummyPig)
     local real pigSize = RMinBJ( DRUID_R_BOAR_SIZE_LIMIT_BIG, RMaxBJ( DRUID_R_BOAR_SIZE_LIMIT_SMALL, boarsSummoned * DRUID_R_BOAR_SIZE_COUNTER) )
 
@@ -31,7 +31,7 @@ function DruidR_Alternative takes unit caster, integer boarsSummoned, real x, re
     call spectimeunit( bj_lastCreatedUnit, DRUID_R_SPAWN_ANIMATION, "overhead", 0.6 )
     
     call BlzSetUnitMaxHP( bj_lastCreatedUnit, pigHealth )
-    call BlzSetUnitBaseDamage( bj_lastCreatedUnit, pigDamage, 0 )
+    call BlzSetUnitBaseDamage( bj_lastCreatedUnit, pigDamage - GetUnitAvgDiceDamage(bj_lastCreatedUnit), 0 )
     call SetUnitState( bj_lastCreatedUnit, UNIT_STATE_LIFE, GetUnitState( bj_lastCreatedUnit, UNIT_STATE_MAX_LIFE) )
     
     call SetUnitScale( bj_lastCreatedUnit, pigSize, pigSize, pigSize )

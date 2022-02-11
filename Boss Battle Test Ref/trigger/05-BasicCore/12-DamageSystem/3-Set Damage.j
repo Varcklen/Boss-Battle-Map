@@ -92,9 +92,6 @@ function Trig_Set_Damage_Actions takes nothing returns nothing
     if GetUnitAbilityLevel(udg_DamageEventTarget, 'B08Q') > 0 then
         set udg_DamageEventAmount = udg_DamageEventAmount - (dmg*0.15)
     endif
-    if GetUnitAbilityLevel(udg_DamageEventTarget, 'B08S') > 0 then
-        set udg_DamageEventAmount = udg_DamageEventAmount + (dmg*LoadReal( udg_hash, GetHandleId( udg_DamageEventTarget ), StringHash( "snkeb" )))
-    endif
     if GetUnitAbilityLevel(udg_DamageEventTarget, 'A0VW') > 0 then
         set udg_DamageEventAmount = ( 0.95 - ( 0.05 * GetUnitAbilityLevel(udg_DamageEventTarget, 'A0VW') ) ) * udg_DamageEventAmount
     endif
@@ -527,9 +524,6 @@ function Trig_Set_Damage_Actions takes nothing returns nothing
         endif
         if GetUnitAbilityLevel( udg_DamageEventTarget, 'A14V' ) > 0 then
             set udg_DamageEventAmount = udg_DamageEventAmount - (0.5*dmg)
-        endif
-        if GetUnitAbilityLevel(udg_hero[i], 'A0UJ') > 0 then
-            set udg_DamageEventAmount = udg_DamageEventAmount + ( dmg * ( 0.25 + (0.15*GetUnitAbilityLevel(udg_hero[i], 'A0UJ')) ) * ( 1 - ( GetUnitState( udg_hero[i], UNIT_STATE_LIFE) / GetUnitState( udg_hero[i], UNIT_STATE_MAX_LIFE) ) ) )
         endif
         if GetUnitAbilityLevel( udg_DamageEventTarget, 'A0T8') >= 5 or (GetUnitAbilityLevel( udg_hero[k], 'A0T8') >= 5 and GetUnitTypeId(udg_DamageEventTarget) == 'u00X') then
             set udg_DamageEventAmount = udg_DamageEventAmount - (dmg* 0.2)	
