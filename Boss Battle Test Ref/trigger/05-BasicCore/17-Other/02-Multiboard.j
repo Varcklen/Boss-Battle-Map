@@ -134,7 +134,7 @@ library Multiboard
                 call MultiSetColor( udg_multi, i, 3, udg_Color_Player_Red[cyclA], udg_Color_Player_Green[cyclA], udg_Color_Player_Blue[cyclA], 0.00 )
                 call MultiSetValue( udg_multi, i, 3, GetSmallPlayerName(GetPlayerName(Player(cyclA - 1)), cyclA) )
                 call MultiSetIcon( udg_multi, i, 3, "ReplaceableTextures\\CommandButtons\\BTNSelectHeroOn.blp" )
-                call MultiSetValue( udg_multi, i, 4, ( R2SW(RAbsBJ( ( 100. * ( udg_SpellDamage[cyclA] - 1 ) ) ), 1, 2) + "%" ) )
+                call MultiSetValue( udg_multi, i, 4, "0%" )
                 call MultiSetValue( udg_multi, i, 5, "0% (0)" )
                 call MultiSetWidth( udg_multi, i, 15, 1.00 )
                 call MultiSetWidth( udg_multi, i + 1, 15, 1.00 )

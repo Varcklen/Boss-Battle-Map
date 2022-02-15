@@ -26,7 +26,7 @@ function Trig_MephistarW_Actions takes nothing returns nothing
         call RemoveUnit( oldpet )
     endif
 
-    set sp = udg_SpellDamage[GetPlayerId(GetOwningPlayer(caster)) + 1]
+    set sp = GetUnitSpellPower(caster)
     set bj_lastCreatedUnit = CreateUnit( GetOwningPlayer( caster ), 'n053', GetUnitX( caster ) + GetRandomReal( -250, 250 ), GetUnitY( caster ) + GetRandomReal( -250, 250 ), GetRandomReal( 0, 360 ) )
 
     call SaveUnitHandle( udg_hash, GetHandleId( caster ), StringHash( "mephw" ), bj_lastCreatedUnit )
@@ -35,7 +35,7 @@ function Trig_MephistarW_Actions takes nothing returns nothing
     call BlzSetUnitBaseDamage( bj_lastCreatedUnit, R2I(BlzGetUnitBaseDamage(bj_lastCreatedUnit, 0)+((lvl-1)*5)), 0 )
 
     call BlzSetUnitMaxHP( bj_lastCreatedUnit, R2I(BlzGetUnitMaxHP(bj_lastCreatedUnit)*sp) )
-    call BlzSetUnitBaseDamage( bj_lastCreatedUnit, R2I(BlzGetUnitBaseDamage(bj_lastCreatedUnit, 0)*sp), 0 )
+    call BlzSetUnitBaseDamage( bj_lastCreatedUnit, R2I(GetUnitDamage(bj_lastCreatedUnit)*sp-GetUnitAvgDiceDamage(bj_lastCreatedUnit)), 0 )
     call SetUnitState( bj_lastCreatedUnit, UNIT_STATE_LIFE, GetUnitState( bj_lastCreatedUnit, UNIT_STATE_MAX_LIFE) )
     call BlzSetUnitArmor( bj_lastCreatedUnit, BlzGetUnitArmor(bj_lastCreatedUnit)*sp )
     call SetUnitMoveSpeed( bj_lastCreatedUnit, GetUnitDefaultMoveSpeed(bj_lastCreatedUnit)*sp )

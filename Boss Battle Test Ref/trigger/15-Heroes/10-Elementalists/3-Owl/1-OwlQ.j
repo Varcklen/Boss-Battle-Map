@@ -46,7 +46,7 @@ function Trig_OwlQ_Actions takes nothing returns nothing
         set target = GetSpellTargetUnit()
         set lvl = GetUnitAbilityLevel(GetSpellAbilityUnit(), GetSpellAbilityId())
     endif
-    set dmg = ( 20. + ( 20. * lvl ) ) * udg_SpellDamage[GetPlayerId(GetOwningPlayer(caster)) + 1] 
+    set dmg = ( 20. + ( 20. * lvl ) ) * GetUnitSpellPower(caster)
     
     if GetUnitAbilityLevel( caster, 'B003') > 0 then
         call GroupEnumUnitsInRange( g, GetUnitX( caster ), GetUnitY( caster ), 600, null )

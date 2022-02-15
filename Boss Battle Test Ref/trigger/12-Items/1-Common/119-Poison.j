@@ -41,7 +41,7 @@ function Trig_Poison_Actions takes nothing returns nothing
         call SaveUnitHandle( udg_hash, id, StringHash( "pois" ), target )
         call SaveUnitHandle( udg_hash, id, StringHash( "poisd" ), bj_lastCreatedUnit )
         call SaveReal( udg_hash, id, StringHash( "poist" ), t )
-        call SaveReal( udg_hash, id, StringHash( "pois" ), 15 * udg_SpellDamage[GetPlayerId(GetOwningPlayer( caster ) ) + 1] )
+        call SaveReal( udg_hash, id, StringHash( "pois" ), 15 * GetUnitSpellPower(caster) )
         call TimerStart( LoadTimerHandle( udg_hash, GetHandleId( target ), StringHash( "pois" ) ), 1, true, function PoisonCast ) 
     endif
     call bufst( caster, target, 'A02O', 'B00D', "pois1", t )

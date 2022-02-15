@@ -71,7 +71,7 @@ function Trig_Serrated_blade_Actions takes nothing returns nothing
     set t = timebonus( caster, t )
     set id = GetHandleId( target )
 
-    set dmg = GetUnitState( caster, UNIT_STATE_MAX_LIFE) * SERRATED_BLADE_PERCENT_HEALTH_TO_DAMAGE * udg_SpellDamage[GetPlayerId(GetOwningPlayer( caster ) ) + 1]
+    set dmg = GetUnitState( caster, UNIT_STATE_MAX_LIFE) * SERRATED_BLADE_PERCENT_HEALTH_TO_DAMAGE * GetUnitSpellPower(caster)
 
     if GetUnitAbilityLevel( target, 'A0O4') == 0 then 
         call dummyspawn( caster, 0, 'A0N5', 0, 0 )

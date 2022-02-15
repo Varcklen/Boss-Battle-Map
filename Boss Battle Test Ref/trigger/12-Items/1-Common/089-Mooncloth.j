@@ -15,7 +15,7 @@
 endfunction*/
 
 function Trig_Mooncloth_Conditions takes nothing returns boolean//MoonclothLogic() and
-    return IsUnitInGroup(GetSpellAbilityUnit(), udg_heroinfo) and inv( GetSpellAbilityUnit(), 'I0AD' ) > 0 and GetSpellAbilityId() == udg_DB_Hero_FirstSpell[udg_HeroNum[GetUnitUserData(GetSpellAbilityUnit())]]
+    return IsUnitInGroup(GetSpellAbilityUnit(), udg_heroinfo) and inv( GetSpellAbilityUnit(), 'I0AD' ) > 0 and GetSpellAbilityId() == Database_Hero_Abilities[1][udg_HeroNum[GetUnitUserData(GetSpellAbilityUnit())]]
 endfunction
 
 function MoonclothCast takes nothing returns nothing

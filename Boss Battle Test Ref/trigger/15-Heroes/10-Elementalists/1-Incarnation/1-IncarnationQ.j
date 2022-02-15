@@ -164,7 +164,7 @@ function Trig_IncarnationQ_Actions takes nothing returns nothing
         set y = GetSpellTargetY()
     endif
 
-    set dmg = ( 15 + ( 5 * lvl ) ) * udg_SpellDamage[GetPlayerId(GetOwningPlayer(caster)) + 1]
+    set dmg = ( 15 + ( 5 * lvl ) ) * GetUnitSpellPower(caster)
 
 	call DestroyEffect( AddSpecialEffect( "war3mapImported\\Soul Discharge Purple.mdx", GetUnitX(caster), GetUnitY(caster) ) )
 	

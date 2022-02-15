@@ -24,7 +24,7 @@ function Trig_AdventurerQ_Actions takes nothing returns nothing
     endif
     
     set i = GetPlayerId(GetOwningPlayer( caster ) ) + 1
-    set dmg = (100 + ( 50 * lvl )) * udg_SpellDamage[i]
+    set dmg = (100 + ( 50 * lvl )) * GetUnitSpellPower(caster)
     call DestroyEffect( AddSpecialEffect( "Abilities\\Weapons\\FrostWyrmMissile\\FrostWyrmMissile.mdl", GetUnitX( caster ), GetUnitY( caster ) ) )
     
     if IsUnitGroupEmptyBJ(udg_Bosses) then

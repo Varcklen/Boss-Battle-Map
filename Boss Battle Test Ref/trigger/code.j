@@ -1165,22 +1165,12 @@ function RandomHero takes player p returns nothing
         endif
         loop
             exitwhen cyclA > 1
-            if udg_HeroChooseMode == 1 then
-                set rand = GetRandomInt(1, udg_DB_BasicHeroesNum)
-            	if CountUnitsInGroup(GetUnitsOfTypeIdAll(udg_DB_BasicHeroes[rand])) == 0 then
-                	set udg_logic[8] = true
-                	call CreateUnit( p, udg_DB_BasicHeroes[rand], GetRectCenterX(gg_rct_HeroesTp), GetRectCenterY(gg_rct_HeroesTp), 270 )
-            	else
-                	set cyclA = cyclA - 1
-            	endif
+            set rand = GetRandomInt(1, udg_Database_InfoNumberHeroes)
+            if CountUnitsInGroup(GetUnitsOfTypeIdAll(udg_Database_Hero[rand])) == 0 and udg_UnitHeroLogic[rand] == false and IsBanned[rand] == false then
+                set udg_logic[8] = true
+                call CreateUnit( p, udg_Database_Hero[rand], GetRectCenterX(gg_rct_HeroesTp), GetRectCenterY(gg_rct_HeroesTp), 270 )
             else
-            	set rand = GetRandomInt(1, udg_Database_InfoNumberHeroes)
-            	if CountUnitsInGroup(GetUnitsOfTypeIdAll(udg_Database_Hero[rand])) == 0 and not(udg_UnitHeroLogic[rand]) then
-                	set udg_logic[8] = true
-                	call CreateUnit( p, udg_Database_Hero[rand], GetRectCenterX(gg_rct_HeroesTp), GetRectCenterY(gg_rct_HeroesTp), 270 )
-            	else
-                	set cyclA = cyclA - 1
-            	endif
+                set cyclA = cyclA - 1
             endif
             set cyclA = cyclA + 1
         endloop
@@ -2068,7 +2058,7 @@ function FightStart takes nothing returns nothing
     	call DisplayTimedTextToForce( GetPlayersAll(), 5.00, "Enemies have become stronger +5" + udg_perc + "!" )
     	set udg_BossHP = udg_BossHP + 0.05
     	set udg_BossAT = udg_BossAT + 0.05
-    	set udg_SpellDamage[0] = udg_SpellDamage[0] + 0.05
+        call SpellPower_AddBossSpellPower(0.05)
         call TimerStart( udg_timer[4], 180, true, null )
     endif
     set udg_KillUnit = udg_KillInBattle

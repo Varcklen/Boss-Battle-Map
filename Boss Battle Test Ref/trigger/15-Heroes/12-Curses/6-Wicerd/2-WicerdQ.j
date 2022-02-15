@@ -119,7 +119,7 @@ function Trig_WicerdQ_Actions takes nothing returns nothing
         set y = GetLocationY( GetSpellTargetLoc() )
     endif
     
-    set dmg = ( 70 + ( 30 * lvl ) ) * udg_SpellDamage[GetPlayerId(GetOwningPlayer( caster ) ) + 1]
+    set dmg = ( 70 + ( 30 * lvl ) ) * GetUnitSpellPower(caster)
     
     call dummyspawn( caster, 0, 'A17K', 'A0N5', 0 )
 

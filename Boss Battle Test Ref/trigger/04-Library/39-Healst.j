@@ -1,4 +1,4 @@
-library HealstLib requires DummyspawnLib, Inventory, TimebonusLib, RandomTargetLib, Multiboard, ChainHealLib, ShieldstLib
+library HealstLib requires DummyspawnLib, Inventory, TimebonusLib, RandomTargetLib, Multiboard, ShieldstLib
 
     globals
         real Event_OnHealChange_Real
@@ -107,13 +107,11 @@ library HealstLib requires DummyspawnLib, Inventory, TimebonusLib, RandomTargetL
         
         set rsp = Event_OnHealChange_Heal
         
-        if GetOwningPlayer(u) == Player(10) then
-            set rsp = rsp+(h*udg_SpellDamage[0])
-        endif
         if GetOwningPlayer(u) != Player(PLAYER_NEUTRAL_AGGRESSIVE) then
-            set rsp = rsp+(h*(udg_BossHeal[i]-1))
-            set rsp = rsp+(h*(RMaxBJ(0, udg_SpellDamage[i])-1))
+            set rsp = rsp + ( h * ( udg_BossHeal[i] - 1 ) )
         endif
+        set rsp = rsp + ( h * ( RMaxBJ( 0, GetUnitSpellPower(caster) ) - 1 ) )
+        
         if GetUnitAbilityLevel( u, 'B04T') > 0 then
             set rsp = rsp+h
         endif
@@ -197,7 +195,7 @@ library HealstLib requires DummyspawnLib, Inventory, TimebonusLib, RandomTargetL
         ///
         if GetUnitState( u, UNIT_STATE_LIFE) >= ( GetUnitState( u, UNIT_STATE_MAX_LIFE ) - rsp ) then
             if inv( caster, 'I0CN') > 0 then
-                call shield( u, u, ((rsp*0.3)/udg_SpellDamage[i]), 60 )
+                call shield( u, u, rsp*0.3, 60 )
             endif
             set rfun = GetUnitState( u, UNIT_STATE_MAX_LIFE ) - GetUnitState( u, UNIT_STATE_LIFE )
         else
@@ -258,10 +256,6 @@ library HealstLib requires DummyspawnLib, Inventory, TimebonusLib, RandomTargetL
                     set udg_DamageHealLoop = true
                     call healst(caster, null, rfun )
                 endif
-            endif
-            
-            if inv( caster, 'I0FP' ) > 0 and rfun >= 100 then
-                call ChainHeal( caster, u )
             endif
             
             if inv(caster, 'I0F5') > 0 and not(LoadBoolean( udg_hash, GetHandleId( caster ), StringHash( "orbth" ) ) ) and IsUnitType( u, UNIT_TYPE_HERO) then

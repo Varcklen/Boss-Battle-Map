@@ -1,83 +1,79 @@
-function Trig_Totem2_Conditions takes nothing returns boolean
-    return GetUnitTypeId(udg_DamageEventTarget) == 'o007' and GetUnitLifePercent( udg_DamageEventTarget ) <= 75
-endfunction
+scope Totem2 initializer init
 
-function Totem2Cast takes nothing returns nothing
-    local integer id = GetHandleId( GetExpiredTimer() )
-    local integer id1
-    local integer cyclA = 1
-    local unit boss = LoadUnitHandle( udg_hash, id, StringHash( "bstm3t" ) )
-    local unit shadow = LoadUnitHandle( udg_hash, id, StringHash( "bstm3" ) )
-    local real NewX = GetUnitX(shadow) - GetUnitX(boss)
-    local real NexY = GetUnitY(shadow) - GetUnitY(boss)
+    globals
+        private constant integer ID_SHADOW = 'n035'
     
-    if GetUnitState( boss, UNIT_STATE_LIFE) <= 0.405 or GetUnitState( shadow, UNIT_STATE_LIFE) <= 0.405 or not( udg_fightmod[0] ) then
-        call DestroyTimer( GetExpiredTimer() )
-        call FlushChildHashtable( udg_hash, id )
-    elseif SquareRoot(NewX * NewX + NexY * NexY) <= 300 then
-        call KillUnit( shadow )
-        loop
-            exitwhen cyclA > 4
-            if GetUnitState( udg_hero[cyclA], UNIT_STATE_LIFE) > 0.405 then
-                set bj_lastCreatedUnit = CreateUnit( GetOwningPlayer( boss ), 'u000', GetUnitX( udg_hero[cyclA] ), GetUnitY( udg_hero[cyclA] ), 270 )
-                call spectime("Abilities\\Spells\\Human\\FlameStrike\\FlameStrike1.mdl", GetUnitX( bj_lastCreatedUnit ), GetUnitY( bj_lastCreatedUnit ), 8 )
-            
-                set id1 = GetHandleId( bj_lastCreatedUnit )
-                if LoadTimerHandle( udg_hash, id1, StringHash( "bstm2" ) ) == null  then
-                    call SaveTimerHandle( udg_hash, id1, StringHash( "bstm2" ), CreateTimer() )
+        private constant integer ACTIVATE_DISTANCE = 300
+        private constant integer DISTANCE = 1200
+        private constant integer HEALTH_CHECK = 75
+        private constant integer DAMAGE = 45
+        
+        private constant real TICK_CHECK = 0.5
+    endglobals
+
+    private function Trig_Totem2_Conditions takes nothing returns boolean
+        return GetUnitTypeId( udg_DamageEventTarget ) == Totem1_ID_BOSS and GetUnitLifePercent( udg_DamageEventTarget ) <= HEALTH_CHECK
+    endfunction
+
+    private function Totem2Cast takes nothing returns nothing
+        local integer id = GetHandleId( GetExpiredTimer() )
+        local integer i = 1
+        local unit boss = LoadUnitHandle( udg_hash, id, StringHash( "bstm3t" ) )
+        local unit shadow = LoadUnitHandle( udg_hash, id, StringHash( "bstm3" ) )
+        
+        if IsUnitDead( boss ) or IsUnitDead( shadow ) or udg_fightmod[0] == false then
+            call FlushChildHashtable( udg_hash, id )
+            call DestroyTimer( GetExpiredTimer() )
+        elseif DistanceBetweenUnits(boss, shadow) <= ACTIVATE_DISTANCE then
+            call KillUnit( shadow )
+            loop
+                exitwhen i > PLAYERS_LIMIT
+                if IsUnitAlive( udg_hero[i] ) then
+                    call Totem1_SpawnFireArea(boss, GetUnitX( udg_hero[i] ), GetUnitY( udg_hero[i] ), DAMAGE )
                 endif
-                set id1 = GetHandleId( LoadTimerHandle( udg_hash, id1, StringHash( "bstm2" ) ) ) 
-                call SaveUnitHandle( udg_hash, id1, StringHash( "bstm2" ), boss )
-                call SaveUnitHandle( udg_hash, id1, StringHash( "bstm2d" ), bj_lastCreatedUnit )
-                call TimerStart( LoadTimerHandle( udg_hash, GetHandleId( bj_lastCreatedUnit ), StringHash( "bstm2" ) ), 0.5, true, function TotemCast1 )
-            endif
-            set cyclA = cyclA + 1
-        endloop
-        call DestroyTimer( GetExpiredTimer() )
-        call FlushChildHashtable( udg_hash, id )
-    //else
-        //call IssuePointOrder( shadow, "move", GetUnitX( boss ), GetUnitY( boss ) )
-    endif
-    
-    set boss = null
-    set shadow = null
-endfunction
-
-function Trig_Totem2_Actions takes nothing returns nothing
-    local integer id
-    local integer cyclA = 1
-    local real x
-    local real y
-
-    call DisableTrigger( GetTriggeringTrigger() )
-    loop
-        exitwhen cyclA > 4
-        if GetUnitState( udg_hero[cyclA], UNIT_STATE_LIFE) > 0.405 then
-            set x = GetUnitX(udg_DamageEventTarget) + 1200 * Cos((45 + ( 90 * cyclA )) * bj_DEGTORAD)
-            set y = GetUnitY(udg_DamageEventTarget) + 1200 * Sin((45 + ( 90 * cyclA )) * bj_DEGTORAD)
-            set bj_lastCreatedUnit = CreateUnit( GetOwningPlayer( udg_DamageEventTarget ), 'n035', x, y, 270)
-            set id = GetHandleId( bj_lastCreatedUnit )
-            call PingMinimapLocForForceEx( bj_FORCE_ALL_PLAYERS, GetUnitLoc(bj_lastCreatedUnit), 5, bj_MINIMAPPINGSTYLE_ATTACK, 100, 50, 50 )
-            call IssuePointOrder( bj_lastCreatedUnit, "move", GetUnitX( udg_DamageEventTarget ), GetUnitY( udg_DamageEventTarget ) )
-
-            if LoadTimerHandle( udg_hash, id, StringHash( "bstm3" ) ) == null  then
-                call SaveTimerHandle( udg_hash, id, StringHash( "bstm3" ), CreateTimer() )
-            endif
-            set id = GetHandleId( LoadTimerHandle( udg_hash, id, StringHash( "bstm3" ) ) ) 
-            call SaveUnitHandle( udg_hash, id, StringHash( "bstm3" ), bj_lastCreatedUnit )
-            call SaveUnitHandle( udg_hash, id, StringHash( "bstm3t" ), udg_DamageEventTarget )
-            call TimerStart( LoadTimerHandle( udg_hash, GetHandleId( bj_lastCreatedUnit ), StringHash( "bstm3" ) ), 0.5, true, function Totem2Cast )
+                set i = i + 1
+            endloop
+            call FlushChildHashtable( udg_hash, id )
+            call DestroyTimer( GetExpiredTimer() )
         endif
-        set cyclA = cyclA + 1
-    endloop
-endfunction
+        
+        set boss = null
+        set shadow = null
+    endfunction
 
-//===========================================================================
-function InitTrig_Totem2 takes nothing returns nothing
-    set gg_trg_Totem2 = CreateTrigger()
-    call DisableTrigger( gg_trg_Totem2 )
-    call TriggerRegisterVariableEvent( gg_trg_Totem2, "udg_DamageEvent", EQUAL, 1.00 )
-    call TriggerAddCondition( gg_trg_Totem2, Condition( function Trig_Totem2_Conditions ) )
-    call TriggerAddAction( gg_trg_Totem2, function Trig_Totem2_Actions )
-endfunction
+    public function SpawnShadows takes unit boss returns nothing
+        local integer id
+        local integer i = 1
+        local real x
+        local real y
+    
+        loop
+            exitwhen i > PLAYERS_LIMIT
+            if IsUnitAlive( udg_hero[i] ) then
+                set x = GetUnitX(boss) + DISTANCE * Cos((45 + ( 90 * i )) * bj_DEGTORAD)
+                set y = GetUnitY(boss) + DISTANCE * Sin((45 + ( 90 * i )) * bj_DEGTORAD)
+                set bj_lastCreatedUnit = CreateUnit( GetOwningPlayer( boss ), ID_SHADOW, x, y, 270)
+                call PingMinimapLocForForceEx( bj_FORCE_ALL_PLAYERS, GetUnitLoc(bj_lastCreatedUnit), 5, bj_MINIMAPPINGSTYLE_ATTACK, 100, 50, 50 )
+                call IssuePointOrder( bj_lastCreatedUnit, "move", GetUnitX( boss ), GetUnitY( boss ) )
 
+                set id = InvokeTimerWithUnit(bj_lastCreatedUnit, "bstm3", TICK_CHECK, true, function Totem2Cast )
+                call SaveUnitHandle( udg_hash, id, StringHash( "bstm3t" ), boss )
+            endif
+            set i = i + 1
+        endloop
+        
+        set boss = null
+    endfunction
+    
+    private function Trig_Totem2_Actions takes nothing returns nothing
+        call DisableTrigger( GetTriggeringTrigger() )
+        call SpawnShadows(udg_DamageEventTarget)
+    endfunction
+
+    //===========================================================================
+    private function init takes nothing returns nothing
+        set gg_trg_Totem2 = CreateEventTrigger( "udg_AfterDamageEvent", function Trig_Totem2_Actions, function Trig_Totem2_Conditions )
+        call DisableTrigger( gg_trg_Totem2 )
+    endfunction
+
+endscope

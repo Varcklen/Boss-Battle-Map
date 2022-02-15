@@ -11,7 +11,7 @@ function Trig_Chief2_Actions takes nothing returns nothing
         loop
             set n = FirstOfGroup(g)
             exitwhen n == null
-            call SetUnitState( n, UNIT_STATE_LIFE, GetUnitState( n, UNIT_STATE_LIFE) + ( GetUnitState( n, UNIT_STATE_MAX_LIFE)*0.1*udg_SpellDamage[0] ) )
+            call SetUnitState( n, UNIT_STATE_LIFE, GetUnitState( n, UNIT_STATE_LIFE) + ( GetUnitState( n, UNIT_STATE_MAX_LIFE)*0.1*SpellPower_GetBossSpellPower() ) )
             call DestroyEffect( AddSpecialEffect("Abilities\\Spells\\Undead\\AnimateDead\\AnimateDeadTarget.mdl", GetUnitX( n ), GetUnitY( n ) ) )
             call GroupRemoveUnit(g,n)
             set n = FirstOfGroup(g)

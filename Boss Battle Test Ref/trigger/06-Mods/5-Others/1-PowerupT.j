@@ -2,7 +2,7 @@ function Trig_PowerupT_Actions takes nothing returns nothing
         call DisplayTimedTextToForce( GetPlayersAll(), 5.00, "Enemies have become stronger +5" + udg_perc + "!" )
     	set udg_BossHP = udg_BossHP + 0.05
     	set udg_BossAT = udg_BossAT + 0.05
-    	set udg_SpellDamage[0] = udg_SpellDamage[0] + 0.05
+        call SpellPower_AddBossSpellPower(0.05)
 endfunction
 
 //===========================================================================

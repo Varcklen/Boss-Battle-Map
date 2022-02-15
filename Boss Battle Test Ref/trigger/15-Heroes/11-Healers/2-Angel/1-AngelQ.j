@@ -77,7 +77,7 @@ function Trig_AngelQ_Actions takes nothing returns nothing
         set y = GetSpellTargetY()
     endif
 
-    set dmg = ( 8 + ( 8 * lvl ) ) * udg_SpellDamage[GetPlayerId(GetOwningPlayer(caster)) + 1]
+    set dmg = ( 8 + ( 8 * lvl ) ) * GetUnitSpellPower(caster)
     set dummy = CreateUnit( Player( PLAYER_NEUTRAL_AGGRESSIVE ), 'u000', x, y, bj_UNIT_FACING )
     set dummy1 = CreateUnit( GetOwningPlayer( caster ), 'u000', x, y, bj_UNIT_FACING )
     

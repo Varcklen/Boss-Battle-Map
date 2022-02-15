@@ -1,4 +1,4 @@
-library BuffDeleteLib requires SpdLibLib, ShamanBallLib, MajyteLib, LuckLib, Multiboard, UniquesLib, StatLib, PauseLib, JesterLib
+library BuffDeleteLib requires SpellPower, ShamanBallLib, MajyteLib, Luck, Multiboard, UniquesLib, StatLib, PauseLib, JesterLib
 
     globals
         real Event_DeleteBuff_Real
@@ -81,11 +81,7 @@ library BuffDeleteLib requires SpdLibLib, ShamanBallLib, MajyteLib, LuckLib, Mul
             call UnitRemoveAbility( u, 'A04I' )
             call UnitRemoveAbility( u, 'B010' )
         endif
-        if GetUnitAbilityLevel(u, 'B09L') > 0 then
-            call UnitRemoveAbility( u, 'A1AW' )
-            call UnitRemoveAbility( u, 'A1AY' )
-            call UnitRemoveAbility( u, 'B09L' )
-        endif
+        
         if GetUnitAbilityLevel(u, 'B02B') > 0 then
             call UnitRemoveAbility( u, 'A196' )
             call UnitRemoveAbility( u, 'A197' )
@@ -460,10 +456,6 @@ library BuffDeleteLib requires SpdLibLib, ShamanBallLib, MajyteLib, LuckLib, Mul
             call UnitRemoveAbility( u, 'A0PJ' )
             call UnitRemoveAbility( u, 'B04R' )        
         endif
-        if GetUnitAbilityLevel(u, 'B07D') > 0 then
-            call UnitRemoveAbility( u, 'A16S' )
-            call UnitRemoveAbility( u, 'B07D' )        
-        endif
         if GetUnitAbilityLevel(u, 'B06Y') > 0 then
             call UnitRemoveAbility( u, 'A15A' )
             call UnitRemoveAbility( u, 'B06Y' )        
@@ -636,43 +628,43 @@ library BuffDeleteLib requires SpdLibLib, ShamanBallLib, MajyteLib, LuckLib, Mul
             call UnitRemoveAbility( u, 'B05P' )
         endif
         if GetUnitAbilityLevel(u, 'B09D') > 0 then
-            call spdstpl( i, -1 * LoadReal( udg_hash, GetHandleId( u ), StringHash( "kepr1" ) ) )
+            call spdst( u, -LoadReal( udg_hash, GetHandleId( u ), StringHash( "kepr1" ) ) )
             call UnitRemoveAbility( u, 'A0PV' )
             call UnitRemoveAbility( u, 'B09D' )
             call RemoveSavedReal( udg_hash, GetHandleId( u ), StringHash( "kepr1" ) )
         endif
         if GetUnitAbilityLevel(u, 'B098') > 0 then
-            call spdstpl( i, -1 * LoadReal( udg_hash, GetHandleId( u ), StringHash( "orbntc1" ) ) )
+            call spdst( u, -LoadReal( udg_hash, GetHandleId( u ), StringHash( "orbntc1" ) ) )
             call UnitRemoveAbility( u, 'A0WU' )
             call UnitRemoveAbility( u, 'B098' )
             call RemoveSavedReal( udg_hash, GetHandleId( u ), StringHash( "orbntc1" ) )
         endif
         if GetUnitAbilityLevel(u, 'B09K') > 0 then
-            call spdstpl( i, -1 * LoadReal( udg_hash, GetHandleId( u ), StringHash( "brde" ) ) )
+            call spdst( u, -LoadReal( udg_hash, GetHandleId( u ), StringHash( "brde" ) ) )
             call UnitRemoveAbility( u, 'A1AU' )
             call UnitRemoveAbility( u, 'B09K' )
             call RemoveSavedReal( udg_hash, GetHandleId( u ), StringHash( "brde" ) )
         endif
         if GetUnitAbilityLevel( u, 'B015') > 0 then
-            call spdstpl( i, -1 * LoadReal( udg_hash, GetHandleId( u ), StringHash( "mgct" ) ) )
+            call spdst( u, -LoadReal( udg_hash, GetHandleId( u ), StringHash( "mgct" ) ) )
             call UnitRemoveAbility( u, 'A0TG' )
             call UnitRemoveAbility( u, 'B015' )
             call RemoveSavedReal( udg_hash, GetHandleId( u ), StringHash( "mgct" ) )
         endif
         if GetUnitAbilityLevel( u, 'B03Z') > 0 then
-            call spdstpl( i, -1 * LoadReal( udg_hash, GetHandleId( u ), StringHash( "majt" ) ) )
+            call spdst( u, -LoadReal( udg_hash, GetHandleId( u ), StringHash( "majt" ) ) )
             call UnitRemoveAbility( u, 'A0YC' )
             call UnitRemoveAbility( u, 'B03Z' )
             call RemoveSavedReal( udg_hash, GetHandleId( u ), StringHash( "majt" ) )
         endif
         if GetUnitAbilityLevel( u, 'B028') > 0 then
-            call spdstpl( i, -1 * LoadReal( udg_hash, GetHandleId( u ), StringHash( "sopp" ) ) )
+            call spdst( u, -LoadReal( udg_hash, GetHandleId( u ), StringHash( "sopp" ) ) )
             call UnitRemoveAbility( u, 'A0CJ' )
             call UnitRemoveAbility( u, 'B028' )
             call RemoveSavedReal( udg_hash, GetHandleId( u ), StringHash( "sopp" ) )
         endif
         if GetUnitAbilityLevel( u, 'B093') > 0 then
-            call spdstpl( i, -1*LoadReal( udg_hash, GetHandleId( u ), StringHash( "orbfp1" ) ) )
+            call spdst( u, -LoadReal( udg_hash, GetHandleId( u ), StringHash( "orbfp1" ) ) )
             call UnitRemoveAbility( u, 'A0I7' )
             call UnitRemoveAbility( u, 'B093' )
             call RemoveSavedReal( udg_hash, GetHandleId( u ), StringHash( "orbfp1" ) )
@@ -705,13 +697,13 @@ library BuffDeleteLib requires SpdLibLib, ShamanBallLib, MajyteLib, LuckLib, Mul
             call RemoveSavedInteger( udg_hash, GetHandleId( u ), StringHash( "outri" ) )
         endif
         if GetUnitAbilityLevel( u, 'B051') > 0 then
-            call luckystpl( i, -LoadInteger( udg_hash, GetHandleId( u ), StringHash( "gldc" ) ) )
+            call luckyst( u, -LoadInteger( udg_hash, GetHandleId( u ), StringHash( "gldc" ) ) )
             call UnitRemoveAbility( u, 'A0TM' )
             call UnitRemoveAbility( u, 'B051' )
             call RemoveSavedInteger( udg_hash, GetHandleId( u ), StringHash( "gldc" ) )
         endif
         if GetUnitAbilityLevel( u, 'B03J') > 0 then
-            call luckystpl( i, -LoadInteger( udg_hash, GetHandleId( u ), StringHash( "cirr" ) ) )
+            call luckyst( u, -LoadInteger( udg_hash, GetHandleId( u ), StringHash( "cirr" ) ) )
             call UnitRemoveAbility( u, 'A0SL' )
             call UnitRemoveAbility( u, 'B03J' )
             call RemoveSavedInteger( udg_hash, GetHandleId( u ), StringHash( "cirr" ) )

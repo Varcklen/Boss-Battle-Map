@@ -71,5 +71,12 @@ library BuffsLibLib requires Inventory, LuckylogicLib, UnitstLib, CombatLib, Tex
         set caster = null
         set target = null
     endfunction
+    
+    function RemoveEffect takes unit target, integer myEffect, integer myBuff returns nothing
+        call UnitRemoveAbility(target, myEffect)
+        call UnitRemoveAbility(target, myBuff)
+    
+        set target = null
+    endfunction
 
 endlibrary

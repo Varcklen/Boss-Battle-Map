@@ -81,7 +81,7 @@ function hpoisonst takes unit caster, unit target, integer i returns nothing
 
     call textst( "|cFF20C000" + I2S(g), target, 64, GetRandomReal( 80, 100 ), 12, 1 )
 
-    set dmg = g * 5 * udg_SpellDamage[GetPlayerId(GetOwningPlayer(caster)) + 1]
+    set dmg = g * 5 * GetUnitSpellPower(caster)
     
     call bufst( caster, target, 'A0JM', 'B095', "jpsn", t )
     call debuffst( caster, target, null, 1, t )

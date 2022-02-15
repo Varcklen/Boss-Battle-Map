@@ -38,7 +38,7 @@ if GetUnitAbilityLevel( target, 'A0S2') == 0 then
 	set id1 = GetHandleId( LoadTimerHandle( udg_hash, id1, StringHash( "slge1" ) ) ) 
 	call SaveUnitHandle( udg_hash, id1, StringHash( "slge1" ), target )
     	call SaveUnitHandle( udg_hash, id1, StringHash( "slge1d" ), bj_lastCreatedUnit )
-    	call SaveReal( udg_hash, id1, StringHash( "slge1" ), 15 * udg_SpellDamage[GetPlayerId(GetOwningPlayer( caster ) ) + 1] )
+    	call SaveReal( udg_hash, id1, StringHash( "slge1" ), 15 * GetUnitSpellPower(caster) )
 	call TimerStart( LoadTimerHandle( udg_hash, GetHandleId( target ), StringHash( "slge1" ) ), 1, true, function SludgeEEnd ) 
 endif
     call bufst( caster, target, 'A0S2', 'B06N', "slge2", t )

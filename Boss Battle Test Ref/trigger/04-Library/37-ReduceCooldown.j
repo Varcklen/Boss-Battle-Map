@@ -17,17 +17,17 @@ library ReduceCooldown
             set cyclA = cyclA + 1
         endloop
         
-        if GetUnitAbilityLevel( u, udg_DB_Hero_FirstSpell[udg_HeroNum[i]]) > 0 then
-            set a[1] = udg_DB_Hero_FirstSpell[udg_HeroNum[i]]
+        if GetUnitAbilityLevel( u, Database_Hero_Abilities[1][udg_HeroNum[i]]) > 0 then
+            set a[1] = Database_Hero_Abilities[1][udg_HeroNum[i]]
         endif
-        if GetUnitAbilityLevel( u, udg_Database_EarringSpell[udg_HeroNum[i]]) > 0 then
-            set a[2] = udg_Database_EarringSpell[udg_HeroNum[i]]
+        if GetUnitAbilityLevel( u, Database_Hero_Abilities[2][udg_HeroNum[i]]) > 0 then
+            set a[2] = Database_Hero_Abilities[2][udg_HeroNum[i]]
         endif
-        if GetUnitAbilityLevel( u, udg_DB_Hero_Passive[udg_HeroNum[i]]) > 0 then
-            set a[3] = udg_DB_Hero_Passive[udg_HeroNum[i]]
+        if GetUnitAbilityLevel( u, Database_Hero_Abilities[3][udg_HeroNum[i]]) > 0 then
+            set a[3] = Database_Hero_Abilities[3][udg_HeroNum[i]]
         endif
-        if GetUnitAbilityLevel( u, udg_DB_Hero_Fourth[udg_HeroNum[i]]) > 0 then
-            set a[4] = udg_DB_Hero_Fourth[udg_HeroNum[i]]
+        if GetUnitAbilityLevel( u, Database_Hero_Abilities[4][udg_HeroNum[i]]) > 0 then
+            set a[4] = Database_Hero_Abilities[4][udg_HeroNum[i]]
         endif
 
         set cyclA = 1
@@ -72,17 +72,17 @@ library ReduceCooldown
             set cyclA = cyclA + 1
         endloop
         
-        if GetUnitAbilityLevel( u, udg_DB_Hero_FirstSpell[udg_HeroNum[i]]) > 0 then
-            set a[1] = udg_DB_Hero_FirstSpell[udg_HeroNum[i]]
+        if GetUnitAbilityLevel( u, Database_Hero_Abilities[1][udg_HeroNum[i]]) > 0 then
+            set a[1] = Database_Hero_Abilities[1][udg_HeroNum[i]]
         endif
-        if GetUnitAbilityLevel( u, udg_Database_EarringSpell[udg_HeroNum[i]]) > 0 then
-            set a[2] = udg_Database_EarringSpell[udg_HeroNum[i]]
+        if GetUnitAbilityLevel( u, Database_Hero_Abilities[2][udg_HeroNum[i]]) > 0 then
+            set a[2] = Database_Hero_Abilities[2][udg_HeroNum[i]]
         endif
-        if GetUnitAbilityLevel( u, udg_DB_Hero_Passive[udg_HeroNum[i]]) > 0 then
-            set a[3] = udg_DB_Hero_Passive[udg_HeroNum[i]]
+        if GetUnitAbilityLevel( u, Database_Hero_Abilities[3][udg_HeroNum[i]]) > 0 then
+            set a[3] = Database_Hero_Abilities[3][udg_HeroNum[i]]
         endif
-        if GetUnitAbilityLevel( u, udg_DB_Hero_Fourth[udg_HeroNum[i]]) > 0 then
-            set a[4] = udg_DB_Hero_Fourth[udg_HeroNum[i]]
+        if GetUnitAbilityLevel( u, Database_Hero_Abilities[4][udg_HeroNum[i]]) > 0 then
+            set a[4] = Database_Hero_Abilities[4][udg_HeroNum[i]]
         endif
 
         set cyclA = 1

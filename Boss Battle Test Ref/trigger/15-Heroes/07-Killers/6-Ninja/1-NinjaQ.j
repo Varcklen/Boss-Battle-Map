@@ -71,7 +71,7 @@ function Trig_NinjaQ_Actions takes nothing returns nothing
     call DestroyEffect( AddSpecialEffect("Abilities\\Spells\\Human\\FlakCannons\\FlakTarget.mdl", GetUnitX(caster), GetUnitY(caster) ) )
 
     set id = GetHandleId( caster )
-    set dmg = (60 + ( 40 * lvl ) )* udg_SpellDamage[GetPlayerId(GetOwningPlayer( caster ) ) + 1]
+    set dmg = (60 + ( 40 * lvl ) ) * GetUnitSpellPower(caster)
 
     call SaveTimerHandle( udg_hash, id, StringHash( "ninq" ), CreateTimer() )
 	set id = GetHandleId( LoadTimerHandle( udg_hash, id, StringHash( "ninq" ) ) ) 

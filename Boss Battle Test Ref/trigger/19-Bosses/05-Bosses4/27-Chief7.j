@@ -1,5 +1,3 @@
-//TESH.scrollpos=39
-//TESH.alwaysfold=0
 function Trig_Chief7_Conditions takes nothing returns boolean
     return GetUnitTypeId( udg_DamageEventTarget ) == 'h01X' and GetUnitLifePercent(udg_DamageEventTarget) <= 30
 endfunction

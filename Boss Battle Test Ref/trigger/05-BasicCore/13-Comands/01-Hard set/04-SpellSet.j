@@ -6,14 +6,9 @@ function Trig_SpellSet_Actions takes nothing returns nothing
 	local real r = S2I(SubString(GetEventPlayerChatString(), 8, 12))
 
 	set udg_BossChange = true
-    	set udg_SpellDamage[0] = r/100
+    call SpellPower_SetBossSpellPower(r/100)
 
-	if udg_SpellDamage[0] < 0.2 then
-		set udg_SpellDamage[0] = 0.2
-	elseif udg_SpellDamage[0] > 10 then
-		set udg_SpellDamage[0] = 10
-	endif
-        call DisplayTimedTextToForce( bj_FORCE_ALL_PLAYERS, 10, "|cffffcc00Enemy spell power:|r " + I2S( R2I((udg_SpellDamage[0]*100)) ) + "%." )
+    call DisplayTimedTextToForce( bj_FORCE_ALL_PLAYERS, 10, "|cffffcc00Enemy spell power:|r " + I2S( R2I((SpellPower_GetBossSpellPower()*100)) ) + "%." )
 endfunction
 
 //===========================================================================

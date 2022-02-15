@@ -95,7 +95,7 @@ function Trig_ShamanR_Actions takes nothing returns nothing
     set t = timebonus(caster, t)
     
     set mdmg = 1 - ( 0.05 + ( 0.05*lvl) )
-    set dmg = (25 + (lvl*50)) * udg_SpellDamage[GetPlayerId(GetOwningPlayer(caster)) + 1] /10
+    set dmg = (25 + (lvl*50)) * GetUnitSpellPower(caster) /10
     set id = GetHandleId( target )
     
     call UnitAddAbility( target, 'A05C' )

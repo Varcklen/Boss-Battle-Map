@@ -274,8 +274,8 @@ function DataBoss takes nothing returns nothing
     set DB_Trigger_Boss[5][24] = gg_trg_GhostKnight4
     set DB_Trigger_Boss[5][31] = gg_trg_Banshi1
     set DB_Trigger_Boss[5][32] = gg_trg_Banshi2
-    set DB_Trigger_Boss[5][33] = gg_trg_Banshi3
-    set DB_Trigger_Boss[5][34] = gg_trg_Banshi4
+    set DB_Trigger_Boss[5][33] = Banshi2Second
+    set DB_Trigger_Boss[5][34] = Banshi2Third
     set DB_Trigger_Boss[5][41] = gg_trg_SlaveKing1
     set DB_Trigger_Boss[5][42] = gg_trg_SlaveKing2
     set DB_Trigger_Boss[5][43] = gg_trg_SlaveKing3

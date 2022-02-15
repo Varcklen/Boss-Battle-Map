@@ -15,7 +15,7 @@ function Chief3Exp takes nothing returns nothing
         exitwhen u == null
         if unitst( u, dummy, "enemy" ) and u != target then
     		call DestroyEffect( AddSpecialEffect( "Objects\\Spawnmodels\\NightElf\\NECancelDeath\\NECancelDeath.mdl", GetUnitX( u ), GetUnitY( u ) ) )
-        	call SetUnitState( u, UNIT_STATE_MANA, RMaxBJ(0,GetUnitState( u, UNIT_STATE_MANA) - (udg_SpellDamage[0]*0.4*GetUnitState( u, UNIT_STATE_MAX_MANA)) ))
+        	call SetUnitState( u, UNIT_STATE_MANA, RMaxBJ(0,GetUnitState( u, UNIT_STATE_MANA) - (SpellPower_GetBossSpellPower()*0.4*GetUnitState( u, UNIT_STATE_MAX_MANA)) ))
 		if not(IsUnitType( u, UNIT_TYPE_HERO)) and not(IsUnitType( u, UNIT_TYPE_ANCIENT)) then
 			call KillUnit( u )
 		endif

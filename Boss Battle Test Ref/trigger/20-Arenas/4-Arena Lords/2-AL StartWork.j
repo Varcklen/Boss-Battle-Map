@@ -106,6 +106,7 @@ function Trig_AL_StartWork_Actions takes nothing returns nothing
     call EnableTrigger( gg_trg_IA_TPBattle )
     call EnableTrigger( gg_trg_BossDamage )
     call EnableTrigger( gg_trg_AL_End )
+    call EnableTrigger( ArenaLordsEnd_LastBossKilled )
     
     loop
         exitwhen cyclA > 4

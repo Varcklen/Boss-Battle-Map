@@ -129,22 +129,6 @@ function Trig_Set_Damage_Actions takes nothing returns nothing
     if GetUnitAbilityLevel(udg_DamageEventTarget, 'A15Q') > 0 then
         set udg_DamageEventAmount = udg_DamageEventAmount - (dmg*(0.03+(0.03*GetUnitAbilityLevel(udg_DamageEventTarget, 'A15Q'))))
     endif
-    if (GetUnitAbilityLevel( udg_hero[i], 'A131') > 0 or GetUnitAbilityLevel(udg_hero[i], 'A134') > 0) and ( GetUnitTypeId(udg_DamageEventSource) == 'u000' or udg_DamageEventSource == udg_hero[i] ) then
-        set t = timebonus(udg_hero[i], 6)
-    
-        call bufst( udg_hero[i], udg_DamageEventTarget, 'A16S', 'B07D', "kngrd", t )
-        
-        set id = GetHandleId( udg_DamageEventTarget )
-        if GetUnitAbilityLevel(udg_DamageEventSource, 'A134') > 0 then
-            call SaveReal( udg_hash, id, StringHash( "kngr" ), 0.05+(0.05 * LoadInteger( udg_hash, GetHandleId( udg_hero[i] ), StringHash( "knger" ) )) )	
-        else
-            call SaveReal( udg_hash, id, StringHash( "kngr" ), 0.05+(0.05 * GetUnitAbilityLevel(udg_hero[i], 'A131')) )
-        endif
-    	
-    	if BuffLogic() then
-        	call debuffst( udg_hero[i], udg_DamageEventTarget, null, 1, t )
-    	endif
-    endif
     if GetUnitAbilityLevel(udg_DamageEventSource, 'A16N') > 0 and IsUnitEnemy( udg_DamageEventSource, GetOwningPlayer( udg_DamageEventTarget ) ) and udg_combatlogic[i] then
         set l = GetUnitAbilityLevel(udg_DamageEventSource, 'A16N') + 1
         set t = timebonus(udg_DamageEventSource, l)
@@ -169,7 +153,7 @@ function Trig_Set_Damage_Actions takes nothing returns nothing
                 set udg_DamageEventAmount = udg_DamageEventAmount + 100 
                 call DestroyEffect( AddSpecialEffectTarget( "Abilities\\Spells\\Other\\CrushingWave\\CrushingWaveDamage.mdl", udg_DamageEventTarget, "origin" ) )
             endif
-            call SetUnitState( udg_DamageEventTarget, UNIT_STATE_MANA, RMaxBJ(0, GetUnitState( udg_DamageEventTarget, UNIT_STATE_MANA ) - ( 40 * udg_SpellDamage[0] ) ) )
+            call SetUnitState( udg_DamageEventTarget, UNIT_STATE_MANA, RMaxBJ(0, GetUnitState( udg_DamageEventTarget, UNIT_STATE_MANA ) - ( 40 * GetUnitSpellPower(udg_DamageEventSource) ) ) )
         endif
         if GetUnitAbilityLevel( udg_DamageEventSource, 'A0FL') > 0 then
             call MarshalRDamage(udg_DamageEventSource, GetUnitAbilityLevel( udg_DamageEventSource, 'A0FF'), dmg)
@@ -267,7 +251,7 @@ function Trig_Set_Damage_Actions takes nothing returns nothing
                 set udg_DamageEventAmount = udg_DamageEventAmount + GetHeroInt( udg_DamageEventSource, true)
             endif
             if inv(udg_DamageEventSource, 'I06J') > 0 then
-                set udg_DamageEventAmount = udg_DamageEventAmount + (dmg*(udg_SpellDamage[i]-1))
+                set udg_DamageEventAmount = udg_DamageEventAmount + (dmg*(GetUnitSpellPower(udg_DamageEventSource)-1))
             endif
             if GetUnitAbilityLevel(udg_DamageEventSource, 'A0BQ') > 0 and not(IsUnitType( udg_DamageEventTarget, UNIT_TYPE_HERO)) and not(IsUnitType( udg_DamageEventTarget, UNIT_TYPE_ANCIENT)) then
                 set udg_DamageEventAmount = udg_DamageEventAmount + ( GetUnitState( udg_DamageEventTarget, UNIT_STATE_MAX_LIFE ) * 0.5 )
@@ -464,10 +448,6 @@ function Trig_Set_Damage_Actions takes nothing returns nothing
             call healst( udg_DamageEventSource, null, udg_DamageEventAmount*LoadReal( udg_hash, GetHandleId( udg_DamageEventSource ), StringHash( "mrlqv" ) ) )
             call DestroyEffect( AddSpecialEffectTarget( "Abilities\\Spells\\Undead\\VampiricAura\\VampiricAuraTarget.mdl", udg_DamageEventSource, "origin" ) )
         endif
-        if GetUnitAbilityLevel( udg_DamageEventSource, 'B08U' ) > 0 and IsUnitType( udg_DamageEventSource, UNIT_TYPE_HERO) then
-            call healst( udg_hero[i], null, udg_DamageEventAmount * 0.4 )
-            call DestroyEffect( AddSpecialEffectTarget( "Abilities\\Spells\\Undead\\VampiricAura\\VampiricAuraTarget.mdl", udg_hero[i], "origin" ) )
-        endif
         if GetUnitAbilityLevel( udg_DamageEventSource, 'B049' ) > 0  then
             call healst( udg_DamageEventSource, null, udg_DamageEventAmount * 0.15 * GetUnitAbilityLevel( udg_DamageEventSource, 'A0ZN' ) )
             call DestroyEffect( AddSpecialEffectTarget( "Abilities\\Spells\\Undead\\VampiricAura\\VampiricAuraTarget.mdl", udg_DamageEventSource, "origin" ) )
@@ -584,13 +564,6 @@ function Trig_Set_Damage_Actions takes nothing returns nothing
     
     if inv( udg_DamageEventSource, 'I00A' ) > 0 and not(IsUnitType( udg_DamageEventTarget, UNIT_TYPE_HERO)) and not(IsUnitType( udg_DamageEventTarget, UNIT_TYPE_ANCIENT)) and not(udg_logic[i + 26]) then
         set udg_DamageEventAmount = udg_DamageEventAmount * 0.7
-    endif
-    if udg_IsDamageSpell and GetUnitAbilityLevel( udg_DamageEventSource, 'A0N5' ) == 0 and IsDisableSpellPower == false then
-        if GetOwningPlayer(udg_DamageEventSource) != Player(10) and GetOwningPlayer(udg_DamageEventSource) != Player(11) and GetOwningPlayer(udg_DamageEventSource) != Player(PLAYER_NEUTRAL_AGGRESSIVE) then
-            set udg_DamageEventAmount = udg_DamageEventAmount * udg_SpellDamage[i]
-        else
-            set udg_DamageEventAmount = udg_DamageEventAmount * udg_SpellDamage[0]
-        endif
     endif
     if inv( udg_hero[i], 'I09I' ) > 0 and udg_DamageEventAmount >= 300 then
         call manast( udg_hero[i], null, GetUnitState( udg_hero[i], UNIT_STATE_MAX_MANA) * 0.1 )
@@ -711,14 +684,6 @@ function Trig_Set_Damage_Actions takes nothing returns nothing
     /////////
     if GetUnitAbilityLevel( udg_DamageEventTarget, 'A1A5') > 0 and udg_DamageEventAmount > 0 then
         call InfernalE( udg_DamageEventTarget, udg_DamageEventAmount )
-    endif
-    if inv( udg_hero[i], 'I0FP' ) > 0 and udg_DamageEventAmount >= 100 and ( GetUnitTypeId(udg_DamageEventSource) == 'u000' or udg_DamageEventSource == udg_hero[i] ) then
-        call ChainHeal( udg_hero[i], udg_hero[i] )
-    endif
-    if GetUnitAbilityLevel(udg_DamageEventTarget, 'B07D') > 0 and ( GetUnitTypeId(udg_DamageEventSource) == 'u000' or udg_DamageEventSource == udg_hero[i] ) then
-        set udg_DamageHealLoop = true
-        call healst( udg_hero[i], null, udg_DamageEventAmount * LoadReal( udg_hash, GetHandleId( udg_DamageEventTarget ), StringHash( "kngr" ) ) )
-        call DestroyEffect( AddSpecialEffectTarget( "Abilities\\Spells\\Undead\\VampiricAura\\VampiricAuraTarget.mdl", udg_hero[i], "origin" ) )
     endif
     if udg_combatlogic[i] and not(udg_fightmod[3]) and inv(udg_hero[i], 'I0AN') > 0 and udg_DamageEventAmount > 0 and ( GetUnitTypeId(udg_DamageEventSource) == 'u000' or udg_DamageEventSource == udg_hero[i] ) then
         set udg_OrbManaburn[i] = udg_OrbManaburn[i] + (udg_DamageEventAmount*GetRandomReal(0.1,0.3))

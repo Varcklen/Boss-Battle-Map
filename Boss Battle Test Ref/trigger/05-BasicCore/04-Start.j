@@ -10,21 +10,22 @@ function Trig_Start_Actions takes nothing returns nothing
     local integer i = GetPlayerId(udg_Host) + 1
     
     call DisableTrigger( GetTriggeringTrigger() )
+    
+    set cyclA = 0
+    loop
+        exitwhen cyclA > 3
+        if GetPlayerSlotState(Player(cyclA)) == PLAYER_SLOT_STATE_PLAYING then
+            call RemoveLocation( udg_Bufer_Zone[cyclA+1])
+        endif
+        set cyclA = cyclA + 1
+    endloop
+    
     set udg_Boss_Random = GetRandomInt(1, 5)
     call Init_Multiboard()
     call UnitAddAbility( gg_unit_u00F_0006, 'A03U')
     call SetMapMusicIndexedBJ( "music", 3 )
     call EnableTrigger( gg_trg_TimeGame )
-    set cyclA = 0
-    loop
-        exitwhen cyclA > 3
-        if GetPlayerSlotState(Player(cyclA)) == PLAYER_SLOT_STATE_PLAYING then
-            call spdstpl( cyclA, 1 )
-            call spdstpl( cyclA, -1 )
-            call RemoveLocation( udg_Bufer_Zone[cyclA+1])
-        endif
-        set cyclA = cyclA + 1
-    endloop
+    
     if not(udg_logic[54]) then
     	call TimerStart( udg_timer[1], 120, false, null )
     	set udg_timerdialog[2] = CreateTimerDialog(udg_timer[1])

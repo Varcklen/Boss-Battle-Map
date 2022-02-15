@@ -77,7 +77,7 @@ function Trig_ShadowArcherR_Actions takes nothing returns nothing
     endif
     
     set attackBonus = BlzGetUnitBaseDamage(caster, 0) * (0.5+(0.25*lvl))
-    set dmg = (attackBonus + 80 + ( 20 * lvl ) ) * udg_SpellDamage[GetPlayerId(GetOwningPlayer( caster ) ) + 1]
+    set dmg = (attackBonus + 80 + ( 20 * lvl ) ) * GetUnitSpellPower(caster)
     call dummyspawn( caster, 0, 0, 'A0J3', 'A0N5' )
     call SetUnitFacing( bj_lastCreatedUnit, bj_RADTODEG * Atan2(GetUnitY(target) - GetUnitY(caster), GetUnitX(target) - GetUnitX(caster) ) )
 

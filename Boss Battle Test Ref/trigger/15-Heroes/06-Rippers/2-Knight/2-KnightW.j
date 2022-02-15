@@ -53,7 +53,7 @@ function Trig_KnightW_Actions takes nothing returns nothing
         set caster = GetSpellAbilityUnit()
         set lvl = GetUnitAbilityLevel(GetSpellAbilityUnit(), GetSpellAbilityId())
     endif
-    set dmg = (15 + ( 15 * lvl )) * udg_SpellDamage[GetPlayerId(GetOwningPlayer( caster ) ) + 1]
+    set dmg = (15 + ( 15 * lvl )) * GetUnitSpellPower(caster)
     
     call GroupEnumUnitsInRange( g, GetUnitX( caster ), GetUnitY( caster ), 900, null )
     loop
