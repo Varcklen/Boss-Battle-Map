@@ -7,7 +7,7 @@ function BarbarianWCast takes nothing returns nothing
     local unit caster = LoadUnitHandle( udg_hash, id, StringHash( "barw" ) )
     local real r = LoadReal( udg_hash, id, StringHash( "barw" ) )
     
-    if GetUnitState( caster, UNIT_STATE_LIFE) <= 0.405 then
+    if IsUnitDead( caster )then
         call UnitRemoveAbility( caster, 'A0RG')
         call FlushChildHashtable( udg_hash, id )
         call DestroyTimer( GetExpiredTimer() )

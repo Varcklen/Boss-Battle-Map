@@ -712,10 +712,6 @@ function Trig_Set_Damage_Actions takes nothing returns nothing
             endloop
         endif
     endif
-    if udg_DamageEventAmount > 0 and inv(udg_hero[i], 'I0DO') > 0 and ( GetUnitTypeId(udg_DamageEventSource) == 'u000' or udg_DamageEventSource == udg_hero[i] ) then
-         set udg_DamageHealLoop = true
-         call healst( udg_hero[i], null, 10 )
-    endif
     if GetUnitAbilityLevel( udg_DamageEventTarget, 'B05P') > 0 then
         set sh = LoadReal( udg_hash, GetHandleId( udg_DamageEventTarget ), StringHash( "shield" ) )
         if udg_DamageEventAmount >= sh then

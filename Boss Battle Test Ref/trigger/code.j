@@ -492,6 +492,29 @@ function RandomLogic takes nothing returns boolean
     return l
 endfunction
 
+function GetBossWordPostion takes integer position returns string
+    if position == 1 then
+        return "B"
+    elseif position == 2 then
+        return "G"
+    elseif position == 3 then
+        return "J"
+    elseif position == 4 then
+        return "L"
+    elseif position == 5 then
+        return "S"
+    elseif position == 6 then
+        return "Z"
+    elseif position == 7 then
+        return "T"
+    elseif position == 8 then
+        return "U"
+    elseif position == 9 then
+        return "C"
+    endif
+    return "D"
+endfunction
+
 // Невидимость
 function RiverEyeCast takes nothing returns nothing
     local integer id = GetHandleId( GetExpiredTimer() )
@@ -654,6 +677,10 @@ function RemoveItems takes integer i returns nothing
     endloop
     //Не раньше квеста
     set udg_ItemGetActive[i] = false
+endfunction
+
+function GetBossWord takes integer number returns string
+    return GetPlayerName( Player( number ) )
 endfunction
 
 // Cлучайный бонус
@@ -836,6 +863,14 @@ function AdventurerQMotion takes nothing returns nothing
     set dummy = null
     set target = null
 endfunction 
+
+function GetBossWordSymbol takes string word, boolean isLeft returns string
+    if isLeft then
+        return SubString(word, 0, 1)
+    else
+        return SubString(word, 6, 7)
+    endif
+endfunction
 
 //Огр
 function OgreQEnd takes nothing returns nothing

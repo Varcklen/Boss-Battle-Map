@@ -10,6 +10,9 @@ ______________________________
 - Bard: 
  Song of Joy: Now activating an alternative song turns off the effect of the current one.
 
+- Berry Dealer:
+ Bananas can no longer taunt already taunted targets.
+
 BOSSES
 ______________________________
 
@@ -41,13 +44,19 @@ ______________________________
 
 [com]- Fixed an issue where the "Return artifact" button in the exchanger could spawn invisible creatures with the same name.
 
+[com]- Fixed an issue that caused the "Banshee" boss to immediately exit the hero on the second and third possession.
+
+[com]- The ability "Beast of Gevaudan" (Lycanthrope Druid) will no longer reduce the hero's health if it is in a vehicle or hidden.
+
+- The artifact "Mana crystal" now correctly restores mana through effects that change the target's magic resistance.
+
+- The code responsible for choosing a random target has been restructured.
+
 - Fixed an issue that caused the "Last Rites" ability to not have a cooldown.
 
 - Fixed an issue that caused the "-debug" command to not work correctly on defeat.
 
 - Fixed an issue that caused the "Orb of the Rolling Plains" artifact to not work with spell power and not display healing received.
-
-- Fixed an issue that caused the "Banshee" boss to immediately exit the hero on the second and third possession.
 
 - Fixed an issue where the effect of the "Special: Stabilization" ability would not disappear between fights.
 

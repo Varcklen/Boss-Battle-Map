@@ -9,10 +9,10 @@ function Trig_Rune_Isli_Actions takes nothing returns nothing
     local integer cyclA
     local integer rand
 
-	set a[1] = IMaxBJ( 5, udg_DB_Hero_FirstSpell[udg_HeroNum[i]])
-	set a[2] = IMaxBJ( 5, udg_Database_EarringSpell[udg_HeroNum[i]])
-	set a[3] = IMaxBJ( 5, udg_DB_Hero_Passive[udg_HeroNum[i]])
-	set a[4] = IMaxBJ( 5, udg_DB_Hero_Fourth[udg_HeroNum[i]])
+	set a[1] = IMaxBJ( 5, Database_Hero_Abilities[1][udg_HeroNum[i]])
+	set a[2] = IMaxBJ( 5, Database_Hero_Abilities[2][udg_HeroNum[i]])
+	set a[3] = IMaxBJ( 5, Database_Hero_Abilities[3][udg_HeroNum[i]])
+	set a[4] = IMaxBJ( 5, Database_Hero_Abilities[4][udg_HeroNum[i]])
 
 	set cyclA = 1
 	loop
