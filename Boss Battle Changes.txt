@@ -6,37 +6,57 @@
 ITEMS
 ______________________________
 
+<<<<<<< Updated upstream
 [Zi]- 3 New items: Sacred Stone, legendary, crystal; Mechamechanizer, common, mech; Bob's Gratitude, rare, corrupted
+=======
+Chameleon Eye: +100% USP.
+Sacred Stone: changed tooltip.
+Thief's Vest, Thief's Armor: fixed tooltip.
+>>>>>>> Stashed changes
 
 HEROES
 ______________________________
 
-[Zi]- Lycanthrope R (Glaubenskraft and Blood for Blood) duration reduced: 5/7/9/11/13 -> 6/7/8/9/10.
-[Zi]- Infernal E: plates (item form) are now 33% bigger.
-[Zi]- Infernal W: no longer requires hero level 2 as it does not require plates to function.
-[Zi]- Outcast W (Demonic Blast) cooldown increased: 4 -> 5.
-[Zi]- Outcast W (Demonic Blast) mana cost decreased: 40 -> 25.
+Monk - Healthy Blow: healing 14/21/28/35/42 -> 12/21/32/45/60.
+Overlord - Technique of War: changed tooltip to be more consistent.
+Pirate - Black Mark: changed tooltips to be more readable.
 
 BOSSES
 ______________________________
 
+Rapu: Now correctly spells the boss name on high difficulties (Monstrous and higher).
+
 BONUSES
 ______________________________
 
-[Zi]- Modifiers now adjust attack cooldown instead of attack speed -> Attack speed reduction effects now work correctlier
+Challenge completion reward: Difficulties +7 through +9 added.
 
 OTHER
 ______________________________
 
+<<<<<<< Updated upstream
 [Zi]- Added 4 new specials. [: Soul Marriage, Masochism, Last Rites, Left the Game]
 [Zi]- Buff tooltips are now more consistent with wording.
 [Zi]- Changed Farik the Tricky tooltip to emphasize it does not stack with copies of itself.
+=======
+Special - Innervate: heal and shield value increased by 50 (100 -> 150).
+Unique - Curse: damage debuff increased by 3% (12% -> 15%), 5% for upgraded version (25% -> 30%). 
+Unique - Inspire: damage buff increased by 5% (20% -> 25%), 10% for upgraded version (40% -> 50%).
+>>>>>>> Stashed changes
 
 BUGS
 ______________________________
 
+<<<<<<< Updated upstream
 [Zi]- Amalgam: tooltip fixed (Coldown -> Cooldown)
 [Zi]- Credit card now states "Corrupted" tag correctly.
 [Zi]- Unit base damage multipliers now work correctly.
 [Zi]- Lycanthrope E now uses actual buff duration of Lycanthrope R instead of 15 seconds.
 [Zi]- Peacelock E (Malicious Kindness) no longer requires level skips.
+=======
+Crystal Mimic - Shattering: fixed learn tooltip.
+Monk - Healthy Blow: fixed learn tooltip.
+Reaper - Death to all living things!: fixed tooltip.
+Reaper - Harvest: fixed tooltip
+Night Sage, Approximatron, Elixir of Longevity, Jet Boots, Magic Box, Necrowool, Purple Liar, Repeller, Salad of Wonders, Seal of Calm, Sheep Bell, Star Dust, Symbol of Antonidas, Totem of Energy, Vine Trap: fixed item tooltip.
+>>>>>>> Stashed changes
