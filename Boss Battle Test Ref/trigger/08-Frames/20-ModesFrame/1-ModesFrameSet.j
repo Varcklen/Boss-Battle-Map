@@ -4,7 +4,7 @@ globals
 endglobals
 
 function Trig_ModesFrameSet_Actions takes nothing returns nothing
-    set udg_DB_ModesFrame_DifficultyNum = 6
+    set udg_DB_ModesFrame_DifficultyNum = 9
     set udg_DB_ModesFrame_Difficulty[0] = 'A0EH'
     set udg_DB_ModesFrame_Difficulty[1] = 'A043'
     set udg_DB_ModesFrame_Difficulty[2] = 'A046'
@@ -12,6 +12,9 @@ function Trig_ModesFrameSet_Actions takes nothing returns nothing
     set udg_DB_ModesFrame_Difficulty[4] = 'A045'
     set udg_DB_ModesFrame_Difficulty[5] = 'A048'
     set udg_DB_ModesFrame_Difficulty[6] = 'A04H'
+    set udg_DB_ModesFrame_Difficulty[7] = 'AZD1'
+    set udg_DB_ModesFrame_Difficulty[8] = 'AZD2'
+    set udg_DB_ModesFrame_Difficulty[9] = 'AZD3'
 
     set udg_DB_ModesFrame_AbilityNum = 5
     set udg_DB_ModesFrame_Ability[1] = 'A15C'

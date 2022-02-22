@@ -4,7 +4,8 @@ endfunction
 
 function Trig_MonkP_Actions takes nothing returns nothing
     local unit target = null
-    local real heal = 7. + ( 7. * GetUnitAbilityLevel(udg_DamageEventSource, 'A08W') )
+    local integer lvl = GetUnitAbilityLevel(udg_DamageEventSource, 'A08W')
+    local real heal = 5. + I2R( ( lvl + 6 ) * lvl )
 
     set target = HeroLessHP(udg_DamageEventSource)
     if target != null then
