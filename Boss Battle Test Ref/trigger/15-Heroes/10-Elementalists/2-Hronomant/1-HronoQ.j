@@ -70,7 +70,7 @@ function Trig_HronoQ_Actions takes nothing returns nothing
     call textst( "|cf0FF1765" + I2S(stack), target, 64, GetRandomReal( 80, 100 ), 12, 1 )
 
     call UnitAddAbility( target, 'A0PX')
-    set dmg = stack * ( 4 + ( 3 * lvl ) ) * udg_SpellDamage[GetPlayerId(GetOwningPlayer(caster)) + 1]
+    set dmg = stack * ( 4 + ( 3 * lvl ) ) * GetUnitSpellPower(caster)
     
     set id = GetHandleId( target )
     if LoadTimerHandle( udg_hash, id, StringHash( "hrnq" ) ) == null then

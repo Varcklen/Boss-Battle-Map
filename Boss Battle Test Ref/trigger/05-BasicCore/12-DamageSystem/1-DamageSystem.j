@@ -30,9 +30,11 @@ function Trig_DamageSystem_Actions takes nothing returns nothing
 	set udg_DamageModifierEvent = 0.00
 
     //Событие, чтобы добавить модификаторы, не меняющие udg_DamageEventAmount (например вампиризм или запуск волны)
-	set udg_AfterDamageEvent = 0.00
-	set udg_AfterDamageEvent = 1.00
-	set udg_AfterDamageEvent = 0.00
+	if udg_DamageEventAmount > 0 then
+        set udg_AfterDamageEvent = 0.00
+        set udg_AfterDamageEvent = 1.00
+        set udg_AfterDamageEvent = 0.00
+    endif
 
 	call BlzSetEventDamage( udg_DamageEventAmount )
     

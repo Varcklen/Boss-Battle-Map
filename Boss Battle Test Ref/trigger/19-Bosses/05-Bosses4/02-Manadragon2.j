@@ -19,7 +19,7 @@ function ManaDr2Cast takes nothing returns nothing
             set u = FirstOfGroup(g)
             exitwhen u == null
             if unitst( u, dummy, "enemy" ) then
-                call SetUnitState( u, UNIT_STATE_MANA, GetUnitState( u, UNIT_STATE_MANA ) + ( 20 * udg_SpellDamage[0] ) )
+                call SetUnitState( u, UNIT_STATE_MANA, GetUnitState( u, UNIT_STATE_MANA ) + ( 20 * SpellPower_GetBossSpellPower() ) )
                 call UnitDamageTarget( dummy, u, 30, true, false, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_MAGIC, WEAPON_TYPE_WHOKNOWS )
                 call spectimeunit( u, "Abilities\\Spells\\Undead\\ReplenishMana\\ReplenishManaCaster.mdl", "origin", 1 )
             endif 

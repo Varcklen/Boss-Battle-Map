@@ -63,7 +63,7 @@ function Trig_MaidenW_Actions takes nothing returns nothing
     set t = timebonus(caster, t)
     set id = GetHandleId( caster )
     set heal = 50+(25*lvl)
-    set dmg = (heal/2) * udg_SpellDamage[GetPlayerId(GetOwningPlayer( caster ) ) + 1]
+    set dmg = (heal/2) * GetUnitSpellPower(caster)
     
     set k = 0
     call GroupEnumUnitsInRange( g, GetUnitX( caster ), GetUnitY( caster ), 600, null )

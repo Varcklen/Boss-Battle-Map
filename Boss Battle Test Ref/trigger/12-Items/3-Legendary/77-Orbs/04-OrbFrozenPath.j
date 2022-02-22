@@ -4,10 +4,9 @@ endfunction
 
 function OrbFrozenPathEnd takes nothing returns nothing
     local integer id = GetHandleId( GetExpiredTimer( ) )
-    local integer p = LoadInteger( udg_hash, id, StringHash( "orbfp1" ) )
     local unit u = LoadUnitHandle( udg_hash, id, StringHash( "orbfp1" ) )
 
-    call spdstpl( p, -1 * LoadReal( udg_hash, GetHandleId( u ), StringHash( "orbfp1" ) ) )
+    call spdst( u, -LoadReal( udg_hash, GetHandleId( u ), StringHash( "orbfp1" ) ) )
     call UnitRemoveAbility( u, 'A0I7' )
     call UnitRemoveAbility( u, 'B093' )
     call RemoveSavedReal( udg_hash, GetHandleId( u ), StringHash( "orbfp1" ) )
@@ -46,7 +45,6 @@ function OrbFrozenPathCast takes nothing returns nothing
             endif
             set id1 = GetHandleId( LoadTimerHandle( udg_hash, id1, StringHash( "orbfp1" ) ) ) 
             call SaveUnitHandle( udg_hash, id1, StringHash( "orbfp1" ), caster )
-            call SaveInteger( udg_hash, id1, StringHash( "orbfp1" ), GetPlayerId( GetOwningPlayer( caster ) ) )
             call TimerStart( LoadTimerHandle( udg_hash, GetHandleId( caster ), StringHash( "orbfp1" ) ), t, false, function OrbFrozenPathEnd )
         
             call effst( caster, caster, null, 1, t )

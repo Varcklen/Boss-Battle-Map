@@ -3,32 +3,34 @@ scope Paladin01
     globals
         private constant integer HEALTH_CHECK = 75
         
-        private constant integer WAVE_LIMIT = 30
-        private constant integer WAVE_SPEED = 40
-        private constant integer WAVE_AREA = 128
-        private constant integer WAVE_DAMAGE = 150
-        private constant integer WAVE_PATH_LIMIT = 300
-        private constant real WAVE_CREATION_COOLDOWN = 0.5
-        private constant real WAVE_TIME_MOVE = 0.04
+        private constant integer LIMIT = 30
+        private constant integer SPEED = 40
+        private constant integer AREA = 128
+        private constant integer DAMAGE = 150
+        private constant integer PATH_LIMIT = 100
+        private constant real CREATION_COOLDOWN = 0.5
+        private constant real TIME_MOVE = 0.04
         
         private constant string TELEPORTATION_ANIMATION = "Abilities\\Spells\\Human\\MassTeleport\\MassTeleportCaster.mdl"
-        private constant string WAVE_ANIMATION = "Abilities\\Spells\\Orc\\Shockwave\\ShockwaveMissile.mdl"
+        private constant string ANIMATION = "Abilities\\Spells\\Orc\\Shockwave\\ShockwaveMissile.mdl"
+        
+        private trigger Wave_Use = null
     endglobals
 
     function Trig_Paladin1_Conditions takes nothing returns boolean
         return GetUnitTypeId( udg_DamageEventTarget ) == 'h00M' and GetUnitLifePercent(udg_DamageEventTarget) <= HEALTH_CHECK
     endfunction
     
-    private function PaladinDealDamage takes unit boss, effect wave, group nodmg returns nothing
+    /*private function PaladinDealDamage takes unit boss, effect wave, group nodmg returns nothing
         local group g = CreateGroup()
         local unit u
     
-        call GroupEnumUnitsInRange( g, BlzGetLocalSpecialEffectX( wave ), BlzGetLocalSpecialEffectY( wave ), WAVE_AREA, null )
+        call GroupEnumUnitsInRange( g, BlzGetLocalSpecialEffectX( wave ), BlzGetLocalSpecialEffectY( wave ), AREA, null )
         loop
             set u = FirstOfGroup(g)
             exitwhen u == null
             if unitst( u, boss, "enemy" ) and not( IsUnitInGroup( u, nodmg ) ) then
-                call UnitTakeDamage(boss, u, WAVE_DAMAGE, DAMAGE_TYPE_MAGIC)
+                call UnitTakeDamage(boss, u, DAMAGE, DAMAGE_TYPE_MAGIC)
                 call GroupAddUnit( nodmg, u )
             endif
             call GroupRemoveUnit(g,u)
@@ -42,7 +44,7 @@ scope Paladin01
         set nodmg = null
         set boss = null
     endfunction
-
+    
     private function PaladinWave takes nothing returns nothing
         local integer id = GetHandleId( GetExpiredTimer() )
         local effect wave = LoadEffectHandle( udg_hash, id, StringHash( "bspl2" ) )
@@ -52,14 +54,14 @@ scope Paladin01
         local group nodmg = LoadGroupHandle( udg_hash, id, StringHash( "bspl2g" ) )
         local point newPoint = 0
         
-        if counter >= WAVE_PATH_LIMIT or wave == null then
+        if counter >= PATH_LIMIT or wave == null then
             call DestroyEffect( wave )
             call GroupClear( nodmg )
             call DestroyGroup( nodmg )
             call FlushChildHashtable( udg_hash, id )
             call DestroyTimer( GetExpiredTimer() )
         else
-            set newPoint = GetMovedPoint( wave, yaw, WAVE_SPEED )
+            set newPoint = GetMovedPoint( wave, yaw, SPEED )
             call BlzSetSpecialEffectPosition( wave, newPoint.x, newPoint.y, BlzGetLocalSpecialEffectZ(wave) )
             call PaladinDealDamage(boss, wave, nodmg)
             call SaveInteger( udg_hash, id, StringHash( "bspl2" ), counter )
@@ -69,7 +71,7 @@ scope Paladin01
         set nodmg = null
         set wave = null
         set boss = null
-    endfunction
+    endfunction*/
 
     private function EndWaves takes unit boss returns nothing
         call SetUnitAnimation( boss, "stand" )
@@ -80,46 +82,47 @@ scope Paladin01
         set boss = null
     endfunction
     
-    function RotateEffect takes effect wave, unit target, point startPoint returns real
+    function RotateEffect takes unit target, point startPoint returns real
         local point unitPoint = point.create()
         local real yaw = 0
         
         set unitPoint.x = GetUnitX(target)
         set unitPoint.y = GetUnitY(target)
         
-        set yaw = Deg2Rad(GetAngleBetweenPoints(unitPoint, startPoint))
-        
-        call BlzSetSpecialEffectYaw( wave, yaw )
+        set yaw = GetAngleBetweenPoints(unitPoint, startPoint)
 
         call startPoint.destroy()
         call unitPoint.destroy()
-        set wave = null
         set target = null
         return yaw
     endfunction
     
+    private function DealDamage takes nothing returns nothing
+        call UnitTakeDamage(Event_WaveHit_Caster, Event_WaveHit_Target, DAMAGE, DAMAGE_TYPE_MAGIC)
+    endfunction
+    
     private function CreateWave takes unit boss, unit target returns nothing
-        local integer id = 0
+        //local integer id = 0
         local integer rand = 0
         local point startPoint = point.create()
-        local effect wave = null
-        local real yaw = 0
+        //local real yaw = 0
     
         set rand = GetRandomInt( 1, 4 )
-        set startPoint.x = GetRectCenterX( udg_Boss_Rect ) + 2000 * Cos( ( 45 + ( 90 * rand ) ) * bj_DEGTORAD )
-        set startPoint.y = GetRectCenterY( udg_Boss_Rect ) + 2000 * Sin( ( 45 + ( 90 * rand ) ) * bj_DEGTORAD )
+        set startPoint.x = GetRectCenterX( udg_Boss_Rect ) + 2000 * Cos( ( 45 + ( 90 * rand ) ) * bj_DEGTORAD )//startPoint.
+        set startPoint.y = GetRectCenterY( udg_Boss_Rect ) + 2000 * Sin( ( 45 + ( 90 * rand ) ) * bj_DEGTORAD )//startPoint.
         
-        set wave = AddSpecialEffect( WAVE_ANIMATION, startPoint.x, startPoint.y)
+        /*set wave = AddSpecialEffect( ANIMATION, startPoint.x, startPoint.y)
         set yaw = RotateEffect(wave, target, startPoint )
         //call BJDebugMsg("yaw: " + R2S(yaw))
         
-        set id = InvokeTimerWithEffect( wave, "bspl2", WAVE_TIME_MOVE, true, function PaladinWave )
+        set id = InvokeTimerWithEffect( wave, "bspl2", TIME_MOVE, true, function PaladinWave )
         call SaveUnitHandle( udg_hash, id, StringHash( "bspl2cs" ), boss )
         call SaveReal( udg_hash, id, StringHash( "bspl2" ), yaw )
-        call SaveGroupHandle( udg_hash, id, StringHash( "bspl2g" ), CreateGroup() )
+        call SaveGroupHandle( udg_hash, id, StringHash( "bspl2g" ), CreateGroup() )*/
+        
+        call Wave_CreateWave( boss, startPoint.x, startPoint.y, RotateEffect(target, startPoint), TIME_MOVE, AREA, PATH_LIMIT, SPEED, TARGET_ENEMY, WAVE_BASE_ANIMATION, Wave_Use, null )
 
         call startPoint.destroy()
-        set wave = null
         set boss = null
         set target = null
     endfunction
@@ -130,7 +133,7 @@ scope Paladin01
         local integer counter = LoadInteger( udg_hash, id, StringHash( "bspl" ) ) + 1
         local unit target = null
         
-        if IsUnitDead(boss) or udg_fightmod[0] == false or counter >= WAVE_LIMIT then
+        if IsUnitDead(boss) or udg_fightmod[0] == false or counter >= LIMIT then
             call EndWaves(boss)
             call FlushChildHashtable( udg_hash, id )
             call DestroyTimer( GetExpiredTimer() )
@@ -177,7 +180,7 @@ scope Paladin01
 
     function Trig_Paladin1_Actions takes nothing returns nothing
         call DisableTrigger( GetTriggeringTrigger() )
-        call WaveStart(udg_DamageEventTarget, WAVE_CREATION_COOLDOWN)
+        call WaveStart(udg_DamageEventTarget, CREATION_COOLDOWN)
     endfunction
 
     //===========================================================================
@@ -187,6 +190,9 @@ scope Paladin01
         call TriggerRegisterVariableEvent( gg_trg_Paladin1, "udg_AfterDamageEvent", EQUAL, 1.00 )
         call TriggerAddCondition( gg_trg_Paladin1, Condition( function Trig_Paladin1_Conditions ) )
         call TriggerAddAction( gg_trg_Paladin1, function Trig_Paladin1_Actions )
+        
+        set Wave_Use = CreateTrigger()
+        call TriggerAddAction( Wave_Use, function DealDamage )
     endfunction
 
 endscope

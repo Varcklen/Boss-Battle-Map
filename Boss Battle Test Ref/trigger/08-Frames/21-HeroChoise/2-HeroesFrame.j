@@ -41,6 +41,8 @@ scope HeroChoose
         private framehandle array AspectButton[3]
         private constant real ASPECTS_SIZE = 0.025
         private constant real ASPECTS_INDENT = 0.005
+        
+        boolean array IsBanned[HEROES_COUNT_ARRAYS]
     endglobals
     
     private function SetAspectButtons takes player localPlayer, integer whichButton, integer aspectAbility returns nothing 
@@ -316,27 +318,27 @@ scope HeroChoose
                 endif
             endif
             if GetLocalPlayer() == GetTriggerPlayer() then
-                call BlzFrameSetTexture( herospell[1], BlzGetAbilityIcon( udg_DB_Hero_FirstSpell[k] ),0, true)
-                call BlzFrameSetTexture( herospell[2], BlzGetAbilityIcon( udg_Database_EarringSpell[k] ),0, true)
-                call BlzFrameSetTexture( herospell[3], BlzGetAbilityIcon( udg_DB_Hero_Passive[k]),0, true)
-                call BlzFrameSetTexture( herospell[4], BlzGetAbilityIcon( udg_DB_Hero_Fourth[k]),0, true)
+                call BlzFrameSetTexture( herospell[1], BlzGetAbilityIcon( Database_Hero_Abilities[1][k] ),0, true)
+                call BlzFrameSetTexture( herospell[2], BlzGetAbilityIcon( Database_Hero_Abilities[2][k] ),0, true)
+                call BlzFrameSetTexture( herospell[3], BlzGetAbilityIcon( Database_Hero_Abilities[3][k]),0, true)
+                call BlzFrameSetTexture( herospell[4], BlzGetAbilityIcon( Database_Hero_Abilities[4][k]),0, true)
                 call BlzFrameSetTexture( herospell[5], BlzGetAbilityIcon( uniq ),0, true)
             
-                call BlzFrameSetText(herospelltool[1], BlzGetAbilityResearchExtendedTooltip(udg_DB_Hero_FirstSpell[k], 0) )
-                call BlzFrameSetText(herospellname[1], BlzGetAbilityResearchTooltip(udg_DB_Hero_FirstSpell[k], 0) )
-                call BlzFrameSetSize(herotool[1], 0.33, StringSizeSmall(BlzGetAbilityResearchExtendedTooltip(udg_DB_Hero_FirstSpell[k], 0)) )
+                call BlzFrameSetText(herospelltool[1], BlzGetAbilityResearchExtendedTooltip(Database_Hero_Abilities[1][k], 0) )
+                call BlzFrameSetText(herospellname[1], BlzGetAbilityResearchTooltip(Database_Hero_Abilities[1][k], 0) )
+                call BlzFrameSetSize(herotool[1], 0.33, StringSizeSmall(BlzGetAbilityResearchExtendedTooltip(Database_Hero_Abilities[1][k], 0)) )
 
-                call BlzFrameSetText(herospelltool[2], BlzGetAbilityResearchExtendedTooltip(udg_Database_EarringSpell[k], 0) )
-                call BlzFrameSetText(herospellname[2], BlzGetAbilityResearchTooltip(udg_Database_EarringSpell[k], 0) )
-                call BlzFrameSetSize(herotool[2], 0.33, StringSizeSmall(BlzGetAbilityResearchExtendedTooltip(udg_Database_EarringSpell[k], 0)))
+                call BlzFrameSetText(herospelltool[2], BlzGetAbilityResearchExtendedTooltip(Database_Hero_Abilities[2][k], 0) )
+                call BlzFrameSetText(herospellname[2], BlzGetAbilityResearchTooltip(Database_Hero_Abilities[2][k], 0) )
+                call BlzFrameSetSize(herotool[2], 0.33, StringSizeSmall(BlzGetAbilityResearchExtendedTooltip(Database_Hero_Abilities[2][k], 0)))
 
-                call BlzFrameSetText(herospelltool[3], BlzGetAbilityResearchExtendedTooltip(udg_DB_Hero_Passive[k], 0) )
-                call BlzFrameSetText(herospellname[3], BlzGetAbilityResearchTooltip(udg_DB_Hero_Passive[k], 0) )
-                call BlzFrameSetSize(herotool[3], 0.33, StringSizeSmall(BlzGetAbilityResearchExtendedTooltip(udg_DB_Hero_Passive[k], 0)))
+                call BlzFrameSetText(herospelltool[3], BlzGetAbilityResearchExtendedTooltip(Database_Hero_Abilities[3][k], 0) )
+                call BlzFrameSetText(herospellname[3], BlzGetAbilityResearchTooltip(Database_Hero_Abilities[3][k], 0) )
+                call BlzFrameSetSize(herotool[3], 0.33, StringSizeSmall(BlzGetAbilityResearchExtendedTooltip(Database_Hero_Abilities[3][k], 0)))
 
-                call BlzFrameSetText(herospelltool[4], BlzGetAbilityResearchExtendedTooltip(udg_DB_Hero_Fourth[k], 0) )
-                call BlzFrameSetText(herospellname[4], BlzGetAbilityResearchTooltip(udg_DB_Hero_Fourth[k], 0) )
-                call BlzFrameSetSize(herotool[4], 0.33, StringSizeSmall(BlzGetAbilityResearchExtendedTooltip(udg_DB_Hero_Fourth[k], 0)))
+                call BlzFrameSetText(herospelltool[4], BlzGetAbilityResearchExtendedTooltip(Database_Hero_Abilities[4][k], 0) )
+                call BlzFrameSetText(herospellname[4], BlzGetAbilityResearchTooltip(Database_Hero_Abilities[4][k], 0) )
+                call BlzFrameSetSize(herotool[4], 0.33, StringSizeSmall(BlzGetAbilityResearchExtendedTooltip(Database_Hero_Abilities[4][k], 0)))
 
                 call BlzFrameSetText(herospelltool[5], BlzGetAbilityExtendedTooltip(uniq, 0))
                 call BlzFrameSetText(herospellname[5], GetAbilityName(uniq) )
@@ -385,6 +387,38 @@ scope HeroChoose
         endif
     endfunction
     
+    private function IsCanChoosedManyTimes takes integer heroId returns boolean
+        if heroId == udg_Database_Hero[31] then
+            return true
+        elseif heroId == udg_Database_Hero[34] then
+            return true
+        endif
+        return false
+    endfunction
+    
+    private function IsHeroCanBeChosen takes integer heroId, integer index, boolean isThisHeroExist returns boolean
+        /*call BJDebugMsg("==================================" )
+        call BJDebugMsg("index: " + I2S(index))*/
+        if IsBanned[index] then
+            //call BJDebugMsg("IsBanned")
+            return false
+        elseif heroId == 0 then
+            return false
+        elseif isThisHeroExist then
+            return false
+        elseif not(udg_UnitHeroLogic[index] == false or IsCanChoosedManyTimes(heroId) ) then
+            /*if udg_UnitHeroLogic[index] then
+                call BJDebugMsg("true")
+            else
+                call BJDebugMsg("false")
+            endif
+            call BJDebugMsg("udg_UnitHeroLogic[index] == false or IsCanChoosedManyTimes(heroId)")*/
+            return false
+        endif
+    
+        return true
+    endfunction
+    
     function HeroesButton takes nothing returns nothing
         local player pl = GetTriggerPlayer()
         local integer i = GetPlayerId( pl ) + 1
@@ -393,22 +427,21 @@ scope HeroChoose
         local integer cyclA = 1
         local boolean l = false
 
-        loop
+        /*loop
             exitwhen cyclA > 4
             if GetUnitTypeId( udg_hero[cyclA] ) == udg_HeroChoose[i] then
                 set l = true
             endif
             set cyclA = cyclA + 1
-        endloop
+        endloop*/
         if LoadInteger( udg_hash, i, StringHash( "randpick" ) ) >= 3 and udg_HeroChoose[i] == udg_DB_HeroFrame_Buffer[0] then
             set l = true
-            call DisplayTimedTextToPlayer( pl, 0, 0, 10, "Attempts exhausted." )
         endif
-        if udg_UnitHeroLogic[k] then
+        /*if udg_UnitHeroLogic[k] then
             set l = true
-        endif
+        endif*/
 
-        if udg_HeroChoose[i] != 0 and (not(l) or udg_HeroChoose[i] == 'O00T' or udg_HeroChoose[i] == 'O010') then
+        if IsHeroCanBeChosen( udg_HeroChoose[i], k, l ) then
             call RemoveUnit( udg_HeroSpawn[i] )
             call FogModifierStop( udg_Visible[i] )
             if GetLocalPlayer() == pl then
@@ -443,7 +476,11 @@ scope HeroChoose
             endif
             set udg_HeroChoose[i] = 0
         else
-            call DisplayTimedTextToPlayer(pl, 0, 0, 5, "This hero is not available. Please choose an another hero.")
+            if udg_HeroChoose[i] == udg_DB_HeroFrame_Buffer[0] then
+                call DisplayTimedTextToPlayer( pl, 0, 0, 10, "Attempts exhausted." )
+            else
+                call DisplayTimedTextToPlayer( pl, 0, 0, 5, "This hero is not available. Please choose an another hero.")
+            endif
         endif
 
         set pl = null
@@ -547,12 +584,12 @@ scope HeroChoose
                 endif
                 set cyclA = cyclA + 1
             endloop
-            if udg_UnitHeroLogic[k] then
-                set udg_UnitHeroLogic[k] = false
+            if IsBanned[k] then
+                set IsBanned[k] = false
                 set str = udg_HeroKeyIcon[i]
                 set udg_BanLimit = udg_BanLimit + 1
             elseif udg_BanLimit > 0 then
-                set udg_UnitHeroLogic[k] = true
+                set IsBanned[k] = true
                 set str = "war3mapImported\\BTNban.blp"
                 set udg_BanLimit = udg_BanLimit - 1
             else

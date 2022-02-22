@@ -71,7 +71,7 @@ function Trig_Billy_Actions takes nothing returns nothing
     endif
     
     set billy = GetItemOfTypeFromUnitBJ( caster, BILLY_ID)
-    set dmg = BILLY_DAMAGE * udg_SpellDamage[GetUnitUserData(caster)] * eyest( caster )
+    set dmg = BILLY_DAMAGE * GetUnitSpellPower(caster) * eyest( caster )
     
     if billy != null then
         call UnitRemoveItem(caster, billy)

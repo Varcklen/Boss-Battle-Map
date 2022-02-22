@@ -78,53 +78,15 @@
         call Main(  )
     endif
     
-    
-    
-scope MarshalE initializer Triggs
-    private function Use takes nothing returns nothing
-        local unit hero = udg_Event_NullingAbility_Unit
-        local integer lvl = GetUnitAbilityLevel( hero, 'A0F7')
-        
-        call UnitRemoveAbility(hero, 'A0G0')
-        call UnitRemoveAbility(hero, 'B06B')
-        if lvl > 0 then
-            call BlzSetUnitAttackCooldown( hero, BlzGetUnitAttackCooldown(hero, 0) + 0.07, 0 )
-            call BlzSetUnitAttackCooldown( hero, BlzGetUnitAttackCooldown(hero, 0) + (0.03*lvl), 0 )
-        endif
-        
-        set hero = null
-    endfunction
-    
-    private function StartFight_Conditions takes nothing returns boolean
-        return GetUnitAbilityLevel( udg_FightEnd_Unit, 'A0F7') > 0
-    endfunction
-    
-    private function StartFight takes nothing returns nothing
-        local unit hero = udg_FightEnd_Unit
 
-        call UnitAddAbility(hero, 'A0G0')
-        call UnitAddAbility(hero, 'B06B')
-        
-        set hero = null
-    endfunction
-
-    private function Triggs takes nothing returns nothing
-        call CreateEventTrigger( "udg_FightEnd_Real", function Aspects_End_Actions, function Aspects_End_Condition )
-    endfunction
-endscope
 
 scope DruidQ initializer init
     private function DeleteBuff_Conditions takes nothing returns boolean
-        return GetUnitAbilityLevel( Event_DeleteBuff_Unit, 'A0F7') > 0
+        return IsUnitHasAbility( Event_DeleteBuff_Unit, EFFECT)
     endfunction
     
     private function DeleteBuff takes nothing returns nothing
-        local unit hero = Event_DeleteBuff_Unit
-
-        call UnitRemoveAbility( hero, 'A0M2' )
-        call UnitRemoveAbility( hero, 'B004' )
-        
-        set hero = null
+        call RemoveEffect( Event_DeleteBuff_Unit, EFFECT, BUFF )
     endfunction
 
     private function init takes nothing returns nothing

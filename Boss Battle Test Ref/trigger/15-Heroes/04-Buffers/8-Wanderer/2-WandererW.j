@@ -132,7 +132,7 @@ function Trig_WandererW_Actions takes nothing returns nothing
     set t = timebonus(caster, t)
 
     call UnitAddAbility( target, 'A0LB')
-    set dmg = ( 5 + ( 3 * lvl ) ) * udg_SpellDamage[GetPlayerId(GetOwningPlayer(caster)) + 1]
+    set dmg = ( 5 + ( 3 * lvl ) ) * GetUnitSpellPower(caster)
     set sh = 50 + (30*lvl)
     set hp = 30 + (10*lvl)
     

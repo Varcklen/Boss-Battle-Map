@@ -24,10 +24,10 @@ function MoonPriestCast takes nothing returns nothing
                 call DestroyEffect( AddSpecialEffectTarget("Abilities\\Spells\\Other\\Incinerate\\FireLordDeathExplode.mdl", target, "origin") )
             endif
         elseif rand == 2 then
-            call SetUnitState( boss, UNIT_STATE_MANA, GetUnitState( boss, UNIT_STATE_MANA) + ( 100 * udg_SpellDamage[0] ) )
+            call SetUnitState( boss, UNIT_STATE_MANA, GetUnitState( boss, UNIT_STATE_MANA) + ( 100 * SpellPower_GetBossSpellPower() ) )
             call DestroyEffect( AddSpecialEffectTarget("Abilities\\Spells\\Items\\AIma\\AImaTarget.mdl", boss, "origin") )
         elseif rand == 3 then
-            call SetUnitState( boss, UNIT_STATE_LIFE, GetUnitState( boss, UNIT_STATE_LIFE) + ( 300 * udg_SpellDamage[0] ) )
+            call SetUnitState( boss, UNIT_STATE_LIFE, GetUnitState( boss, UNIT_STATE_LIFE) + ( 300 * SpellPower_GetBossSpellPower() ) )
             call DestroyEffect( AddSpecialEffectTarget("Abilities\\Spells\\Human\\Resurrect\\ResurrectTarget.mdl", boss, "origin") )
         elseif rand == 4 then
             call dummyspawn( boss, 1, 0, 0, 0 )

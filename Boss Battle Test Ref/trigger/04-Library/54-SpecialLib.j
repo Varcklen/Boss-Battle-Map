@@ -5,22 +5,22 @@ library SpecialLib
         local integer i = GetUnitUserData(caster)
         local integer spold = udg_Ability_Spec[i]
 
-        if spold == 'A1BK' then
+        /*if spold == 'A1BK' then
             if GetLocalPlayer() == p then
                 call BlzFrameSetVisible( dualtext, false )
             endif
-        endif
+        endif*/
         
         call UnitRemoveAbility( caster, spold )
         set udg_Ability_Spec[i] = spec
         call UnitAddAbility( caster, spec )
 
-        if spec == 'A1BK' then
+        /*if spec == 'A1BK' then
             call SaveInteger( udg_hash, GetHandleId( caster ), StringHash( "dualch" ), 3 )
             if GetLocalPlayer() == p then
                 call BlzFrameSetText( dualtext, "3" )
             endif
-        endif
+        endif*/
 
         if spec != 0 then
             call BlzFrameSetVisible( specframe[i],true)

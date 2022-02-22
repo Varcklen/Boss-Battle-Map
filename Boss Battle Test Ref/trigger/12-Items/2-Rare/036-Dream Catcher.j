@@ -25,7 +25,7 @@ function Trig_Dream_Catcher_Actions takes nothing returns nothing
     
     set index = GetPlayerId(GetOwningPlayer(caster)) + 1
     set firstAbilityIndex = udg_HeroNum[index]
-    set lvl = IMaxBJ(1, GetUnitAbilityLevel(caster, udg_DB_Hero_FirstSpell[firstAbilityIndex]) )
+    set lvl = IMaxBJ(1, GetUnitAbilityLevel(caster, Database_Hero_Abilities[1][firstAbilityIndex]) )
     
     set use = eyest( caster ) * DREAM_CATCHER_USE_COUNT
     set i = 1

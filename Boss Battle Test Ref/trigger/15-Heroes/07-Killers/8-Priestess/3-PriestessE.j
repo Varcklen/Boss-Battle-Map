@@ -5,19 +5,18 @@ endfunction
 function PriestessECast takes nothing returns nothing
     local integer id = GetHandleId( GetExpiredTimer( ) )
     local unit caster = LoadUnitHandle( udg_hash, id, StringHash( "prse" ) )
-    local integer pl = LoadInteger( udg_hash, id, StringHash( "prsel" ) )
     local integer arm = LoadInteger( udg_hash, id, StringHash( "prsea" ) )
     local integer pets = CountLivingPlayerUnitsOfTypeId('n020', GetOwningPlayer(caster))
     local real spd = (pets - arm) * LoadInteger( udg_hash, id, StringHash( "prse" ) )
     local real spdnow = LoadReal( udg_hash, GetHandleId( caster ), StringHash( "prsen" ) )
     
 	if GetUnitAbilityLevel(caster, 'A03X') == 0 then
-        call spdstpl( pl, -spdnow )
+        call spdst( caster, -spdnow )
         call SaveReal( udg_hash, GetHandleId( caster ), StringHash( "prsen" ), 0 )
         call FlushChildHashtable( udg_hash, id )
         call DestroyTimer( GetExpiredTimer() )
     elseif arm != pets then
-        call spdstpl( pl, spd )
+        call spdst( caster, spd )
 		call SaveReal( udg_hash, GetHandleId( caster ), StringHash( "prsen" ), spdnow + spd ) 
         call SaveInteger( udg_hash, id, StringHash( "prsea" ), pets ) 
     endif
@@ -38,7 +37,6 @@ function Trig_PriestessE_Actions takes nothing returns nothing
     endif
     set id = GetHandleId( LoadTimerHandle( udg_hash, id, StringHash( "prse" ) ) )
     call SaveUnitHandle ( udg_hash, id, StringHash( "prse" ), GetLearningUnit() )
-    call SaveInteger( udg_hash, id, StringHash( "prsel" ), GetPlayerId( GetOwningPlayer( GetLearningUnit() ) ) )
     call SaveInteger( udg_hash, id, StringHash( "prse" ), GetUnitAbilityLevel(GetLearningUnit(), 'A03X') + 1 ) 
     call SaveInteger( udg_hash, id, StringHash( "prsea" ), 0 )
     call TimerStart( LoadTimerHandle( udg_hash, GetHandleId( GetLearningUnit() ), StringHash( "prse" ) ), 1, true, function PriestessECast )

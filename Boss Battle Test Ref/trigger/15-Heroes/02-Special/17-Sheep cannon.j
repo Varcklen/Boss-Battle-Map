@@ -58,7 +58,7 @@ function Trig_Sheep_cannon_Actions takes nothing returns nothing
         set lvl = GetUnitAbilityLevel(GetSpellAbilityUnit(), GetSpellAbilityId())
     endif
     
-    set dmg = 100 * udg_SpellDamage[GetPlayerId(GetOwningPlayer( caster ) ) + 1]
+    set dmg = 100 * GetUnitSpellPower(caster)
     
     call dummyspawn( caster, 0, 'A1BZ', 'A0N5', 0 )
     call SetUnitFacing( bj_lastCreatedUnit, AngleBetweenUnits( caster, target ) )

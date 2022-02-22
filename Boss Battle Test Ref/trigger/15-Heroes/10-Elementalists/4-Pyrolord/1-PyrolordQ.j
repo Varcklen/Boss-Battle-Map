@@ -56,7 +56,7 @@ function Trig_PyrolordQ_Actions takes nothing returns nothing
     endif
     set t = timebonus(caster, t)
     
-    set dmg = ( PyrolordExtraDamage + 200 + ( 50 * lvl ) ) * udg_SpellDamage[GetPlayerId(GetOwningPlayer( caster ) ) + 1]
+    set dmg = ( PyrolordExtraDamage + 200 + ( 50 * lvl ) ) * GetUnitSpellPower(caster)
     set id = GetHandleId( target )
 
     call UnitAddAbility( target, 'A0NJ' )

@@ -43,5 +43,7 @@ function InitTrig_Dualism takes nothing returns nothing
     call TriggerRegisterAnyUnitEventBJ( gg_trg_Dualism, EVENT_PLAYER_UNIT_SPELL_EFFECT )
     call TriggerAddCondition( gg_trg_Dualism, Condition( function Trig_Dualism_Conditions ) )
     call TriggerAddAction( gg_trg_Dualism, function Trig_Dualism_Actions )
+    
+    call StackAbilities_AddAbilityStack( 'A1BK', 2, 1, 3 )
 endfunction
 

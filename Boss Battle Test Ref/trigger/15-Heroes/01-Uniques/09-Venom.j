@@ -46,7 +46,7 @@ function Trig_Venom_Actions takes nothing returns nothing
     set t = timebonus( caster, 5 )
     set id = GetHandleId( target )
 
-    set dmg = udg_DamageEventAmount*0.15*udg_SpellDamage[GetPlayerId(GetOwningPlayer( caster ) ) + 1] //делим на время (5 сек), по этому 0.1 а не 0.75
+    set dmg = udg_DamageEventAmount*0.15*GetUnitSpellPower(caster) //делим на время (5 сек), по этому 0.1 а не 0.75
     if IsUniqueUpgraded(caster) then
         set dmg = dmg * 2
     endif

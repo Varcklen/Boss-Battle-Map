@@ -4,10 +4,9 @@ endfunction
 
 function CircusRData takes nothing returns nothing
     local integer id = GetHandleId( GetExpiredTimer( ) )
-    local integer p = LoadInteger( udg_hash, id, StringHash( "cirrp" ) )
     local unit u = LoadUnitHandle( udg_hash, id, StringHash( "cirr" ) )
     
-    call luckystpl( p, -1 * LoadInteger( udg_hash, GetHandleId( u ), StringHash( "cirr" ) ) )
+    call luckyst( u, -LoadInteger( udg_hash, GetHandleId( u ), StringHash( "cirr" ) ) )
     call UnitRemoveAbility( u, 'A0SL' )
     call UnitRemoveAbility( u, 'B03J' )
     
@@ -73,7 +72,6 @@ function Trig_CircusR_Actions takes nothing returns nothing
             set id = GetHandleId( LoadTimerHandle( udg_hash, GetHandleId( u ), StringHash( "cirr" ) ) ) 
             call SaveUnitHandle( udg_hash, id, StringHash( "cirr" ), u )
             call SaveInteger( udg_hash, GetHandleId( u ), StringHash( "cirr" ), isum )
-            call SaveInteger( udg_hash, id, StringHash( "cirrp" ), GetPlayerId( GetOwningPlayer( u ) ) )
             call TimerStart( LoadTimerHandle( udg_hash, GetHandleId( u ), StringHash( "cirr" ) ), t, false, function CircusRData ) 
             
             if BuffLogic() then

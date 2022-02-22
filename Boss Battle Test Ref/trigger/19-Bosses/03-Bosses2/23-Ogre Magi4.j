@@ -1,5 +1,3 @@
-//TESH.scrollpos=0
-//TESH.alwaysfold=0
 function Trig_Ogre_Magi4_Conditions takes nothing returns boolean
     return GetUnitTypeId(udg_DamageEventTarget) == 'h00Q' and GetUnitLifePercent(udg_DamageEventTarget) <= 90.
 endfunction

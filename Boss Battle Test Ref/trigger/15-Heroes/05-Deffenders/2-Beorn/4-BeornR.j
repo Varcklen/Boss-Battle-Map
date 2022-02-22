@@ -107,7 +107,7 @@ function Trig_BeornR_Actions takes nothing returns nothing
     endif
     set t = timebonus(caster, t)
     
-    set dmg = (BEORN_R_DAMAGE_FIRST_LEVEL + ( BEORN_R_DAMAGE_LEVEL_BONUS * lvl )) * udg_SpellDamage[GetPlayerId(GetOwningPlayer(caster)) + 1]
+    set dmg = (BEORN_R_DAMAGE_FIRST_LEVEL + ( BEORN_R_DAMAGE_LEVEL_BONUS * lvl )) * GetUnitSpellPower(caster)
     
     if Aspects_IsHeroAspectActive( caster, ASPECT_03 ) then
         call BeornR_Alternative( caster, target, t, dmg )

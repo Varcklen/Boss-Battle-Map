@@ -14,10 +14,9 @@ endfunction
 
 function OrbNetherSpell takes nothing returns nothing
     local integer id = GetHandleId( GetExpiredTimer( ) )
-    local integer p = LoadInteger( udg_hash, id, StringHash( "orbntc1" ) )
     local unit u = LoadUnitHandle( udg_hash, id, StringHash( "orbntc1" ) )
 
-    call spdstpl( p, -1 * LoadReal( udg_hash, GetHandleId( u ), StringHash( "orbntc1" ) ) )
+    call spdst( u, -LoadReal( udg_hash, GetHandleId( u ), StringHash( "orbntc1" ) ) )
     call UnitRemoveAbility( u, 'A0WU' )
     call UnitRemoveAbility( u, 'B098' )
     call RemoveSavedReal( udg_hash, GetHandleId( u ), StringHash( "orbntc1" ) )
@@ -56,7 +55,6 @@ function OrbNetherCast takes nothing returns nothing
                 endif
                 set id1 = GetHandleId( LoadTimerHandle( udg_hash, id1, StringHash( "orbntc1" ) ) ) 
                 call SaveUnitHandle( udg_hash, id1, StringHash( "orbntc1" ), u )
-                call SaveInteger( udg_hash, id1, StringHash( "orbntc1" ), GetPlayerId( GetOwningPlayer( u ) ) )
                 call TimerStart( LoadTimerHandle( udg_hash, GetHandleId( u ), StringHash( "orbntc1" ) ), t, false, function OrbNetherSpell )
             
                 call effst( n, u, null, 1, t )

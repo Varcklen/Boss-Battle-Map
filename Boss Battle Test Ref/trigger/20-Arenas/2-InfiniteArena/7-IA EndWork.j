@@ -23,9 +23,6 @@ function Trig_IA_EndWork_Actions takes nothing returns nothing
             if GetLocalPlayer() == Player(cyclA - 1) then
                 call PanCameraToTimed(GetLocationX( udg_point[cyclA + 21]), GetLocationY( udg_point[cyclA + 21]), 0.)
             endif
-            if inv(udg_hero[cyclA], 'I03V') > 0 then
-		call SetHeroLevel(udg_hero[cyclA], GetHeroLevel(udg_hero[cyclA]) + 2, false)
-            endif
         endif
         set cyclA = cyclA + 1
     endloop

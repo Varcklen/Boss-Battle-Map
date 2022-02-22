@@ -89,7 +89,7 @@ function Trig_KingW_Actions takes nothing returns nothing
         set y = GetLocationY( GetSpellTargetLoc() )
     endif
     
-    set dmg = ( 100 + ( 50 * lvl ) ) * udg_SpellDamage[GetPlayerId(GetOwningPlayer( caster ) ) + 1]
+    set dmg = ( 100 + ( 50 * lvl ) ) * GetUnitSpellPower(caster)
     
     call dummyspawn( caster, 0, 'A0PS', 0, 0 )
     call SetUnitFacing( bj_lastCreatedUnit, GetUnitFacing( caster ) )

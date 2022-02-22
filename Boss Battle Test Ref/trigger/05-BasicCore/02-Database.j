@@ -20,7 +20,7 @@ globals
     integer array skinlvl[80][6]//уровень/номер
     string array skiniconBTN[10][6]//позиция/номер
     string array skiniconDIS[10][6]//позиция/номер
-    
+        
     constant integer PLAYERS_LIMIT = 4
     constant integer PLAYERS_LIMIT_ARRAYS = PLAYERS_LIMIT + 1
     constant integer SETS_COUNT = 9
@@ -36,7 +36,7 @@ globals
     boolean DEBUG = false
     unit UNIT_BUFF = null
     
-    real array HardModAspd[7]//скорость атаки в модах
+    real array HardModAspd[9]//скорость атаки в модах
 endglobals
 
 function Trig_Database_Actions takes nothing returns nothing
@@ -44,10 +44,12 @@ function Trig_Database_Actions takes nothing returns nothing
     local integer cyclAEnd
     
     set udg_perc = "%"
-    set udg_Version = "1.4.5n"
+    set udg_Version = "1.4.5o"
     set udg_UntilFirstFight = true
     
-    set udg_hash = InitHashtable( )
+    if udg_hash == null then
+        set udg_hash = InitHashtable()
+    endif
     set udg_rain = AddWeatherEffect(GetWorldBounds(), 'RAhr')
     
     set UNIT_BUFF = gg_unit_u00F_0006
@@ -75,7 +77,6 @@ function Trig_Database_Actions takes nothing returns nothing
     set udg_Captions[BaseNum()] = "~Rik"
     set udg_Captions[BaseNum()] = "2kxaoc"
     set udg_Captions[BaseNum()] = "Azazelk0"
-    set udg_Captions[BaseNum()] = "ZiHeLL"
     set udg_Captions[BaseNum()] = "Ratman"
     set udg_Captions[BaseNum()] = "Sheepy"
     set udg_Captions[BaseNum()] = "Rena"
@@ -104,12 +105,18 @@ function Trig_Database_Actions takes nothing returns nothing
     set udg_DB_Hardest[4] = "Mythical +4"
     set udg_DB_Hardest[5] = "Horrific +5"
     set udg_DB_Hardest[6] = "Monstrous +6"
+    set udg_DB_Hardest[7] = "Demonic +7"
+    set udg_DB_Hardest[8] = "Diabolic +8"
+    set udg_DB_Hardest[9] = "Infernal +9"
     set udg_DB_Hardest_On[1] = 'A043'
     set udg_DB_Hardest_On[2] = 'A046'
     set udg_DB_Hardest_On[3] = 'A047'
     set udg_DB_Hardest_On[4] = 'A045'
     set udg_DB_Hardest_On[5] = 'A048'
     set udg_DB_Hardest_On[6] = 'A04H'
+    set udg_DB_Hardest_On[7] = 'AZD1'
+    set udg_DB_Hardest_On[8] = 'AZD2'
+    set udg_DB_Hardest_On[9] = 'AZD3'
     
     set udg_HardModBonus[1] = 'A0CA'
     set udg_HardModBonus[2] = 'A0CG'
@@ -123,6 +130,9 @@ function Trig_Database_Actions takes nothing returns nothing
     set HardModAspd[4]=1.8
     set HardModAspd[5]=2.
     set HardModAspd[6]=2.2
+    set HardModAspd[7]=2.4
+    set HardModAspd[8]=2.6
+    set HardModAspd[9]=2.8
             
     // Set color
     set udg_DB_AllSet = 9
@@ -598,7 +608,6 @@ function Trig_Database_Actions takes nothing returns nothing
         call RemoveUnit( gg_unit_h00D_0007 )
         call RemoveUnit( gg_unit_h01T_0021 )
     endif
-    set udg_SpellDamage[11] = 1
     set udg_Hardest = "Normal"
     set udg_ModName = ""
     call ShowUnit(gg_unit_h01Q_0273, false) 
@@ -658,7 +667,7 @@ function Trig_Database_Actions takes nothing returns nothing
     endif
     set udg_BossHP = udg_BossHP - ( 0.15 * ( 4 - udg_Heroes_Amount ) ) 
     set udg_BossAT = udg_BossAT - ( 0.1 * ( 4 - udg_Heroes_Amount ) )
-    set udg_SpellDamage[0] = udg_SpellDamage[0] - ( 0.1 * ( 4 - udg_Heroes_Amount ) )
+    call SpellPower_AddBossSpellPower( -0.1 * ( 4 - udg_Heroes_Amount ) )
 endfunction
 
 //===========================================================================
