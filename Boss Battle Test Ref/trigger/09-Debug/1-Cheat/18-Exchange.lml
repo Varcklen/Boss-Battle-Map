@@ -5,8 +5,8 @@ Event
         Preset: ChatMatchTypeExact
 Condition
 Action
-    CreateItemLoc
-        Const : I07F
+    Disab: CreateItemLoc
+        Disab: 
         Call  : GetRectCenter
             Var   : gg_rct_Spawn
     SetVariable

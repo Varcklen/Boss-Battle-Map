@@ -69,7 +69,7 @@ function Trig_PyrolordR_Actions takes nothing returns nothing
     
     set bonus = R2I(LoadInteger( udg_hash, GetHandleId( caster ), StringHash( "killb" ))/PYROLORD_R_KILL_CONDITION)
     
-    set dmg = (PyrolordExtraDamage + PYROLORD_R_DAMAGE) * udg_SpellDamage[GetPlayerId(GetOwningPlayer( caster ) ) + 1]
+    set dmg = (PyrolordExtraDamage + PYROLORD_R_DAMAGE) * GetUnitSpellPower(caster)
     set arrows = bonus + lvl + 2
     
     set cyclA = 1

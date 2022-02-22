@@ -1,6 +1,5 @@
 globals
     framehandle lucktext
-	string array luckstr 
 endglobals
 
 function Trig_LuckBar_Actions takes nothing returns nothing

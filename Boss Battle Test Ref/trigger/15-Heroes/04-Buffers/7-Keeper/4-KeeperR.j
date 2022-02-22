@@ -4,10 +4,9 @@ endfunction
 
 function KeeperREnd takes nothing returns nothing
     local integer id = GetHandleId( GetExpiredTimer( ) )
-    local integer p = LoadInteger( udg_hash, id, StringHash( "kepr1" ) )
     local unit u = LoadUnitHandle( udg_hash, id, StringHash( "kepr1" ) )
 
-    call spdstpl( p, -1 * LoadReal( udg_hash, GetHandleId( u ), StringHash( "kepr1" ) ) )
+    call spdst( u, -LoadReal( udg_hash, GetHandleId( u ), StringHash( "kepr1" ) ) )
     call UnitRemoveAbility( u, 'A0PV' )
     call UnitRemoveAbility( u, 'B09D' )
     call RemoveSavedReal( udg_hash, GetHandleId( u ), StringHash( "kepr1" ) )
@@ -39,7 +38,6 @@ function KeeperRCast takes nothing returns nothing
         endif
         set id1 = GetHandleId( LoadTimerHandle( udg_hash, id1, StringHash( "kepr1" ) ) ) 
         call SaveUnitHandle( udg_hash, id1, StringHash( "kepr1" ), u )
-        call SaveInteger( udg_hash, id1, StringHash( "kepr1" ), GetPlayerId( GetOwningPlayer( u ) ) )
         call TimerStart( LoadTimerHandle( udg_hash, GetHandleId( u ), StringHash( "kepr1" ) ), t, false, function KeeperREnd )
         
         call effst( u, u, null, 1, t )

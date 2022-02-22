@@ -100,7 +100,7 @@ function Trig_NinjaW_Actions takes nothing returns nothing
         set caster = GetSpellAbilityUnit()
         set lvl = GetUnitAbilityLevel(GetSpellAbilityUnit(), GetSpellAbilityId())
     endif
-    set dmg = (25+( 10 * lvl )) * udg_SpellDamage[GetPlayerId(GetOwningPlayer( caster ) ) + 1]
+    set dmg = (25+( 10 * lvl )) * GetUnitSpellPower(caster)
     
     loop
         exitwhen cyclA > 3

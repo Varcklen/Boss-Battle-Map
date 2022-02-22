@@ -17,7 +17,7 @@ function Trig_Endgame_Actions takes nothing returns nothing
     call StopMusic(false)
     call PlayThematicMusic( "music" )
 	set udg_Endgame = udg_Endgame + 2
-	set udg_SpellDamage[0] = udg_SpellDamage[0] + 2
+    call SpellPower_AddBossSpellPower(2)
 	set udg_logic[43] = false
 	set udg_Boss_LvL = 1
 	set udg_Boss_Random = GetRandomInt( 1, 5 )

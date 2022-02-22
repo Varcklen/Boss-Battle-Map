@@ -52,7 +52,7 @@ function Trig_Metal_MageW_Actions takes nothing returns nothing
     endif
     set t = timebonus(caster, t)
     
-    set dmg = 50 * udg_SpellDamage[GetPlayerId(GetOwningPlayer(caster)) + 1]
+    set dmg = 50 * GetUnitSpellPower(caster)
 
     set id = GetHandleId( target )
     set dummy = CreateUnit( GetOwningPlayer( caster ), 'u000', GetUnitX( caster ), GetUnitY( caster ), bj_UNIT_FACING )

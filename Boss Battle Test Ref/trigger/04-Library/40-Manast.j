@@ -17,7 +17,7 @@ library ManastLib requires Inventory, LuckylogicLib, ShieldstLib, Multiboard, He
         endif
         
         set rsp = rsp+(h*(udg_BossHeal[i]-1))
-        set rsp = rsp+(h*(RMaxBJ(0, udg_SpellDamage[i])-1))
+        set rsp = rsp+(h*(RMaxBJ(0, GetUnitSpellPower(caster))-1))
         if inv( caster, 'I08I' ) > 0 then
             set rsp = rsp + (h*0.1*GetUnitLevel(caster))
         endif

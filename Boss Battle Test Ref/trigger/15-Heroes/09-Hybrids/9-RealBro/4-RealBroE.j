@@ -82,7 +82,7 @@ function Trig_RealBroE_Actions takes nothing returns nothing
         set x = GetUnitX( caster )
         set y = GetUnitY( caster )
         
-        set dmg = (20 + ( 10 * lvl )) * udg_SpellDamage[GetPlayerId(GetOwningPlayer(caster)) + 1] 
+        set dmg = (20 + ( 10 * lvl )) * GetUnitSpellPower(caster)
         
         if GetUnitAbilityLevel( target, 'A0DV' ) == 0 then
             call pausest( target, 1 )

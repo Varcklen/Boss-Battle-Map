@@ -60,7 +60,7 @@ function Trig_BunnieW_Actions takes nothing returns nothing
     endif
     set t = timebonus(caster, t)
     
-    set dmg = (7 + ( 4 * lvl )) * udg_SpellDamage[GetPlayerId(GetOwningPlayer(caster)) + 1]
+    set dmg = (7 + ( 4 * lvl )) * GetUnitSpellPower(caster)
     set owner = LoadUnitHandle( udg_hash, GetHandleId( caster ), StringHash( "rlbqac" ) )
     
     call DestroyEffect( AddSpecialEffect( "Abilities\\Spells\\Orc\\MirrorImage\\MirrorImageDeathCaster.mdl", GetUnitX( target ), GetUnitY( target ) ) )

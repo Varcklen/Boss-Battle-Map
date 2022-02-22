@@ -43,8 +43,10 @@ scope LycanthropeW initializer init
         local unit hero = LoadUnitHandle(udg_hash, id, StringHash("lcnw") )
         local integer healthPerc = LoadInteger(udg_hash, id, StringHash("lcnw") )
 
-        if IsUnitAlive(hero) and GetUnitAbilityLevel( hero, WOLF_BUFF) > 0 then
-            call AddHealthPercent(hero, -healthPerc)
+        if IsUnitAlive(hero) and IsUnitHasAbility( hero, WOLF_BUFF) then
+            if IsUnitLoaded( hero ) == false and IsUnitHidden(hero) == false then
+                call AddHealthPercent(hero, -healthPerc)
+            endif
         else
             call FlushChildHashtable( udg_hash, id ) 
             call DestroyTimer( GetExpiredTimer() )

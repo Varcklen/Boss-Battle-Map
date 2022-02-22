@@ -1,6 +1,5 @@
 globals
     framehandle spelltext
-    string array spellstr
     framehandle extraPanelButton
     framehandle extraPanelBackground
     framehandle extraPanelNumPotion

@@ -599,7 +599,6 @@ function Trig_Database_Actions takes nothing returns nothing
         call RemoveUnit( gg_unit_h00D_0007 )
         call RemoveUnit( gg_unit_h01T_0021 )
     endif
-    set udg_SpellDamage[11] = 1
     set udg_Hardest = "Normal"
     set udg_ModName = ""
     call ShowUnit(gg_unit_h01Q_0273, false) 
@@ -659,7 +658,7 @@ function Trig_Database_Actions takes nothing returns nothing
     endif
     set udg_BossHP = udg_BossHP - ( 0.15 * ( 4 - udg_Heroes_Amount ) ) 
     set udg_BossAT = udg_BossAT - ( 0.1 * ( 4 - udg_Heroes_Amount ) )
-    set udg_SpellDamage[0] = udg_SpellDamage[0] - ( 0.1 * ( 4 - udg_Heroes_Amount ) )
+    call SpellPower_AddBossSpellPower( -0.1 * ( 4 - udg_Heroes_Amount ) )
 endfunction
 
 //===========================================================================

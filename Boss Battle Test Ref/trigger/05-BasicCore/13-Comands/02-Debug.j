@@ -1,3 +1,7 @@
+function Trig_Debug_Conditions takes nothing returns boolean
+    return udg_logic[1] == false
+endfunction
+
 function DebugHero takes nothing returns boolean
     local integer cyclA = 1
     local integer i = 0
@@ -113,5 +117,6 @@ function InitTrig_Debug takes nothing returns nothing
         call TriggerRegisterPlayerChatEvent( gg_trg_Debug, Player(i), "-debug", true )
         set i = i + 1
     endloop
+    call TriggerAddCondition( gg_trg_Debug, Condition( function Trig_Debug_Conditions ) )
     call TriggerAddAction( gg_trg_Debug, function Trig_Debug_Actions )
 endfunction

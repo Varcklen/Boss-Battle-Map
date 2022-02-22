@@ -1,4 +1,4 @@
-library NullingAbility requires SpdLibLib, StatLib, ShamanBallLib
+library NullingAbility requires SpellPower, StatLib, ShamanBallLib
 
     function delspellpas takes unit caster returns nothing
         local integer i = GetPlayerId( GetOwningPlayer( caster ) ) + 1

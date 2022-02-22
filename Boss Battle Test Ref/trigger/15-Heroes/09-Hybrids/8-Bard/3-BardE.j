@@ -4,10 +4,9 @@ endfunction
 
 function BardECast takes nothing returns nothing
     local integer id = GetHandleId( GetExpiredTimer( ) )
-    local integer p = LoadInteger( udg_hash, id, StringHash( "brde" ) )
     local unit u = LoadUnitHandle( udg_hash, id, StringHash( "brde" ) )
 
-    call spdstpl( p, -1 * LoadReal( udg_hash, GetHandleId( u ), StringHash( "brde" ) ) )
+    call spdst( u, -LoadReal( udg_hash, GetHandleId( u ), StringHash( "brde" ) ) )
     call UnitRemoveAbility( u, 'A1AU' )
     call UnitRemoveAbility( u, 'B09K' )
     call RemoveSavedReal( udg_hash, GetHandleId( u ), StringHash( "brde" ) )
@@ -33,10 +32,10 @@ function BardEUse takes unit caster, unit target, integer lvl returns nothing
         set i = GetPlayerId(GetOwningPlayer(target)) + 1
         call DestroyEffect( AddSpecialEffectTarget("war3mapImported\\TimeUpheaval.mdx", target, "origin" ) )
         
-        set a[1] = udg_DB_Hero_FirstSpell[udg_HeroNum[i]]
-        set a[2] = udg_Database_EarringSpell[udg_HeroNum[i]]
-        set a[3] = udg_DB_Hero_Passive[udg_HeroNum[i]]
-        set a[4] = udg_DB_Hero_Fourth[udg_HeroNum[i]]
+        set a[1] = Database_Hero_Abilities[1][udg_HeroNum[i]]
+        set a[2] = Database_Hero_Abilities[2][udg_HeroNum[i]]
+        set a[3] = Database_Hero_Abilities[3][udg_HeroNum[i]]
+        set a[4] = Database_Hero_Abilities[4][udg_HeroNum[i]]
 
         set cyclA = 1
         loop
@@ -75,7 +74,6 @@ function BardEUse takes unit caster, unit target, integer lvl returns nothing
         set id = GetHandleId( LoadTimerHandle( udg_hash, id, StringHash( "brde" ) ) ) 
         call SaveUnitHandle( udg_hash, id, StringHash( "brde" ), target )
         call SaveReal( udg_hash, GetHandleId( target ), StringHash( "brde" ), rsum )
-        call SaveInteger( udg_hash, id, StringHash( "brde" ), GetPlayerId( GetOwningPlayer( target ) ) )
         call TimerStart( LoadTimerHandle( udg_hash, GetHandleId( target ), StringHash( "brde" ) ), t, false, function BardECast ) 
         
         call effst( caster, target, null, 1, t )

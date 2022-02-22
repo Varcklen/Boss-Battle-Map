@@ -3,7 +3,9 @@ scope Banshee2 initializer init
     globals
         private constant integer ID_BOSS = 'n03M'
     
-        private constant integer HEALTH_CHECK = 75
+        private constant integer HEALTH_CHECK_FIRST = 75
+        private constant integer HEALTH_CHECK_SECOND = 50
+        private constant integer HEALTH_CHECK_THIRD = 25
         private constant integer HEALTH_LOCUST = 30
         private constant integer FIND_AREA = 600
         private constant integer TIME_LIMIT = 60
@@ -14,10 +16,32 @@ scope Banshee2 initializer init
         
         private constant string ANIMATION = "Abilities\\Spells\\Items\\TomeOfRetraining\\TomeOfRetrainingCaster.mdl"
         private constant string APPEAR = "Abilities\\Spells\\Orc\\FeralSpirit\\feralspirittarget.mdl"
+        
+        trigger Banshi2Second = null
+        trigger Banshi2Third = null
     endglobals
+    
+    private function IsCount takes integer healthCheck returns boolean
+        if GetUnitTypeId(udg_DamageEventTarget) != ID_BOSS then
+            return false
+        elseif GetUnitLifePercent(udg_DamageEventTarget) > healthCheck then
+            return false
+        elseif IsUnitVisible( udg_DamageEventTarget, Player(PLAYER_NEUTRAL_AGGRESSIVE)) == false then
+            return false
+        endif
+        return true
+    endfunction
 
-    function Trig_Banshi2_Conditions takes nothing returns boolean
-        return GetUnitTypeId(udg_DamageEventTarget) == ID_BOSS and GetUnitLifePercent(udg_DamageEventTarget) <= HEALTH_CHECK and IsUnitVisible( udg_DamageEventTarget, Player(PLAYER_NEUTRAL_AGGRESSIVE))
+    private function Trig_Banshi2_First_Conditions takes nothing returns boolean
+        return IsCount(HEALTH_CHECK_FIRST)
+    endfunction
+    
+    private function Trig_Banshi2_Second_Conditions takes nothing returns boolean
+        return IsCount(HEALTH_CHECK_SECOND)
+    endfunction
+    
+    private function Trig_Banshi2_Third_Conditions takes nothing returns boolean
+        return IsCount(HEALTH_CHECK_THIRD)
     endfunction
 
     function Banshi2Cast takes nothing returns nothing
@@ -81,11 +105,14 @@ scope Banshee2 initializer init
 
     //===========================================================================
     private function init takes nothing returns nothing
-        set gg_trg_Banshi2 = CreateTrigger(  )
+        set gg_trg_Banshi2 = CreateEventTrigger( "udg_AfterDamageEvent", function Trig_Banshi2_Actions, function Trig_Banshi2_First_Conditions )
         call DisableTrigger( gg_trg_Banshi2 )
-        call TriggerRegisterVariableEvent( gg_trg_Banshi2, "udg_AfterDamageEvent", EQUAL, 1.00 )
-        call TriggerAddCondition( gg_trg_Banshi2, Condition( function Trig_Banshi2_Conditions ) )
-        call TriggerAddAction( gg_trg_Banshi2, function Trig_Banshi2_Actions )
+        
+        set Banshi2Second = CreateEventTrigger( "udg_AfterDamageEvent", function Trig_Banshi2_Actions, function Trig_Banshi2_Second_Conditions )
+        call DisableTrigger( Banshi2Second )
+    
+        set Banshi2Third = CreateEventTrigger( "udg_AfterDamageEvent", function Trig_Banshi2_Actions, function Trig_Banshi2_Third_Conditions )
+        call DisableTrigger( Banshi2Third )
     endfunction
 
 endscope

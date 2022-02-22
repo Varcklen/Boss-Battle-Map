@@ -53,7 +53,7 @@ function Trig_FallenOneQ_Actions takes nothing returns nothing
     set t = timebonus(caster, t)
     set x = GetUnitX( caster ) + 250 * Cos( 0.017 * GetUnitFacing( caster ) )
     set y = GetUnitY( caster ) + 250 * Sin( 0.017 * GetUnitFacing( caster ) )
-    set dmg = (30 + ( 10 * lvl )) * udg_SpellDamage[GetPlayerId(GetOwningPlayer( caster ) ) + 1]
+    set dmg = (30 + ( 10 * lvl )) * GetUnitSpellPower(caster)
     set heal = 0.03 + (0.02*lvl)
     
 	call DestroyEffect( AddSpecialEffect( "war3mapImported\\BlackChakraExplosion.mdx", x, y ) )

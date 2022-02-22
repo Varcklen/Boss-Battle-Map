@@ -69,7 +69,7 @@ function Trig_KeeperW_Actions takes nothing returns nothing
     endif
     set t = timebonus( caster, t )
     
-    set dmg = (100+(50 * lvl)) * udg_SpellDamage[GetPlayerId(GetOwningPlayer( caster ) ) + 1]
+    set dmg = (100+(50 * lvl)) * GetUnitSpellPower(caster)
     
     set x = GetUnitX( caster )
     set y = GetUnitY( caster )

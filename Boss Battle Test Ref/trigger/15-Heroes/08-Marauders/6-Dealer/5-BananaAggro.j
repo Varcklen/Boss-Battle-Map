@@ -8,7 +8,7 @@ function BananaAggroCast takes nothing returns nothing
 	local unit u
 
     if GetUnitState( caster, UNIT_STATE_LIFE) > 0.405 then
-        set u = randomtarget( caster, 600, "enemy", "", "", "", "" )
+        set u = randomtarget( caster, 600, TARGET_ENEMY, RANDOM_TARGET_NOT_PROVOKED, "", "", "" )
         if u != null then
             call DestroyEffect( AddSpecialEffect( "Abilities\\Spells\\NightElf\\Taunt\\TauntCaster.mdl", GetUnitX(caster),GetUnitY(caster) ) )
             call taunt( caster, u, 3 )

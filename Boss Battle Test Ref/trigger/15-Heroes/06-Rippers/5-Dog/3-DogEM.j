@@ -51,7 +51,7 @@ function Trig_DogEM_Actions takes nothing returns nothing
 	call SaveUnitHandle( udg_hash, id, StringHash( "doge" ), target )
     call SaveUnitHandle( udg_hash, id, StringHash( "doged" ), bj_lastCreatedUnit )
     call SaveReal( udg_hash, id, StringHash( "doget" ), t )
-    call SaveReal( udg_hash, id, StringHash( "doge" ), (10+(5*GetUnitAbilityLevel(caster, 'A158'))) * udg_SpellDamage[GetPlayerId(GetOwningPlayer( caster ) ) + 1] )
+    call SaveReal( udg_hash, id, StringHash( "doge" ), (10+(5*GetUnitAbilityLevel(caster, 'A158'))) * GetUnitSpellPower(caster) )
 	call TimerStart( LoadTimerHandle( udg_hash, GetHandleId( target ), StringHash( "doge" ) ), 0.99, true, function DogECast ) 
     
     if BuffLogic() then

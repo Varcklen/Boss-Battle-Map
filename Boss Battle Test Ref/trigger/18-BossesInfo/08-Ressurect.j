@@ -62,14 +62,6 @@ function Trig_Ressurect_Actions takes nothing returns nothing
         endif
         set cyclA = cyclA + 1
     endloop
-    set cyclA = 1
-    loop
-        exitwhen cyclA > 4
-        if inv(udg_hero[cyclA], 'I03V') > 0 then
-            call SetHeroLevel(udg_hero[cyclA], GetHeroLevel(udg_hero[cyclA]) + 2, false)
-        endif
-        set cyclA = cyclA + 1
-    endloop
     
     call GroupClear( g )
     call DestroyGroup( g )

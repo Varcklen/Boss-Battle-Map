@@ -82,7 +82,7 @@ function Trig_MonkW_Actions takes nothing returns nothing
         set lvl = GetUnitAbilityLevel(GetSpellAbilityUnit(), GetSpellAbilityId())
     endif
     set id = GetHandleId( caster )
-    set dmg = ( 60. + ( 40. * lvl ) ) * udg_SpellDamage[GetPlayerId(GetOwningPlayer(caster)) + 1]
+    set dmg = ( 60. + ( 40. * lvl ) ) * GetUnitSpellPower(caster)
     set heal = 12. + ( 8. * lvl )
     set h = GetUnitDefaultFlyHeight(caster)
     

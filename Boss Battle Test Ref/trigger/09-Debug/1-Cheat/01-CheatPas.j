@@ -12,7 +12,7 @@ function CheatEnable takes nothing returns nothing
     call EnableTrigger( gg_trg_Cheatmodgood )
     call EnableTrigger( gg_trg_Cheatmodbad )
     call EnableTrigger( gg_trg_CheatSwap )
-    call EnableTrigger( gg_trg_OtherPlayers )
+    call EnableTrigger( gg_trg_CreatePlayers )
     call EnableTrigger( gg_trg_Exchange )
     call EnableTrigger( gg_trg_Half )
     call EnableTrigger( gg_trg_CastRandom )

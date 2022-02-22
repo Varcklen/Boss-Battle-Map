@@ -26,7 +26,7 @@ function Trig_MephistarW_Actions takes nothing returns nothing
         call RemoveUnit( oldpet )
     endif
 
-    set sp = udg_SpellDamage[GetPlayerId(GetOwningPlayer(caster)) + 1]
+    set sp = GetUnitSpellPower(caster)
     set bj_lastCreatedUnit = CreateUnit( GetOwningPlayer( caster ), 'n053', GetUnitX( caster ) + GetRandomReal( -250, 250 ), GetUnitY( caster ) + GetRandomReal( -250, 250 ), GetRandomReal( 0, 360 ) )
 
     call SaveUnitHandle( udg_hash, GetHandleId( caster ), StringHash( "mephw" ), bj_lastCreatedUnit )

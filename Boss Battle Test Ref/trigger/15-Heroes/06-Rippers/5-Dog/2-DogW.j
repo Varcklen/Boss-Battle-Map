@@ -130,8 +130,8 @@ function Trig_DogW_Actions takes nothing returns nothing
     endif
     
     set id = GetHandleId( caster )
-    set dmg = (75 + ( 25 * lvl )) * udg_SpellDamage[GetPlayerId(GetOwningPlayer(caster)) + 1] 
-	set dmgac = (10 + ( 5 * lvl )) * udg_SpellDamage[GetPlayerId(GetOwningPlayer(caster)) + 1] 
+    set dmg = (75 + ( 25 * lvl )) * GetUnitSpellPower(caster)
+	set dmgac = (10 + ( 5 * lvl )) * GetUnitSpellPower(caster)
     set h = GetUnitDefaultFlyHeight(caster)
 
 	set x = GetUnitX( target )

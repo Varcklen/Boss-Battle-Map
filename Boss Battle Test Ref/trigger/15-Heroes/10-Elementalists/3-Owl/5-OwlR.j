@@ -55,7 +55,7 @@ function Trig_OwlR_Actions takes nothing returns nothing
         set target = GetSpellTargetUnit()
         set lvl = GetUnitAbilityLevel(GetSpellAbilityUnit(), GetSpellAbilityId())
     endif
-    set dmg = ( ( 0.5 * lvl ) + 1 ) * 100 * udg_SpellDamage[GetPlayerId(GetOwningPlayer( caster ) ) + 1]
+    set dmg = ( ( 0.5 * lvl ) + 1 ) * 100 * GetUnitSpellPower(caster)
     
     set dummy = CreateUnit( GetOwningPlayer( caster ), 'u000', GetUnitX( caster ), GetUnitY( caster ), AngleBetweenUnits( caster, target ) )
     call UnitAddAbility( dummy, 'A0L0' ) 

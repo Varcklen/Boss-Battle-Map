@@ -1,4 +1,4 @@
-library Mods requires LibDataAbilities, SpdLibLib, RandomTargetLib, Money, Multiboard, LuckLib, NullingAbility, ModsData, ChallengeData
+library Mods requires LibDataAbilities, SpellPower, RandomTargetLib, Money, Multiboard, Luck, NullingAbility, ModsData, ChallengeData
     globals
         real Event_Mode_Awake_Real = 0
     endglobals
@@ -110,7 +110,7 @@ library Mods requires LibDataAbilities, SpdLibLib, RandomTargetLib, Money, Multi
         if udg_logic[89] then
             set udg_BossHP = udg_BossHP - 0.25
             set udg_BossAT = udg_BossAT - 0.25
-            set udg_SpellDamage[0] = udg_SpellDamage[0] - 0.25
+            call SpellPower_AddBossSpellPower(-0.25)
 
             call IconFrame( "Newbie", BlzGetAbilityIcon('A0MC'), BlzGetAbilityTooltip('A0MC', 0), BlzGetAbilityExtendedTooltip('A0MC', 0) )
         endif
@@ -351,7 +351,7 @@ library Mods requires LibDataAbilities, SpdLibLib, RandomTargetLib, Money, Multi
                 call EnableTrigger( gg_trg_Flame )
             endif
             if udg_modbad[10] then
-                set udg_SpellDamage[0] = udg_SpellDamage[0] + 0.15
+                call SpellPower_AddBossSpellPower(0.15)
             endif
             if udg_modbad[11] then
             	set udg_timelimit = udg_timelimit - 75
@@ -367,7 +367,7 @@ library Mods requires LibDataAbilities, SpdLibLib, RandomTargetLib, Money, Multi
         
         if udg_HardNum > 0 then
             call EnableTrigger( gg_trg_HardModActive )
-            set udg_SpellDamage[0] = udg_SpellDamage[0] + (udg_HardNum * 0.25)
+            call SpellPower_AddBossSpellPower(udg_HardNum * 0.25)
 
             set p = udg_DB_Hardest_On[udg_HardNum]
             call IconFrame( "HardMode", BlzGetAbilityIcon(p), BlzGetAbilityTooltip(p, 0), BlzGetAbilityExtendedTooltip(p, 0) )

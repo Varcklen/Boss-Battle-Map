@@ -1,65 +1,47 @@
-library LuckLib requires Multiboard
+library Luck requires Multiboard
 
-    function luckyst takes unit u, integer luck returns nothing
-        local integer i = GetUnitUserData(u)
-        local real lk = 0
-        //local integer cyclA = 1
-        //local integer cyclAEnd
+    globals
+        private constant integer KEY_LUCK = StringHash("luck")
+        private constant integer KEY_LUCK_PERCENT = StringHash("luckp")
+    endglobals
+    
+    private function UpdateFrames takes integer heroIndex, integer newLuckPercent, integer newLuck returns nothing
+        local string luckText
         local real k
-        
-        set udg_lucky[i] = udg_lucky[i] + luck
-        /*set cyclAEnd = udg_lucky[i]
-        loop
-            exitwhen cyclA > cyclAEnd
-            set lk = lk + ( SquareRoot(cyclA ) / ( cyclA + 1 ) )
-            set cyclA = cyclA + 1
-        endloop*/
-        set lk = RMaxBJ(0, ( SquareRoot( udg_lucky[i] ) * 2 ) - 2 )
-        set udg_luckychance[i] = R2I( lk )
-
-        call MultiSetValue( udg_multi, ( udg_Multiboard_Position[i] * 3 ) - 1, 5,  I2S(udg_luckychance[i]) + udg_perc + " (" + I2S( udg_lucky[i] ) + ")")
-        if GetLocalPlayer() == Player(i-1) then
-            set luckstr[i] = I2S(udg_luckychance[i])
-            set k = StringLength(luckstr[i]) * 0.004
-            call BlzFrameSetText(lucktext, luckstr[i] + udg_perc)
+    
+        set luckText = I2S(newLuckPercent)
+        call MultiSetValue( udg_multi, ( udg_Multiboard_Position[heroIndex] * 3 ) - 1, 5,  luckText + udg_perc + " (" + I2S( newLuck ) + ")")
+        set k = StringLength(luckText) * 0.004
+        if GetLocalPlayer() == Player(heroIndex-1) then
+            call BlzFrameSetText(lucktext, luckText + udg_perc)
             call BlzFrameSetAbsPoint( lucktext, FRAMEPOINT_CENTER, 0.715 - k, 0.578 )
         endif
+    endfunction
+
+    function luckyst takes unit u, integer luck returns nothing
+        local integer index = GetUnitUserData(u)
+        local integer unitId = GetHandleId(u)
+        local integer oldLuck = LoadInteger(udg_hash, unitId, KEY_LUCK )
+        local integer newLuck 
+        local integer newLuckPercent
+        
+        if index <= 0 or index > PLAYERS_LIMIT then
+            set u = null
+            return
+        endif
+        
+        set newLuck = oldLuck + luck
+        set newLuckPercent = R2I( RMaxBJ(0, ( SquareRoot( newLuck ) * 2 ) - 2 ) )
+        call SaveInteger(udg_hash, unitId, KEY_LUCK, newLuck )
+        call SaveInteger(udg_hash, unitId, KEY_LUCK_PERCENT, newLuckPercent )
+
+        call UpdateFrames( index, newLuckPercent, newLuck )
         
         set u = null
     endfunction
-
-    function luckystpl takes integer p, integer luck returns nothing
-        local player pl = Player( p )
-        local integer i = GetPlayerId( pl ) + 1
-        local real lk = 0
-        //local integer cyclA = 1
-        //local integer cyclAEnd
-        local real k
-        
-        set udg_lucky[i] = udg_lucky[i] + luck
-        /*set cyclAEnd = udg_lucky[i]
-        loop
-            exitwhen cyclA > cyclAEnd
-            set lk = lk + ( SquareRoot( cyclA ) / ( cyclA + 1 ) )
-            set cyclA = cyclA + 1
-        endloop*/
-        set lk = RMaxBJ(0, ( SquareRoot( udg_lucky[i] ) * 2 ) - 2 )
-        set udg_luckychance[i] = R2I( lk )
-
-        call MultiSetValue( udg_multi, ( udg_Multiboard_Position[i] * 3 ) - 1, 5,  I2S(udg_luckychance[i]) + udg_perc + " (" + I2S( udg_lucky[i] ) + ")")
-        
-        set luckstr[i] = I2S(udg_luckychance[i])
-        set k = StringLength(luckstr[i]) * 0.004
-        if GetLocalPlayer() == pl then
-            call BlzFrameSetText(lucktext, luckstr[i] + udg_perc)
-            call BlzFrameSetAbsPoint( lucktext, FRAMEPOINT_CENTER, 0.715 - k, 0.578 )
-        endif
-
-        set pl = null
-    endfunction
     
     function GetUnitLuck takes unit myUnit returns real
-        local real luck = udg_luckychance[GetUnitUserData(myUnit)]
+        local real luck = LoadInteger(udg_hash, GetHandleId(myUnit), KEY_LUCK_PERCENT )
         set myUnit = null
         return luck
     endfunction

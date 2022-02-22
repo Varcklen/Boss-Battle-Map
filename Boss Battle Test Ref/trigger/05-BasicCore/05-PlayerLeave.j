@@ -80,16 +80,13 @@ function Trig_PlayerLeave_Actions takes nothing returns nothing
 
     set udg_BossHP = udg_BossHP - 0.15
     set udg_BossAT = udg_BossAT - 0.1
-    set udg_SpellDamage[0] = udg_SpellDamage[0] - 0.1
+    call SpellPower_AddBossSpellPower( -0.1 )
 
 	if udg_BossHP < 0.2  then
 		set udg_BossHP = 0.2
 	endif
 	if udg_BossAT < 0.2  then
 		set udg_BossAT = 0.2
-	endif
-	if udg_SpellDamage[0] < 0.2  then
-		set udg_SpellDamage[0] = 0.2
 	endif
 
     set udg_Heroes_Amount = -1

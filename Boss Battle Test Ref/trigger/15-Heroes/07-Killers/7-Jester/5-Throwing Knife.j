@@ -50,7 +50,7 @@ function Trig_Throwing_Knife_Actions takes nothing returns nothing
     else
         set caster = GetSpellAbilityUnit()
     endif
-    set dmg = 10 * udg_SpellDamage[GetPlayerId(GetOwningPlayer( caster ) ) + 1]
+    set dmg = 10 * GetUnitSpellPower(caster)
     
     set cyclA = 1
     loop
