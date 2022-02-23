@@ -1475,6 +1475,7 @@ function Between takes string str returns nothing
     loop
         exitwhen cyclA > 4
         if GetPlayerSlotState(Player(cyclA - 1)) == PLAYER_SLOT_STATE_PLAYING then
+            set ChoosedHero[cyclA] = udg_hero[cyclA]
             set PotionsUsedPerBattle[cyclA] = 0
     	    call GroupRemoveUnit( udg_DeadHero, udg_hero[cyclA])
             call DelBuff( udg_hero[cyclA], true )

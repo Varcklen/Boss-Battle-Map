@@ -54,8 +54,9 @@ scope KnightR initializer init
 
     //===========================================================================
     private function init takes nothing returns nothing
-        call CreateEventTrigger( "udg_AfterDamageEvent", function AfterDamageEvent, function AfterDamageEvent_Conditions )
-        call CreateEventTrigger( "udg_AfterDamageEvent", function AfterDamageEventAttack, function AfterDamageEventAttack_Conditions )
+        //Не AfterDamage, потому что по какой-то причине не даёт активировать триггеры боссов
+        call CreateEventTrigger( "Event_OnDamageChange_Real", function AfterDamageEvent, function AfterDamageEvent_Conditions )
+        call CreateEventTrigger( "Event_OnDamageChange_Real", function AfterDamageEventAttack, function AfterDamageEventAttack_Conditions )
     endfunction
 
 endscope

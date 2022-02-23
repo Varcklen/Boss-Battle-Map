@@ -94,25 +94,7 @@ function Trig_BossKill_Actions takes nothing returns nothing
     endif
     
     if dying == 'n02W' then
-        set cyclA = 1
-        loop
-            exitwhen cyclA > 4
-            if GetPlayerSlotState( Player( cyclA - 1 ) ) == PLAYER_SLOT_STATE_PLAYING then
-                call DelBuff( udg_hero[cyclA], false )
-            endif
-            set cyclA = cyclA + 1
-        endloop
-        set cyclA = 1
-        loop
-            exitwhen cyclA > 4
-            if GetPlayerSlotState( Player( cyclA - 1 ) ) == PLAYER_SLOT_STATE_PLAYING then
-                if GetUnitState( udg_hero[cyclA], UNIT_STATE_LIFE) > 0.405 then
-                    call PanCameraToTimedLocForPlayer( Player( cyclA - 1 ), GetUnitLoc( udg_hero[cyclA] ), 0 )
-                endif
-                call SetUnitOwner( udg_hero[cyclA], Player(cyclA - 1), true )
-            endif
-            set cyclA = cyclA + 1
-        endloop
+        call SoulSwap_End()
     endif
     
     set cyclA = 1

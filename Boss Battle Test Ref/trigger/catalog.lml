@@ -468,7 +468,7 @@
     47-StunLib: StunLib
     48-PolyLib: PolyLib
     49-EnvironmentLib: EnvironmentLib
-    50-HeroSwapLib: HeroSwapLib
+    50-SoulSwap: SoulSwap
     51-SpecAnimLib: SpecAnimLib
     52-StatLib: StatLib
     53-UniquesLib: UniquesLib

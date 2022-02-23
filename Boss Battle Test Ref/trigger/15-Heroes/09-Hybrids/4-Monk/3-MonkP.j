@@ -1,5 +1,5 @@
 function Trig_MonkP_Conditions takes nothing returns boolean
-    return GetUnitAbilityLevel( udg_DamageEventSource, 'A08W') > 0 and not( udg_IsDamageSpell )
+    return IsUnitHasAbility( udg_DamageEventSource, 'A08W') and udg_IsDamageSpell == false
 endfunction
 
 function Trig_MonkP_Actions takes nothing returns nothing
@@ -16,9 +16,6 @@ endfunction
 
 //===========================================================================
 function InitTrig_MonkP takes nothing returns nothing
-    set gg_trg_MonkP = CreateTrigger(  )
-    call TriggerRegisterVariableEvent( gg_trg_MonkP, "udg_DamageModifierEvent", EQUAL, 1.00 )
-    call TriggerAddCondition( gg_trg_MonkP, Condition( function Trig_MonkP_Conditions ) )
-    call TriggerAddAction( gg_trg_MonkP, function Trig_MonkP_Actions )
+    call CreateEventTrigger( "udg_AfterDamageEvent", function Trig_MonkP_Actions, function Trig_MonkP_Conditions )
 endfunction
 
