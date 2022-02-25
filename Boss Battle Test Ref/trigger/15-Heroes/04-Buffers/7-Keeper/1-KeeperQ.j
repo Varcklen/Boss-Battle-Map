@@ -80,8 +80,8 @@ function Trig_KeeperQ_Actions takes nothing returns nothing
 
     set t = timebonus( caster, t )
     set id = GetHandleId( caster )
-    set dmg = 22+(8*lvl)* udg_SpellDamage[GetPlayerId(GetOwningPlayer( caster ) ) + 1]
-    set dmgbns = 60+(20*lvl)* udg_SpellDamage[GetPlayerId(GetOwningPlayer( caster ) ) + 1]
+    set dmg = 22+(8*lvl)* GetUnitSpellPower(caster)
+    set dmgbns = 60+(20*lvl)* GetUnitSpellPower(caster)
 
     call SaveTimerHandle( udg_hash, id, StringHash( "kepq" ), CreateTimer() )
 	set id = GetHandleId( LoadTimerHandle( udg_hash, id, StringHash( "kepq" ) ) ) 

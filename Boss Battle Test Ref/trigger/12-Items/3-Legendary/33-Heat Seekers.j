@@ -54,7 +54,7 @@ function Heat_SeekersCast takes nothing returns nothing
         call FlushChildHashtable( udg_hash, id )
         call DestroyTimer( GetExpiredTimer() )
     elseif GetUnitState( u, UNIT_STATE_LIFE) > 0.405 and not( IsUnitLoaded( u ) )  then
-        set dmg = 125 * udg_SpellDamage[i]
+        set dmg = 125 * GetUnitSpellPower(u)
         call BlzStartUnitAbilityCooldown( u, 'A163', 10 )
         set cyclA = 1
         loop

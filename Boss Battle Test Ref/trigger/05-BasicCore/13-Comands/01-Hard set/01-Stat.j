@@ -10,7 +10,7 @@ function Trig_Stat_Actions takes nothing returns nothing
 	endif
     	call DisplayTimedTextToForce( GetForceOfPlayer(GetTriggerPlayer()), 10, "|cffffcc00Enemy health:|r " + I2S( R2I((udg_BossHP*100)) ) + "%." )
         call DisplayTimedTextToForce( GetForceOfPlayer(GetTriggerPlayer()), 10, "|cffffcc00Enemy attack power:|r " + I2S( R2I((udg_BossAT*100)) ) + "%." )
-        call DisplayTimedTextToForce( GetForceOfPlayer(GetTriggerPlayer()), 10, "|cffffcc00Enemy spell power:|r " + I2S( R2I((udg_SpellDamage[0]*100)) ) + "%." )
+        call DisplayTimedTextToForce( GetForceOfPlayer(GetTriggerPlayer()), 10, "|cffffcc00Enemy spell power:|r " + I2S( R2I((SpellPower_GetBossSpellPower()*100)) ) + "%." )
         call DisplayTimedTextToForce( GetForceOfPlayer(GetTriggerPlayer()), 10, "|cffffcc00Health and mana healing:|r " + I2S( R2I((udg_BossHeal[k]*100)) ) + "%." )
         call DisplayTimedTextToForce( GetForceOfPlayer(GetTriggerPlayer()), 10, "|cffffcc00Physical damage:|r " + I2S( R2I(((udg_BossDamagePhysical[k]+1)*100)) ) + "%." )
         call DisplayTimedTextToForce( GetForceOfPlayer(GetTriggerPlayer()), 10, "|cffffcc00Magical damage:|r " + I2S( R2I(((udg_BossDamageMagical[k]+1)*100)) ) + "%." )

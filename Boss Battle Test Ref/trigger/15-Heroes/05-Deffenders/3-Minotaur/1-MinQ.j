@@ -78,7 +78,7 @@ function Trig_MinQ_Actions takes nothing returns nothing
         set y = GetUnitY( target )
         
         set id = GetHandleId( caster )
-        set dmg = (70 + ( 30 * lvl )) * udg_SpellDamage[GetPlayerId(GetOwningPlayer(caster)) + 1] 
+        set dmg = (70 + ( 30 * lvl )) * GetUnitSpellPower(caster)
         
         if GetUnitAbilityLevel( caster, 'A0DV' ) == 0 then
             call pausest( caster, 1 )

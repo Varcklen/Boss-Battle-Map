@@ -13,7 +13,7 @@ library Lightning
     public function CreateLightning takes string lightningType, real xStart, real yStart, real zStart, real xEnd, real yEnd, real zEnd, real lifeTime returns lightning
         local integer id
     
-        set TempLightning = AddLightningEx("AFOD", true, xStart, yStart, zStart, xEnd, yEnd, zEnd )
+        set TempLightning = AddLightningEx(lightningType, true, xStart, yStart, zStart, xEnd, yEnd, zEnd )
                 
         set id = GetHandleId( TempLightning )
         call SaveTimerHandle( udg_hash, id, StringHash( "light" ), CreateTimer() )

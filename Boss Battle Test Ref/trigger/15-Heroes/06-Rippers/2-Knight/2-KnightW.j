@@ -6,6 +6,7 @@ function KnightWMotion takes nothing returns nothing
     local integer id = GetHandleId( GetExpiredTimer() )
     local unit target = LoadUnitHandle( udg_hash, id, StringHash( "kngw" ) )
     local unit dummy = LoadUnitHandle( udg_hash, id, StringHash( "kngw1" ) )
+    local unit caster = LoadUnitHandle( udg_hash, id, StringHash( "kngwc" ) )
     local real dmg = LoadReal( udg_hash, id, StringHash( "kngw" ) )
     local real x = GetUnitX( target )
     local real y = GetUnitY( target )
@@ -20,7 +21,7 @@ function KnightWMotion takes nothing returns nothing
         call GetUnitLoc( target )
     else
         call DestroyEffect( AddSpecialEffect( "Abilities\\Spells\\Undead\\DeathCoil\\DeathCoilSpecialArt.mdl", GetUnitX( target ), GetUnitY( target ) ) )
-        call UnitDamageTarget( dummy, target, dmg, true, false, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_MAGIC, WEAPON_TYPE_WHOKNOWS )
+        call UnitTakeDamage( caster, target, dmg, DAMAGE_TYPE_MAGIC)
         call RemoveUnit( dummy )
         call PauseTimer( GetExpiredTimer() )
         call DestroyTimer( GetExpiredTimer() )
@@ -29,6 +30,7 @@ function KnightWMotion takes nothing returns nothing
     
     set dummy = null
     set target = null
+    set caster = null
 endfunction 
 
 function Trig_KnightW_Actions takes nothing returns nothing
@@ -53,7 +55,7 @@ function Trig_KnightW_Actions takes nothing returns nothing
         set caster = GetSpellAbilityUnit()
         set lvl = GetUnitAbilityLevel(GetSpellAbilityUnit(), GetSpellAbilityId())
     endif
-    set dmg = (15 + ( 15 * lvl )) * udg_SpellDamage[GetPlayerId(GetOwningPlayer( caster ) ) + 1]
+    set dmg = (15 + ( 15 * lvl )) * GetUnitSpellPower(caster)
     
     call GroupEnumUnitsInRange( g, GetUnitX( caster ), GetUnitY( caster ), 900, null )
     loop
@@ -69,11 +71,11 @@ function Trig_KnightW_Actions takes nothing returns nothing
             set id = GetHandleId( LoadTimerHandle( udg_hash, id, StringHash( "kngw" ) ) )
             call SaveUnitHandle( udg_hash, id, StringHash( "kngw" ), u )
             call SaveUnitHandle( udg_hash, id, StringHash( "kngw1" ), bj_lastCreatedUnit )
+            call SaveUnitHandle( udg_hash, id, StringHash( "kngwc" ), caster )
             call SaveReal( udg_hash, id, StringHash( "kngw" ), dmg )
             call TimerStart( LoadTimerHandle( udg_hash, GetHandleId( bj_lastCreatedUnit ), StringHash( "kngw" ) ), 0.04, true, function KnightWMotion )
         endif
         call GroupRemoveUnit(g,u)
-        set u = FirstOfGroup(g)
     endloop
     
     call GroupClear( g )

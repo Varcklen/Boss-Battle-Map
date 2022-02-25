@@ -492,6 +492,29 @@ function RandomLogic takes nothing returns boolean
     return l
 endfunction
 
+function GetBossWordPostion takes integer position returns string
+    if position == 1 then
+        return "B"
+    elseif position == 2 then
+        return "G"
+    elseif position == 3 then
+        return "J"
+    elseif position == 4 then
+        return "L"
+    elseif position == 5 then
+        return "S"
+    elseif position == 6 then
+        return "Z"
+    elseif position == 7 then
+        return "T"
+    elseif position == 8 then
+        return "U"
+    elseif position == 9 then
+        return "C"
+    endif
+    return "D"
+endfunction
+
 // Невидимость
 function RiverEyeCast takes nothing returns nothing
     local integer id = GetHandleId( GetExpiredTimer() )
@@ -654,6 +677,10 @@ function RemoveItems takes integer i returns nothing
     endloop
     //Не раньше квеста
     set udg_ItemGetActive[i] = false
+endfunction
+
+function GetBossWord takes integer number returns string
+    return GetPlayerName( Player( number ) )
 endfunction
 
 // Cлучайный бонус
@@ -836,6 +863,14 @@ function AdventurerQMotion takes nothing returns nothing
     set dummy = null
     set target = null
 endfunction 
+
+function GetBossWordSymbol takes string word, boolean isLeft returns string
+    if isLeft then
+        return SubString(word, 0, 1)
+    else
+        return SubString(word, 6, 7)
+    endif
+endfunction
 
 //Огр
 function OgreQEnd takes nothing returns nothing
@@ -1165,22 +1200,12 @@ function RandomHero takes player p returns nothing
         endif
         loop
             exitwhen cyclA > 1
-            if udg_HeroChooseMode == 1 then
-                set rand = GetRandomInt(1, udg_DB_BasicHeroesNum)
-            	if CountUnitsInGroup(GetUnitsOfTypeIdAll(udg_DB_BasicHeroes[rand])) == 0 then
-                	set udg_logic[8] = true
-                	call CreateUnit( p, udg_DB_BasicHeroes[rand], GetRectCenterX(gg_rct_HeroesTp), GetRectCenterY(gg_rct_HeroesTp), 270 )
-            	else
-                	set cyclA = cyclA - 1
-            	endif
+            set rand = GetRandomInt(1, udg_Database_InfoNumberHeroes)
+            if CountUnitsInGroup(GetUnitsOfTypeIdAll(udg_Database_Hero[rand])) == 0 and udg_UnitHeroLogic[rand] == false and IsBanned[rand] == false then
+                set udg_logic[8] = true
+                call CreateUnit( p, udg_Database_Hero[rand], GetRectCenterX(gg_rct_HeroesTp), GetRectCenterY(gg_rct_HeroesTp), 270 )
             else
-            	set rand = GetRandomInt(1, udg_Database_InfoNumberHeroes)
-            	if CountUnitsInGroup(GetUnitsOfTypeIdAll(udg_Database_Hero[rand])) == 0 and not(udg_UnitHeroLogic[rand]) then
-                	set udg_logic[8] = true
-                	call CreateUnit( p, udg_Database_Hero[rand], GetRectCenterX(gg_rct_HeroesTp), GetRectCenterY(gg_rct_HeroesTp), 270 )
-            	else
-                	set cyclA = cyclA - 1
-            	endif
+                set cyclA = cyclA - 1
             endif
             set cyclA = cyclA + 1
         endloop
@@ -1450,6 +1475,7 @@ function Between takes string str returns nothing
     loop
         exitwhen cyclA > 4
         if GetPlayerSlotState(Player(cyclA - 1)) == PLAYER_SLOT_STATE_PLAYING then
+            set ChoosedHero[cyclA] = udg_hero[cyclA]
             set PotionsUsedPerBattle[cyclA] = 0
     	    call GroupRemoveUnit( udg_DeadHero, udg_hero[cyclA])
             call DelBuff( udg_hero[cyclA], true )
@@ -2068,7 +2094,7 @@ function FightStart takes nothing returns nothing
     	call DisplayTimedTextToForce( GetPlayersAll(), 5.00, "Enemies have become stronger +5" + udg_perc + "!" )
     	set udg_BossHP = udg_BossHP + 0.05
     	set udg_BossAT = udg_BossAT + 0.05
-    	set udg_SpellDamage[0] = udg_SpellDamage[0] + 0.05
+        call SpellPower_AddBossSpellPower(0.05)
         call TimerStart( udg_timer[4], 180, true, null )
     endif
     set udg_KillUnit = udg_KillInBattle

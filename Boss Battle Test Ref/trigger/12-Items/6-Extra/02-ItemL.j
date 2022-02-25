@@ -92,13 +92,13 @@ function ItemLLogic takes nothing returns boolean
     if GetItemTypeId(GetManipulatedItem()) == 'I07W' then
         return true
     endif
-    if GetItemTypeId(GetManipulatedItem()) == 'I0BT' then
-        return true
-    endif
     if GetItemTypeId(GetManipulatedItem()) == 'I01K' then
         return true
     endif
     if GetItemTypeId(GetManipulatedItem()) == 'I02K' then
+        return true
+    endif
+    if GetItemTypeId(GetManipulatedItem()) == 'I0FI'  then
         return true
     endif
     return false
@@ -183,8 +183,7 @@ function Trig_ItemL_Actions takes nothing returns nothing
         call spdst( u, 30 )
     elseif GetItemTypeId(GetManipulatedItem()) == 'I02R'  then
         call spdst( u, -35 )
-    elseif GetItemTypeId(GetManipulatedItem()) == 'I0BT' and LoadBoolean( udg_hash, GetHandleId( u ), StringHash( "strz" ) ) then
-        call RessurectionPoints( -4, true )
+    
         call SaveBoolean( udg_hash, GetHandleId( GetManipulatingUnit() ), StringHash( "strz" ), false )
     elseif GetItemTypeId(GetManipulatedItem()) == 'I05P'  then
         call luckyst( u, -15 )
@@ -206,6 +205,8 @@ function Trig_ItemL_Actions takes nothing returns nothing
         call SpellUniqueUnit(u, -150)
     elseif GetItemTypeId(GetManipulatedItem()) == 'I02K'  then
         call SpellUniqueUnit(u, -50)
+    elseif GetItemTypeId(GetManipulatedItem()) == 'I0FI'  then
+        call SpellUniqueUnit(u, -100)
     endif
     
     set u = null

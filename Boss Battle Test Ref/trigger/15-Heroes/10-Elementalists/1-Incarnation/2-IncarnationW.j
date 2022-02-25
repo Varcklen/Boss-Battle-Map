@@ -68,7 +68,7 @@ function Trig_IncarnationW_Actions takes nothing returns nothing
         set lvl = GetUnitAbilityLevel(GetSpellAbilityUnit(), GetSpellAbilityId())
     endif
 
-    set dmg = (( 10 + ( 5 * lvl ) ) * udg_SpellDamage[GetPlayerId(GetOwningPlayer(caster)) + 1]) / 4
+    set dmg = (( 10 + ( 5 * lvl ) ) * GetUnitSpellPower(caster)) / 4
 
     set bj_lastCreatedUnit = CreateUnit( GetOwningPlayer( caster ), 'u000', GetUnitX(caster), GetUnitY(caster) + 150, bj_UNIT_FACING )
     call UnitAddAbility( bj_lastCreatedUnit, 'A01R' )

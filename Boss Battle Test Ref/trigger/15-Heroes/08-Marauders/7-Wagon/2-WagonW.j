@@ -93,7 +93,7 @@ function Trig_WagonW_Actions takes nothing returns nothing
     set t = timebonus(caster, t)
     
     call DestroyEffect( AddSpecialEffect( "Objects\\Spawnmodels\\Human\\HCancelDeath\\HCancelDeath.mdl", GetUnitX( caster ), GetUnitY( caster ) ) )
-    set dmg = (8+(4 * lvl)) * udg_SpellDamage[GetPlayerId(GetOwningPlayer( caster ) ) + 1]
+    set dmg = (8+(4 * lvl)) * GetUnitSpellPower(caster)
     call UnitAddAbility( caster, 'A08T' )
     
     set id = GetHandleId( caster )

@@ -26,6 +26,7 @@ function Voidlord1Cast takes nothing returns nothing
         if i > 1 then
             set target = GroupPickRandomUnit(udg_otryad)
             if target != null then
+                call DelBuff( target, false )
                 call PauseUnit( target, true )
                 call ShowUnitHide( target )
                 set bj_lastCreatedUnit = CreateUnit( Player(PLAYER_NEUTRAL_AGGRESSIVE), 'h008', GetUnitX( target ), GetUnitY( target ), 270 )

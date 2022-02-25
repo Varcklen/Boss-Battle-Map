@@ -24,7 +24,7 @@ function Trig_Blademaster4_Actions takes nothing returns nothing
     endloop
     
     if i > 0 then
-          call SetUnitState( udg_DamageEventTarget, UNIT_STATE_LIFE, GetUnitState( udg_DamageEventTarget, UNIT_STATE_LIFE ) + (i*udg_SpellDamage[0]) )
+          call SetUnitState( udg_DamageEventTarget, UNIT_STATE_LIFE, GetUnitState( udg_DamageEventTarget, UNIT_STATE_LIFE ) + (i*SpellPower_GetBossSpellPower()) )
     endif
     
     call GroupClear( g )

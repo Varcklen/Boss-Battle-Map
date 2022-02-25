@@ -5,18 +5,17 @@ endfunction
 function Metal_MageQPasCast takes nothing returns nothing
     local integer id = GetHandleId( GetExpiredTimer( ) )
     local unit caster = LoadUnitHandle( udg_hash, id, StringHash( "mtmqp" ) )
-    local integer pl = LoadInteger( udg_hash, id, StringHash( "mtmqpl" ) )
     local real arm = LoadReal( udg_hash, id, StringHash( "mtmqp" ) )
     local real spd = (BlzGetUnitArmor(caster) - arm) * LoadInteger( udg_hash, id, StringHash( "mtmqp" ) )
     local real spdnow = LoadReal( udg_hash, GetHandleId( caster ), StringHash( "mtmqpn" ) )
     
 	if GetUnitAbilityLevel(caster, 'A0KM') == 0 then
-        call spdstpl( pl, -spdnow )
+        call spdst( caster, -spdnow )
         call SaveReal( udg_hash, GetHandleId( caster ), StringHash( "mtmqpn" ), 0 )
         call FlushChildHashtable( udg_hash, id )
         call DestroyTimer( GetExpiredTimer() )
     elseif arm != BlzGetUnitArmor(caster) then
-        call spdstpl( pl, spd )
+        call spdst( caster, spd )
 		call SaveReal( udg_hash, GetHandleId( caster ), StringHash( "mtmqpn" ), spdnow + spd ) 
         call SaveReal( udg_hash, id, StringHash( "mtmqp" ), BlzGetUnitArmor(caster) ) 
     endif
@@ -37,7 +36,6 @@ function Trig_Metal_MageQPas_Actions takes nothing returns nothing
     endif
     set id = GetHandleId( LoadTimerHandle( udg_hash, id, StringHash( "mtmqp" ) ) )
     call SaveUnitHandle ( udg_hash, id, StringHash( "mtmqp" ), GetLearningUnit() )
-    call SaveInteger( udg_hash, id, StringHash( "mtmqpl" ), GetPlayerId( GetOwningPlayer( GetLearningUnit() ) ) )
     call SaveInteger( udg_hash, id, StringHash( "mtmqp" ), GetUnitAbilityLevel(GetLearningUnit(), 'A0KM') + 1 ) 
     call SaveReal( udg_hash, id, StringHash( "mtmqp" ), 0 )
     call TimerStart( LoadTimerHandle( udg_hash, GetHandleId( GetLearningUnit() ), StringHash( "mtmqp" ) ), 1, true, function Metal_MageQPasCast )

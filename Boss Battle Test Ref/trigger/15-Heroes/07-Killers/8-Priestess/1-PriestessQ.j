@@ -23,7 +23,7 @@ function Trig_PriestessQ_Actions takes nothing returns nothing
         set lvl = GetUnitAbilityLevel(GetSpellAbilityUnit(), GetSpellAbilityId() )
     endif
 
-    set sp = udg_SpellDamage[GetPlayerId(GetOwningPlayer(caster)) + 1]
+    set sp = GetUnitSpellPower(caster)
     set x = GetUnitX( caster ) + 200 * Cos( 0.017 * GetUnitFacing( caster ) )
     set y = GetUnitY( caster ) + 200 * Sin( 0.017 * GetUnitFacing( caster ) )
     

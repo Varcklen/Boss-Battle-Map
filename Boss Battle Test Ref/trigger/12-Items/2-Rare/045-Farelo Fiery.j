@@ -4,10 +4,10 @@ endfunction
 
 function Trig_Farelo_Fiery_Actions takes nothing returns nothing
     local integer i = GetPlayerId(GetOwningPlayer(GetSpellAbilityUnit())) + 1
-    local integer ab = udg_DB_Hero_FirstSpell[udg_HeroNum[i]]
-    local integer ac = udg_Database_EarringSpell[udg_HeroNum[i]]
-    local integer ad = udg_DB_Hero_Passive[udg_HeroNum[i]]
-    local integer ae = udg_DB_Hero_Fourth[udg_HeroNum[i]]
+    local integer ab = Database_Hero_Abilities[1][udg_HeroNum[i]]
+    local integer ac = Database_Hero_Abilities[2][udg_HeroNum[i]]
+    local integer ad = Database_Hero_Abilities[3][udg_HeroNum[i]]
+    local integer ae = Database_Hero_Abilities[4][udg_HeroNum[i]]
 
     if BlzGetUnitAbilityCooldownRemaining(GetSpellAbilityUnit(),ab) > 1 then
         call BlzStartUnitAbilityCooldown( GetSpellAbilityUnit(), ab, RMaxBJ( 1.1,BlzGetUnitAbilityCooldownRemaining(GetSpellAbilityUnit(), ab) - 0.75) )

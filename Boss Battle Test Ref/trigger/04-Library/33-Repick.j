@@ -1,4 +1,4 @@
-library Repick requires SpdLibLib, NullingAbility
+library Repick requires SpellPower, NullingAbility
 
     globals
         real Event_HeroRepick_Real = 0
@@ -205,8 +205,10 @@ library Repick requires SpdLibLib, NullingAbility
         call BlzFrameSetVisible( uniqframe[i],false)
         call BlzFrameSetVisible( specframe[i],false)
         call DelChooseIcon( udg_hero[i] )
+        call FlushChildHashtable( udg_hash, GetHandleId(udg_hero[i]) )
         call RemoveUnit( udg_hero[i] )
         set udg_hero[i] = null
+        set ChoosedHero[i] = null
 
         if GetLocalPlayer() == p then
             call BlzFrameSetVisible( AspectVision, false )

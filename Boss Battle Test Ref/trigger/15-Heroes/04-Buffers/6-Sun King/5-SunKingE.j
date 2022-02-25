@@ -31,20 +31,19 @@ scope SunKingE initializer init
 
     function Trig_SunKingE_Actions takes nothing returns nothing
         local unit hero = GetLearningUnit()
-        local integer i = IMaxBJ(0, GetUnitUserData(hero) - 1)
         local integer lvl = GetUnitAbilityLevel(hero, GetLearnedSkill())
         
         call SaveReal(udg_hash, GetHandleId(hero), StringHash( "snke" ), COUNT_FIRST_LEVEL + (COUNT_LEVEL_BONUS*lvl) )
         if lvl == 1 then
-            call spdstpl( i, BONUS_FIRST_LEVEL )
+            call spdst( hero, BONUS_FIRST_LEVEL )
         endif
-        call spdstpl( i, BONUS_LEVEL_BONUS )
+        call spdst( hero, BONUS_LEVEL_BONUS )
         
         if Moon_Counter > 0 then
             if lvl == 1 then
-                call spdstpl( i, BONUS_FIRST_LEVEL )
+                call spdst( hero, BONUS_FIRST_LEVEL )
             endif
-            call spdstpl( i, BONUS_LEVEL_BONUS )
+            call spdst( hero, BONUS_LEVEL_BONUS )
         endif
         
         set hero = null
@@ -56,13 +55,12 @@ scope SunKingE initializer init
 
     private function NullingAbility takes nothing returns nothing
         local unit hero = udg_Event_NullingAbility_Unit
-        local integer i = IMaxBJ(0, GetUnitUserData(hero) - 1)
         local integer lvl = GetUnitAbilityLevel( hero, ID_ABILITY)
         local integer bonus = BONUS_FIRST_LEVEL+(BONUS_LEVEL_BONUS*lvl)
         
-        call spdstpl( i, -bonus )
+        call spdst( hero, -bonus )
         if Moon_Counter > 0 then
-            call spdstpl( i, -bonus )
+            call spdst( hero, -bonus )
         endif
 
         set hero = null
@@ -74,14 +72,13 @@ scope SunKingE initializer init
     
     private function MoonChange takes nothing returns nothing
         local unit hero = Event_MoonChange_Unit
-        local integer i = IMaxBJ(0, GetUnitUserData(hero) - 1)
         local integer lvl = GetUnitAbilityLevel( hero, ID_ABILITY)
         local integer bonus = BONUS_FIRST_LEVEL+(BONUS_LEVEL_BONUS*lvl)
         
         if Event_MoonChange_isNight then
-            call spdstpl( i, bonus )
+            call spdst( hero, bonus )
         else
-            call spdstpl( i, -bonus )
+            call spdst( hero, -bonus )
         endif
 
         set hero = null

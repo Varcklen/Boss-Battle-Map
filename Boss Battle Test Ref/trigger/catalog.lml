@@ -192,203 +192,198 @@
     191-DB_Hero_Hard: DB_Hero_Hard
     192-DB_Hero_Avtor: DB_Hero_Avtor
     193-DB_HeroFrame_Ability: DB_HeroFrame_Ability
-    194-DB_Hero_Fourth: DB_Hero_Fourth
-    195-Visible: Visible
-    196-CameraChoose: CameraChoose
-    197-DB_HeroFrame_Debuffer_Icon: DB_HeroFrame_Debuffer_Icon
-    198-DB_HeroFrame_Healer_Icon: DB_HeroFrame_Healer_Icon
-    199-DB_HeroFrame_Elemental_Icon: DB_HeroFrame_Elemental_Icon
-    200-DB_HeroFrame_Killer_Icon: DB_HeroFrame_Killer_Icon
-    201-DB_HeroFrame_Maraduer_Icon: DB_HeroFrame_Maraduer_Icon
-    202-HeroSpawn: HeroSpawn
-    203-DB_HeroFrame_Debuffer: DB_HeroFrame_Debuffer
-    204-DB_HeroFrame_Healer: DB_HeroFrame_Healer
-    205-DB_HeroFrame_Killer: DB_HeroFrame_Killer
-    206-DB_HeroFrame_Maraduer: DB_HeroFrame_Maraduer
-    207-DB_HeroFrame_Elemental: DB_HeroFrame_Elemental
-    208-HeroChoose: HeroChoose
-    209-DB_HeroFrame_Hybrid_Icon: DB_HeroFrame_Hybrid_Icon
-    210-DB_HeroFrame_Hybrid: DB_HeroFrame_Hybrid
-    211-DB_HeroFrame_Ripper_Icon: DB_HeroFrame_Ripper_Icon
-    212-DB_HeroFrame_Ripper: DB_HeroFrame_Ripper
-    213-DB_HeroFrame_Deffender_Icon: DB_HeroFrame_Deffender_Icon
-    214-DB_HeroFrame_Deffender: DB_HeroFrame_Deffender
-    215-DB_HeroFrame_Buffer_Icon: DB_HeroFrame_Buffer_Icon
-    216-DB_HeroFrame_Buffer: DB_HeroFrame_Buffer
-    217-DB_HeroFrame_Number: DB_HeroFrame_Number
-    218-DB_HeroesFrame_Name: DB_HeroesFrame_Name
-    219-DB_HeroesFrame_Tooltip: DB_HeroesFrame_Tooltip
-    220-DB_HeroesFrame_Icon: DB_HeroesFrame_Icon
-    221-Info_DamageMagic: Info_DamageMagic
-    222-Info_DamagePhysical: Info_DamagePhysical
-    223-Info_Time: Info_Time
-    224-DB_InfoFrame_Tooltip: DB_InfoFrame_Tooltip
-    225-DB_InfoFrame_Name: DB_InfoFrame_Name
-    226-DB_InfoFrame_Number: DB_InfoFrame_Number
-    227-DB_Item_Activate: DB_Item_Activate
-    228-DB_BonusFrame_Tooltip: DB_BonusFrame_Tooltip
-    229-DB_BonusFrame_Name: DB_BonusFrame_Name
-    230-DB_BonusFrame_Icon: DB_BonusFrame_Icon
-    231-DB_Seller_Number: DB_Seller_Number
-    232-DB_Seller_Text: DB_Seller_Text
-    233-DB_Seller_Icon: DB_Seller_Icon
-    234-DB_Seller: DB_Seller
-    235-BossAT: BossAT
-    236-BossHP: BossHP
-    237-itemrarity: itemrarity
-    238-i: i
-    239-dmgboss: dmgboss
-    240-DB_Item_Destroyed: DB_Item_Destroyed
-    241-BD_Item_Sheep: BD_Item_Sheep
-    242-DB_Item_Symvol: DB_Item_Symvol
-    243-timerdialog: timerdialog
-    244-ModName: ModName
-    245-Hardest: Hardest
-    246-Version: Version
-    247-timelimit: timelimit
-    248-GoldAllTime: GoldAllTime
-    249-SaveLoadSlots: SaveLoadSlots
-    250-SaveLoadMaxEncryptionSets: SaveLoadMaxEncryptionSets
-    251-SaveLoadMaxCharacters: SaveLoadMaxCharacters
-    252-SaveLoadHasLoaded: SaveLoadHasLoaded
-    253-SaveLoadEncryptionSet: SaveLoadEncryptionSet
-    254-SaveLoadCharacterSet: SaveLoadCharacterSet
-    255-SaveLoadCharacterNumbers: SaveLoadCharacterNumbers
-    256-SaveLoadBlockSize: SaveLoadBlockSize
-    257-DamagedAllTime: DamagedAllTime
-    258-DamagedFight: DamagedFight
-    259-DB_Hero_SpecAbAkt: DB_Hero_SpecAbAkt
-    260-Varcklen: Varcklen
-    261-Pokeball: Pokeball
-    262-Data: Data
-    263-DB_BS_String: DB_BS_String
-    264-DB_GS_String: DB_GS_String
-    265-Time: Time
-    266-Bosses: Bosses
-    267-fightmod: fightmod
-    268-Boss_Rect: Boss_Rect
-    269-DB_Trigger_Spec: DB_Trigger_Spec
-    270-modbad: modbad
-    271-modgood: modgood
-    272-DB_BadMod: DB_BadMod
-    273-DB_Hero_FirstSpell: DB_Hero_FirstSpell
-    274-DB_Hero_SecretBook: DB_Hero_SecretBook
-    275-DB_Hero_Passive: DB_Hero_Passive
-    276-DB_Trigger_Three: DB_Trigger_Three
-    277-DB_Trigger_Two: DB_Trigger_Two
-    278-DB_Trigger_One: DB_Trigger_One
-    279-DB_Trigger_Pot: DB_Trigger_Pot
-    280-string: string
-    281-BuffLogic: BuffLogic
-    282-Target: Target
-    283-Level: Level
-    284-RandomLogic: RandomLogic
-    285-Return: Return
-    286-DB_Hero_SpecAbPlus: DB_Hero_SpecAbPlus
-    287-DB_Hero_SpecAb: DB_Hero_SpecAb
-    288-DB_Hero_Icon: DB_Hero_Icon
-    289-SpellDamagePotion: SpellDamagePotion
-    290-Database_Feerverk: Database_Feerverk
-    291-UnitHeroLogic: UnitHeroLogic
-    292-Boss_Random: Boss_Random
-    293-Boss_Number: Boss_Number
-    294-SpellDamageSpec: SpellDamageSpec
-    295-Database_Item_Potion: Database_Item_Potion
-    296-HeroStatus: HeroStatus
-    297-Database_HeroStatus: Database_HeroStatus
-    298-HardModBonus: HardModBonus
-    299-cristal: cristal
-    300-hash: hash
-    301-multi: multi
-    302-Player_Color: Player_Color
-    303-BlackMark: BlackMark
-    304-DPSMax: DPSMax
-    305-FSItems: FSItems
-    306-heroinfo: heroinfo
-    307-itemrandomFS: itemrandomFS
-    308-DB_GoodMod: DB_GoodMod
-    309-worldmod: worldmod
-    310-Kick_String: Kick_String
-    311-NecroWool: NecroWool
-    312-YoricSkull: YoricSkull
-    313-Set_Ring_Number: Set_Ring_Number
-    314-Ability_Uniq: Ability_Uniq
-    315-Bufer_Unit: Bufer_Unit
-    316-CastLogic: CastLogic
-    317-minion_repick: minion_repick
-    318-Bufer_Zone: Bufer_Zone
-    319-UnitHero: UnitHero
-    320-Multiboard_Sets: Multiboard_Sets
-    321-Color_Player_Blue: Color_Player_Blue
-    322-Color_Player_Green: Color_Player_Green
-    323-Color_Player_Red: Color_Player_Red
-    324-ManaFight: ManaFight
-    325-ManaAllTime: ManaAllTime
-    326-HealFight: HealFight
-    327-HealAllTime: HealAllTime
-    328-DPS: DPS
-    329-DamageFight: DamageFight
-    330-DamageAllTime: DamageAllTime
-    331-LastDmgValue: LastDmgValue
-    332-LastDmgPrevType: LastDmgPrevType
-    333-IsDamageSpell: IsDamageSpell
-    334-DamageTypeCriticalStrike: DamageTypeCriticalStrike
-    335-DamageTypeBlocked: DamageTypeBlocked
-    336-DamageModifierEvent: DamageModifierEvent
-    337-DamageEventType: DamageEventType
-    338-DamageEventTarget: DamageEventTarget
-    339-DamageEventSource: DamageEventSource
-    340-DamageEventAmount: DamageEventAmount
-    341-DamageEvent: DamageEvent
-    342-AfterDamageEvent: AfterDamageEvent
-    343-Set_Weapon_TextNumber: Set_Weapon_TextNumber
-    344-Set_Weapon_Number: Set_Weapon_Number
-    345-Set_Weapon_Logic: Set_Weapon_Logic
-    346-Database_RandomUnit: Database_RandomUnit
-    347-Database_Score_Unit: Database_Score_Unit
-    348-Multiboard_Position: Multiboard_Position
-    349-SpellDamage: SpellDamage
-    350-combatlogic: combatlogic
-    351-Info_Effect: Info_Effect
-    352-Database_IA_Unit: Database_IA_Unit
-    353-Arena_LvL: Arena_LvL
-    354-Database_InfoNumberHeroes: Database_InfoNumberHeroes
-    355-Database_EarringSpell: Database_EarringSpell
-    356-Database_Hero: Database_Hero
-    357-real: real
-    358-point: point
-    359-panel: panel
-    360-logic: logic
-    361-number: number
-    362-timer: timer
-    363-unit: unit
-    364-Database_NumberItems: Database_NumberItems
-    365-luckychance: luckychance
-    366-lucky: lucky
-    367-Set_Alchemy_Number: Set_Alchemy_Number
-    368-fightlogic: fightlogic
-    369-Heroes_Deaths: Heroes_Deaths
-    370-cheater: cheater
-    371-auctionlogic: auctionlogic
-    372-item: item
-    373-Set_Nature_Number: Set_Nature_Number
-    374-Heroes_Ressurect_Battle: Heroes_Ressurect_Battle
-    375-Heroes_Ressurect: Heroes_Ressurect
-    376-artifzone: artifzone
-    377-auctionartif: auctionartif
-    378-Caster: Caster
-    379-Set_Moon_Number: Set_Moon_Number
-    380-Set_Rune_Number: Set_Rune_Number
-    381-Set_Blood_Number: Set_Blood_Number
-    382-Multiboard_Time: Multiboard_Time
-    383-otryad: otryad
-    384-Heroes_Chanse: Heroes_Chanse
-    385-Boss_LvL: Boss_LvL
-    386-Player_Readiness: Player_Readiness
-    387-Heroes_Amount: Heroes_Amount
-    388-hero: hero
-    389-itemcentr: itemcentr
-    390-peacesubspellspell: peacesubspellspell
+    194-Visible: Visible
+    195-CameraChoose: CameraChoose
+    196-DB_HeroFrame_Debuffer_Icon: DB_HeroFrame_Debuffer_Icon
+    197-DB_HeroFrame_Healer_Icon: DB_HeroFrame_Healer_Icon
+    198-DB_HeroFrame_Elemental_Icon: DB_HeroFrame_Elemental_Icon
+    199-DB_HeroFrame_Killer_Icon: DB_HeroFrame_Killer_Icon
+    200-DB_HeroFrame_Maraduer_Icon: DB_HeroFrame_Maraduer_Icon
+    201-HeroSpawn: HeroSpawn
+    202-DB_HeroFrame_Debuffer: DB_HeroFrame_Debuffer
+    203-DB_HeroFrame_Healer: DB_HeroFrame_Healer
+    204-DB_HeroFrame_Killer: DB_HeroFrame_Killer
+    205-DB_HeroFrame_Maraduer: DB_HeroFrame_Maraduer
+    206-DB_HeroFrame_Elemental: DB_HeroFrame_Elemental
+    207-HeroChoose: HeroChoose
+    208-DB_HeroFrame_Hybrid_Icon: DB_HeroFrame_Hybrid_Icon
+    209-DB_HeroFrame_Hybrid: DB_HeroFrame_Hybrid
+    210-DB_HeroFrame_Ripper_Icon: DB_HeroFrame_Ripper_Icon
+    211-DB_HeroFrame_Ripper: DB_HeroFrame_Ripper
+    212-DB_HeroFrame_Deffender_Icon: DB_HeroFrame_Deffender_Icon
+    213-DB_HeroFrame_Deffender: DB_HeroFrame_Deffender
+    214-DB_HeroFrame_Buffer_Icon: DB_HeroFrame_Buffer_Icon
+    215-DB_HeroFrame_Buffer: DB_HeroFrame_Buffer
+    216-DB_HeroFrame_Number: DB_HeroFrame_Number
+    217-DB_HeroesFrame_Name: DB_HeroesFrame_Name
+    218-DB_HeroesFrame_Tooltip: DB_HeroesFrame_Tooltip
+    219-DB_HeroesFrame_Icon: DB_HeroesFrame_Icon
+    220-Info_DamageMagic: Info_DamageMagic
+    221-Info_DamagePhysical: Info_DamagePhysical
+    222-Info_Time: Info_Time
+    223-DB_InfoFrame_Tooltip: DB_InfoFrame_Tooltip
+    224-DB_InfoFrame_Name: DB_InfoFrame_Name
+    225-DB_InfoFrame_Number: DB_InfoFrame_Number
+    226-DB_Item_Activate: DB_Item_Activate
+    227-DB_BonusFrame_Tooltip: DB_BonusFrame_Tooltip
+    228-DB_BonusFrame_Name: DB_BonusFrame_Name
+    229-DB_BonusFrame_Icon: DB_BonusFrame_Icon
+    230-DB_Seller_Number: DB_Seller_Number
+    231-DB_Seller_Text: DB_Seller_Text
+    232-DB_Seller_Icon: DB_Seller_Icon
+    233-DB_Seller: DB_Seller
+    234-BossAT: BossAT
+    235-BossHP: BossHP
+    236-itemrarity: itemrarity
+    237-i: i
+    238-dmgboss: dmgboss
+    239-DB_Item_Destroyed: DB_Item_Destroyed
+    240-BD_Item_Sheep: BD_Item_Sheep
+    241-DB_Item_Symvol: DB_Item_Symvol
+    242-timerdialog: timerdialog
+    243-ModName: ModName
+    244-Hardest: Hardest
+    245-Version: Version
+    246-timelimit: timelimit
+    247-GoldAllTime: GoldAllTime
+    248-SaveLoadSlots: SaveLoadSlots
+    249-SaveLoadMaxEncryptionSets: SaveLoadMaxEncryptionSets
+    250-SaveLoadMaxCharacters: SaveLoadMaxCharacters
+    251-SaveLoadHasLoaded: SaveLoadHasLoaded
+    252-SaveLoadEncryptionSet: SaveLoadEncryptionSet
+    253-SaveLoadCharacterSet: SaveLoadCharacterSet
+    254-SaveLoadCharacterNumbers: SaveLoadCharacterNumbers
+    255-SaveLoadBlockSize: SaveLoadBlockSize
+    256-DamagedAllTime: DamagedAllTime
+    257-DamagedFight: DamagedFight
+    258-DB_Hero_SpecAbAkt: DB_Hero_SpecAbAkt
+    259-Varcklen: Varcklen
+    260-Pokeball: Pokeball
+    261-Data: Data
+    262-DB_BS_String: DB_BS_String
+    263-DB_GS_String: DB_GS_String
+    264-Time: Time
+    265-Bosses: Bosses
+    266-fightmod: fightmod
+    267-Boss_Rect: Boss_Rect
+    268-DB_Trigger_Spec: DB_Trigger_Spec
+    269-modbad: modbad
+    270-modgood: modgood
+    271-DB_BadMod: DB_BadMod
+    272-DB_Hero_SecretBook: DB_Hero_SecretBook
+    273-DB_Trigger_Three: DB_Trigger_Three
+    274-DB_Trigger_Two: DB_Trigger_Two
+    275-DB_Trigger_One: DB_Trigger_One
+    276-DB_Trigger_Pot: DB_Trigger_Pot
+    277-string: string
+    278-BuffLogic: BuffLogic
+    279-Target: Target
+    280-Level: Level
+    281-RandomLogic: RandomLogic
+    282-Return: Return
+    283-DB_Hero_SpecAbPlus: DB_Hero_SpecAbPlus
+    284-DB_Hero_SpecAb: DB_Hero_SpecAb
+    285-DB_Hero_Icon: DB_Hero_Icon
+    286-SpellDamagePotion: SpellDamagePotion
+    287-Database_Feerverk: Database_Feerverk
+    288-UnitHeroLogic: UnitHeroLogic
+    289-Boss_Random: Boss_Random
+    290-Boss_Number: Boss_Number
+    291-SpellDamageSpec: SpellDamageSpec
+    292-Database_Item_Potion: Database_Item_Potion
+    293-HeroStatus: HeroStatus
+    294-Database_HeroStatus: Database_HeroStatus
+    295-HardModBonus: HardModBonus
+    296-cristal: cristal
+    297-hash: hash
+    298-multi: multi
+    299-Player_Color: Player_Color
+    300-BlackMark: BlackMark
+    301-DPSMax: DPSMax
+    302-FSItems: FSItems
+    303-heroinfo: heroinfo
+    304-itemrandomFS: itemrandomFS
+    305-DB_GoodMod: DB_GoodMod
+    306-worldmod: worldmod
+    307-Kick_String: Kick_String
+    308-NecroWool: NecroWool
+    309-YoricSkull: YoricSkull
+    310-Set_Ring_Number: Set_Ring_Number
+    311-Ability_Uniq: Ability_Uniq
+    312-Bufer_Unit: Bufer_Unit
+    313-CastLogic: CastLogic
+    314-minion_repick: minion_repick
+    315-Bufer_Zone: Bufer_Zone
+    316-UnitHero: UnitHero
+    317-Multiboard_Sets: Multiboard_Sets
+    318-Color_Player_Blue: Color_Player_Blue
+    319-Color_Player_Green: Color_Player_Green
+    320-Color_Player_Red: Color_Player_Red
+    321-ManaFight: ManaFight
+    322-ManaAllTime: ManaAllTime
+    323-HealFight: HealFight
+    324-HealAllTime: HealAllTime
+    325-DPS: DPS
+    326-DamageFight: DamageFight
+    327-DamageAllTime: DamageAllTime
+    328-LastDmgValue: LastDmgValue
+    329-LastDmgPrevType: LastDmgPrevType
+    330-IsDamageSpell: IsDamageSpell
+    331-DamageTypeCriticalStrike: DamageTypeCriticalStrike
+    332-DamageTypeBlocked: DamageTypeBlocked
+    333-DamageModifierEvent: DamageModifierEvent
+    334-DamageEventType: DamageEventType
+    335-DamageEventTarget: DamageEventTarget
+    336-DamageEventSource: DamageEventSource
+    337-DamageEventAmount: DamageEventAmount
+    338-DamageEvent: DamageEvent
+    339-AfterDamageEvent: AfterDamageEvent
+    340-Set_Weapon_TextNumber: Set_Weapon_TextNumber
+    341-Set_Weapon_Number: Set_Weapon_Number
+    342-Set_Weapon_Logic: Set_Weapon_Logic
+    343-Database_RandomUnit: Database_RandomUnit
+    344-Database_Score_Unit: Database_Score_Unit
+    345-Multiboard_Position: Multiboard_Position
+    346-combatlogic: combatlogic
+    347-Info_Effect: Info_Effect
+    348-Database_IA_Unit: Database_IA_Unit
+    349-Arena_LvL: Arena_LvL
+    350-Database_InfoNumberHeroes: Database_InfoNumberHeroes
+    351-Database_Hero: Database_Hero
+    352-real: real
+    353-point: point
+    354-panel: panel
+    355-logic: logic
+    356-number: number
+    357-timer: timer
+    358-unit: unit
+    359-Database_NumberItems: Database_NumberItems
+    360-luckychance: luckychance
+    361-lucky: lucky
+    362-Set_Alchemy_Number: Set_Alchemy_Number
+    363-fightlogic: fightlogic
+    364-Heroes_Deaths: Heroes_Deaths
+    365-cheater: cheater
+    366-auctionlogic: auctionlogic
+    367-item: item
+    368-Set_Nature_Number: Set_Nature_Number
+    369-Heroes_Ressurect_Battle: Heroes_Ressurect_Battle
+    370-Heroes_Ressurect: Heroes_Ressurect
+    371-artifzone: artifzone
+    372-auctionartif: auctionartif
+    373-Caster: Caster
+    374-Set_Moon_Number: Set_Moon_Number
+    375-Set_Rune_Number: Set_Rune_Number
+    376-Set_Blood_Number: Set_Blood_Number
+    377-Multiboard_Time: Multiboard_Time
+    378-otryad: otryad
+    379-Heroes_Chanse: Heroes_Chanse
+    380-Boss_LvL: Boss_LvL
+    381-Player_Readiness: Player_Readiness
+    382-Heroes_Amount: Heroes_Amount
+    383-hero: hero
+    384-itemcentr: itemcentr
+    385-peacesubspellspell: peacesubspellspell
 02-Core: Core
     Comment
     '01-info logic1': 'info logic1'
@@ -422,9 +417,9 @@
 04-Library: Library
     01-List: List
     02-Text: Text
-    03-Spd: Spd
-    '04-Enum TargetRelation': 'Enum TargetRelation'
+    '03-Enum TargetRelation': 'Enum TargetRelation'
         Disab
+    04-Spd: Spd
     05-Luck: Luck
     06-Money: Money
     07-Luckylogic: Luckylogic
@@ -470,28 +465,27 @@
     44-RessurectLib: RessurectLib
     45-CastRandomAbility: CastRandomAbility
     46-Lightning: Lightning
-    47-ChainHealLib: ChainHealLib
-    48-StunLib: StunLib
-    49-PolyLib: PolyLib
-    50-EnvironmentLib: EnvironmentLib
-    51-HeroSwapLib: HeroSwapLib
-    52-SpecAnimLib: SpecAnimLib
-    53-StatLib: StatLib
-    54-UniquesLib: UniquesLib
-    55-SpecialLib: SpecialLib
-    56-BattleRessurectLib: BattleRessurectLib
-    57-TimePlayLib: TimePlayLib
-    58-CorruptedLib: CorruptedLib
-    59-BuffsLib: BuffsLib
-    60-BuffsAllLib: BuffsAllLib
-    61-StartTimer: StartTimer
+    47-StunLib: StunLib
+    48-PolyLib: PolyLib
+    49-EnvironmentLib: EnvironmentLib
+    50-SoulSwap: SoulSwap
+    51-SpecAnimLib: SpecAnimLib
+    52-StatLib: StatLib
+    53-UniquesLib: UniquesLib
+    54-SpecialLib: SpecialLib
+    55-BattleRessurectLib: BattleRessurectLib
+    56-TimePlayLib: TimePlayLib
+    57-CorruptedLib: CorruptedLib
+    58-BuffsLib: BuffsLib
+    59-BuffsAllLib: BuffsAllLib
+    60-StartTimer: StartTimer
         Run
-    62-Wave: Wave
-    63-Other: Other
-    64------------------------: -----------------------
+    61-Wave: Wave
+    62-Other: Other
+    63------------------------: -----------------------
         Comment
-    65-SmartUnitDamageLib: SmartUnitDamageLib
-    66-IsSetItemLib: IsSetItemLib
+    64-SmartUnitDamageLib: SmartUnitDamageLib
+    65-IsSetItemLib: IsSetItemLib
 05-BasicCore: BasicCore
     01-Database: Database
         1-LibDataItems: LibDataItems
@@ -637,7 +631,7 @@
         1-Auction1: Auction1
         2-Auction2: Auction2
         3-Auction3: Auction3
-        4-Auction4: Auction4
+        '4-Exchange Return': 'Exchange Return'
     2-Magazin: Magazin
         1-ReSub: ReSub
         2-BuyItem: BuyItem
@@ -771,7 +765,7 @@
             Closed
         16-CheatSwap: CheatSwap
             Closed
-        17-OtherPlayers: OtherPlayers
+        17-CreatePlayers: CreatePlayers
             Closed
         18-Exchange: Exchange
             Closed
@@ -832,118 +826,118 @@
         '025-Battle halberd': 'Battle halberd'
         '026-Babbling pebble': 'Babbling pebble'
         '027-Bo Staff': 'Bo Staff'
-        028----------------------------: ---------------------------
+        '028-Bloody Mary': 'Bloody Mary'
+        029----------------------------: ---------------------------
             Comment
-        029-Cytine: Cytine
-        030-Crusher: Crusher
-        031-Cake: Cake
-        '032-Chameleon Tarot': 'Chameleon Tarot'
-        033----------------------------: ---------------------------
+        030-Cytine: Cytine
+        031-Crusher: Crusher
+        032-Cake: Cake
+        '033-Chameleon Tarot': 'Chameleon Tarot'
+        034----------------------------: ---------------------------
             Comment
-        034-Death: Death
-        '035-Dream leaf': 'Dream leaf'
-        '036-Dice of Chaos': 'Dice of Chaos'
-        037----------------------------: ---------------------------
+        035-Death: Death
+        '036-Dream leaf': 'Dream leaf'
+        '037-Dice of Chaos': 'Dice of Chaos'
+        038----------------------------: ---------------------------
             Comment
-        038-Fairing: Fairing
-        '039-Fish Soup': 'Fish Soup'
-        '040-Filosofy Potion': 'Filosofy Potion'
-        041-Fool: Fool
-        042-FutureBall: FutureBall
-        '043-Fire show': 'Fire show'
-        '044-Fake Coin': 'Fake Coin'
-        045----------------------------: ---------------------------
+        039-Fairing: Fairing
+        '040-Fish Soup': 'Fish Soup'
+        '041-Filosofy Potion': 'Filosofy Potion'
+        042-Fool: Fool
+        043-FutureBall: FutureBall
+        '044-Fire show': 'Fire show'
+        '045-Fake Coin': 'Fake Coin'
+        046----------------------------: ---------------------------
             Comment
-        '046-Eclipse Cloak': 'Eclipse Cloak'
-        047-Energizer: Energizer
-        '048-Exp Drain': 'Exp Drain'
-        '049-Explosive Moss': 'Explosive Moss'
-        '050-Elixir of Longevity': 'Elixir of Longevity'
-        051-Echosis: Echosis
-        '052-Exile skull': 'Exile skull'
-        '053-Enchanted Thorium': 'Enchanted Thorium'
-        054----------------------------: ---------------------------
+        '047-Eclipse Cloak': 'Eclipse Cloak'
+        048-Energizer: Energizer
+        '049-Exp Drain': 'Exp Drain'
+        '050-Explosive Moss': 'Explosive Moss'
+        '051-Elixir of Longevity': 'Elixir of Longevity'
+        052-Echosis: Echosis
+        '053-Exile skull': 'Exile skull'
+        '054-Enchanted Thorium': 'Enchanted Thorium'
+        055----------------------------: ---------------------------
             Comment
-        055-GoldBug: GoldBug
-        056-Goldfinch: Goldfinch
-        '057-Gold Pearl': 'Gold Pearl'
-        '058-Grave Urn': 'Grave Urn'
-        '059-Gift Moon': 'Gift Moon'
-        '060-Gift Weapon': 'Gift Weapon'
-        '061-Gift Ring': 'Gift Ring'
-        '062-Gift Rune': 'Gift Rune'
-        '063-Gift Blood': 'Gift Blood'
-        '064-Gift Nature': 'Gift Nature'
-        '065-Gift Alchemy': 'Gift Alchemy'
-        '066-Gift Cristall': 'Gift Cristall'
-        '067-Gift Mech': 'Gift Mech'
-        '068-Gift Bag': 'Gift Bag'
-        '069-Goat Dragon Claw': 'Goat Dragon Claw'
-        070-Gift: Gift
-        071----------------------------: ---------------------------
+        056-GoldBug: GoldBug
+        057-Goldfinch: Goldfinch
+        '058-Gold Pearl': 'Gold Pearl'
+        '059-Grave Urn': 'Grave Urn'
+        '060-Gift Moon': 'Gift Moon'
+        '061-Gift Weapon': 'Gift Weapon'
+        '062-Gift Ring': 'Gift Ring'
+        '063-Gift Rune': 'Gift Rune'
+        '064-Gift Blood': 'Gift Blood'
+        '065-Gift Nature': 'Gift Nature'
+        '066-Gift Alchemy': 'Gift Alchemy'
+        '067-Gift Cristall': 'Gift Cristall'
+        '068-Gift Mech': 'Gift Mech'
+        '069-Gift Bag': 'Gift Bag'
+        '070-Goat Dragon Claw': 'Goat Dragon Claw'
+        071-Gift: Gift
+        072----------------------------: ---------------------------
             Comment
-        '072-Jet Boots': 'Jet Boots'
-        073-JuleItem: JuleItem
-        '074-Jade snake': 'Jade snake'
-        075-Jester: Jester
-        076----------------------------: ---------------------------
+        '073-Jet Boots': 'Jet Boots'
+        074-JuleItem: JuleItem
+        '075-Jade snake': 'Jade snake'
+        076-Jester: Jester
+        077----------------------------: ---------------------------
             Comment
-        077-InfiniteSub: InfiniteSub
-        078-Iromforge: Iromforge
-        '079-Library Card': 'Library Card'
-        '080-Love potion': 'Love potion'
-        081-KillDagger: KillDagger
-        082----------------------------: ---------------------------
+        078-InfiniteSub: InfiniteSub
+        079-Iromforge: Iromforge
+        '080-Library Card': 'Library Card'
+        '081-Love potion': 'Love potion'
+        082-KillDagger: KillDagger
+        083----------------------------: ---------------------------
             Comment
-        '083-Mana Berries': 'Mana Berries'
-        084-ManaGive: ManaGive
-        '085-Mint Tea': 'Mint Tea'
-        086-Moonlight: Moonlight
-        '087-Mark of Calm': 'Mark of Calm'
-        088-Maiev: Maiev
-        089-Mooncloth: Mooncloth
-        '090-Magic Thread': 'Magic Thread'
-        091-Moth: Moth
-        092-Moon: Moon
-        093-Moonglade: Moonglade
-        '094-Mechs for dummies': 'Mechs for dummies'
-        '095-Mechanical Relay': 'Mechanical Relay'
-        '096-Mystery box': 'Mystery box'
-        '097-Magic box': 'Magic box'
-        '098-Moon Well': 'Moon Well'
-        '099-Medallion of Garithos': 'Medallion of Garithos'
-        100----------------------------: ---------------------------
+        '084-Mana Berries': 'Mana Berries'
+        085-ManaGive: ManaGive
+        '086-Mint Tea': 'Mint Tea'
+        087-Moonlight: Moonlight
+        '088-Mark of Calm': 'Mark of Calm'
+        089-Maiev: Maiev
+        090-Mooncloth: Mooncloth
+        '091-Magic Thread': 'Magic Thread'
+        092-Moth: Moth
+        093-Moon: Moon
+        094-Moonglade: Moonglade
+        '095-Mechs for dummies': 'Mechs for dummies'
+        '096-Mechanical Relay': 'Mechanical Relay'
+        '097-Mystery box': 'Mystery box'
+        '098-Magic box': 'Magic box'
+        '099-Moon Well': 'Moon Well'
+        '100-Medallion of Garithos': 'Medallion of Garithos'
+        101----------------------------: ---------------------------
             Comment
-        '101-Necro Wool': 'Necro Wool'
-        '102-Necro Wool Death': 'Necro Wool Death'
-        '103-North Lotus': 'North Lotus'
-        104-Norepinephrine: Norepinephrine
-        105-NecroSubUpgrade: NecroSubUpgrade
-        106-NecroSubUse: NecroSubUse
-        '107-Newborn Phoenix': 'Newborn Phoenix'
-        108----------------------------: ---------------------------
+        '102-Necro Wool': 'Necro Wool'
+        '103-Necro Wool Death': 'Necro Wool Death'
+        '104-North Lotus': 'North Lotus'
+        105-Norepinephrine: Norepinephrine
+        106-NecroSubUpgrade: NecroSubUpgrade
+        107-NecroSubUse: NecroSubUse
+        '108-Newborn Phoenix': 'Newborn Phoenix'
+        109----------------------------: ---------------------------
             Comment
-        '109-Ogre Staff': 'Ogre Staff'
-        110-Oblivion: Oblivion
-        111----------------------------: ---------------------------
+        '110-Ogre Staff': 'Ogre Staff'
+        111-Oblivion: Oblivion
+        112----------------------------: ---------------------------
             Comment
-        '112-Holy Water': 'Holy Water'
-        113----------------------------: ---------------------------
+        '113-Holy Water': 'Holy Water'
+        114----------------------------: ---------------------------
             Comment
-        114-Parcel: Parcel
-        115-PearlSub: PearlSub
-        '116-Piu Mashine': 'Piu Mashine'
-        117-PoliSub: PoliSub
-        '118-Purple Liar': 'Purple Liar'
-        119-Poison: Poison
-        '120-Pig in a Poke': 'Pig in a Poke'
-        121-Pinata: Pinata
-        122-PinataD: PinataD
-        '123-Perfectly Cut Lens': 'Perfectly Cut Lens'
-        '124-Perfectly Cut LensCast': 'Perfectly Cut LensCast'
-        125----------------------------: ---------------------------
+        115-Parcel: Parcel
+        116-PearlSub: PearlSub
+        '117-Piu Mashine': 'Piu Mashine'
+        118-PoliSub: PoliSub
+        '119-Purple Liar': 'Purple Liar'
+        120-Poison: Poison
+        '121-Pig in a Poke': 'Pig in a Poke'
+        122-Pinata: Pinata
+        123-PinataD: PinataD
+        '124-Perfectly Cut Lens': 'Perfectly Cut Lens'
+        '125-Perfectly Cut LensCast': 'Perfectly Cut LensCast'
+        126----------------------------: ---------------------------
             Comment
-        126-RuneSton: RuneSton
         127-Repeller: Repeller
         '128-Rune Isli': 'Rune Isli'
         129-Rarity: Rarity
@@ -951,51 +945,52 @@
         '131-Ring of Light': 'Ring of Light'
         '132-Ring of Life': 'Ring of Life'
         '133-Runestone Info': 'Runestone Info'
-        134----------------------------: ---------------------------
+        '134-Runestone Ston': 'Runestone Ston'
+        135----------------------------: ---------------------------
             Comment
-        '135-Shadow Generator': 'Shadow Generator'
-        136-SilverLeaf: SilverLeaf
-        137-Sapphire: Sapphire
-        '138-Saronite Bomb': 'Saronite Bomb'
-        139-SaveGhost: SaveGhost
-        140-Scimitar: Scimitar
-        '141-Sheep Bell': 'Sheep Bell'
-        '142-Sheep Collar': 'Sheep Collar'
-        143-StarSmoke: StarSmoke
-        '144-Spiked Shield': 'Spiked Shield'
-        145-SurpriseSheep: SurpriseSheep
-        146-SheepTaro: SheepTaro
-        '147-Scarlet worm': 'Scarlet worm'
-        '148-Sparkle Wand': 'Sparkle Wand'
-        '149-Sheep Elixir': 'Sheep Elixir'
-        '150-Sheep Staff': 'Sheep Staff'
-        '151-Serrated blade': 'Serrated blade'
-        '152-Sheep bite': 'Sheep bite'
-        153-SpellbraikerShield: SpellbraikerShield
-        '154-Salad of Wonders': 'Salad of Wonders'
-        155-Sundial: Sundial
-        156----------------------------: ---------------------------
+        '136-Shadow Generator': 'Shadow Generator'
+        137-SilverLeaf: SilverLeaf
+        138-Sapphire: Sapphire
+        '139-Saronite Bomb': 'Saronite Bomb'
+        140-SaveGhost: SaveGhost
+        141-Scimitar: Scimitar
+        '142-Sheep Bell': 'Sheep Bell'
+        '143-Sheep Collar': 'Sheep Collar'
+        144-StarSmoke: StarSmoke
+        '145-Spiked Shield': 'Spiked Shield'
+        146-SurpriseSheep: SurpriseSheep
+        147-SheepTaro: SheepTaro
+        '148-Scarlet worm': 'Scarlet worm'
+        '149-Sparkle Wand': 'Sparkle Wand'
+        '150-Sheep Elixir': 'Sheep Elixir'
+        '151-Sheep Staff': 'Sheep Staff'
+        '152-Serrated blade': 'Serrated blade'
+        '153-Sheep bite': 'Sheep bite'
+        154-SpellbraikerShield: SpellbraikerShield
+        '155-Salad of Wonders': 'Salad of Wonders'
+        156-Sundial: Sundial
+        157----------------------------: ---------------------------
             Comment
-        '157-Totem of Energy': 'Totem of Energy'
-        '158-Totem of Exchange': 'Totem of Exchange'
-        159-TotemEnergy: TotemEnergy
-        160-Time: Time
-        161-Transformotron: Transformotron
-        '162-Thiefs Mittens': 'Thiefs Mittens'
-        '163-Twin heart': 'Twin heart'
-        '164-Teddy Bear': 'Teddy Bear'
-        '165-Taro Strength': 'Taro Strength'
-        '166-Tarot Plague': 'Tarot Plague'
-        '167-Twilight Phoenix': 'Twilight Phoenix'
-        '168-Thiefs Vest': 'Thiefs Vest'
-        169----------------------------: ---------------------------
+        '158-Totem of Energy': 'Totem of Energy'
+        '159-Totem of Exchange': 'Totem of Exchange'
+        160-TotemEnergy: TotemEnergy
+        161-Time: Time
+        162-Transformotron: Transformotron
+        '163-Thiefs Mittens': 'Thiefs Mittens'
+        '164-Twin heart': 'Twin heart'
+        '165-Teddy Bear': 'Teddy Bear'
+        '166-Taro Strength': 'Taro Strength'
+        '167-Tarot Plague': 'Tarot Plague'
+        '168-Twilight Phoenix': 'Twilight Phoenix'
+        '169-Thiefs Vest': 'Thiefs Vest'
+        170----------------------------: ---------------------------
             Comment
-        '170-Vine Trap': 'Vine Trap'
-        171-WindTaro: WindTaro
-        172-World: World
-        173-Wtii: Wtii
-        '174-Wool Armor': 'Wool Armor'
-        175-Undercity: Undercity
+        '171-Vine Trap': 'Vine Trap'
+        172-WindTaro: WindTaro
+        173-World: World
+        174-Wtii: Wtii
+        '175-Wool Armor': 'Wool Armor'
+        176-Undercity: Undercity
     2-Rare: Rare
         001-Ashbringer: Ashbringer
         002----------------------------: ---------------------------
@@ -1059,108 +1054,114 @@
         '053-Insatiable flameCast': 'Insatiable flameCast'
         054-Hermit: Hermit
         055-KillAltar: KillAltar
-        '056-Living mana': 'Living mana'
-        '057-Liquid Sulfur': 'Liquid Sulfur'
-        058-Ladybug: Ladybug
-        059-Jagot: Jagot
-        060-JagotCast: JagotCast
+        056----------------------------: ---------------------------
+            Comment
+        '057-Living mana': 'Living mana'
+        '058-Liquid Sulfur': 'Liquid Sulfur'
+        059-Ladybug: Ladybug
+        '060-Learning Curve': 'Learning Curve'
         061----------------------------: ---------------------------
             Comment
-        '062-Mana Crystal': 'Mana Crystal'
-        063-MajyteLib: MajyteLib
-        064-Majyte: Majyte
-        '065-Muta Mushroom': 'Muta Mushroom'
-        '066-Magic Totem': 'Magic Totem'
-        067-Manashtorm: Manashtorm
-        '068-Mimic potion': 'Mimic potion'
-        '069-Miracle Wall': 'Miracle Wall'
-        '070-Magician Boots': 'Magician Boots'
-        '071-Magic Amplifier': 'Magic Amplifier'
-        '072-Magic Dispenser': 'Magic Dispenser'
-        '073-Magic Absorber': 'Magic Absorber'
-        '074-Midas Ring': 'Midas Ring'
-        '075-Magic Fern': 'Magic Fern'
-        076----------------------------: ---------------------------
+        062-Jagot: Jagot
+        063-JagotCast: JagotCast
+        064----------------------------: ---------------------------
             Comment
-        '077-Nehalenas Eye': 'Nehalenas Eye'
-        078----------------------------: ---------------------------
+        '065-Mana Crystal': 'Mana Crystal'
+        066-MajyteLib: MajyteLib
+        067-Majyte: Majyte
+        '068-Muta Mushroom': 'Muta Mushroom'
+        '069-Magic Totem': 'Magic Totem'
+        070-Manashtorm: Manashtorm
+        '071-Mimic potion': 'Mimic potion'
+        '072-Miracle Wall': 'Miracle Wall'
+        '073-Magician Boots': 'Magician Boots'
+        '074-Magic Amplifier': 'Magic Amplifier'
+        '075-Magic Dispenser': 'Magic Dispenser'
+        '076-Magic Absorber': 'Magic Absorber'
+        '077-Midas Ring': 'Midas Ring'
+        '078-Magic Fern': 'Magic Fern'
+        079----------------------------: ---------------------------
             Comment
-        079-OldHealer: OldHealer
-        080-OrbArcane: OrbArcane
-        081-OrbFire: OrbFire
-        082-OrbNature: OrbNature
-        083-OrbLight: OrbLight
-        '084-Orb of Shadow': 'Orb of Shadow'
-        085----------------------------: ---------------------------
+        '080-Nehalenas Eye': 'Nehalenas Eye'
+        081----------------------------: ---------------------------
             Comment
-        086-PadavanBook: PadavanBook
-        087-Prism: Prism
-        088-PrismRed: PrismRed
-        089-PrismBlue: PrismBlue
-        090-PrismGreen: PrismGreen
-        091-PrismPurple: PrismPurple
-        092-PotionStuff: PotionStuff
-        '093-Plush doll': 'Plush doll'
-        094-Pentagram: Pentagram
-        '095-Prophet Mask': 'Prophet Mask'
-        '096-Pact of Fire': 'Pact of Fire'
-        '097-Plaiful Spirit': 'Plaiful Spirit'
-        '098-Pendant of Knowledge': 'Pendant of Knowledge'
-        '099-Pocket Galaxy': 'Pocket Galaxy'
-        100----------------------------: ---------------------------
+        082-OldHealer: OldHealer
+        083-OrbArcane: OrbArcane
+        084-OrbFire: OrbFire
+        085-OrbNature: OrbNature
+        086-OrbLight: OrbLight
+        '087-Orb of Shadow': 'Orb of Shadow'
+        088----------------------------: ---------------------------
             Comment
-        '101-Raging Fire': 'Raging Fire'
-        102-RikGreed: RikGreed
-        '103-Ring of Addiction': 'Ring of Addiction'
-        104-Refresher: Refresher
-        '105-Ring of Power': 'Ring of Power'
-        '106-Runestone Brib': 'Runestone Brib'
-        '107-Runestone Glas': 'Runestone Glas'
-        '108-Runestone Zirik': 'Runestone Zirik'
-        109----------------------------: ---------------------------
+        089-PadavanBook: PadavanBook
+        090-Prism: Prism
+        091-PrismRed: PrismRed
+        092-PrismBlue: PrismBlue
+        093-PrismGreen: PrismGreen
+        094-PrismPurple: PrismPurple
+        095-PotionStuff: PotionStuff
+        '096-Plush doll': 'Plush doll'
+        097-Pentagram: Pentagram
+        '098-Prophet Mask': 'Prophet Mask'
+        '099-Pact of Fire': 'Pact of Fire'
+        '100-Plaiful Spirit': 'Plaiful Spirit'
+        '101-Pendant of Knowledge': 'Pendant of Knowledge'
+        '102-Pocket Galaxy': 'Pocket Galaxy'
+        103----------------------------: ---------------------------
             Comment
-        110-Superbot: Superbot
-        111-Star: Star
-        112-Sun: Sun
-        '113-Sea Pearl': 'Sea Pearl'
-        '114-Shadow gem': 'Shadow gem'
-        115-Spy: Spy
-        '116-Sheep Mantle': 'Sheep Mantle'
-        '117-Sphere Abyss': 'Sphere Abyss'
-        '118-Sheep tear': 'Sheep tear'
-        '119-Stim Injector': 'Stim Injector'
-        '120-Steam generator': 'Steam generator'
-        '121-Strange Tail': 'Strange Tail'
-        '122-Soul Crystal': 'Soul Crystal'
-        '123-Staff of Phenomenal Power': 'Staff of Phenomenal Power'
-        124----------------------------: ---------------------------
+        '104-Raging Fire': 'Raging Fire'
+        105-RikGreed: RikGreed
+        '106-Ring of Addiction': 'Ring of Addiction'
+        107-Refresher: Refresher
+        '108-Ring of Power': 'Ring of Power'
+        '109-Runestone Brib': 'Runestone Brib'
+        '110-Runestone Glas': 'Runestone Glas'
+        '111-Runestone Zirik': 'Runestone Zirik'
+        112----------------------------: ---------------------------
             Comment
-        '125-Tree Shield': 'Tree Shield'
-        '126-Totem of Strenght': 'Totem of Strenght'
-        '127-Totem Power': 'Totem Power'
-        '128-Tarot Dopelganger': 'Tarot Dopelganger'
-        '129-Treasure Map': 'Treasure Map'
-        '130-Tear of Asha': 'Tear of Asha'
-        '131-Twilight Meat': 'Twilight Meat'
-        132-Tassardar: Tassardar
-        133----------------------------: ---------------------------
+        113-Superbot: Superbot
+        114-Star: Star
+        115-Sun: Sun
+        '116-Sea Pearl': 'Sea Pearl'
+        '117-Shadow gem': 'Shadow gem'
+        118-Spy: Spy
+        '119-Sheep Mantle': 'Sheep Mantle'
+        '120-Sphere Abyss': 'Sphere Abyss'
+        '121-Sheep tear': 'Sheep tear'
+        '122-Stim Injector': 'Stim Injector'
+        '123-Steam generator': 'Steam generator'
+        '124-Strange Tail': 'Strange Tail'
+        '125-Soul Crystal': 'Soul Crystal'
+        '126-Staff of Phenomenal Power': 'Staff of Phenomenal Power'
+        '127-Steel Rose': 'Steel Rose'
+        128----------------------------: ---------------------------
             Comment
-        134-UtiPuti: UtiPuti
-        135-Ventusit: Ventusit
-        136-VampBlood: VampBlood
-        '137-VIP card': 'VIP card'
-        '138-Volatile Water': 'Volatile Water'
-        '139-Warrior Belt': 'Warrior Belt'
-        '140-World Clock': 'World Clock'
-        '141-Wheel of Fortune': 'Wheel of Fortune'
-        142----------------------------: ---------------------------
+        '129-Tree Shield': 'Tree Shield'
+        '130-Totem of Strenght': 'Totem of Strenght'
+        '131-Totem Power': 'Totem Power'
+        '132-Tarot Dopelganger': 'Tarot Dopelganger'
+        '133-Treasure Map': 'Treasure Map'
+        '134-Tear of Asha': 'Tear of Asha'
+        '135-Twilight Meat': 'Twilight Meat'
+        136-Tassardar: Tassardar
+        137----------------------------: ---------------------------
             Comment
-        '143-Yoric Skull': 'Yoric Skull'
-        '144-Yoric Skull Death': 'Yoric Skull Death'
-        '145-Yah tear': 'Yah tear'
+        138-UtiPuti: UtiPuti
+        139-Ventusit: Ventusit
+        140-VampBlood: VampBlood
+        '141-VIP card': 'VIP card'
+        '142-Volatile Water': 'Volatile Water'
+        '143-Warrior Belt': 'Warrior Belt'
+        '144-World Clock': 'World Clock'
+        '145-Wheel of Fortune': 'Wheel of Fortune'
         146----------------------------: ---------------------------
             Comment
-        147-Zuma: Zuma
+        '147-Yoric Skull': 'Yoric Skull'
+        '148-Yoric Skull Death': 'Yoric Skull Death'
+        '149-Yah tear': 'Yah tear'
+        150----------------------------: ---------------------------
+            Comment
+        151-Zuma: Zuma
     3-Legendary: Legendary
         01-AlonePotion: AlonePotion
         '02-Blood of the Ancient': 'Blood of the Ancient'
@@ -1265,14 +1266,14 @@
             21-OrbHeresy: OrbHeresy
             '22-OrbDesecrated Land': 'OrbDesecrated Land'
             '23-Orb Cenarius': 'Orb Cenarius'
+            24-OrbRollingPlains: OrbRollingPlains
         78----------------------------: ---------------------------
-        79----------------------------: ---------------------------
             Comment
-        80-GL: GL
-        81-GiveLvL: GiveLvL
-        '82-Granite Science': 'Granite Science'
-        '83-Statuette Svirel': 'Statuette Svirel'
-        84-Papirus: Papirus
+        79-GL: GL
+        80-GiveLvL: GiveLvL
+        '81-Granite Science': 'Granite Science'
+        '82-Statuette Svirel': 'Statuette Svirel'
+        83-Papirus: Papirus
     4-Potions: Potions
         01-EarthPot: EarthPot
         02-WaterPot: WaterPot
@@ -1316,28 +1317,29 @@
         03-MechL: MechL
         04-BloodG: BloodG
         05-BloodL: BloodL
-        06-RuneG: RuneG
-        07-RuneL: RuneL
-        08-MoonG: MoonG
-        09-MoonL: MoonL
-        10-MoonA: MoonA
-        11-MoonSetLib: MoonSetLib
-        12-NatureG: NatureG
-        13-NatureL: NatureL
-        14-AlchemyG: AlchemyG
-        15-AlchemyL: AlchemyL
-        16-AlchemyAS: AlchemyAS
-        17-AlchemyAA: AlchemyAA
-        18-WeaponG: WeaponG
-        19-WeaponL: WeaponL
-        20-WeaponGSW: WeaponGSW
-        21-WeaponLSW: WeaponLSW
-        22-RingG: RingG
-        23-RingL: RingL
-        24-CristallG: CristallG
-        25-CristallL: CristallL
-        26-PokeballG: PokeballG
-        27-PokeballL: PokeballL
+        06-BloodSet: BloodSet
+        07-RuneG: RuneG
+        08-RuneL: RuneL
+        09-MoonG: MoonG
+        10-MoonL: MoonL
+        11-MoonA: MoonA
+        12-MoonSetLib: MoonSetLib
+        13-NatureG: NatureG
+        14-NatureL: NatureL
+        15-AlchemyG: AlchemyG
+        16-AlchemyL: AlchemyL
+        17-AlchemyAS: AlchemyAS
+        18-AlchemyAA: AlchemyAA
+        19-WeaponG: WeaponG
+        20-WeaponL: WeaponL
+        21-WeaponGSW: WeaponGSW
+        22-WeaponLSW: WeaponLSW
+        23-RingG: RingG
+        24-RingL: RingL
+        25-CristallG: CristallG
+        26-CristallL: CristallL
+        27-PokeballG: PokeballG
+        28-PokeballL: PokeballL
     8-ItemsAfterExtra: ItemsAfterExtra
         '1-Transforming Matter': 'Transforming Matter'
         '2-Armor Mage': 'Armor Mage'
@@ -1393,14 +1395,13 @@
         '22-Seal of Brotherhood': 'Seal of Brotherhood'
         23-Noiselessness: Noiselessness
         24-Stabilization: Stabilization
-        '25-Stabilization Cast': 'Stabilization Cast'
-        26-Multicast: Multicast
-        '27-Unholy Bless': 'Unholy Bless'
-        28-Incineration: Incineration
-        29-Masochism: Masochism
-        30-SoulMarry: SoulMarry
-        '31-Last Rites': 'Last Rites'
-        '32-Left the Game': 'Left the Game'
+        25-Multicast: Multicast
+        '26-Unholy Bless': 'Unholy Bless'
+        27-Incineration: Incineration
+        28-Masochism: Masochism
+        29-SoulMarry: SoulMarry
+        '30-Last Rites': 'Last Rites'
+        '31-Left the Game': 'Left the Game'
     03-Other: Other
         1-Poof: Poof
         2-Superbots: Superbots
@@ -1515,6 +1516,7 @@
             3-KnightP: KnightP
             4-KnightD: KnightD
             5-KnightPM: KnightPM
+            6-KnightR: KnightR
         3-Barbarian: Barbarian
             1-BarbarianQ: BarbarianQ
             2-BarbarianW: BarbarianW
@@ -1951,28 +1953,29 @@
         06-Fedor1: Fedor1
         07-Fedor2: Fedor2
         08-Fedor3: Fedor3
-        09----------------------------: ---------------------------
+        09-FedorEnd: FedorEnd
+        10----------------------------: ---------------------------
             Comment
-        10-Arah1: Arah1
-        11-Arah2: Arah2
-        12----------------------------: ---------------------------
+        11-Arah1: Arah1
+        12-Arah2: Arah2
+        13----------------------------: ---------------------------
             Comment
-        13-Thief1: Thief1
-        14-Thief2: Thief2
-        15-Thief3: Thief3
-        16----------------------------: ---------------------------
+        14-Thief1: Thief1
+        15-Thief2: Thief2
+        16-Thief3: Thief3
+        17----------------------------: ---------------------------
             Comment
-        17-MageTruch1: MageTruch1
-        18-MageTruch2: MageTruch2
-        19-MageTruch3: MageTruch3
-        20----------------------------: ---------------------------
+        18-MageTruch1: MageTruch1
+        19-MageTruch2: MageTruch2
+        20-MageTruch3: MageTruch3
+        21----------------------------: ---------------------------
             Comment
-        21-Illusionist1: Illusionist1
-        22-Illusionist2: Illusionist2
-        23-Illusionist3: Illusionist3
-        24-Illusionist4: Illusionist4
-        25-Illusionist5: Illusionist5
-        26-Illusionist6: Illusionist6
+        22-Illusionist1: Illusionist1
+        23-Illusionist2: Illusionist2
+        24-Illusionist3: Illusionist3
+        25-Illusionist4: Illusionist4
+        26-Illusionist5: Illusionist5
+        27-Illusionist6: Illusionist6
     05-Bosses4: Bosses4
         01-Manadragon1: Manadragon1
         02-Manadragon2: Manadragon2
@@ -1997,46 +2000,45 @@
         17-Blademaster3: Blademaster3
         18-Blademaster4: Blademaster4
         19-Blademaster5: Blademaster5
-        20----------------------------: ---------------------------
+        20-Battlemaster6: Battlemaster6
+        21----------------------------: ---------------------------
             Comment
-        21-Chief1: Chief1
-        22-Chief2: Chief2
-        23-Chief3: Chief3
-        24-Chief4: Chief4
-        25-Chief5: Chief5
-        26-Chief6: Chief6
-        27-Chief7: Chief7
+        22-Chief1: Chief1
+        23-Chief2: Chief2
+        24-Chief3: Chief3
+        25-Chief4: Chief4
+        26-Chief5: Chief5
+        27-Chief6: Chief6
+        28-Chief7: Chief7
     06-Bosses5: Bosses5
         01-Banshi1: Banshi1
         02-Banshi2: Banshi2
-        03-Banshi3: Banshi3
-        04-Banshi4: Banshi4
-        05----------------------------: ---------------------------
+        03----------------------------: ---------------------------
             Comment
-        06-Golem1: Golem1
-        07-Golem2: Golem2
-        08-Golem3: Golem3
-        09----------------------------: ---------------------------
+        04-Golem1: Golem1
+        05-Golem2: Golem2
+        06-Golem3: Golem3
+        07----------------------------: ---------------------------
             Comment
-        10-GhostKnight1: GhostKnight1
-        11-GhostKnight2: GhostKnight2
-        12-GhostKnight3: GhostKnight3
-        13-GhostKnight4: GhostKnight4
-        14----------------------------: ---------------------------
+        08-GhostKnight1: GhostKnight1
+        09-GhostKnight2: GhostKnight2
+        10-GhostKnight3: GhostKnight3
+        11-GhostKnight4: GhostKnight4
+        12----------------------------: ---------------------------
             Comment
-        15-Manipulator1: Manipulator1
-        16-Manipulator2: Manipulator2
-        17-Manipulator3: Manipulator3
-        18----------------------------: ---------------------------
+        13-Manipulator1: Manipulator1
+        14-Manipulator2: Manipulator2
+        15-Manipulator3: Manipulator3
+        16----------------------------: ---------------------------
             Comment
-        19-SlaveKing1: SlaveKing1
-        20-SlaveKing2: SlaveKing2
-        21-SlaveKing3: SlaveKing3
-        22-SlaveKing4: SlaveKing4
-        23----------------------------: ---------------------------
+        17-SlaveKing1: SlaveKing1
+        18-SlaveKing2: SlaveKing2
+        19-SlaveKing3: SlaveKing3
+        20-SlaveKing4: SlaveKing4
+        21----------------------------: ---------------------------
             Comment
-        24-Salamander1: Salamander1
-        25-Salamander2: Salamander2
+        22-Salamander1: Salamander1
+        23-Salamander2: Salamander2
             Run
     07-Bosses6: Bosses6
         01-Crab1: Crab1

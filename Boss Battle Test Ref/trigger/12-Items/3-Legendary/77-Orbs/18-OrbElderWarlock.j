@@ -5,7 +5,6 @@ endfunction
 function OrbElderWarlockCast takes nothing returns nothing
     local integer id = GetHandleId( GetExpiredTimer() )
     local unit caster = LoadUnitHandle( udg_hash, id, StringHash( "orbew" ) )
-    local integer pl = LoadInteger( udg_hash, id, StringHash( "orbewpl" ) )
     local item it = LoadItemHandle( udg_hash, id, StringHash( "orbewi" ) )
     local real arm = LoadReal( udg_hash, id, StringHash( "orbew" ) )
     local real spd
@@ -14,7 +13,7 @@ function OrbElderWarlockCast takes nothing returns nothing
     local unit u
     local integer k = 0
 
-    call GroupEnumUnitsOfPlayer(g, Player(pl), null )
+    call GroupEnumUnitsOfPlayer(g, GetOwningPlayer(caster), null )
     loop
         set u = FirstOfGroup(g)
         exitwhen u == null
@@ -26,12 +25,12 @@ function OrbElderWarlockCast takes nothing returns nothing
     set spd = (k - arm) * 5
 
     if not(UnitHasItem(caster, it)) then
-        call spdstpl( pl, -1*spdnow )
+        call spdst( caster, spdnow )
         call SaveReal( udg_hash, GetHandleId( caster ), StringHash( "orbewn" ), 0 )
         call FlushChildHashtable( udg_hash, id )
         call DestroyTimer( GetExpiredTimer() )
     elseif arm != GetHeroStr( caster, true) then
-        call spdstpl( pl, spd )
+        call spdst( caster, spd )
         call SaveReal( udg_hash, GetHandleId( caster ), StringHash( "orbewn" ), spdnow+spd )
         call SaveReal( udg_hash, id, StringHash( "orbew" ), k ) 
     endif
@@ -53,7 +52,6 @@ function Trig_OrbElderWarlock_Actions takes nothing returns nothing
     set id = GetHandleId( LoadTimerHandle( udg_hash, id, StringHash( "orbew" ) ) )
     call SaveUnitHandle( udg_hash, id, StringHash( "orbew" ), GetManipulatingUnit() ) 
     call SaveItemHandle( udg_hash, id, StringHash( "orbewi" ), GetManipulatedItem() )
-    call SaveInteger( udg_hash, id, StringHash( "orbewpl" ), GetPlayerId( GetOwningPlayer( GetManipulatingUnit() ) ) )
     call TimerStart( LoadTimerHandle( udg_hash, GetHandleId( GetManipulatedItem() ), StringHash( "orbew" ) ), 1, true, function OrbElderWarlockCast )
 endfunction
 

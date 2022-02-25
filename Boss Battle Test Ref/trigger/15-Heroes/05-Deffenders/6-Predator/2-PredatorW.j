@@ -119,7 +119,7 @@ function Trig_PredatorW_Actions takes nothing returns nothing
     endif
 
     set id = GetHandleId( caster )
-    set dmg = (80 + ( 40 * lvl )) * udg_SpellDamage[GetPlayerId(GetOwningPlayer(caster)) + 1] 
+    set dmg = (80 + ( 40 * lvl )) * GetUnitSpellPower(caster)
     set reduce = (0.05*lvl)+0.04
     
     if GetUnitAbilityLevel( caster, 'A0DV' ) == 0 then

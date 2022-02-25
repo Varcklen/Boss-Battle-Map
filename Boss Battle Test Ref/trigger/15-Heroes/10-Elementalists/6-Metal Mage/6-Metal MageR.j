@@ -27,7 +27,7 @@ function Trig_Metal_MageR_Actions takes nothing returns nothing
         call RemoveUnit( oldpet )
     endif
 
-    set sp = udg_SpellDamage[GetPlayerId(GetOwningPlayer(caster)) + 1]
+    set sp = GetUnitSpellPower(caster)
     if sp >= 2 then
         set size = 1.4
     else

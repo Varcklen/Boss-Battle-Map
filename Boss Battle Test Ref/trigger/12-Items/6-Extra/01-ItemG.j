@@ -110,6 +110,9 @@ function ItemGLogic takes nothing returns boolean
     if GetItemTypeId(GetManipulatedItem()) == 'I02K' then
         return true
     endif
+    if GetItemTypeId(GetManipulatedItem()) == 'I0FI'  then
+        return true
+    endif
     return false
 endfunction
 
@@ -229,6 +232,8 @@ function Trig_ItemG_Actions takes nothing returns nothing
         call SpellUniqueUnit(u, 150)
     elseif GetItemTypeId(GetManipulatedItem()) == 'I02K'  then
         call SpellUniqueUnit(u, 50)
+    elseif GetItemTypeId(GetManipulatedItem()) == 'I0FI'  then
+        call SpellUniqueUnit(u, 100)
     endif
     
     set u = null

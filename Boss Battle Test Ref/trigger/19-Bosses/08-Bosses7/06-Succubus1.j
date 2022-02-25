@@ -35,7 +35,7 @@ function SucRun takes nothing returns nothing
         call UnitRemoveAbility( boss, 'Amrf' )
         call pausest( boss, -1 )
         if GetUnitState( target, UNIT_STATE_LIFE) > 0.405 and GetOwningPlayer( boss ) == Player(10) then
-            call SetUnitState( boss, UNIT_STATE_LIFE, GetUnitState( boss, UNIT_STATE_LIFE) + ( 75 * udg_SpellDamage[0] ) )
+            call SetUnitState( boss, UNIT_STATE_LIFE, GetUnitState( boss, UNIT_STATE_LIFE) + ( 75 * SpellPower_GetBossSpellPower() ) )
             call dummyspawn( boss, 1, 0, 0, 0 )
             call DestroyEffect( AddSpecialEffect( "Objects\\Spawnmodels\\Human\\HumanLargeDeathExplode\\HumanLargeDeathExplode.mdl", GetUnitX( target ), GetUnitY( target ) ) )
             call UnitDamageTarget( bj_lastCreatedUnit, target, 75, true, false, ATTACK_TYPE_HERO, DAMAGE_TYPE_NORMAL, WEAPON_TYPE_WHOKNOWS)

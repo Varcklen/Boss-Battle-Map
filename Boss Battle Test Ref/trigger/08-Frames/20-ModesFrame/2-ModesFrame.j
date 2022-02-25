@@ -53,8 +53,8 @@ function DifficultyMore takes nothing returns nothing
 	endif
     
     if udg_Host == GetTriggerPlayer() then
-        if i > 6 then
-            set i = 6
+        if i > 9 then
+            set i = 9
         endif
         
         if i != udg_HardNum then

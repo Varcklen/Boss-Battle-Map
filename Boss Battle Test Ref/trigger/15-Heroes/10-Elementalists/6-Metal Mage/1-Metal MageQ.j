@@ -33,7 +33,7 @@ function Trig_Metal_MageQ_Actions takes nothing returns nothing
         set t = 15
     endif
     set t = timebonus(caster, t)
-    set d = R2I((25 + (25*lvl))*udg_SpellDamage[GetPlayerId( GetOwningPlayer(caster) ) + 1])
+    set d = R2I((25 + (25*lvl))*GetUnitSpellPower(caster))
 
     set id = GetHandleId( caster )
     call UnitAddAbility( caster, 'A0KP' )

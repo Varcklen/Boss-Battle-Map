@@ -71,7 +71,7 @@ function Trig_SoulstealerR_Actions takes nothing returns nothing
     set t = timebonus(caster, t)
     
     set id = GetHandleId( caster )
-    set dmg = (6 + (4*lvl)) * udg_SpellDamage[GetPlayerId(GetOwningPlayer( caster ) ) + 1]
+    set dmg = (6 + (4*lvl)) * GetUnitSpellPower(caster)
     set bj_lastCreatedUnit = CreateUnit( GetOwningPlayer( caster ), 'u000', GetUnitX( caster ), GetUnitY( caster ), 270 )
     
     call UnitAddAbility( caster, 'A0FP' )

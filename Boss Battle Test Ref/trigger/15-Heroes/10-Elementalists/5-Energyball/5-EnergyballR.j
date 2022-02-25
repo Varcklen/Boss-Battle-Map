@@ -66,7 +66,7 @@ function Trig_EnergyballR_Actions takes nothing returns nothing
     set t = timebonus(caster, t)
     
     set id = GetHandleId( caster )
-    set dmg = 4 * lvl * udg_SpellDamage[GetPlayerId(GetOwningPlayer( caster ) ) + 1]
+    set dmg = 4 * lvl * GetUnitSpellPower(caster)
     
         set sp = GetSpellAbilityId()
     

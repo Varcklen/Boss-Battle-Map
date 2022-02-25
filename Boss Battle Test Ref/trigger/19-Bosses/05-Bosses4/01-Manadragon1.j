@@ -18,7 +18,7 @@ function ManadrCast takes nothing returns nothing
             set u = FirstOfGroup(g)
             exitwhen u == null
             if unitst( u, boss, "enemy" ) and IsUnitType( u, UNIT_TYPE_HERO) then
-                call SetUnitState( u, UNIT_STATE_MANA, RMaxBJ(0, GetUnitState( u, UNIT_STATE_MANA ) - ( r * udg_SpellDamage[0] ) ) )
+                call SetUnitState( u, UNIT_STATE_MANA, RMaxBJ(0, GetUnitState( u, UNIT_STATE_MANA ) - ( r * SpellPower_GetBossSpellPower() ) ) )
                 call DestroyEffect( AddSpecialEffectTarget( "Abilities\\Spells\\Undead\\ReplenishMana\\ReplenishManaCasterOverhead.mdl", u, "origin") )
             endif
             call GroupRemoveUnit(g,u)

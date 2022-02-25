@@ -77,7 +77,7 @@ library ShieldstLib requires BuffsLibLib
         if IsUnitType( u, UNIT_TYPE_HERO) or IsUnitType( u, UNIT_TYPE_ANCIENT) and sh > 0 then
             call effst( caster, u, null, 1, t )
         
-            set sh = sh * udg_SpellDamage[GetPlayerId( GetOwningPlayer( caster ) ) + 1]
+            set sh = sh * GetUnitSpellPower(caster)
             set l = LoadReal( udg_hash, GetHandleId( u ), StringHash( "shield" ) ) + sh
             set lmax = LoadReal( udg_hash, GetHandleId( u ), StringHash( "shieldMax" ) )
             if l > lmax then

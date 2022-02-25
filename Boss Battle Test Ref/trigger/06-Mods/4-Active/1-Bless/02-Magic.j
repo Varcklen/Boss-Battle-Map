@@ -1,16 +1,16 @@
 function MagicLogic takes nothing returns boolean
-    local integer cyclA = 1
+    /*local integer cyclA = 1
     local integer cyclAEnd = udg_Database_InfoNumberHeroes
     local boolean l = false
     
     loop
         exitwhen cyclA > cyclAEnd
-        if GetSpellAbilityId() == udg_DB_Hero_FirstSpell[cyclA] then
+        if GetSpellAbilityId() == Database_Hero_Abilities[1][cyclA] then
             set l = true
         endif
         set cyclA = cyclA  + 1
-    endloop
-    return l
+    endloop*/
+    return GetSpellAbilityId() == Database_Hero_Abilities[1][udg_HeroNum[GetUnitUserData(GetSpellAbilityUnit())]] 
 endfunction
 
 function Trig_Magic_Actions takes nothing returns nothing
