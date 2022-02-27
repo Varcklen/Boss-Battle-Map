@@ -45,7 +45,6 @@ function KingWMotion takes nothing returns nothing
                 call DestroyEffect( AddSpecialEffect( "Void Teleport Caster.mdx", GetUnitX( u ), GetUnitY( u ) ) )
             endif
             call GroupRemoveUnit(g,u)
-            set u = FirstOfGroup(g)
         endloop
         call GroupClear( nodmg )
         call DestroyGroup( nodmg )

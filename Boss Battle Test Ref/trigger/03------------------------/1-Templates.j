@@ -9,6 +9,8 @@
     UnitItemInSlot( caster, i)
     
     
+    call CreateEventTrigger( "udg_AfterDamageEvent", function Trig_Ancient_Sword_Actions, function Trig_Ancient_Sword_Conditions )
+    
     DAMAGE_TYPE_MAGIC
     DAMAGE_TYPE_NORMAL
     

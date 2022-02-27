@@ -6,11 +6,15 @@ scope BattlemasterBulwark initializer init
     endglobals
 
     private function AfterDamageEvent_Conditions takes nothing returns boolean
-        return IsHeroHasItem( udg_DamageEventSource, ID_ITEM)
+        return IsHeroHasItem( ChoosedHero[GetPlayerId( GetOwningPlayer(udg_DamageEventSource) ) + 1], ID_ITEM) and (GetUnitTypeId(udg_DamageEventSource) == 'u000' or IsUnitType( udg_DamageEventSource, UNIT_TYPE_HERO))
     endfunction
 
     private function AfterDamageEvent takes nothing returns nothing
-        call shield(udg_DamageEventSource, udg_DamageEventSource, udg_DamageEventAmount*BATTLEMASTER_BULWARK_SHIELD_BONUS, 60 )
+        local unit hero = ChoosedHero[GetPlayerId( GetOwningPlayer(udg_DamageEventSource) ) + 1]
+        
+        call shield(hero, hero, udg_DamageEventAmount*BATTLEMASTER_BULWARK_SHIELD_BONUS, 60 )
+        
+        set hero = null
     endfunction
 
     //===========================================================================

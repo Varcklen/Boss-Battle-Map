@@ -75,6 +75,10 @@ function Trig_SpawnBoss_Actions takes nothing returns nothing
     
     local unit u = GetEnteringUnit()
     
+    if GetUnitTypeId(u) == 'n009' and udg_HardNum > 5 then
+        call BlzSetUnitName( u, "Rapist" )
+    endif
+    
     if udg_Boss_LvL > 1 or udg_Endgame > 1 then
         call BlzSetUnitAttackCooldown(u,BlzGetUnitAttackCooldown(u,0) / HardModAspd[udg_HardNum],0)
     endif

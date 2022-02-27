@@ -51,8 +51,10 @@ function ExpDo takes nothing returns nothing
             call SaveInteger( udg_hash, id, StringHash( "exp1lvl" ), oldlvl )
             call DestroyEffect( AddSpecialEffectTarget("Abilities\\Spells\\Human\\ReviveHuman\\ReviveHuman.mdl", udg_hero[GetPlayerId(p) + 1], "origin" ) )
             if GetLocalPlayer() == p then
-                call BlzFrameSetVisible( expfon, true )
-                call BlzFrameSetTexture( expicon, BlzGetAbilityIcon(ab1),0, true)
+                if udg_ExpBonuses[oldlvl + 1] != 0 then
+                    call BlzFrameSetVisible( expfon, true )
+                    call BlzFrameSetTexture( expicon, BlzGetAbilityIcon(ab1),0, true)
+                endif
                 call BlzFrameSetValue(BlzGetFrameByName("ExpBarEx",1), 0 )
                 call BlzFrameSetText(BlzGetFrameByName("ExpBarExText",1), I2S(oldexp)+"/"+I2S(needenexp))
                 if ab2 != 'A0RI' then

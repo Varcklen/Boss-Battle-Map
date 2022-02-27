@@ -29,8 +29,7 @@ function Trig_Manaball_Actions takes nothing returns nothing
     endif
     
     call spectimeunit( target, "Abilities\\Spells\\Undead\\ReplenishMana\\ReplenishManaCaster.mdl", "head", 1 )
-    call dummyspawn( caster, 1, 0, 0, 0 )
-    call UnitDamageTarget( bj_lastCreatedUnit, target, dmg, true, false, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_MAGIC, WEAPON_TYPE_WHOKNOWS)
+    call UnitTakeDamage( caster, target, dmg, DAMAGE_TYPE_MAGIC)
     
     set caster = null
     set target = null

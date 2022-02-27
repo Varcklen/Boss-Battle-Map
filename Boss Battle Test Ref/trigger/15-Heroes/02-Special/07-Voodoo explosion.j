@@ -31,14 +31,13 @@ function Trig_Voodoo_explosion_Actions takes nothing returns nothing
     endif
     set dmg = 75
     
-    call dummyspawn( caster, 1, 0, 0, 0 )
     call GroupEnumUnitsInRange( g, x, y, 400, null )
     loop
         set u = FirstOfGroup(g)
         exitwhen u == null
         if unitst( u, caster, "all" ) then
             call DestroyEffect( AddSpecialEffect("Abilities\\Spells\\Other\\HealingSpray\\HealBottleMissile.mdl", GetUnitX(u), GetUnitY(u) ) )
-            call UnitDamageTarget( bj_lastCreatedUnit, u, dmg, true, false, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_MAGIC, WEAPON_TYPE_WHOKNOWS)
+            call UnitTakeDamage( caster, u, dmg, DAMAGE_TYPE_MAGIC)
             if IsUnitEnemy( u, GetOwningPlayer( caster ) ) then
                 set k = k + 1
             endif

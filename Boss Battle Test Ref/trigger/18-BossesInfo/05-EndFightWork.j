@@ -1,3 +1,7 @@
+globals
+    real Event_GlobalBossFightWin_Real
+endglobals
+
 function Trig_EndFightWork_Actions takes nothing returns nothing
     local integer cyclA
     local integer cyclAEnd
@@ -133,7 +137,11 @@ function Trig_EndFightWork_Actions takes nothing returns nothing
         endif
     endif
   
-    //Rand не раньше FightSt
+    set Event_GlobalBossFightWin_Real = 0.00
+    set Event_GlobalBossFightWin_Real = 1.00
+    set Event_GlobalBossFightWin_Real = 0.00
+  
+    //Rand не раньше FightSt    
 	call Randomizer(true,true,true,true)
     call FightEnd()
     if udg_Boss_LvL == 2 then

@@ -29,8 +29,7 @@ function Trig_Dualism_Actions takes nothing returns nothing
     if IsUnitAlly( target, GetOwningPlayer( caster ) ) then
         call healst( caster, target, dmg )
     else
-        call dummyspawn( caster, 1, 0, 0, 0 )
-        call UnitDamageTarget( bj_lastCreatedUnit, target, dmg, true, false, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_MAGIC, WEAPON_TYPE_WHOKNOWS)
+        call UnitTakeDamage( caster, target, dmg, DAMAGE_TYPE_MAGIC)
     endif
     
     set caster = null

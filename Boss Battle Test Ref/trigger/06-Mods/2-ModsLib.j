@@ -44,8 +44,8 @@ library Mods requires LibDataAbilities, SpellPower, RandomTargetLib, Money, Mult
         if count > 0 then
             set i = 1
             loop
-                exitwhen i > count or modes.Size() <= 0 
-                set rand = GetRandomInt( 1, modes.Size())
+                exitwhen i > count or modes.Size <= 0 
+                set rand = GetRandomInt( 1, modes.Size)
                 call EnableGoodMode(rand)
                 call modes.RemoveByIndex(rand)
                 set i = i + 1
@@ -83,8 +83,8 @@ library Mods requires LibDataAbilities, SpellPower, RandomTargetLib, Money, Mult
         if count > 0 then
             set i = 1
             loop
-                exitwhen i > count or modes.Size() <= 0 
-                set rand = GetRandomInt( 1, modes.Size())
+                exitwhen i > count or modes.Size <= 0 
+                set rand = GetRandomInt( 1, modes.Size)
                 call EnableBadMode(rand)
                 call modes.RemoveByIndex(rand)
                 set i = i + 1

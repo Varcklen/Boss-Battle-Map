@@ -1,5 +1,5 @@
 function Trig_MonkRA_Conditions takes nothing returns boolean
-    return GetUnitAbilityLevel( udg_DamageEventSource, 'B01O') > 0 and (GetUnitTypeId(udg_DamageEventSource) != 'u000')
+    return GetUnitAbilityLevel( udg_DamageEventSource, 'B01O') > 0 and udg_IsDamageSpell == false
 endfunction
 
 function Trig_MonkRA_Actions takes nothing returns nothing
@@ -18,9 +18,6 @@ endfunction
 
 //===========================================================================
 function InitTrig_MonkRA takes nothing returns nothing
-    set gg_trg_MonkRA = CreateTrigger(  )
-    call TriggerRegisterVariableEvent( gg_trg_MonkRA, "udg_DamageModifierEvent", EQUAL, 1.00 )
-    call TriggerAddCondition( gg_trg_MonkRA, Condition( function Trig_MonkRA_Conditions ) )
-    call TriggerAddAction( gg_trg_MonkRA, function Trig_MonkRA_Actions )
+    call CreateEventTrigger( "udg_AfterDamageEvent", function Trig_MonkRA_Actions, function Trig_MonkRA_Conditions )
 endfunction
 

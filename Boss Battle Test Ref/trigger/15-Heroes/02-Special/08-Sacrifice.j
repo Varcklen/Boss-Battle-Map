@@ -37,7 +37,6 @@ function Trig_Sacrifice_Actions takes nothing returns nothing
     endloop
     
     if l then
-        call dummyspawn( caster, 1, 0, 0, 0 )
         call GroupEnumUnitsInRange( g, GetUnitX(caster), GetUnitY(caster), 500, null )
         loop
             set u = FirstOfGroup(g)
@@ -46,7 +45,7 @@ function Trig_Sacrifice_Actions takes nothing returns nothing
                 set fx = AddSpecialEffect("Abilities\\Spells\\Undead\\RaiseSkeletonWarrior\\RaiseSkeleton.mdl", GetUnitX(u), GetUnitY(u) )
                 call BlzSetSpecialEffectScale( fx, 2 )
                 call DestroyEffect( fx )
-                call UnitDamageTarget( bj_lastCreatedUnit, u, 450, true, false, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_MAGIC, WEAPON_TYPE_WHOKNOWS)
+                call UnitTakeDamage( caster, u, 450, DAMAGE_TYPE_MAGIC)
             endif
             call GroupRemoveUnit(g,u)
         endloop

@@ -44,8 +44,7 @@ function Trig_KillEye_Actions takes nothing returns nothing
 	call SaveLightningHandle( udg_hash, id, StringHash( "keye" ), l )
 	call TimerStart( LoadTimerHandle( udg_hash, GetHandleId( l ), StringHash( "keye" ) ), 0.5, false, function KillEyeCast )
     
-    call dummyspawn( caster, 1, 0, 0, 0 )
-    call UnitDamageTarget( bj_lastCreatedUnit, target, dmg, true, false, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_MAGIC, WEAPON_TYPE_WHOKNOWS)
+    call UnitTakeDamage( caster, target, dmg, DAMAGE_TYPE_MAGIC)
     if GetUnitStatePercent( target, UNIT_STATE_LIFE, UNIT_STATE_MAX_LIFE) <= 50 then
         loop
             exitwhen cyclA > cyclAEnd

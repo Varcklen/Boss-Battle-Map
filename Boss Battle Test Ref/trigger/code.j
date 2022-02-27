@@ -233,159 +233,6 @@ function Orb_Logic takes item t returns boolean
     return l
 endfunction
 
-function Mech_Logic takes item t returns boolean
-    local integer cyclA = 1
-    local integer cyclAEnd = udg_DB_SetItems_Num[1]
-    local boolean l = false
-    
-    loop
-        exitwhen cyclA > cyclAEnd
-        if GetItemTypeId(t) == DB_SetItems[1][cyclA] then
-            set l = true
-            set cyclA = cyclAEnd
-        endif
-        set cyclA = cyclA + 1
-    endloop
-    set t = null
-    return l
-endfunction
-
-function CristallLogic takes item t returns boolean
-    local integer cyclA = 1
-    local integer cyclAEnd = udg_DB_SetItems_Num[9]
-    local boolean l = false
-    
-    loop
-        exitwhen cyclA > cyclAEnd
-        if GetItemTypeId(t) == DB_SetItems[9][cyclA] then
-            set l = true
-            set cyclA = cyclAEnd
-        endif
-        set cyclA = cyclA + 1
-    endloop
-    set t = null
-    return l
-endfunction
-
-function BloodLogic takes item t returns boolean
-    local integer cyclA = 1
-    local integer cyclAEnd = udg_DB_SetItems_Num[4]
-    local boolean l = false
-    
-    loop
-        exitwhen cyclA > cyclAEnd
-        if GetItemTypeId(t) == DB_SetItems[4][cyclA] then
-            set l = true
-            set cyclA = cyclAEnd
-        endif
-        set cyclA = cyclA + 1
-    endloop
-    set t = null
-    return l
-endfunction
-
-function RuneLogic takes item t returns boolean
-    local integer cyclA = 1
-    local integer cyclAEnd = udg_DB_SetItems_Num[5]
-    local boolean l = false
-    
-    loop
-        exitwhen cyclA > cyclAEnd
-        if GetItemTypeId(t) == DB_SetItems[5][cyclA] then
-            set l = true
-            set cyclA = cyclAEnd
-        endif
-        set cyclA = cyclA + 1
-    endloop
-    set t = null
-    return l
-endfunction
-
-function MoonLogic takes item t returns boolean
-    local integer cyclA = 1
-    local integer cyclAEnd = udg_DB_SetItems_Num[6]
-    local boolean l = false
-    
-    loop
-        exitwhen cyclA > cyclAEnd
-        if GetItemTypeId(t) == DB_SetItems[6][cyclA] then
-            set l = true
-            set cyclA = cyclAEnd
-        endif
-        set cyclA = cyclA + 1
-    endloop
-    set t = null
-    return l
-endfunction
-
-function NatureLogic takes item t returns boolean
-    local integer cyclA = 1
-    local integer cyclAEnd = udg_DB_SetItems_Num[7]
-    local boolean l = false
-    
-    loop
-        exitwhen cyclA > cyclAEnd
-        if GetItemTypeId(t) == DB_SetItems[7][cyclA] then
-            set l = true
-            set cyclA = cyclAEnd
-        endif
-        set cyclA = cyclA + 1
-    endloop
-    set t = null
-    return l
-endfunction
-
-function AlchemyLogic takes item t returns boolean
-    local integer cyclA = 1
-    local integer cyclAEnd = udg_DB_SetItems_Num[8]
-    local boolean l = false
-    
-    loop
-        exitwhen cyclA > cyclAEnd
-        if GetItemTypeId(t) == DB_SetItems[8][cyclA] then
-            set l = true
-            set cyclA = cyclAEnd
-        endif
-        set cyclA = cyclA + 1
-    endloop
-    set t = null
-    return l
-endfunction
-
-function Weapon_Logic takes item t returns boolean
-    local integer cyclA = 1
-    local integer cyclAEnd = udg_DB_SetItems_Num[2]
-    local boolean l = false
-    
-    loop
-        exitwhen cyclA > cyclAEnd
-        if GetItemTypeId(t) == DB_SetItems[2][cyclA] then
-            set l = true
-            set cyclA = cyclAEnd
-        endif
-        set cyclA = cyclA + 1
-    endloop
-    set t = null
-    return l
-endfunction
-
-function Ring_Logic takes item t returns boolean
-    local integer cyclA = 1
-    local integer cyclAEnd = udg_DB_SetItems_Num[3]
-    local boolean l = false
-    
-    loop
-        exitwhen cyclA > cyclAEnd
-        if GetItemTypeId(t) == DB_SetItems[3][cyclA] then
-            set l = true
-            set cyclA = cyclAEnd
-        endif
-        set cyclA = cyclA + 1
-    endloop
-    set t = null
-    return l
-endfunction
-
 //Условие "Только алхимия"
 function AlchemyOnly takes unit caster returns boolean
     local integer cyclA = 0
@@ -1475,6 +1322,7 @@ function Between takes string str returns nothing
     loop
         exitwhen cyclA > 4
         if GetPlayerSlotState(Player(cyclA - 1)) == PLAYER_SLOT_STATE_PLAYING then
+            set ChoosedHero[cyclA] = udg_hero[cyclA]
             set PotionsUsedPerBattle[cyclA] = 0
     	    call GroupRemoveUnit( udg_DeadHero, udg_hero[cyclA])
             call DelBuff( udg_hero[cyclA], true )
@@ -2005,6 +1853,10 @@ function MagicMeat takes unit u returns nothing
     set u = null
 endfunction
 
+globals
+    integer Event_FightStart_Index
+endglobals
+
 function FightStart takes nothing returns nothing
     local integer cyclA = 1
     local integer cyclB
@@ -2137,6 +1989,7 @@ function FightStart takes nothing returns nothing
             set udg_combatlogic[cyclA] = true
             
             set udg_FightStart_Unit = udg_hero[cyclA]
+            set Event_FightStart_Index = cyclA
             set udg_FightStart_Real = 0
             set udg_FightStart_Real = 1
             set udg_FightStart_Real = 0
@@ -2570,7 +2423,6 @@ function FightStart takes nothing returns nothing
     call BlzFrameSetVisible( modeslight, false )
     call BlzFrameSetVisible( modesback, false )
     call BlzFrameSetVisible( quartback, false )
-    call BlzFrameSetVisible( specback, false )
     call BlzFrameSetVisible( juleback, false )
 
     call BlzFrameSetTexture(pvpbk, "ReplaceableTextures\\CommandButtons\\BTNMassTeleport.blp", 0, true)

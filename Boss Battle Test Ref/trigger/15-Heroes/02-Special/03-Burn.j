@@ -28,8 +28,7 @@ function Trig_Burn_Actions takes nothing returns nothing
     set dmg = 100 + s
     
     call DestroyEffect( AddSpecialEffect("Abilities\\Spells\\Other\\Incinerate\\FireLordDeathExplode.mdl", GetUnitX(target), GetUnitY(target) ) )
-    call dummyspawn( caster, 1, 0, 0, 0 )
-    call UnitDamageTarget( bj_lastCreatedUnit, target, dmg, true, false, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_MAGIC, WEAPON_TYPE_WHOKNOWS)
+    call UnitTakeDamage( caster, target, dmg, DAMAGE_TYPE_MAGIC)
     if GetUnitState( target, UNIT_STATE_LIFE) <= 0.405 and combat(caster, false, 0) and not(udg_fightmod[3]) then
         call SaveInteger( udg_hash, GetHandleId( caster ), StringHash( "burn" ), s + 15 )
         if GetLocalPlayer() == GetOwningPlayer(caster) then

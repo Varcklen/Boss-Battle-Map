@@ -5,6 +5,7 @@ endfunction
 function FallenOneREnd takes nothing returns nothing
     local integer id = GetHandleId( GetExpiredTimer( ) )
     local real dmg = LoadReal( udg_hash, id, StringHash( "flnr" ) )
+    local unit caster = LoadUnitHandle( udg_hash, id, StringHash( "flnrc" ) )
     local real coef = LoadReal( udg_hash, id, StringHash( "flnrc" ) )
     local real x = LoadReal( udg_hash, id, StringHash( "flnrx" ) )
     local real y = LoadReal( udg_hash, id, StringHash( "flnry" ) )
@@ -23,21 +24,20 @@ function FallenOneREnd takes nothing returns nothing
         exitwhen u == null
         if unitst( u, dummy, "enemy" ) then
             set c = GetUnitState( u, UNIT_STATE_MAX_LIFE)*coef
-            call UnitDamageTarget( bj_lastCreatedUnit, u, dmg+c, true, false, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_MAGIC, WEAPON_TYPE_WHOKNOWS )
+            call UnitTakeDamage( caster, u, dmg+c, DAMAGE_TYPE_MAGIC )
         endif
         call GroupRemoveUnit(g,u)
-        set u = FirstOfGroup(g)
     endloop
     
     call RemoveUnit( dummy )
     call FlushChildHashtable( udg_hash, id )
-    call DestroyTimer( GetExpiredTimer() )
     
     call GroupClear( g )
     call DestroyGroup( g )
     set g = null
     set u = null
     set dummy = null
+    set caster = null
     set fx = null
 endfunction
 
@@ -82,6 +82,7 @@ function Trig_FallenOneR_Actions takes nothing returns nothing
     endif
     set id = GetHandleId( LoadTimerHandle(udg_hash, id, StringHash( "flnr" ) ) )
     call SaveUnitHandle( udg_hash, id, StringHash( "flnr" ), bj_lastCreatedUnit )
+    call SaveUnitHandle( udg_hash, id, StringHash( "flnrc" ), caster )
     call SaveReal( udg_hash, id, StringHash( "flnr" ), dmg )
     call SaveReal( udg_hash, id, StringHash( "flnrc" ), coef )
     call SaveReal( udg_hash, id, StringHash( "flnrx" ), x )

@@ -15,9 +15,8 @@ function Trig_Equivalent_exchange_Actions takes nothing returns nothing
     endif
     
     call DestroyEffect( AddSpecialEffectTarget( "Abilities\\Spells\\Undead\\RaiseSkeletonWarrior\\RaiseSkeleton.mdl", caster, "origin" ) )
-    call dummyspawn( caster, 1, 0, 0, 0 )
     if GetUnitState( caster, UNIT_STATE_LIFE) > 0.405 then
-        call UnitDamageTarget( bj_lastCreatedUnit, caster, 100, true, false, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_MAGIC, WEAPON_TYPE_WHOKNOWS)
+        call UnitTakeDamage( caster, caster, 100, DAMAGE_TYPE_MAGIC)
         call manast( caster, null, 60 )
     endif
 

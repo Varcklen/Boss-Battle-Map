@@ -33,9 +33,8 @@ function Trig_KnightQ_Actions takes nothing returns nothing
     
     set dmg =  100 + ( 60 * lvl )
     
-    call dummyspawn( caster, 1, 0, 0, 0 )
     call DestroyEffect( AddSpecialEffect( "war3mapImported\\SoulRitual.mdx", GetUnitX( target ), GetUnitY( target ) ) )
-    call UnitDamageTarget( bj_lastCreatedUnit, target, dmg, true, false, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_MAGIC, WEAPON_TYPE_WHOKNOWS)
+    call UnitTakeDamage( caster, target, dmg, DAMAGE_TYPE_MAGIC)
      
     if not(IsUnitType( target, UNIT_TYPE_HERO)) and not(IsUnitType( target, UNIT_TYPE_ANCIENT)) then
         call healst( caster, null, dmg )

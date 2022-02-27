@@ -7,24 +7,21 @@ function VenomCast takes nothing returns nothing
     local real dmg = LoadReal( udg_hash, id, StringHash( "vnm" ) )
     local unit target = LoadUnitHandle( udg_hash, id, StringHash( "vnm" ) )
     local unit caster = LoadUnitHandle( udg_hash, id, StringHash( "vnmc" ) )
-    local unit dummy = LoadUnitHandle( udg_hash, id, StringHash( "vnmd" ) )
     
     if GetUnitAbilityLevel( target, 'A0K8') > 0 then
         set dmg = dmg + (dmg * LoadReal( udg_hash, GetHandleId( target ), StringHash( "eleqv" ) ) )
     endif
-    if GetUnitState( target, UNIT_STATE_LIFE) > 0.405 and GetUnitState( dummy, UNIT_STATE_LIFE) > 0.405 and GetUnitAbilityLevel( target, 'A0FU') > 0 then
+    if GetUnitState( target, UNIT_STATE_LIFE) > 0.405 and GetUnitAbilityLevel( target, 'A0FU') > 0 then
         if GetUnitAbilityLevel(target, 'B07R') > 0 and Aspects_IsHeroAspectActive( caster, ASPECT_03 ) == false then
             call healst(caster, target, dmg)
         else
-            call UnitDamageTarget( dummy, target, dmg, true, false, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_MAGIC, WEAPON_TYPE_WHOKNOWS )
+            call UnitTakeDamage( caster, target, dmg, DAMAGE_TYPE_MAGIC )
         endif
     else
-        call RemoveUnit( dummy )
         call FlushChildHashtable( udg_hash, id )
         call DestroyTimer( GetExpiredTimer() )
     endif
     
-    set dummy = null
     set caster = null
     set target = null
 endfunction
@@ -53,15 +50,12 @@ function Trig_Venom_Actions takes nothing returns nothing
     set dmg = dmg * udg_SpellDamageSpec[GetPlayerId(GetOwningPlayer(caster)) + 1]
 
     if GetUnitAbilityLevel( target, 'A0FU') == 0 then 
-        call dummyspawn( caster, 0, 'A0N5', 0, 0 )
-       
         if LoadTimerHandle( udg_hash, id, StringHash( "vnm" ) ) == null then
             call SaveTimerHandle( udg_hash, id, StringHash( "vnm" ), CreateTimer() )
         endif
         set id = GetHandleId( LoadTimerHandle( udg_hash, id, StringHash( "vnm" ) ) ) 
         call SaveUnitHandle( udg_hash, id, StringHash( "vnm" ), target )
         call SaveUnitHandle( udg_hash, id, StringHash( "vnmc" ), caster )
-        call SaveUnitHandle( udg_hash, id, StringHash( "vnmd" ), bj_lastCreatedUnit )
         call SaveReal( udg_hash, id, StringHash( "vnm" ), dmg )
         call TimerStart( LoadTimerHandle( udg_hash, GetHandleId( target ), StringHash( "vnm" ) ), 1, true, function VenomCast )
     endif

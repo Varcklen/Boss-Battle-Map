@@ -23,7 +23,7 @@ function Trig_Innervate_Actions takes nothing returns nothing
         set target = GetSpellTargetUnit()
     endif
     
-    set heal = 100
+    set heal = 150
     
     if GetUnitState( target, UNIT_STATE_LIFE) <= 0.4*GetUnitState( target, UNIT_STATE_MAX_LIFE) then
         call shield( caster, target, heal, 60 )

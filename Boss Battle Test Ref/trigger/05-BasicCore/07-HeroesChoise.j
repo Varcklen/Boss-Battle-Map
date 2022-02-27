@@ -1,6 +1,8 @@
 scope HeroesChoise initializer init
 
     globals
+        unit array ChoosedHero[PLAYERS_LIMIT_ARRAYS]
+    
         real Event_HeroChoose_Real = 0
         unit Event_HeroChoose_Hero = null
     endglobals
@@ -46,6 +48,7 @@ scope HeroesChoise initializer init
         
         if l and udg_hero[i] == null then
             set udg_hero[i] = hero
+            set ChoosedHero[i] = hero
         else
             call RemoveUnit( hero )
             call BJDebugMsg("Warning! The selected hero cannot be created! Current: " + GetUnitName(hero))
@@ -311,6 +314,14 @@ scope HeroesChoise initializer init
 
     //===========================================================================
     private function init takes nothing returns nothing
+        local integer i = 1
+        
+        loop
+            exitwhen i > PLAYERS_LIMIT
+            set ChoosedHero[i] = null
+            set i = i + 1
+        endloop
+    
         set gg_trg_HeroesChoise = CreateTrigger(  )
         call TriggerRegisterEnterRectSimple( gg_trg_HeroesChoise, gg_rct_HeroesTp )
         call TriggerAddCondition( gg_trg_HeroesChoise, Condition( function Trig_HeroesChoise_Conditions ) )

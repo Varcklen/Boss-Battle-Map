@@ -14,7 +14,6 @@ function InfernalWCast takes nothing returns nothing
         call FlushChildHashtable( udg_hash, id )
         call DestroyTimer( GetExpiredTimer() )
     elseif GetUnitState( caster, UNIT_STATE_LIFE) > 0.405 then
-        call dummyspawn( caster, 1, 0, 0, 0 )
         call GroupEnumUnitsInRange( g, GetUnitX( caster ), GetUnitY( caster ), 300, null )
         loop
             set u = FirstOfGroup(g)
@@ -24,7 +23,7 @@ function InfernalWCast takes nothing returns nothing
                 call SetUnitAbilityLevel(u, 'A1AB', lvl )
                 call debuffst( caster, u, null, 1, 4 )
                 call DestroyEffect( AddSpecialEffectTarget("Abilities\\Spells\\NightElf\\Immolation\\ImmolationDamage.mdl", u, "origin" ) )
-                call UnitDamageTarget( bj_lastCreatedUnit, u, dmg, true, false, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_MAGIC, WEAPON_TYPE_WHOKNOWS)
+                call UnitTakeDamage( caster, u, dmg, DAMAGE_TYPE_MAGIC)
             endif
             call GroupRemoveUnit(g,u)
         endloop
