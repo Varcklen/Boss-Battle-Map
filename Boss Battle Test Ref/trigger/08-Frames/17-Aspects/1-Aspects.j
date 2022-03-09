@@ -1,20 +1,20 @@
 library AspectFrames initializer init requires Tooltip, Aspects
     globals 
-        framehandle AspectBackGround = null 
-        trigger TriggerAspectBackGround = null 
-        framehandle AspectVision = null 
+        private framehandle AspectBackground = null 
+        private trigger TriggerAspectBackGround = null 
+        private framehandle AspectVision = null 
         
-        framehandle array AspectButton[4]
-        framehandle array BackdropAspect[4]
-        trigger array TriggerAspect[4]
+        private framehandle array AspectButton[4]
+        private framehandle array BackdropAspect[4]
+        private trigger array TriggerAspect[4]
         string array AspectName[PLAYERS_LIMIT_ARRAYS][4]//players/aspect position
         string array AspectDescription[PLAYERS_LIMIT_ARRAYS][4]//players/aspect position
         
         framehandle ChoosedAspect = null 
-        trigger TriggerChoosedAspect = null 
+        private trigger TriggerChoosedAspect = null 
         
-        constant string ASPECT_CANCEL_NAME = "Disable Aspect"
-        constant string ASPECT_CANCEL_DESCRIPTION = "You turn off the current aspect. It will no longer give positive and negative effects."
+        private constant string ASPECT_CANCEL_NAME = "Disable Aspect"
+        private constant string ASPECT_CANCEL_DESCRIPTION = "You turn off the current aspect. It will no longer give positive and negative effects."
         
         real Event_AspectAdded_Real
         integer Event_AspectAdded_Key01
@@ -36,7 +36,6 @@ library AspectFrames initializer init requires Tooltip, Aspects
             call BJDebugMsg("Error! You are trying to access an AspectButton button that does not exist. You cannot change its description. Please contact the developer. Current: " + I2S(whichButton))
             return
         endif
-
         set AspectName[playerIndex][whichButton] = BlzGetAbilityTooltip(aspectAbility, 0)
         set AspectDescription[playerIndex][whichButton] = BlzGetAbilityExtendedTooltip(aspectAbility, 0)
 
@@ -188,7 +187,7 @@ library AspectFrames initializer init requires Tooltip, Aspects
     
     //OnBattleStart
     private function Aspects_Start_Actions takes nothing returns nothing 
-        call BlzFrameSetVisible( AspectBackGround, false )
+        call BlzFrameSetVisible( AspectBackground, false )
     endfunction
     
     //OnBattleEnd
@@ -198,7 +197,7 @@ library AspectFrames initializer init requires Tooltip, Aspects
     
     private function Aspects_End_Actions takes nothing returns nothing 
         if GetLocalPlayer() == GetOwningPlayer(udg_FightEnd_Unit) then
-            call BlzFrameSetVisible( AspectBackGround, true )
+            call BlzFrameSetVisible( AspectBackground, true )
         endif
     endfunction
     
@@ -206,7 +205,7 @@ library AspectFrames initializer init requires Tooltip, Aspects
     private function Aspects_Repick_Actions takes nothing returns nothing 
         local integer heroIndex = udg_HeroNum[GetUnitUserData(Event_HeroRepick_Hero)]
         if GetLocalPlayer() == GetOwningPlayer(Event_HeroRepick_Hero) then
-            call BlzFrameSetVisible( AspectBackGround, false )
+            call BlzFrameSetVisible( AspectBackground, false )
             call BlzFrameSetAllPoints(ChoosedAspect, AspectButton[0])
         endif
         call DisableHeroAspects(GetOwningPlayer(Event_HeroRepick_Hero), heroIndex)
@@ -223,9 +222,9 @@ library AspectFrames initializer init requires Tooltip, Aspects
         local integer i 
         
         if GetLocalPlayer() == owner then
-            call BlzFrameSetVisible( AspectBackGround, true )
+            call BlzFrameSetVisible( AspectBackground, true )
         endif
-        
+
         set i = 1
         loop
             exitwhen i > ASPECT_LIMIT
@@ -241,12 +240,12 @@ library AspectFrames initializer init requires Tooltip, Aspects
         local framehandle outline = null
         local integer i
 
-         set AspectBackGround = BlzCreateFrame("CheckListBox", BlzGetFrameByName("ConsoleUIBackdrop", 0),0,0) 
-         call BlzFrameSetAbsPoint(AspectBackGround, FRAMEPOINT_TOPLEFT, 0.00519000, 0.216140) 
-         call BlzFrameSetAbsPoint(AspectBackGround, FRAMEPOINT_BOTTOMRIGHT, 0.184490, 0.164600) 
-         call BlzFrameSetVisible( AspectBackGround, false )
+         set AspectBackground = BlzCreateFrame("CheckListBox", BlzGetFrameByName("ConsoleUIBackdrop", 0),0,0) 
+         call BlzFrameSetAbsPoint(AspectBackground, FRAMEPOINT_TOPLEFT, 0.00519000, 0.216140) 
+         call BlzFrameSetAbsPoint(AspectBackground, FRAMEPOINT_BOTTOMRIGHT, 0.184490, 0.164600) 
+         call BlzFrameSetVisible( AspectBackground, false )
 
-         set AspectButton[0] = BlzCreateFrame("ScriptDialogButton", AspectBackGround, 0, 0) 
+         set AspectButton[0] = BlzCreateFrame("ScriptDialogButton", AspectBackground, 0, 0) 
          call BlzFrameSetAbsPoint(AspectButton[0], FRAMEPOINT_TOPLEFT, 0.0100000, 0.210000) 
          call BlzFrameSetAbsPoint(AspectButton[0], FRAMEPOINT_BOTTOMRIGHT, 0.0500100, 0.170000) 
          set BackdropAspect[0] = BlzCreateFrameByType("BACKDROP", "BackdropAspect0", AspectButton[0], "", 1) 
@@ -257,7 +256,7 @@ library AspectFrames initializer init requires Tooltip, Aspects
          call TriggerAddAction(TriggerAspect[0], function Aspect0Func) 
          call Tooltip_AddEvent(AspectButton[0], function TooltipEnable0 )
 
-         set AspectButton[1] = BlzCreateFrame("ScriptDialogButton", AspectBackGround, 0, 0) 
+         set AspectButton[1] = BlzCreateFrame("ScriptDialogButton", AspectBackground, 0, 0) 
          call BlzFrameSetAbsPoint(AspectButton[1], FRAMEPOINT_TOPLEFT, 0.0520100, 0.210000) 
          call BlzFrameSetAbsPoint(AspectButton[1], FRAMEPOINT_BOTTOMRIGHT, 0.0920200, 0.170000) 
          set BackdropAspect[1] = BlzCreateFrameByType("BACKDROP", "BackdropAspect1", AspectButton[1], "", 1) 
@@ -268,7 +267,7 @@ library AspectFrames initializer init requires Tooltip, Aspects
          call TriggerAddAction(TriggerAspect[1], function Aspect1Func) 
          call Tooltip_AddEvent(AspectButton[1], function TooltipEnable1 )
 
-         set AspectButton[2] = BlzCreateFrame("ScriptDialogButton", AspectBackGround, 0, 0) 
+         set AspectButton[2] = BlzCreateFrame("ScriptDialogButton", AspectBackground, 0, 0) 
          call BlzFrameSetAbsPoint(AspectButton[2], FRAMEPOINT_TOPLEFT, 0.0940200, 0.210000) 
          call BlzFrameSetAbsPoint(AspectButton[2], FRAMEPOINT_BOTTOMRIGHT, 0.134030, 0.170000) 
          set BackdropAspect[2] = BlzCreateFrameByType("BACKDROP", "BackdropAspect2", AspectButton[2], "", 1) 
@@ -279,7 +278,7 @@ library AspectFrames initializer init requires Tooltip, Aspects
          call TriggerAddAction(TriggerAspect[2], function Aspect2Func) 
          call Tooltip_AddEvent(AspectButton[2], function TooltipEnable2 )
 
-         set AspectButton[3] = BlzCreateFrame("ScriptDialogButton", AspectBackGround, 0, 0) 
+         set AspectButton[3] = BlzCreateFrame("ScriptDialogButton", AspectBackground, 0, 0) 
          call BlzFrameSetAbsPoint(AspectButton[3], FRAMEPOINT_TOPLEFT, 0.136030, 0.210000) 
          call BlzFrameSetAbsPoint(AspectButton[3], FRAMEPOINT_BOTTOMRIGHT, 0.176040, 0.170000) 
          set BackdropAspect[3] = BlzCreateFrameByType("BACKDROP", "BackdropAspect3", AspectButton[3], "", 1) 
@@ -296,8 +295,6 @@ library AspectFrames initializer init requires Tooltip, Aspects
             set ChoosedAspect[i+1] = 0
             set AspectName[i][0] = ASPECT_CANCEL_NAME
             set AspectDescription[i][0] = ASPECT_CANCEL_DESCRIPTION
-            //set AspectName[i] = ""
-            //set AspectDescription[i] = ""
             
             set outline = BlzCreateFrameByType("BACKDROP", "", AspectButton[i], "", 1) 
             call BlzFrameSetAllPoints(outline, AspectButton[i]) 
@@ -305,7 +302,7 @@ library AspectFrames initializer init requires Tooltip, Aspects
             set i = i + 1
         endloop
 
-        set ChoosedAspect = BlzCreateFrameByType("BACKDROP", "", AspectBackGround, "", 1) 
+        set ChoosedAspect = BlzCreateFrameByType("BACKDROP", "", AspectBackground, "", 1) 
         call BlzFrameSetAllPoints(ChoosedAspect, AspectButton[0])
         call BlzFrameSetTexture(ChoosedAspect, "ChoosedApsect.blp", 0, true) 
          

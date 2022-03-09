@@ -42,9 +42,10 @@ endglobals
 function Trig_Database_Actions takes nothing returns nothing
     local integer cyclA
     local integer cyclAEnd
+    local unit temp
     
     set udg_perc = "%"
-    set udg_Version = "1.4.5p"
+    set udg_Version = "1.4.5q (Pre)"
     set udg_UntilFirstFight = true
     
     if udg_hash == null then
@@ -648,9 +649,9 @@ function Trig_Database_Actions takes nothing returns nothing
             call CreateFogModifierRectBJ( true, Player(bj_forLoopAIndex - 1), FOG_OF_WAR_VISIBLE, gg_rct_Vision4 )
             call CreateFogModifierRectBJ( true, Player(bj_forLoopAIndex - 1), FOG_OF_WAR_VISIBLE, gg_rct_Vision5 )
             call CreateFogModifierRectBJ( true, Player(bj_forLoopAIndex - 1), FOG_OF_WAR_MASKED, gg_rct_LoseVision )
-            set udg_HeroSpawn[bj_forLoopAIndex] = CreateUnit( Player(PLAYER_NEUTRAL_PASSIVE), 'u000', GetLocationX(udg_point[25+bj_forLoopAIndex]), GetLocationY(udg_point[25+bj_forLoopAIndex]), bj_UNIT_FACING )
+            set temp = CreateUnit( Player(PLAYER_NEUTRAL_PASSIVE), 'u000', GetLocationX(udg_point[25+bj_forLoopAIndex]), GetLocationY(udg_point[25+bj_forLoopAIndex]), bj_UNIT_FACING )
             call CameraSetupApplyForPlayer( true, udg_CameraChoose[bj_forLoopAIndex], Player(bj_forLoopAIndex-1), 0 )
-    		call SetCameraTargetControllerNoZForPlayer( Player(bj_forLoopAIndex-1), udg_HeroSpawn[bj_forLoopAIndex], 200.00, -150.00, false )
+    		call SetCameraTargetControllerNoZForPlayer( Player(bj_forLoopAIndex-1), temp, 200.00, -150.00, false )
             set bj_forLoopBIndex = 1
             loop
                 exitwhen bj_forLoopBIndex > 4
@@ -668,6 +669,8 @@ function Trig_Database_Actions takes nothing returns nothing
     set udg_BossHP = udg_BossHP - ( 0.15 * ( 4 - udg_Heroes_Amount ) ) 
     set udg_BossAT = udg_BossAT - ( 0.1 * ( 4 - udg_Heroes_Amount ) )
     call SpellPower_AddBossSpellPower( -0.1 * ( 4 - udg_Heroes_Amount ) )
+    
+    set temp = null
 endfunction
 
 //===========================================================================

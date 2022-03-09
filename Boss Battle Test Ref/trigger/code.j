@@ -11,10 +11,6 @@ function StringSizeSkill takes string s returns real
 	return (0.0005*StringLength(s))+0.05
 endfunction
 
-function StringSizeSmall takes string s returns real
-	return (0.0002*StringLength(s))+0.05
-endfunction
-
 // Число исключение
 function exept takes integer i, integer min, integer max returns integer
 	local integer cyclA = 1
@@ -1032,34 +1028,6 @@ function potionst takes unit caster returns nothing
     
     set it = null
     set caster = null
-endfunction
-
-// Случайный герой
-function RandomHero takes player p returns nothing
-    local integer cyclA = 1
-    local integer rand
-    local integer i = GetPlayerId(p) + 1
-    local integer s = LoadInteger( udg_hash, i, StringHash( "randpick" ) ) + 1
-
-    if s <= 3 then
-        if udg_Boss_LvL == 1 then
-        	call DisplayTimedTextToPlayer( p, 0, 0, 10., "Attempts left: " + I2S( 3 - s ) )
-        endif
-        loop
-            exitwhen cyclA > 1
-            set rand = GetRandomInt(1, udg_Database_InfoNumberHeroes)
-            if CountUnitsInGroup(GetUnitsOfTypeIdAll(udg_Database_Hero[rand])) == 0 and udg_UnitHeroLogic[rand] == false and IsBanned[rand] == false then
-                set udg_logic[8] = true
-                call CreateUnit( p, udg_Database_Hero[rand], GetRectCenterX(gg_rct_HeroesTp), GetRectCenterY(gg_rct_HeroesTp), 270 )
-            else
-                set cyclA = cyclA - 1
-            endif
-            set cyclA = cyclA + 1
-        endloop
-    endif
-    call SaveInteger( udg_hash, i, StringHash( "randpick" ), s )
-    
-    set p = null
 endfunction
 
 // Фейерверк
@@ -2472,7 +2440,7 @@ function RandHero takes nothing returns nothing
     loop
         exitwhen cyclA > 3
         if GetPlayerSlotState(Player(cyclA)) == PLAYER_SLOT_STATE_PLAYING then
-            call RandomHero( Player(cyclA) )
+            call RandomHero_GetRandomHero( Player(cyclA) )
         endif
         set cyclA = cyclA + 1
     endloop
@@ -2832,42 +2800,6 @@ function FightEnd takes nothing returns nothing
                     call moneyst( udg_hero[cyclA], p )
                     set udg_Data[cyclA] = udg_Data[cyclA] + p
                     call textst( "|c00FFFF00 +" + I2S( p ) + " gold", udg_hero[cyclA], 64, GetRandomReal( 0, 360 ), 10, 2.5 )
-                endif
-                if inv(udg_hero[cyclA], 'I01L') > 0 then
-                    set cyclB = 1
-                    loop
-                        exitwhen cyclB > 3
-                        set rand = GetRandomInt(( udg_luckychance[cyclA] - 10 ), 10)
-                        if rand > 10 then
-                            set rand = 10
-                        endif
-                        if cyclB == 1 then
-                            call statst( udg_hero[cyclA], rand, 0, 0, 68, true )
-                            if rand >= 0 then
-                                set str = "+"
-                            else
-                                set str = ""
-                            endif
-                            call textst( "|c00FF2020 " + str + I2S(rand) + " strength", udg_hero[cyclA], 64, 30, 10, 2.5 )
-                        elseif cyclB == 2 then
-                            call statst( udg_hero[cyclA], 0, rand, 0, 72, true )
-                            if rand >= 0 then
-                                set str = "+"
-                            else
-                                set str = ""
-                            endif
-                            call textst( "|c0020FF20 " + str + I2S(rand) + " agility", udg_hero[cyclA], 64, 150, 10, 2.5 )
-                        elseif cyclB == 3 then
-                            call statst( udg_hero[cyclA], 0, 0, rand, 76, true )
-                            if rand >= 0 then
-                                set str = "+"
-                            else
-                                set str = ""
-                            endif
-                            call textst( "|c002020FF " + str + I2S(rand) + " intelligence", udg_hero[cyclA], 64, 270, 10, 2.5 )
-                        endif
-                        set cyclB = cyclB + 1
-                    endloop
                 endif
                 if inv(udg_hero[cyclA], 'I07B') > 0 then
                     set rand = GetRandomInt(1, 4)

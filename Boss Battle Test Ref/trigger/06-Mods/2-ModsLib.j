@@ -1,4 +1,4 @@
-library Mods requires LibDataAbilities, SpellPower, RandomTargetLib, Money, Multiboard, Luck, NullingAbility, ModsData, ChallengeData
+library Mods requires LibDataAbilities, SpellPower, RandomTargetLib, Money, Multiboard, Luck, NullingAbility, ModsData, ChallengeData, Repick
     globals
         real Event_Mode_Awake_Real = 0
     endglobals
@@ -94,6 +94,40 @@ library Mods requires LibDataAbilities, SpellPower, RandomTargetLib, Money, Mult
         call modes.destroy()
     endfunction
     
+    private function RandomHero takes nothing returns nothing
+        local integer i
+        local player owner
+        local unit hero
+        local integer heroKey
+        
+        call IconFrame( "New one", BlzGetAbilityIcon('A0D2'), BlzGetAbilityTooltip('A0D2', 0), BlzGetAbilityExtendedTooltip('A0D2', 0) )
+
+        set i = 0
+        loop
+            exitwhen i > 3
+            set owner = Player(i)
+            if GetPlayerSlotState(owner) == PLAYER_SLOT_STATE_PLAYING then
+                call Repick(owner)
+
+                set hero = RandomHero_GetRandomHero( owner )
+                set heroKey = GetHeroNumber( GetUnitTypeId(hero) )
+                
+                set Event_HeroPicked_Hero = hero
+                set Event_HeroPicked_HeroKey = heroKey
+                set Event_HeroPicked_Player = owner
+                set Event_HeroPicked_Real = 0.00
+                set Event_HeroPicked_Real = 1.00
+                set Event_HeroPicked_Real = 0.00
+                
+                call moneyst( hero, 250 )
+            endif
+            set i = i + 1
+        endloop
+        
+        set owner = null
+        set hero = null
+    endfunction
+    
     public function Awake takes nothing returns nothing
         local integer cyclA = 1
         local integer cyclAEnd
@@ -129,45 +163,7 @@ library Mods requires LibDataAbilities, SpellPower, RandomTargetLib, Money, Mult
     
         //Random Hero
         if udg_logic[77] then
-            call IconFrame( "New one", BlzGetAbilityIcon('A0D2'), BlzGetAbilityTooltip('A0D2', 0), BlzGetAbilityExtendedTooltip('A0D2', 0) )
-
-            call resethero()
-            call GroupClear( udg_otryad )
-            call GroupClear( udg_heroinfo )
-            set cyclA = 1
-            loop
-                exitwhen cyclA > 4
-                if GetPlayerSlotState(Player(cyclA - 1)) == PLAYER_SLOT_STATE_PLAYING then
-                    call UnitAddAbility( udg_unit[35 + cyclA], 'A0D2' )
-                    if udg_number[cyclA + 100] == 7 then
-                        call spdst( udg_hero[cyclA], -10 )
-                    endif
-                    call UnitRemoveAbility( udg_unit[cyclA + 4], udg_HeroStatus[cyclA] )
-                    call delspellpas( udg_hero[cyclA + 1] )
-                    if GetUnitTypeId(udg_hero[cyclA]) == udg_Database_Hero[1] then
-                        call DestroyLeaderboard( udg_panel[1] )
-                    elseif GetUnitTypeId(udg_hero[cyclA]) == 'O016' then
-                        call DestroyLeaderboard( udg_panel[3] )
-                    endif
-                    call RemoveUnit( udg_hero[cyclA] )
-                    set udg_hero[cyclA] = null
-                endif
-                set cyclA = cyclA + 1
-            endloop
-            set cyclA = 0
-            loop
-                exitwhen cyclA > 3
-                if GetPlayerSlotState(Player(cyclA)) == PLAYER_SLOT_STATE_PLAYING then
-                    set rand = GetRandomInt(1, udg_Database_InfoNumberHeroes)
-                    if CountUnitsInGroup(GetUnitsOfTypeIdAll(udg_Database_Hero[rand])) == 0 then
-                        set bj_lastCreatedUnit = CreateUnit(Player(cyclA), udg_Database_Hero[rand], GetRectCenterX(gg_rct_HeroesTp), GetRectCenterY(gg_rct_HeroesTp), 90. )
-                        call moneyst( bj_lastCreatedUnit, 250 )
-                    else
-                        set cyclA = cyclA - 1
-                    endif
-                endif
-                set cyclA = cyclA + 1
-            endloop
+            call RandomHero()
             call TriggerSleepAction( 0.01 )
         endif
         

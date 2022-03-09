@@ -1,388 +1,355 @@
 01-Variables: Variables
-    001-AggroChance: AggroChance
-    002-RandomBonus_BuffDuration: RandomBonus_BuffDuration
-    003-Event_UntilDamage: Event_UntilDamage
-    004-Event_NullingAbility_Unit: Event_NullingAbility_Unit
-    005-Event_NullingAbility_Real: Event_NullingAbility_Real
-    006-Event_RuneSetRemove_Item: Event_RuneSetRemove_Item
-    007-Event_RuneSetAdd_Item: Event_RuneSetAdd_Item
-    008-Event_RuneSetRemove_Hero: Event_RuneSetRemove_Hero
-    009-Event_RuneSetRemove_Real: Event_RuneSetRemove_Real
-    010-Event_RuneSetAdd_Hero: Event_RuneSetAdd_Hero
-    011-Event_RuneSetAdd_Real: Event_RuneSetAdd_Real
-    012-Event_PlayerMinionSummon_Unit: Event_PlayerMinionSummon_Unit
-    013-Event_PlayerMinionSummon_Hero: Event_PlayerMinionSummon_Hero
-    014-Event_PlayerMinionSummon_Real: Event_PlayerMinionSummon_Real
-    015-Temp_Unit: Temp_Unit
-    016-Temp_Group: Temp_Group
-    017-PotionItemsUsed: PotionItemsUsed
-    018-FightStart_Real: FightStart_Real
-    019-FightStart_Unit: FightStart_Unit
-    020-FightStartGlobal_Real: FightStartGlobal_Real
-    021-FightEndGlobal_Real: FightEndGlobal_Real
-    022-BossChange: BossChange
-    023-Database_Score_Item: Database_Score_Item
-    024-FightEnd_Unit: FightEnd_Unit
-    025-FightEnd_Real: FightEnd_Real
-    026-PotionsUsed: PotionsUsed
-    027-CorruptedUsed: CorruptedUsed
-    028-it: it
-    029-QuestLimit: QuestLimit
-    030-Player_Color_Int: Player_Color_Int
-    031-DB_AllColors: DB_AllColors
-    032-DB_Player_Color: DB_Player_Color
-    033-UntilFirstFight: UntilFirstFight
-    034-Pattern: Pattern
-    035-ItemGetActive: ItemGetActive
-    036-ItemGetChoosed: ItemGetChoosed
-    037-JuleItem: JuleItem
-    038-DB_Set_Color: DB_Set_Color
-    039-DB_AllSet: DB_AllSet
-    040-DB_SetItems_Num: DB_SetItems_Num
-    041-DamageEventAfterArmor: DamageEventAfterArmor
-    042-StartTimer: StartTimer
-    043-DB_Ability_Special: DB_Ability_Special
-    044-Ability_Spec: Ability_Spec
-    045-ArenaRunes: ArenaRunes
-    046-DryadMinionAT: DryadMinionAT
-    047-DryadMinionHP: DryadMinionHP
-    048-entropy: entropy
-    049-DoubleSummon: DoubleSummon
-    050-Item_Souls: Item_Souls
-    051-CastItem: CastItem
-    052-DamageReduction: DamageReduction
-    053-IconMax: IconMax
-    054-IconKey: IconKey
-    055-IconLim: IconLim
-    056-DB_Hero_SpecAbAktPlus: DB_Hero_SpecAbAktPlus
-    057-FutureBall: FutureBall
-    058-LogicModes: LogicModes
-    059-LastReward: LastReward
-    060-rain: rain
-    061-DB_Rewards: DB_Rewards
-    062-DB_Orb: DB_Orb
-    063-TimedItem: TimedItem
-    064-OrbManaburn: OrbManaburn
-    065-AlreadyLoaded: AlreadyLoaded
-    066-BanLimit: BanLimit
-    067-HeroKeyIcon: HeroKeyIcon
-    068-HeroKeyPos: HeroKeyPos
-    069-HeroKey: HeroKey
-    070-Boss_BigRect: Boss_BigRect
-    071-MephistarUse: MephistarUse
-    072-Mephistar: Mephistar
-    073-DB_SoulContract_SetNum: DB_SoulContract_SetNum
-    074-DB_SoulContract_Set: DB_SoulContract_Set
-    075-DB_Rotation: DB_Rotation
-    076-DB_ModesFrame_RotationNum: DB_ModesFrame_RotationNum
-    077-Preset: Preset
-    078-DB_ModesFrame_Ability: DB_ModesFrame_Ability
-    079-DB_ModesFrame_Difficulty: DB_ModesFrame_Difficulty
-    080-DB_ModesFrame_RotationUD: DB_ModesFrame_RotationUD
-    081-DB_ModesFrame_RotationLR: DB_ModesFrame_RotationLR
-    082-DB_ModesFrame_ModeUD: DB_ModesFrame_ModeUD
-    083-DB_ModesFrame_ModeLR: DB_ModesFrame_ModeLR
-    084-DB_ModesFrame_AbilityNum: DB_ModesFrame_AbilityNum
-    085-DB_ModesFrame_DifficultyNum: DB_ModesFrame_DifficultyNum
-    086-DB_Gift: DB_Gift
-    087-base: base
-    088-FallenOneItems: FallenOneItems
-    089-FallenOneDamage: FallenOneDamage
-    090-dpslast: dpslast
-    091-dpsnum: dpsnum
-    092-DB_Skin_Limit: DB_Skin_Limit
-    093-GameStatus_TempPlayer: GameStatus_TempPlayer
-    094-GameStatus: GameStatus
-    095-Wizari: Wizari
-    096-SkinUsed: SkinUsed
-    097-DB_HeroFrame_KillerSkin1: DB_HeroFrame_KillerSkin1
-    098-ExtraExp: ExtraExp
-    099-KillInBattle: KillInBattle
-    100-ExpBonuses: ExpBonuses
-    101-DB_NumLvLItems: DB_NumLvLItems
-    102-DB_Item_ForLvL3_Legendary: DB_Item_ForLvL3_Legendary
-    103-DB_Item_ForLvL2_Legendary: DB_Item_ForLvL2_Legendary
-    104-DB_Item_ForLvL1_Legendary: DB_Item_ForLvL1_Legendary
-    105-DB_Item_ForLvL3_Rare: DB_Item_ForLvL3_Rare
-    106-DB_Item_ForLvL2_Rare: DB_Item_ForLvL2_Rare
-    107-DB_Item_ForLvL1_Rare: DB_Item_ForLvL1_Rare
-    108-DB_Item_ForLvL3_Common: DB_Item_ForLvL3_Common
-    109-DB_Item_ForLvL2_Common: DB_Item_ForLvL2_Common
-    110-DB_Item_ForLvL1_Common: DB_Item_ForLvL1_Common
-    111-rollbase: rollbase
-    112-roll: roll
-    113-ExpNeeded: ExpNeeded
-    114-SaveLoadMultiple: SaveLoadMultiple
-    115-LoadCode: LoadCode
-    116-SaveLoadConversionRemainder: SaveLoadConversionRemainder
-    117-SaveLoadConversionDividedInt: SaveLoadConversionDividedInt
-    118-SaveLoadPowerOfMaxNumber: SaveLoadPowerOfMaxNumber
-    119-SaveLoadTempStrings: SaveLoadTempStrings
-    120-SaveLoadEncryptionNumbers: SaveLoadEncryptionNumbers
-    121-LvL: LvL
-    122-Exp: Exp
-    123-LastBoss: LastBoss
-    124-HeroBonusPotionHero: HeroBonusPotionHero
-    125-HeroBonusPotionClass: HeroBonusPotionClass
-    126-HeroBonusPotion: HeroBonusPotion
-    127-DB_HeroFrame_Uniques: DB_HeroFrame_Uniques
-    128-RandomString: RandomString
-    129-RandomBonus: RandomBonus
-    130-KillUnit: KillUnit
-    131-BossDamageMagical: BossDamageMagical
-    132-BossDamagePhysical: BossDamagePhysical
-    133-BossHeal: BossHeal
-    134-outcast: outcast
-    135-QuestHero: QuestHero
-    136-QuestItemCode: QuestItemCode
-    137-QuestItemString: QuestItemString
-    138-QuestIcon: QuestIcon
-    139-QuestItemNum: QuestItemNum
-    140-QuestItem: QuestItem
-    141-QuestNum: QuestNum
-    142-DB_Basic_HeroIcon: DB_Basic_HeroIcon
-    143-DB_BasicHeroesNum: DB_BasicHeroesNum
-    144-DB_BasicHeroes: DB_BasicHeroes
-    145-HeroChooseMode: HeroChooseMode
-    146-lightball: lightball
-    147-DB_MechUse: DB_MechUse
-    148-perc: perc
-    149-Portals: Portals
-    150-Portal: Portal
-    151-Endgame: Endgame
-    152-SantaItem: SantaItem
-    153-SantaPoint: SantaPoint
-    154-QuestDone: QuestDone
-    155-DeadHero: DeadHero
-    156-DamageHealLoop: DamageHealLoop
-    157-ArenaLim: ArenaLim
-    158-DeathPig: DeathPig
-    159-DB_Tarot: DB_Tarot
-    160-forgeitem: forgeitem
-    161-forgelose: forgelose
-    162-HardNum: HardNum
-    163-Dublicate: Dublicate
-    164-BonusFrameSet: BonusFrameSet
-    165-BossPos: BossPos
-    166-counter: counter
-    167-SalamanderSpeed: SalamanderSpeed
-    168-Host: Host
-    169-DryadMinion: DryadMinion
-    170-DB_FS_String: DB_FS_String
-    171-Death: Death
-    172-Players: Players
-    173-RarityChance: RarityChance
-    174-DB_Hardest_On: DB_Hardest_On
-    175-DB_Hardest: DB_Hardest
-    176-Captions: Captions
-    177-ItemBuf: ItemBuf
-    178-Eczotic: Eczotic
-    179-Set_Cristall_Number: Set_Cristall_Number
-    180-HeroNum: HeroNum
-    181-TrigNow: TrigNow
-    182-DB_FS_Name: DB_FS_Name
-    183-DB_FS_SetItem: DB_FS_SetItem
-    184-DB_FS_SetType: DB_FS_SetType
-    185-DB_FS_Size: DB_FS_Size
-    186-DB_FS_Sets: DB_FS_Sets
-    187-DB_FS_Item: DB_FS_Item
-    188-DB_FS_End: DB_FS_End
-    189-DB_FS_Start: DB_FS_Start
-    190-meat: meat
-    191-DB_Hero_Hard: DB_Hero_Hard
-    192-DB_Hero_Avtor: DB_Hero_Avtor
-    193-DB_HeroFrame_Ability: DB_HeroFrame_Ability
-    194-Visible: Visible
-    195-CameraChoose: CameraChoose
-    196-DB_HeroFrame_Debuffer_Icon: DB_HeroFrame_Debuffer_Icon
-    197-DB_HeroFrame_Healer_Icon: DB_HeroFrame_Healer_Icon
-    198-DB_HeroFrame_Elemental_Icon: DB_HeroFrame_Elemental_Icon
-    199-DB_HeroFrame_Killer_Icon: DB_HeroFrame_Killer_Icon
-    200-DB_HeroFrame_Maraduer_Icon: DB_HeroFrame_Maraduer_Icon
-    201-HeroSpawn: HeroSpawn
-    202-DB_HeroFrame_Debuffer: DB_HeroFrame_Debuffer
-    203-DB_HeroFrame_Healer: DB_HeroFrame_Healer
-    204-DB_HeroFrame_Killer: DB_HeroFrame_Killer
-    205-DB_HeroFrame_Maraduer: DB_HeroFrame_Maraduer
-    206-DB_HeroFrame_Elemental: DB_HeroFrame_Elemental
-    207-HeroChoose: HeroChoose
-    208-DB_HeroFrame_Hybrid_Icon: DB_HeroFrame_Hybrid_Icon
-    209-DB_HeroFrame_Hybrid: DB_HeroFrame_Hybrid
-    210-DB_HeroFrame_Ripper_Icon: DB_HeroFrame_Ripper_Icon
-    211-DB_HeroFrame_Ripper: DB_HeroFrame_Ripper
-    212-DB_HeroFrame_Deffender_Icon: DB_HeroFrame_Deffender_Icon
-    213-DB_HeroFrame_Deffender: DB_HeroFrame_Deffender
-    214-DB_HeroFrame_Buffer_Icon: DB_HeroFrame_Buffer_Icon
-    215-DB_HeroFrame_Buffer: DB_HeroFrame_Buffer
-    216-DB_HeroFrame_Number: DB_HeroFrame_Number
-    217-DB_HeroesFrame_Name: DB_HeroesFrame_Name
-    218-DB_HeroesFrame_Tooltip: DB_HeroesFrame_Tooltip
-    219-DB_HeroesFrame_Icon: DB_HeroesFrame_Icon
-    220-Info_DamageMagic: Info_DamageMagic
-    221-Info_DamagePhysical: Info_DamagePhysical
-    222-Info_Time: Info_Time
-    223-DB_InfoFrame_Tooltip: DB_InfoFrame_Tooltip
-    224-DB_InfoFrame_Name: DB_InfoFrame_Name
-    225-DB_InfoFrame_Number: DB_InfoFrame_Number
-    226-DB_Item_Activate: DB_Item_Activate
-    227-DB_BonusFrame_Tooltip: DB_BonusFrame_Tooltip
-    228-DB_BonusFrame_Name: DB_BonusFrame_Name
-    229-DB_BonusFrame_Icon: DB_BonusFrame_Icon
-    230-DB_Seller_Number: DB_Seller_Number
-    231-DB_Seller_Text: DB_Seller_Text
-    232-DB_Seller_Icon: DB_Seller_Icon
-    233-DB_Seller: DB_Seller
-    234-BossAT: BossAT
-    235-BossHP: BossHP
-    236-itemrarity: itemrarity
-    237-i: i
-    238-dmgboss: dmgboss
-    239-DB_Item_Destroyed: DB_Item_Destroyed
-    240-BD_Item_Sheep: BD_Item_Sheep
-    241-DB_Item_Symvol: DB_Item_Symvol
-    242-timerdialog: timerdialog
-    243-ModName: ModName
-    244-Hardest: Hardest
-    245-Version: Version
-    246-timelimit: timelimit
-    247-GoldAllTime: GoldAllTime
-    248-SaveLoadSlots: SaveLoadSlots
-    249-SaveLoadMaxEncryptionSets: SaveLoadMaxEncryptionSets
-    250-SaveLoadMaxCharacters: SaveLoadMaxCharacters
-    251-SaveLoadHasLoaded: SaveLoadHasLoaded
-    252-SaveLoadEncryptionSet: SaveLoadEncryptionSet
-    253-SaveLoadCharacterSet: SaveLoadCharacterSet
-    254-SaveLoadCharacterNumbers: SaveLoadCharacterNumbers
-    255-SaveLoadBlockSize: SaveLoadBlockSize
-    256-DamagedAllTime: DamagedAllTime
-    257-DamagedFight: DamagedFight
-    258-DB_Hero_SpecAbAkt: DB_Hero_SpecAbAkt
-    259-Varcklen: Varcklen
-    260-Data: Data
-    261-DB_BS_String: DB_BS_String
-    262-DB_GS_String: DB_GS_String
-    263-Time: Time
-    264-Bosses: Bosses
-    265-fightmod: fightmod
-    266-Boss_Rect: Boss_Rect
-    267-DB_Trigger_Spec: DB_Trigger_Spec
-    268-modbad: modbad
-    269-modgood: modgood
-    270-DB_BadMod: DB_BadMod
-    271-DB_Hero_SecretBook: DB_Hero_SecretBook
-    272-DB_Trigger_Three: DB_Trigger_Three
-    273-DB_Trigger_Two: DB_Trigger_Two
-    274-DB_Trigger_One: DB_Trigger_One
-    275-DB_Trigger_Pot: DB_Trigger_Pot
-    276-string: string
-    277-BuffLogic: BuffLogic
-    278-Target: Target
-    279-Level: Level
-    280-RandomLogic: RandomLogic
-    281-Return: Return
-    282-DB_Hero_SpecAbPlus: DB_Hero_SpecAbPlus
-    283-DB_Hero_SpecAb: DB_Hero_SpecAb
-    284-DB_Hero_Icon: DB_Hero_Icon
-    285-SpellDamagePotion: SpellDamagePotion
-    286-Database_Feerverk: Database_Feerverk
-    287-UnitHeroLogic: UnitHeroLogic
-    288-Boss_Random: Boss_Random
-    289-Boss_Number: Boss_Number
-    290-SpellDamageSpec: SpellDamageSpec
-    291-Database_Item_Potion: Database_Item_Potion
-    292-HeroStatus: HeroStatus
-    293-Database_HeroStatus: Database_HeroStatus
-    294-HardModBonus: HardModBonus
-    295-cristal: cristal
-    296-hash: hash
-    297-multi: multi
-    298-Player_Color: Player_Color
-    299-BlackMark: BlackMark
-    300-DPSMax: DPSMax
-    301-FSItems: FSItems
-    302-heroinfo: heroinfo
-    303-itemrandomFS: itemrandomFS
-    304-DB_GoodMod: DB_GoodMod
-    305-worldmod: worldmod
-    306-Kick_String: Kick_String
-    307-NecroWool: NecroWool
-    308-YoricSkull: YoricSkull
-    309-Set_Ring_Number: Set_Ring_Number
-    310-Ability_Uniq: Ability_Uniq
-    311-Bufer_Unit: Bufer_Unit
-    312-CastLogic: CastLogic
-    313-minion_repick: minion_repick
-    314-Bufer_Zone: Bufer_Zone
-    315-UnitHero: UnitHero
-    316-Multiboard_Sets: Multiboard_Sets
-    317-Color_Player_Blue: Color_Player_Blue
-    318-Color_Player_Green: Color_Player_Green
-    319-Color_Player_Red: Color_Player_Red
-    320-ManaFight: ManaFight
-    321-ManaAllTime: ManaAllTime
-    322-HealFight: HealFight
-    323-HealAllTime: HealAllTime
-    324-DPS: DPS
-    325-DamageFight: DamageFight
-    326-DamageAllTime: DamageAllTime
-    327-LastDmgValue: LastDmgValue
-    328-LastDmgPrevType: LastDmgPrevType
-    329-IsDamageSpell: IsDamageSpell
-    330-DamageTypeCriticalStrike: DamageTypeCriticalStrike
-    331-DamageTypeBlocked: DamageTypeBlocked
-    332-DamageModifierEvent: DamageModifierEvent
-    333-DamageEventType: DamageEventType
-    334-DamageEventTarget: DamageEventTarget
-    335-DamageEventSource: DamageEventSource
-    336-DamageEventAmount: DamageEventAmount
-    337-DamageEvent: DamageEvent
-    338-AfterDamageEvent: AfterDamageEvent
-    339-Set_Weapon_TextNumber: Set_Weapon_TextNumber
-    340-Set_Weapon_Number: Set_Weapon_Number
-    341-Set_Weapon_Logic: Set_Weapon_Logic
-    342-Database_RandomUnit: Database_RandomUnit
-    343-Database_Score_Unit: Database_Score_Unit
-    344-Multiboard_Position: Multiboard_Position
-    345-combatlogic: combatlogic
-    346-Info_Effect: Info_Effect
-    347-Database_IA_Unit: Database_IA_Unit
-    348-Arena_LvL: Arena_LvL
-    349-Database_InfoNumberHeroes: Database_InfoNumberHeroes
-    350-Database_Hero: Database_Hero
-    351-real: real
-    352-point: point
-    353-panel: panel
-    354-logic: logic
-    355-number: number
-    356-timer: timer
-    357-unit: unit
-    358-Database_NumberItems: Database_NumberItems
-    359-luckychance: luckychance
-    360-lucky: lucky
-    361-Set_Alchemy_Number: Set_Alchemy_Number
-    362-fightlogic: fightlogic
-    363-Heroes_Deaths: Heroes_Deaths
-    364-cheater: cheater
-    365-auctionlogic: auctionlogic
-    366-item: item
-    367-Set_Nature_Number: Set_Nature_Number
-    368-Heroes_Ressurect_Battle: Heroes_Ressurect_Battle
-    369-Heroes_Ressurect: Heroes_Ressurect
-    370-artifzone: artifzone
-    371-auctionartif: auctionartif
-    372-Caster: Caster
-    373-Set_Moon_Number: Set_Moon_Number
-    374-Set_Rune_Number: Set_Rune_Number
-    375-Set_Blood_Number: Set_Blood_Number
-    376-Multiboard_Time: Multiboard_Time
-    377-otryad: otryad
-    378-Heroes_Chanse: Heroes_Chanse
-    379-Boss_LvL: Boss_LvL
-    380-Player_Readiness: Player_Readiness
-    381-Heroes_Amount: Heroes_Amount
-    382-hero: hero
-    383-itemcentr: itemcentr
-    384-peacesubspellspell: peacesubspellspell
+    001-SkinUsed: SkinUsed
+    002-AggroChance: AggroChance
+    003-RandomBonus_BuffDuration: RandomBonus_BuffDuration
+    004-Event_UntilDamage: Event_UntilDamage
+    005-Event_NullingAbility_Unit: Event_NullingAbility_Unit
+    006-Event_NullingAbility_Real: Event_NullingAbility_Real
+    007-Event_RuneSetRemove_Item: Event_RuneSetRemove_Item
+    008-Event_RuneSetAdd_Item: Event_RuneSetAdd_Item
+    009-Event_RuneSetRemove_Hero: Event_RuneSetRemove_Hero
+    010-Event_RuneSetRemove_Real: Event_RuneSetRemove_Real
+    011-Event_RuneSetAdd_Hero: Event_RuneSetAdd_Hero
+    012-Event_RuneSetAdd_Real: Event_RuneSetAdd_Real
+    013-Event_PlayerMinionSummon_Unit: Event_PlayerMinionSummon_Unit
+    014-Event_PlayerMinionSummon_Hero: Event_PlayerMinionSummon_Hero
+    015-Event_PlayerMinionSummon_Real: Event_PlayerMinionSummon_Real
+    016-Temp_Unit: Temp_Unit
+    017-Temp_Group: Temp_Group
+    018-PotionItemsUsed: PotionItemsUsed
+    019-FightStart_Real: FightStart_Real
+    020-FightStart_Unit: FightStart_Unit
+    021-FightStartGlobal_Real: FightStartGlobal_Real
+    022-FightEndGlobal_Real: FightEndGlobal_Real
+    023-BossChange: BossChange
+    024-Database_Score_Item: Database_Score_Item
+    025-FightEnd_Unit: FightEnd_Unit
+    026-FightEnd_Real: FightEnd_Real
+    027-PotionsUsed: PotionsUsed
+    028-CorruptedUsed: CorruptedUsed
+    029-it: it
+    030-QuestLimit: QuestLimit
+    031-Player_Color_Int: Player_Color_Int
+    032-DB_AllColors: DB_AllColors
+    033-DB_Player_Color: DB_Player_Color
+    034-UntilFirstFight: UntilFirstFight
+    035-Pattern: Pattern
+    036-ItemGetActive: ItemGetActive
+    037-ItemGetChoosed: ItemGetChoosed
+    038-JuleItem: JuleItem
+    039-DB_Set_Color: DB_Set_Color
+    040-DB_AllSet: DB_AllSet
+    041-DB_SetItems_Num: DB_SetItems_Num
+    042-DamageEventAfterArmor: DamageEventAfterArmor
+    043-StartTimer: StartTimer
+    044-DB_Ability_Special: DB_Ability_Special
+    045-Ability_Spec: Ability_Spec
+    046-ArenaRunes: ArenaRunes
+    047-DryadMinionAT: DryadMinionAT
+    048-DryadMinionHP: DryadMinionHP
+    049-entropy: entropy
+    050-DoubleSummon: DoubleSummon
+    051-Item_Souls: Item_Souls
+    052-CastItem: CastItem
+    053-DamageReduction: DamageReduction
+    054-IconMax: IconMax
+    055-IconKey: IconKey
+    056-IconLim: IconLim
+    057-DB_Hero_SpecAbAktPlus: DB_Hero_SpecAbAktPlus
+    058-FutureBall: FutureBall
+    059-LogicModes: LogicModes
+    060-LastReward: LastReward
+    061-rain: rain
+    062-DB_Rewards: DB_Rewards
+    063-DB_Orb: DB_Orb
+    064-TimedItem: TimedItem
+    065-OrbManaburn: OrbManaburn
+    066-AlreadyLoaded: AlreadyLoaded
+    067-BanLimit: BanLimit
+    068-Boss_BigRect: Boss_BigRect
+    069-MephistarUse: MephistarUse
+    070-Mephistar: Mephistar
+    071-DB_SoulContract_SetNum: DB_SoulContract_SetNum
+    072-DB_SoulContract_Set: DB_SoulContract_Set
+    073-DB_Rotation: DB_Rotation
+    074-DB_ModesFrame_RotationNum: DB_ModesFrame_RotationNum
+    075-Preset: Preset
+    076-DB_ModesFrame_Ability: DB_ModesFrame_Ability
+    077-DB_ModesFrame_Difficulty: DB_ModesFrame_Difficulty
+    078-DB_ModesFrame_RotationUD: DB_ModesFrame_RotationUD
+    079-DB_ModesFrame_RotationLR: DB_ModesFrame_RotationLR
+    080-DB_ModesFrame_ModeUD: DB_ModesFrame_ModeUD
+    081-DB_ModesFrame_ModeLR: DB_ModesFrame_ModeLR
+    082-DB_ModesFrame_AbilityNum: DB_ModesFrame_AbilityNum
+    083-DB_ModesFrame_DifficultyNum: DB_ModesFrame_DifficultyNum
+    084-DB_Gift: DB_Gift
+    085-base: base
+    086-FallenOneItems: FallenOneItems
+    087-FallenOneDamage: FallenOneDamage
+    088-dpslast: dpslast
+    089-dpsnum: dpsnum
+    090-DB_Skin_Limit: DB_Skin_Limit
+    091-GameStatus_TempPlayer: GameStatus_TempPlayer
+    092-GameStatus: GameStatus
+    093-Wizari: Wizari
+    094-ExtraExp: ExtraExp
+    095-KillInBattle: KillInBattle
+    096-ExpBonuses: ExpBonuses
+    097-DB_NumLvLItems: DB_NumLvLItems
+    098-DB_Item_ForLvL3_Legendary: DB_Item_ForLvL3_Legendary
+    099-DB_Item_ForLvL2_Legendary: DB_Item_ForLvL2_Legendary
+    100-DB_Item_ForLvL1_Legendary: DB_Item_ForLvL1_Legendary
+    101-DB_Item_ForLvL3_Rare: DB_Item_ForLvL3_Rare
+    102-DB_Item_ForLvL2_Rare: DB_Item_ForLvL2_Rare
+    103-DB_Item_ForLvL1_Rare: DB_Item_ForLvL1_Rare
+    104-DB_Item_ForLvL3_Common: DB_Item_ForLvL3_Common
+    105-DB_Item_ForLvL2_Common: DB_Item_ForLvL2_Common
+    106-DB_Item_ForLvL1_Common: DB_Item_ForLvL1_Common
+    107-rollbase: rollbase
+    108-roll: roll
+    109-ExpNeeded: ExpNeeded
+    110-SaveLoadMultiple: SaveLoadMultiple
+    111-LoadCode: LoadCode
+    112-SaveLoadConversionRemainder: SaveLoadConversionRemainder
+    113-SaveLoadConversionDividedInt: SaveLoadConversionDividedInt
+    114-SaveLoadPowerOfMaxNumber: SaveLoadPowerOfMaxNumber
+    115-SaveLoadTempStrings: SaveLoadTempStrings
+    116-SaveLoadEncryptionNumbers: SaveLoadEncryptionNumbers
+    117-LvL: LvL
+    118-Exp: Exp
+    119-LastBoss: LastBoss
+    120-HeroBonusPotionHero: HeroBonusPotionHero
+    121-HeroBonusPotionClass: HeroBonusPotionClass
+    122-HeroBonusPotion: HeroBonusPotion
+    123-RandomString: RandomString
+    124-RandomBonus: RandomBonus
+    125-KillUnit: KillUnit
+    126-BossDamageMagical: BossDamageMagical
+    127-BossDamagePhysical: BossDamagePhysical
+    128-BossHeal: BossHeal
+    129-outcast: outcast
+    130-QuestHero: QuestHero
+    131-QuestItemCode: QuestItemCode
+    132-QuestItemString: QuestItemString
+    133-QuestIcon: QuestIcon
+    134-QuestItemNum: QuestItemNum
+    135-QuestItem: QuestItem
+    136-QuestNum: QuestNum
+    137-DB_Basic_HeroIcon: DB_Basic_HeroIcon
+    138-DB_BasicHeroesNum: DB_BasicHeroesNum
+    139-DB_BasicHeroes: DB_BasicHeroes
+    140-HeroChooseMode: HeroChooseMode
+    141-lightball: lightball
+    142-DB_MechUse: DB_MechUse
+    143-perc: perc
+    144-Portals: Portals
+    145-Portal: Portal
+    146-Endgame: Endgame
+    147-SantaItem: SantaItem
+    148-SantaPoint: SantaPoint
+    149-QuestDone: QuestDone
+    150-DeadHero: DeadHero
+    151-DamageHealLoop: DamageHealLoop
+    152-ArenaLim: ArenaLim
+    153-DeathPig: DeathPig
+    154-DB_Tarot: DB_Tarot
+    155-forgeitem: forgeitem
+    156-forgelose: forgelose
+    157-HardNum: HardNum
+    158-Dublicate: Dublicate
+    159-BonusFrameSet: BonusFrameSet
+    160-BossPos: BossPos
+    161-counter: counter
+    162-SalamanderSpeed: SalamanderSpeed
+    163-Host: Host
+    164-DryadMinion: DryadMinion
+    165-DB_FS_String: DB_FS_String
+    166-Death: Death
+    167-Players: Players
+    168-RarityChance: RarityChance
+    169-DB_Hardest_On: DB_Hardest_On
+    170-DB_Hardest: DB_Hardest
+    171-Captions: Captions
+    172-ItemBuf: ItemBuf
+    173-Eczotic: Eczotic
+    174-Set_Cristall_Number: Set_Cristall_Number
+    175-HeroNum: HeroNum
+    176-TrigNow: TrigNow
+    177-DB_FS_Name: DB_FS_Name
+    178-DB_FS_SetItem: DB_FS_SetItem
+    179-DB_FS_SetType: DB_FS_SetType
+    180-DB_FS_Size: DB_FS_Size
+    181-DB_FS_Sets: DB_FS_Sets
+    182-DB_FS_Item: DB_FS_Item
+    183-DB_FS_End: DB_FS_End
+    184-DB_FS_Start: DB_FS_Start
+    185-meat: meat
+    186-DB_HeroFrame_Ability: DB_HeroFrame_Ability
+    187-Visible: Visible
+    188-CameraChoose: CameraChoose
+    189-Info_DamageMagic: Info_DamageMagic
+    190-Info_DamagePhysical: Info_DamagePhysical
+    191-Info_Time: Info_Time
+    192-DB_InfoFrame_Tooltip: DB_InfoFrame_Tooltip
+    193-DB_InfoFrame_Name: DB_InfoFrame_Name
+    194-DB_InfoFrame_Number: DB_InfoFrame_Number
+    195-DB_Item_Activate: DB_Item_Activate
+    196-DB_BonusFrame_Tooltip: DB_BonusFrame_Tooltip
+    197-DB_BonusFrame_Name: DB_BonusFrame_Name
+    198-DB_BonusFrame_Icon: DB_BonusFrame_Icon
+    199-DB_Seller_Number: DB_Seller_Number
+    200-DB_Seller_Text: DB_Seller_Text
+    201-DB_Seller_Icon: DB_Seller_Icon
+    202-DB_Seller: DB_Seller
+    203-BossAT: BossAT
+    204-BossHP: BossHP
+    205-itemrarity: itemrarity
+    206-i: i
+    207-dmgboss: dmgboss
+    208-DB_Item_Destroyed: DB_Item_Destroyed
+    209-BD_Item_Sheep: BD_Item_Sheep
+    210-DB_Item_Symvol: DB_Item_Symvol
+    211-timerdialog: timerdialog
+    212-ModName: ModName
+    213-Hardest: Hardest
+    214-Version: Version
+    215-timelimit: timelimit
+    216-GoldAllTime: GoldAllTime
+    217-SaveLoadSlots: SaveLoadSlots
+    218-SaveLoadMaxEncryptionSets: SaveLoadMaxEncryptionSets
+    219-SaveLoadMaxCharacters: SaveLoadMaxCharacters
+    220-SaveLoadHasLoaded: SaveLoadHasLoaded
+    221-SaveLoadEncryptionSet: SaveLoadEncryptionSet
+    222-SaveLoadCharacterSet: SaveLoadCharacterSet
+    223-SaveLoadCharacterNumbers: SaveLoadCharacterNumbers
+    224-SaveLoadBlockSize: SaveLoadBlockSize
+    225-DamagedAllTime: DamagedAllTime
+    226-DamagedFight: DamagedFight
+    227-DB_Hero_SpecAbAkt: DB_Hero_SpecAbAkt
+    228-Varcklen: Varcklen
+    229-Data: Data
+    230-DB_BS_String: DB_BS_String
+    231-DB_GS_String: DB_GS_String
+    232-Time: Time
+    233-Bosses: Bosses
+    234-fightmod: fightmod
+    235-Boss_Rect: Boss_Rect
+    236-DB_Trigger_Spec: DB_Trigger_Spec
+    237-modbad: modbad
+    238-modgood: modgood
+    239-DB_BadMod: DB_BadMod
+    240-DB_Hero_SecretBook: DB_Hero_SecretBook
+    241-DB_Trigger_Three: DB_Trigger_Three
+    242-DB_Trigger_Two: DB_Trigger_Two
+    243-DB_Trigger_One: DB_Trigger_One
+    244-DB_Trigger_Pot: DB_Trigger_Pot
+    245-string: string
+    246-BuffLogic: BuffLogic
+    247-Target: Target
+    248-Level: Level
+    249-RandomLogic: RandomLogic
+    250-Return: Return
+    251-DB_Hero_SpecAbPlus: DB_Hero_SpecAbPlus
+    252-DB_Hero_SpecAb: DB_Hero_SpecAb
+    253-DB_Hero_Icon: DB_Hero_Icon
+    254-SpellDamagePotion: SpellDamagePotion
+    255-Database_Feerverk: Database_Feerverk
+    256-UnitHeroLogic: UnitHeroLogic
+    257-Boss_Random: Boss_Random
+    258-Boss_Number: Boss_Number
+    259-SpellDamageSpec: SpellDamageSpec
+    260-Database_Item_Potion: Database_Item_Potion
+    261-Database_HeroStatus: Database_HeroStatus
+    262-HardModBonus: HardModBonus
+    263-cristal: cristal
+    264-hash: hash
+    265-multi: multi
+    266-Player_Color: Player_Color
+    267-BlackMark: BlackMark
+    268-DPSMax: DPSMax
+    269-FSItems: FSItems
+    270-heroinfo: heroinfo
+    271-itemrandomFS: itemrandomFS
+    272-DB_GoodMod: DB_GoodMod
+    273-worldmod: worldmod
+    274-Kick_String: Kick_String
+    275-NecroWool: NecroWool
+    276-YoricSkull: YoricSkull
+    277-Set_Ring_Number: Set_Ring_Number
+    278-Ability_Uniq: Ability_Uniq
+    279-Bufer_Unit: Bufer_Unit
+    280-CastLogic: CastLogic
+    281-minion_repick: minion_repick
+    282-Bufer_Zone: Bufer_Zone
+    283-UnitHero: UnitHero
+    284-Multiboard_Sets: Multiboard_Sets
+    285-Color_Player_Blue: Color_Player_Blue
+    286-Color_Player_Green: Color_Player_Green
+    287-Color_Player_Red: Color_Player_Red
+    288-ManaFight: ManaFight
+    289-ManaAllTime: ManaAllTime
+    290-HealFight: HealFight
+    291-HealAllTime: HealAllTime
+    292-DPS: DPS
+    293-DamageFight: DamageFight
+    294-DamageAllTime: DamageAllTime
+    295-LastDmgValue: LastDmgValue
+    296-LastDmgPrevType: LastDmgPrevType
+    297-IsDamageSpell: IsDamageSpell
+    298-DamageTypeCriticalStrike: DamageTypeCriticalStrike
+    299-DamageTypeBlocked: DamageTypeBlocked
+    300-DamageModifierEvent: DamageModifierEvent
+    301-DamageEventType: DamageEventType
+    302-DamageEventTarget: DamageEventTarget
+    303-DamageEventSource: DamageEventSource
+    304-DamageEventAmount: DamageEventAmount
+    305-DamageEvent: DamageEvent
+    306-AfterDamageEvent: AfterDamageEvent
+    307-Set_Weapon_TextNumber: Set_Weapon_TextNumber
+    308-Set_Weapon_Number: Set_Weapon_Number
+    309-Set_Weapon_Logic: Set_Weapon_Logic
+    310-Database_RandomUnit: Database_RandomUnit
+    311-Database_Score_Unit: Database_Score_Unit
+    312-Multiboard_Position: Multiboard_Position
+    313-combatlogic: combatlogic
+    314-Info_Effect: Info_Effect
+    315-Database_IA_Unit: Database_IA_Unit
+    316-Arena_LvL: Arena_LvL
+    317-Database_InfoNumberHeroes: Database_InfoNumberHeroes
+    318-Database_Hero: Database_Hero
+    319-real: real
+    320-point: point
+    321-panel: panel
+    322-logic: logic
+    323-number: number
+    324-timer: timer
+    325-unit: unit
+    326-Database_NumberItems: Database_NumberItems
+    327-lucky: lucky
+    328-Set_Alchemy_Number: Set_Alchemy_Number
+    329-fightlogic: fightlogic
+    330-Heroes_Deaths: Heroes_Deaths
+    331-cheater: cheater
+    332-auctionlogic: auctionlogic
+    333-item: item
+    334-Set_Nature_Number: Set_Nature_Number
+    335-Heroes_Ressurect_Battle: Heroes_Ressurect_Battle
+    336-Heroes_Ressurect: Heroes_Ressurect
+    337-artifzone: artifzone
+    338-auctionartif: auctionartif
+    339-Caster: Caster
+    340-Set_Moon_Number: Set_Moon_Number
+    341-Set_Rune_Number: Set_Rune_Number
+    342-Set_Blood_Number: Set_Blood_Number
+    343-Multiboard_Time: Multiboard_Time
+    344-otryad: otryad
+    345-Heroes_Chanse: Heroes_Chanse
+    346-Boss_LvL: Boss_LvL
+    347-Player_Readiness: Player_Readiness
+    348-Heroes_Amount: Heroes_Amount
+    349-hero: hero
+    350-itemcentr: itemcentr
+    351-peacesubspellspell: peacesubspellspell
 02-Core: Core
     Comment
     '01-info logic1': 'info logic1'
@@ -438,18 +405,18 @@
     21-CorrectPlayerLib: CorrectPlayerLib
     '22-Stack Abilities': 'Stack Abilities'
     23-Frames: Frames
-    24------------------------: -----------------------
+    24-RandomHero: RandomHero
+    25------------------------: -----------------------
         Comment
-    25-Timebonus: Timebonus
-    26-RandomTarget: RandomTarget
-    27-AnyHasLvLLib: AnyHasLvLLib
-    28-ItemRandomizerLib: ItemRandomizerLib
-    29-SetRaritySpawnLib: SetRaritySpawnLib
-    30-SetStableToolLib: SetStableToolLib
-    31-CreateCopyUnitLib: CreateCopyUnitLib
-    32-BuffDeleteLib: BuffDeleteLib
-    33-NullingAbility: NullingAbility
-    34-Repick: Repick
+    26-Timebonus: Timebonus
+    27-RandomTarget: RandomTarget
+    28-AnyHasLvLLib: AnyHasLvLLib
+    29-ItemRandomizerLib: ItemRandomizerLib
+    30-SetRaritySpawnLib: SetRaritySpawnLib
+    31-SetStableToolLib: SetStableToolLib
+    32-CreateCopyUnitLib: CreateCopyUnitLib
+    33-BuffDeleteLib: BuffDeleteLib
+    34-NullingAbility: NullingAbility
     35------------------------: -----------------------
         Comment
     36-Inventory: Inventory
@@ -498,9 +465,8 @@
     04-Start: Start
     05-PlayerLeave: PlayerLeave
     06-BaseTooltip: BaseTooltip
-    07-HeroesChoise: HeroesChoise
-    08-MinionsPool: MinionsPool
-    09-Data: Data
+    07-MinionsPool: MinionsPool
+    08-Data: Data
         01-MerryCristmas: MerryCristmas
         02-MasterDisguise: MasterDisguise
         03-EldRichMoon: EldRichMoon
@@ -511,24 +477,24 @@
         08-CorruptedWorld: CorruptedWorld
         09-Orbomination: Orbomination
         '10-Im Legend': 'Im Legend'
-    10-Buttons: Buttons
+    09-Buttons: Buttons
         1-Esc: Esc
             Disab
         2-Tab: Tab
             Disab
-    11-SaveLoad: SaveLoad
+    10-SaveLoad: SaveLoad
         1-SyncLoadDone: SyncLoadDone
         2-LoadModule: LoadModule
         3-SaveLoadInitialize: SaveLoadInitialize
         4-SaveLoadStarnLib: SaveLoadStarnLib
         5-LoadModuleSingle: LoadModuleSingle
-    12-DamageSystem: DamageSystem
+    11-DamageSystem: DamageSystem
         1-DamageSystem: DamageSystem
         2-SetDamageLib: SetDamageLib
         '3-Set Damage': 'Set Damage'
         '4-Damage Tag': 'Damage Tag'
         5-DamageTagUse: DamageTagUse
-    13-Comands: Comands
+    12-Comands: Comands
         '01-Hard set': 'Hard set'
             01-Stat: Stat
             02-HealthSet: HealthSet
@@ -554,16 +520,16 @@
         12-Endnow: Endnow
         13-Endgame: Endgame
         14-Color: Color
-    14-Events: Events
+    13-Events: Events
         1-PlayerMinionSummonEvent: PlayerMinionSummonEvent
-    15-Counters: Counters
+    14-Counters: Counters
         1-PotionItemsUsed: PotionItemsUsed
         2-Kills: Kills
-    16-MMD: MMD
+    15-MMD: MMD
         1-WCIIIMMD: WCIIIMMD
         2-MetaEvents: MetaEvents
         3-MMDAspects: MMDAspects
-    17-Other: Other
+    16-Other: Other
         01-GameStatus: GameStatus
         02-Multiboard: Multiboard
         03-NoBuff: NoBuff
@@ -727,11 +693,10 @@
         2-ModesFrame: ModesFrame
         3-ModesChoosing: ModesChoosing
     20-HeroChoise: HeroChoise
-        1-HeroesFrameData: HeroesFrameData
+        1-HeroesTableDatabase: HeroesTableDatabase
         2-HeroesFrame: HeroesFrame
-        3-BasicHeroFrame: BasicHeroFrame
-            Disab
-            Run
+        3-HeroesChoise: HeroesChoise
+        4-Repick: Repick
 09-Debug: Debug
     1-Cheat: Cheat
         01-CheatPas: CheatPas
@@ -1216,35 +1181,36 @@
         '49-Chameleon Eye': 'Chameleon Eye'
         50-Felweed: Felweed
         51-SuperSeven: SuperSeven
-        52----------------------------: ---------------------------
+        '52-Slippers of Madness': 'Slippers of Madness'
+        53----------------------------: ---------------------------
             Comment
-        53-SLCG: SLCG
-        54-ESPN: ESPN
-        55-DMCG: DMCG
-        56-WBJG: WBJG
-        57-SPIG: SPIG
-        58-WitcherMed: WitcherMed
-        '59-Dead Mans Chest': 'Dead Mans Chest'
-        60-Wabbajack: Wabbajack
-        61-Sandro: Sandro
-        62-GrayGuard: GrayGuard
-        63-EyeCore: EyeCore
-        64-DagotUr: DagotUr
-        65-Kobzar: Kobzar
-        '66-Pandoras bag': 'Pandoras bag'
-        67-MidasHand: MidasHand
-        '68-Scientist Card': 'Scientist Card'
-        69-IkarosSwap: IkarosSwap
-        70-IkarosQuest: IkarosQuest
-        '71-Ikaros Mudstone': 'Ikaros Mudstone'
-        72-Battlemaster: Battlemaster
-        '73-Battlemaster Bulwark': 'Battlemaster Bulwark'
-        74-Pacifist: Pacifist
-        75-Enlightenment: Enlightenment
-        76-CharizardQuest: CharizardQuest
-        77----------------------------: ---------------------------
+        54-SLCG: SLCG
+        55-ESPN: ESPN
+        56-DMCG: DMCG
+        57-WBJG: WBJG
+        58-SPIG: SPIG
+        59-WitcherMed: WitcherMed
+        '60-Dead Mans Chest': 'Dead Mans Chest'
+        61-Wabbajack: Wabbajack
+        62-Sandro: Sandro
+        63-GrayGuard: GrayGuard
+        64-EyeCore: EyeCore
+        65-DagotUr: DagotUr
+        66-Kobzar: Kobzar
+        '67-Pandoras bag': 'Pandoras bag'
+        68-MidasHand: MidasHand
+        '69-Scientist Card': 'Scientist Card'
+        70-IkarosSwap: IkarosSwap
+        71-IkarosQuest: IkarosQuest
+        '72-Ikaros Mudstone': 'Ikaros Mudstone'
+        73-Battlemaster: Battlemaster
+        '74-Battlemaster Bulwark': 'Battlemaster Bulwark'
+        75-Pacifist: Pacifist
+        76-Enlightenment: Enlightenment
+        77-CharizardQuest: CharizardQuest
+        78----------------------------: ---------------------------
             Comment
-        78-Orbs: Orbs
+        79-Orbs: Orbs
             01-OrbRagnaros: OrbRagnaros
             02-OrbFrostFire: OrbFrostFire
             03-OrbManaburn: OrbManaburn
@@ -1269,13 +1235,13 @@
             '22-OrbDesecrated Land': 'OrbDesecrated Land'
             '23-Orb Cenarius': 'Orb Cenarius'
             24-OrbRollingPlains: OrbRollingPlains
-        79----------------------------: ---------------------------
+        80----------------------------: ---------------------------
             Comment
-        80-GL: GL
-        81-GiveLvL: GiveLvL
-        '82-Granite Science': 'Granite Science'
-        '83-Statuette Svirel': 'Statuette Svirel'
-        84-Papirus: Papirus
+        81-GL: GL
+        82-GiveLvL: GiveLvL
+        '83-Granite Science': 'Granite Science'
+        '84-Statuette Svirel': 'Statuette Svirel'
+        85-Papirus: Papirus
     4-Potions: Potions
         01-EarthPot: EarthPot
         02-WaterPot: WaterPot
@@ -1350,23 +1316,7 @@
 14------------------------: -----------------------
     Comment
 15-Heroes: Heroes
-    01-Uniques: Uniques
-        01-SmallHeal: SmallHeal
-        02-Provoke: Provoke
-        03-Manaball: Manaball
-        04-KillEye: KillEye
-        05-Buff: Buff
-        06-Debuff: Debuff
-        07-Chaos: Chaos
-        08-PetD: PetD
-        09-Venom: Venom
-        10-SkLordSpec: SkLordSpec
-        11-Mixology: Mixology
-        12-SummonSheep: SummonSheep
-        13-Orbs: Orbs
-        '14-Play Note': 'Play Note'
-        '15-Brother Rant': 'Brother Rant'
-    02-Special: Special
+    01-Special: Special
         01-Innervate: Innervate
         02-Taunt: Taunt
         03-Burn: Burn
@@ -1397,7 +1347,7 @@
         28-SoulMarry: SoulMarry
         '29-Last Rites': 'Last Rites'
         '30-Left the Game': 'Left the Game'
-    03-Other: Other
+    02-Other: Other
         1-Poof: Poof
         2-Superbots: Superbots
         3-SuperLuch: SuperLuch
@@ -1407,7 +1357,7 @@
         7-HalifMana: HalifMana
         8-Sneaky: Sneaky
         9-VampireSkill: VampireSkill
-    04-Buffers: Buffers
+    03-Buffers: Buffers
         1-Magnataur: Magnataur
             1-MagnataurB: MagnataurB
             2-MagnataurQ: MagnataurQ
@@ -1452,7 +1402,7 @@
             3-WandererE: WandererE
             4-WandererEHP: WandererEHP
             5-WandererR: WandererR
-    05-Deffenders: Deffenders
+    04-Deffenders: Deffenders
         1-Nerub: Nerub
             1-NerubQ: NerubQ
             2-NerubW: NerubW
@@ -1498,7 +1448,7 @@
             5-InfernalE: InfernalE
             6-InfernalSmall: InfernalSmall
             7-InfernalR: InfernalR
-    06-Rippers: Rippers
+    05-Rippers: Rippers
         1-Vampyre: Vampyre
             1-VampQ: VampQ
             2-VampW: VampW
@@ -1545,7 +1495,7 @@
             2-LycanthropeW: LycanthropeW
             3-LycanthropeE: LycanthropeE
             4-LycanthropeR: LycanthropeR
-    07-Killers: Killers
+    06-Killers: Killers
         1-Sniper: Sniper
             1-SniperQ: SniperQ
             2-SniperW: SniperW
@@ -1592,7 +1542,7 @@
             2-GunMasterW: GunMasterW
             3-GunMasterE: GunMasterE
             4-GunMasterR: GunMasterR
-    08-Marauders: Marauders
+    07-Marauders: Marauders
         1-MiracleBrew: MiracleBrew
             1-MiracleBrewQ: MiracleBrewQ
             2-MiracleBrewW: MiracleBrewW
@@ -1641,7 +1591,7 @@
             5-MephistarE: MephistarE
             6-MephistarEFrame: MephistarEFrame
             7-MephistarR: MephistarR
-    09-Hybrids: Hybrids
+    08-Hybrids: Hybrids
         1-TrollMage: TrollMage
             1-Orb: Orb
             2-TrollMageQ: TrollMageQ
@@ -1696,7 +1646,7 @@
             7-BunnieW: BunnieW
             8-BunnieE: BunnieE
             9-BunnieR: BunnieR
-    10-Elementalists: Elementalists
+    09-Elementalists: Elementalists
         1-Incarnation: Incarnation
             1-IncarnationQ: IncarnationQ
             2-IncarnationW: IncarnationW
@@ -1742,7 +1692,7 @@
             2-PeacelockW: PeacelockW
             3-PeacelockE: PeacelockE
             4-PeacelockR: PeacelockR
-    11-Healers: Healers
+    10-Healers: Healers
         1-Shaman: Shaman
             1-ShamanQ: ShamanQ
             2-ShamanW: ShamanW
@@ -1795,7 +1745,7 @@
             '3-Corrupted EntW': 'Corrupted EntW'
             4-CorruptedEntE: CorruptedEntE
             5-CorruptedEntR: CorruptedEntR
-    12-Curses: Curses
+    11-Curses: Curses
         1-King: King
             1-KingQ: KingQ
             2-KingW: KingW
@@ -1863,11 +1813,27 @@
             '2-The PlagueW': 'The PlagueW'
             '3-The PlagueE': 'The PlagueE'
             '4-The PlagueR': 'The PlagueR'
-16-Other: Other
+16-Uniques: Uniques
+    01-SmallHeal: SmallHeal
+    02-Provoke: Provoke
+    03-Manaball: Manaball
+    04-KillEye: KillEye
+    05-Buff: Buff
+    06-Debuff: Debuff
+    07-Chaos: Chaos
+    08-PetD: PetD
+    09-Venom: Venom
+    10-SkLordSpec: SkLordSpec
+    11-Mixology: Mixology
+    12-SummonSheep: SummonSheep
+    13-Orbs: Orbs
+    '14-Play Note': 'Play Note'
+    '15-Brother Rant': 'Brother Rant'
+17-Other: Other
     Comment
-17------------------------: -----------------------
+18------------------------: -----------------------
     Comment
-18-BossesInfo: BossesInfo
+19-BossesInfo: BossesInfo
     01-StartFight: StartFight
     02-StartFightWork: StartFightWork
     03-HeroDeath: HeroDeath
@@ -1884,7 +1850,7 @@
     12-BossDamage: BossDamage
     13-SpawnUnit: SpawnUnit
     14-SpawnBoss: SpawnBoss
-19-Bosses: Bosses
+20-Bosses: Bosses
     01-BossCastLib: BossCastLib
     02-Bosses1: Bosses1
         01-Morloc1: Morloc1
@@ -2214,7 +2180,7 @@
         32-Marine6: Marine6
         33-Marine7: Marine7
         34-Marine8: Marine8
-20-Arenas: Arenas
+21-Arenas: Arenas
     1-Auto: Auto
     2-InfiniteArena: InfiniteArena
         '1-IA Start': 'IA Start'
@@ -2241,7 +2207,7 @@
         '4-AL End': 'AL End'
             Closed
         '5-AL EndWork': 'AL EndWork'
-21-FichInEnd: FichInEnd
+22-FichInEnd: FichInEnd
     1-KillUnit: KillUnit
     2-Cristal: Cristal
     3-IdolWish: IdolWish

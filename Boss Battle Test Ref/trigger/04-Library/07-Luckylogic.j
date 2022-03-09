@@ -1,4 +1,4 @@
-library LuckylogicLib
+library LuckylogicLib requires Luck
 
     private function OtherUses takes unit u, integer k returns integer
         local integer ch = k
@@ -14,7 +14,7 @@ library LuckylogicLib
     function luckylogic takes unit u, integer ch, integer min, integer max returns boolean
         local boolean l = false
         
-        if GetRandomInt( min, max ) <= ( OtherUses(u, ch) + udg_luckychance[GetPlayerId( GetOwningPlayer( u ) ) + 1] ) then
+        if GetRandomInt( min, max ) <= ( OtherUses(u, ch) + GetUnitLuck(u) ) then
             set l = true
         endif
         set u = null

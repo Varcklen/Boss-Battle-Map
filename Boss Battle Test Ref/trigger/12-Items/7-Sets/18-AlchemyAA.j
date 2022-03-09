@@ -26,8 +26,5 @@ endfunction
 
 //===========================================================================
 function InitTrig_AlchemyAA takes nothing returns nothing
-    set gg_trg_AlchemyAA = CreateTrigger(  )
-    call TriggerRegisterVariableEvent( gg_trg_AlchemyAA, "udg_DamageModifierEvent", EQUAL, 1.00 )
-    call TriggerAddCondition( gg_trg_AlchemyAA, Condition( function Trig_AlchemyAA_Conditions ) )
-    call TriggerAddAction( gg_trg_AlchemyAA, function Trig_AlchemyAA_Actions )
+    call CreateEventTrigger( "udg_AfterDamageEvent", function Trig_AlchemyAA_Actions, function Trig_AlchemyAA_Conditions )
 endfunction

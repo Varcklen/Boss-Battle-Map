@@ -1,49 +1,211 @@
-scope HeroChoose
+library HeroesTable initializer init requires HeroesTableDatabase, Repick
 
     globals
-        framehandle herobut
-        framehandle banbut
-        framehandle array herotool
-        framehandle array herospell
-        framehandle array hero1
-        framehandle array hero2
-        framehandle array hero3
-        framehandle array hero4
-        framehandle array hero5
-        framehandle array hero6
-        framehandle array hero7
-        framehandle array hero8
-        framehandle array hero9
-        framehandle array hero1v
-        framehandle array hero2v
-        framehandle array hero3v
-        framehandle array hero4v
-        framehandle array hero5v
-        framehandle array hero6v
-        framehandle array hero7v
-        framehandle array hero8v
-        framehandle array hero9v
-        framehandle array lvlic
-        framehandle array lvltxt
-        framehandle herohard
-        framehandle heroavtor
-        framehandle array herospellname
-        framehandle array herospelltool
-        framehandle butskin
-        framehandle butskinv
-        framehandle array butskin1
-        framehandle array butskinv1
-        framehandle array lockskin1
-        framehandle array numskin1
+        private constant integer CLASSES = HeroesTableDatabase_CLASSES
+        private constant integer HEROES_IN_COLUMN_MAX = HeroesTableDatabase_HEROES_IN_COLUMN_MAX
+        private framehandle array heroButton[CLASSES][HEROES_IN_COLUMN_MAX]//Class/Position in Column
+        private framehandle array heroIcon[CLASSES][HEROES_IN_COLUMN_MAX]//Class/Position in Column
+    
+        private framehandle HeroTable
+        private framehandle ChooseButton
+        private framehandle BanButton
+        private framehandle array LevelTextFrame
+        private framehandle array LevelHeroIcon
+        private framehandle MainSkinButton
+        private framehandle MainSkinIcon
+        private framehandle AbilityBackground
         
-        private framehandle AspectsParent = null 
+        private framehandle array Skins_Button
+        private framehandle array Skins_Icon
+        private framehandle array Skins_LockFrame
+        private framehandle array Skins_Text
+        
+        real Event_HeroPicked_Real
+        unit Event_HeroPicked_Hero
+        player Event_HeroPicked_Player
+        integer Event_HeroPicked_HeroKey
+        
+        private constant real BUTTON_SIZE = 0.032
+        private constant real START_POSITION_X = 0.66
+        private constant real START_POSITION_Y = 0.5
+        private constant integer POTION_BONUSES_ADDED_TO_HEROES = 4
+        
         private framehandle array AspectVision[3]
         private framehandle array AspectButton[3]
-        private constant real ASPECTS_SIZE = 0.025
-        private constant real ASPECTS_INDENT = 0.005
+        private constant real ASPECTS_SIZE = 0.03
+        private constant real ASPECTS_INDENT = 0.035
+        
+        private constant integer KEY_CLASS = StringHash("kclss")
+        private constant integer KEY_POSITION = StringHash("kpstn")
+        
+        private ChoosedHeroTemplate array ChoosedHero[PLAYERS_LIMIT_ARRAYS]
+        public framehandle array ChoosedHeroButton[PLAYERS_LIMIT_ARRAYS]
+        public string array ChoosedHeroIcon[PLAYERS_LIMIT_ARRAYS]
+        
+        //private unit array PotancialHero[PLAYERS_LIMIT_ARRAYS][HEROES_COUNT_ARRAYS]
         
         boolean array IsBanned[HEROES_COUNT_ARRAYS]
+        
+        private framehandle InfoBackground = null 
+        private framehandle InfoButton = null 
+        private framehandle InfoPanel_Icon = null
+        private framehandle StoryTextArea = null
+        
+        private constant integer TEXT_NUMBERS = 8
+        private framehandle array InfoPanelText[TEXT_NUMBERS]
     endglobals
+    
+    struct ChoosedHeroTemplate
+        unit hero = null
+        integer class
+        integer position
+        integer heroKey
+    endstruct
+    
+    private function GetDifficulty takes integer index returns string
+        if index == 2 then
+            return "|cffff3300Hard|r"
+        elseif index == 1 then
+            return "|cffffcc00Medium|r"
+        elseif index == 0 then
+            return "|cff00cc00Easy|r"
+        endif
+        return "|cffff00ffUNKNOWN!|r"
+    endfunction
+    
+    private function IsCanChoosedManyTimes takes integer heroId returns boolean
+        if heroId == udg_Database_Hero[31] then
+            return true
+        elseif heroId == udg_Database_Hero[34] then
+            return true
+        endif
+        return false
+    endfunction
+    
+    private function StringSizeSmall takes string s returns real
+        return (0.0002*StringLength(s))+0.05
+    endfunction
+    
+    public function SetLevelNumberFrame takes player owner, integer level returns nothing
+        local integer index = GetPlayerId( owner ) + 1
+        call BlzFrameSetText( LevelTextFrame[index], I2S(level) )
+        set owner = null
+    endfunction
+    
+    private function ReturnActiveIcon takes unit hero returns nothing
+        local integer index = GetUnitUserData(hero)
+        local integer heroPosition = udg_HeroNum[index]
+        local integer unitType = GetUnitTypeId( hero )
+        local integer i
+        local integer k
+        local integer kEnd
+        local boolean end = false
+
+        set udg_UnitHeroLogic[heroPosition] = false
+        
+        set i = 0
+        loop
+            exitwhen i > CLASSES or end
+            set k = 0
+            set kEnd = HeroesTableDatabase_HEROES_IN_CLASS[HEROES_IN_COLUMN_MAX]
+            loop
+                exitwhen k > CLASSES or end
+                if unitType == HeroFrame[i][k] then //NEED ADD!
+                    call BlzFrameSetTexture( heroIcon[i][k], BlzGetAbilityIcon(GetUnitTypeId(hero)),0, true) //heroIcon[CLASSES][HEROES_IN_COLUMN_MAX] NEED ADD!
+                    set end = true
+                endif
+                set k = k + 1
+            endloop
+            set i = i + 1
+        endloop
+
+        set hero = null
+    endfunction
+    
+    private function HeroRepick takes nothing returns nothing
+        local unit hero = Event_HeroRepick_Hero
+        local player owner = GetOwningPlayer(hero)
+        local integer index = GetPlayerId( owner ) + 1
+    
+        call ReturnActiveIcon(hero)
+        
+        call BlzFrameSetTexture(LevelHeroIcon[index], "ReplaceableTextures\\CommandButtons\\BTNSelectHeroOn.blp", 0, true)
+        
+        //Десинк?
+        if GetLocalPlayer() == owner and udg_UntilFirstFight then
+            call BlzFrameSetVisible( AbilityBackground, false )
+            call BlzFrameSetVisible( MainSkinButton, false )
+            call BlzFrameSetVisible( ChooseButton, false )
+            call BlzFrameSetVisible( BanButton, false )
+            call BlzFrameSetVisible(InfoBackground, false) 
+            call BlzFrameSetVisible(InfoButton, false)
+            call BlzFrameSetVisible( HeroTable, true )
+            
+            if udg_Host == owner then
+                call BlzFrameSetVisible( BanButton, true )
+            endif
+        endif
+        
+        set owner = null
+        set hero = null
+    endfunction
+    
+    private function HeroLeave takes nothing returns nothing
+        local unit hero = Event_HeroRepick_Hero
+        local player owner = GetOwningPlayer(hero)
+        local integer index = GetPlayerId( owner ) + 1
+    
+        if udg_UntilFirstFight then
+            call ReturnActiveIcon(hero)
+        endif
+        
+        call BlzFrameSetVisible( LevelTextFrame[index], false )
+        call BlzFrameSetTexture(LevelHeroIcon[index], "war3mapImported\\BTNDivineShieldOff-Reforged.blp", 0, true)
+        
+        set owner = null
+        set hero = null
+    endfunction
+    
+    private function SetHeroColor takes unit hero returns nothing
+        if BlzGetUnitIntegerField( hero,UNIT_IF_PRIMARY_ATTRIBUTE) == 1 then
+            call SetUnitColor( hero, GetPlayerColor(Player(12)) )
+        elseif BlzGetUnitIntegerField( hero,UNIT_IF_PRIMARY_ATTRIBUTE) == 2 then
+            call SetUnitColor( hero, GetPlayerColor(Player(13)) )
+        elseif BlzGetUnitIntegerField( hero,UNIT_IF_PRIMARY_ATTRIBUTE) == 3 then
+            call SetUnitColor( hero, GetPlayerColor(Player(22)) )
+        endif
+        set hero = null
+    endfunction
+    
+    private function SetAbilitiesInfo takes player owner, unit hero, integer heroIndex, integer alternativeUnique, integer class returns nothing
+        local integer unique
+        local integer i
+     
+
+        if alternativeUnique == 0 then
+            set unique = HeroesTableDatabase_Uniques[class]
+        else
+            set unique = alternativeUnique
+        endif
+
+        if GetLocalPlayer() == owner then
+            call BlzFrameSetVisible( AbilityBackground, true )
+            //МОЖЕТ ВЫЗВАТЬ ДЕСИНК?
+            set i = 1
+            loop
+                exitwhen i > 4
+                call BlzFrameSetTexture( abilityFrame[i].icon, BlzGetAbilityIcon( Database_Hero_Abilities[i][heroIndex] ),0, true)
+                call abilityFrame[i].SetNameAndDescription(BlzGetAbilityResearchTooltip(Database_Hero_Abilities[i][heroIndex], 0), BlzGetAbilityResearchExtendedTooltip(Database_Hero_Abilities[i][heroIndex], 0) )
+                set i = i + 1
+            endloop
+                
+            call BlzFrameSetTexture( abilityFrame[5].icon, BlzGetAbilityIcon( unique ),0, true)
+            call abilityFrame[5].SetNameAndDescription( GetAbilityName(unique), BlzGetAbilityExtendedTooltip(unique, 0) )
+            call BlzFrameSetTexture( MainSkinIcon, BlzGetAbilityIcon(GetUnitTypeId(hero)),0, true)
+        endif
+        set owner = null
+        set hero = null
+    endfunction
     
     private function SetAspectButtons takes player localPlayer, integer whichButton, integer aspectAbility returns nothing 
         local integer playerIndex = GetPlayerId(localPlayer)
@@ -57,357 +219,265 @@ scope HeroChoose
         set AspectDescription[playerIndex][whichButton] = BlzGetAbilityExtendedTooltip(aspectAbility, 0)
 
         if GetLocalPlayer() == localPlayer then
-            call BlzFrameSetTexture(AspectVision[whichButton-1], BlzGetAbilityIcon(aspectAbility), 0, true) 
+            call BlzFrameSetTexture(AspectVision[whichButton-1], BlzGetAbilityIcon(aspectAbility), 0, true)
+            call BlzFrameSetVisible( AspectVision[whichButton-1], true )
         endif
         
         set localPlayer = null
     endfunction 
     
-    function IsFlying takes integer heroId returns boolean
-        if heroId == 'N038' then
-            return true
-        elseif heroId == 'u002' then
-            return true
-        elseif heroId == 'N04J' then
-            return true
-        elseif heroId == 'N054' then
-            return true
-        elseif heroId == 'N05A' then
-            return true
-        elseif heroId == 'O01Y' then
-            return true
+    private function SetAspectsInfo takes player owner, integer heroIndex returns nothing
+        local integer i
+    
+        if Aspects_IsHeroIndexCanUseAspects(heroIndex) then
+            set i = 1
+            loop
+                exitwhen i > ASPECT_LIMIT
+                call SetAspectButtons(owner, i, Aspect[heroIndex][i])
+                set i = i + 1
+            endloop
+            if GetLocalPlayer() == owner then
+                call BlzFrameSetVisible( InfoPanelText[TEXT_NUMBERS - 2], false )
+            endif
+        else
+            if GetLocalPlayer() == owner then
+                call BlzFrameSetVisible( AspectVision[0], false )
+                call BlzFrameSetVisible( AspectVision[1], false )
+                call BlzFrameSetVisible( AspectVision[2], false )
+                call BlzFrameSetVisible( InfoPanelText[TEXT_NUMBERS - 2], true )
+            endif
         endif
-        return false
+        set owner = null
     endfunction
     
-    function HeroChooseButton takes nothing returns nothing
-        local integer cyclA = 1
-        local integer cyclAEnd
-        local integer i = GetPlayerId( GetTriggerPlayer() ) + 1
-        local boolean l = false
-        local string text
-        local integer k = 0
-        local integer ab = 0
-        local integer c = 0
-        local integer uniq = 0
-        local string icon = ""
+    private function SetSkinInfo takes player owner, integer heroIndex, integer index, string mainIconPath returns nothing
+        local integer i = 1
 
-        if GetLocalPlayer() == GetTriggerPlayer() then
-            call BlzFrameSetVisible( BlzGetTriggerFrame(),false)
-            call BlzFrameSetVisible( BlzGetTriggerFrame(),true)
-        endif
-        
-        if hero1[0] == BlzGetTriggerFrame() then
-            set udg_HeroChoose[i] = udg_DB_HeroFrame_Buffer[0]
-            set l = true
-        endif
-
-        if not(l) then
-            set cyclA = 1
-            set cyclAEnd = udg_DB_HeroFrame_Number[1]
-            loop
-                exitwhen cyclA > cyclAEnd
-                if BlzGetTriggerFrame() == hero1[cyclA] then
-                    set udg_HeroChoose[i] = udg_DB_HeroFrame_Buffer[cyclA]
-                    set icon = udg_DB_HeroFrame_Buffer_Icon[cyclA]
-                    set l = true
-                    set cyclA = cyclAEnd
-                    set ab = 1
-                endif
-                set cyclA = cyclA + 1
-            endloop
-        endif
-
-        if not(l) then
-            set cyclA = 1
-            set cyclAEnd = udg_DB_HeroFrame_Number[2]
-            loop
-                exitwhen cyclA > cyclAEnd
-                if BlzGetTriggerFrame() == hero2[cyclA] then
-                    set udg_HeroChoose[i] = udg_DB_HeroFrame_Deffender[cyclA]
-                    set icon = udg_DB_HeroFrame_Deffender_Icon[cyclA]
-                    set l = true
-                    set cyclA = cyclAEnd
-                    set ab = 2
-                endif
-                set cyclA = cyclA + 1
-            endloop
-        endif
-
-        if not(l) then
-            set cyclA = 1
-            set cyclAEnd = udg_DB_HeroFrame_Number[3]
-            loop
-                exitwhen cyclA > cyclAEnd
-                if BlzGetTriggerFrame() == hero3[cyclA] then
-                    set udg_HeroChoose[i] = udg_DB_HeroFrame_Ripper[cyclA]
-                    set icon = udg_DB_HeroFrame_Ripper_Icon[cyclA]
-                    set l = true
-                    set cyclA = cyclAEnd
-                    set ab = 3
-                endif
-                set cyclA = cyclA + 1
-            endloop
-        endif
-        if not(l) then
-            set cyclA = 1
-            set cyclAEnd = udg_DB_HeroFrame_Number[4]
-            loop
-                exitwhen cyclA > cyclAEnd
-                if BlzGetTriggerFrame() == hero4[cyclA] then
-                    set udg_HeroChoose[i] = udg_DB_HeroFrame_Hybrid[cyclA]
-                    set icon = udg_DB_HeroFrame_Hybrid_Icon[cyclA]
-                    set l = true
-                    set uniq = udg_DB_HeroFrame_Uniques[cyclA]
-                    set cyclA = cyclAEnd
-                    set ab = 4
-                endif
-                set cyclA = cyclA + 1
-            endloop
-        endif
-        if not(l) then
-            set cyclA = 1
-            set cyclAEnd = udg_DB_HeroFrame_Number[5]
-            loop
-                exitwhen cyclA > cyclAEnd
-                if BlzGetTriggerFrame() == hero5[cyclA] then
-                    set udg_HeroChoose[i] = udg_DB_HeroFrame_Maraduer[cyclA]
-                    set icon = udg_DB_HeroFrame_Maraduer_Icon[cyclA]
-                    set l = true
-                    set cyclA = cyclAEnd
-                    set ab = 5
-                endif
-                set cyclA = cyclA + 1
-            endloop
-        endif
-        if not(l) then
-            set cyclA = 1
-            set cyclAEnd = udg_DB_HeroFrame_Number[6]
-            loop
-                exitwhen cyclA > cyclAEnd
-                if BlzGetTriggerFrame() == hero6[cyclA] then
-                    set udg_HeroChoose[i] = udg_DB_HeroFrame_Killer[cyclA]
-                    set icon = udg_DB_HeroFrame_Killer_Icon[cyclA]
-                    set l = true
-                    set cyclA = cyclAEnd
-                    set ab = 6
-                endif
-                set cyclA = cyclA + 1
-            endloop
-        endif
-        if not(l) then
-            set cyclA = 1
-            set cyclAEnd = udg_DB_HeroFrame_Number[7]
-            loop
-                exitwhen cyclA > cyclAEnd
-                if BlzGetTriggerFrame() == hero7[cyclA] then
-                    set udg_HeroChoose[i] = udg_DB_HeroFrame_Elemental[cyclA]
-                    set icon = udg_DB_HeroFrame_Elemental_Icon[cyclA]
-                    set l = true
-                    set cyclA = cyclAEnd
-                    set ab = 7
-                endif
-                set cyclA = cyclA + 1
-            endloop
-        endif
-        if not(l) then
-            set cyclA = 1
-            set cyclAEnd = udg_DB_HeroFrame_Number[8]
-            loop
-                exitwhen cyclA > cyclAEnd
-                if BlzGetTriggerFrame() == hero8[cyclA] then
-                    set udg_HeroChoose[i] = udg_DB_HeroFrame_Healer[cyclA]
-                    set icon = udg_DB_HeroFrame_Healer_Icon[cyclA]
-                    set l = true
-                    set cyclA = cyclAEnd
-                    set ab = 8
-                endif
-                set cyclA = cyclA + 1
-            endloop
-        endif
-        if not(l) then
-            set cyclA = 1
-            set cyclAEnd = udg_DB_HeroFrame_Number[9]
-            loop
-                exitwhen cyclA > cyclAEnd
-                if BlzGetTriggerFrame() == hero9[cyclA] then
-                    set udg_HeroChoose[i] = udg_DB_HeroFrame_Debuffer[cyclA]
-                    set icon = udg_DB_HeroFrame_Debuffer_Icon[cyclA]
-                    set cyclA = cyclAEnd
-                    set ab = 9
-                endif
-                set cyclA = cyclA + 1
-            endloop
-        endif
-
-        set cyclA = 1
-        set cyclAEnd = udg_Database_InfoNumberHeroes
         loop
-            exitwhen cyclA > cyclAEnd
-            if udg_Database_Hero[cyclA] == udg_HeroChoose[i] then
-                set k = cyclA
-                set cyclA = cyclAEnd
+            exitwhen i > udg_DB_Skin_Limit
+            if GetLocalPlayer() == owner then
+                if skiniconBTN[heroIndex][i] != null and StringLength(skiniconBTN[heroIndex][i]) > 3 then
+                    if BlzFrameIsVisible(Skins_Icon[1]) then
+                        call BlzFrameSetVisible( Skins_Button[i], true )
+                    endif
+                    call BlzFrameSetVisible( MainSkinButton, true )
+                    call BlzFrameSetTexture( MainSkinIcon, mainIconPath ,0, true)
+                    if udg_LvL[index] < skinlvl[heroIndex][i] then
+                        call BlzFrameSetText( Skins_Text[i], I2S(skinlvl[heroIndex][i]) )
+                        call BlzFrameSetTexture( Skins_Icon[i], skiniconDIS[heroIndex][i],0, true)
+                        call BlzFrameSetVisible( Skins_LockFrame[i], true )
+                        call BlzFrameSetVisible( Skins_Text[i], true )
+                    else
+                        call BlzFrameSetTexture( Skins_Icon[i], skiniconBTN[heroIndex][i],0, true)
+                        call BlzFrameSetVisible( Skins_LockFrame[i], false )
+                        call BlzFrameSetVisible( Skins_Text[i], false )
+                    endif
+                else
+                    if i == 1 then
+                        call BlzFrameSetVisible( MainSkinButton, false )
+                    endif
+                    call BlzFrameSetVisible( Skins_Button[i], false )
+                endif
             endif
-            set cyclA = cyclA + 1
+            set i = i + 1
         endloop
         
-        if BlzGetUnitSkin(udg_HeroSpawn[i]) == udg_HeroChoose[i] then
-            return
+        set owner = null
+    endfunction
+    
+    private function DisableInfoFrames takes player owner returns nothing
+        if GetLocalPlayer() == owner then
+            call BlzFrameSetVisible( AbilityBackground, false )
+            call BlzFrameSetVisible( BanButton, false )
+            call BlzFrameSetVisible( InfoButton, false) 
+            call BlzFrameSetVisible( InfoBackground, false) 
+        endif
+    
+        set owner = null
+    endfunction
+    
+    globals
+        private string TempRole
+        private integer TempRoleNumber
+    endglobals
+    
+    private function AddRole takes string role returns nothing
+        if TempRoleNumber > 0 then
+            set TempRole = TempRole + ", "
+        endif
+        set TempRoleNumber = TempRoleNumber + 1
+        set TempRole = TempRole + role
+    endfunction
+    
+    private function GetUnitRoles takes HeroFramehandle heroFrame returns string
+        set TempRole = ""
+        set TempRoleNumber = 0
+    
+        if heroFrame.role[ROLE_DEFEND] then
+            call AddRole("|cFFD74D0EDefender|r")
+        endif
+        if heroFrame.role[ROLE_SUPPORT] then
+            call AddRole("|cFF4D94B5Support|r")
+        endif
+        if heroFrame.role[ROLE_HEAL] then
+            call AddRole("|cFF399014Healer|r")
+        endif
+        if heroFrame.role[ROLE_MAGIC_DAMAGE] then
+            call AddRole("|cFF0A5EC6Mage|r")
+        endif
+        if heroFrame.role[ROLE_PHYSICAL_DAMAGE] then
+            call AddRole("|cFFC60303Warrior|r")
+        endif
+        if heroFrame.role[ROLE_SUMMONER] then
+            call AddRole("|cFFC0D001Summoner|r")
+        endif
+        if heroFrame.role[ROLE_CONTROL] then
+            call AddRole("|cFFB95BB0Disabler|r")
+        endif
+    
+        call heroFrame.destroy()
+        return TempRole
+    endfunction
+    
+    private function GetHeroMainStat takes unit hero returns string
+        local string stat = ""
+        if BlzGetUnitIntegerField( hero,UNIT_IF_PRIMARY_ATTRIBUTE) == 1 then
+            set stat = "|cFFC82323Strength|r"
+        elseif BlzGetUnitIntegerField( hero,UNIT_IF_PRIMARY_ATTRIBUTE) == 2 then
+            set stat = "|cFF2323C8Intellect|r"
+        elseif BlzGetUnitIntegerField( hero,UNIT_IF_PRIMARY_ATTRIBUTE) == 3 then
+            set stat = "|cFF23C823Agility|r"
+        endif
+        set hero = null
+        return stat
+    endfunction
+    
+    private function GetUnitType takes unit hero returns string
+        local string unitType = ""
+        if IsUnitType( hero, UNIT_TYPE_UNDEAD) then
+            set unitType = "|cffff1493Undead|r"
+        else
+            set unitType = "Normal"
         endif
         
-        call RemoveUnit( udg_HeroSpawn[i] )
-        set udg_SkinUsed[i] = 0
-        if IsFlying(udg_HeroChoose[i]) then
-            set udg_HeroSpawn[i] = CreateUnit( Player(PLAYER_NEUTRAL_PASSIVE), udg_HeroChoose[i], GetLocationX(udg_point[25+i]), GetLocationY(udg_point[25+i]), bj_UNIT_FACING )
-        else
-            set udg_HeroSpawn[i] = CreateUnit( Player(PLAYER_NEUTRAL_PASSIVE), 'u000', GetLocationX(udg_point[25+i]), GetLocationY(udg_point[25+i]), bj_UNIT_FACING )
-            call SetUnitSkin( udg_HeroSpawn[i], udg_HeroChoose[i] )
+        if IsCanChoosedManyTimes(GetUnitTypeId(hero)) then
+            set unitType = unitType + " |cFFF2AF8DCloneable|r"
         endif
-        set udg_HeroKey[i] = k
-        set udg_HeroKeyPos[i] = ab
-        set udg_HeroKeyIcon[i] = icon
-        if ab == 1 or ab == 2 or ab == 3 then
-            set c = 13
-        elseif ab == 4 or ab == 5 or ab == 6 then
-            set c = 23
-        elseif ab == 7 or ab == 8 or ab == 9 then
-            set c = 14
-        endif
-        call SetUnitColor( udg_HeroSpawn[i], GetPlayerColor(ConvertedPlayer(c) ) )
-        call BlzShowUnitTeamGlow( udg_HeroSpawn[i], FALSE ) 
-        call QueueUnitAnimationBJ( udg_HeroSpawn[i], "stand" )
-        call QueueUnitAnimationBJ( udg_HeroSpawn[i], "attack" )
-        call QueueUnitAnimationBJ( udg_HeroSpawn[i], "stand" )
-        call SetUnitState( udg_HeroSpawn[i], UNIT_STATE_MANA, GetUnitState( udg_HeroSpawn[i], UNIT_STATE_MAX_MANA) )
-        call FogModifierStart( udg_Visible[i] )
-
-        call CameraSetupApplyForPlayer( true, udg_CameraChoose[i], Player(i-1), 0 )
-        call SetCameraTargetControllerNoZForPlayer( Player(i-1), udg_HeroSpawn[i], 210.00, -150.00, false )
-
-        if ab == 0 then
-            if GetLocalPlayer() == GetTriggerPlayer() then
-                call BlzFrameSetVisible( AspectsParent, false )
-                call BlzFrameSetVisible( herospell[1], false )
-                call BlzFrameSetVisible( herospell[2], false )
-                call BlzFrameSetVisible( herospell[3], false )
-                call BlzFrameSetVisible( herospell[4], false )
-                call BlzFrameSetVisible( herospell[5], false )
-
-                call BlzFrameSetText( heroavtor, "" )
-                call BlzFrameSetText( herohard, "" )
-            endif
-        else
-            if ab != 4 then
-                set uniq = udg_DB_HeroFrame_Ability[ab]
-            endif
+        set hero = null
+        return unitType
+    endfunction
+    
+    private function SetInfoPanel takes player owner, unit hero, HeroFramehandle heroFrame returns nothing
+        local string roles = GetUnitRoles(heroFrame)
+        local string stat = GetHeroMainStat(hero)
+        local string unitType = GetUnitType(hero)
+        
+        if GetLocalPlayer() == owner then
+            call BlzFrameSetText( InfoPanelText[0], GetUnitName(hero) )
+            call BlzFrameSetText( InfoPanelText[1], GetDifficulty( heroFrame.difficulty ) )
+            call BlzFrameSetText( InfoPanelText[2], heroFrame.author )
+            call BlzFrameSetText( InfoPanelText[3], stat )
+            call BlzFrameSetText( InfoPanelText[4], unitType )
+            call BlzFrameSetText( InfoPanelText[5], roles )
             
-            if Aspects_IsHeroIndexCanUseAspects(k) then
-                if GetLocalPlayer() == GetTriggerPlayer() then
-                    call BlzFrameSetVisible( AspectsParent, true )
-                endif
-                set cyclA = 1
-                loop
-                    exitwhen cyclA > ASPECT_LIMIT
-                    call SetAspectButtons(GetTriggerPlayer(), cyclA, Aspect[k][cyclA])
-                    set cyclA = cyclA + 1
-                endloop
-                //Set visible
+            call BlzFrameSetTexture(InfoPanel_Icon, BlzGetAbilityIcon(GetUnitTypeId(hero)), 0, true) 
+            if heroFrame.story == null then
+                call BlzFrameSetText( StoryTextArea, "None" ) 
             else
-                if GetLocalPlayer() == GetTriggerPlayer() then
-                    call BlzFrameSetVisible( AspectsParent, false )
-                endif
+                call BlzFrameSetText( StoryTextArea, heroFrame.story ) 
             endif
-            if GetLocalPlayer() == GetTriggerPlayer() then
-                call BlzFrameSetTexture( herospell[1], BlzGetAbilityIcon( Database_Hero_Abilities[1][k] ),0, true)
-                call BlzFrameSetTexture( herospell[2], BlzGetAbilityIcon( Database_Hero_Abilities[2][k] ),0, true)
-                call BlzFrameSetTexture( herospell[3], BlzGetAbilityIcon( Database_Hero_Abilities[3][k]),0, true)
-                call BlzFrameSetTexture( herospell[4], BlzGetAbilityIcon( Database_Hero_Abilities[4][k]),0, true)
-                call BlzFrameSetTexture( herospell[5], BlzGetAbilityIcon( uniq ),0, true)
-            
-                call BlzFrameSetText(herospelltool[1], BlzGetAbilityResearchExtendedTooltip(Database_Hero_Abilities[1][k], 0) )
-                call BlzFrameSetText(herospellname[1], BlzGetAbilityResearchTooltip(Database_Hero_Abilities[1][k], 0) )
-                call BlzFrameSetSize(herotool[1], 0.33, StringSizeSmall(BlzGetAbilityResearchExtendedTooltip(Database_Hero_Abilities[1][k], 0)) )
-
-                call BlzFrameSetText(herospelltool[2], BlzGetAbilityResearchExtendedTooltip(Database_Hero_Abilities[2][k], 0) )
-                call BlzFrameSetText(herospellname[2], BlzGetAbilityResearchTooltip(Database_Hero_Abilities[2][k], 0) )
-                call BlzFrameSetSize(herotool[2], 0.33, StringSizeSmall(BlzGetAbilityResearchExtendedTooltip(Database_Hero_Abilities[2][k], 0)))
-
-                call BlzFrameSetText(herospelltool[3], BlzGetAbilityResearchExtendedTooltip(Database_Hero_Abilities[3][k], 0) )
-                call BlzFrameSetText(herospellname[3], BlzGetAbilityResearchTooltip(Database_Hero_Abilities[3][k], 0) )
-                call BlzFrameSetSize(herotool[3], 0.33, StringSizeSmall(BlzGetAbilityResearchExtendedTooltip(Database_Hero_Abilities[3][k], 0)))
-
-                call BlzFrameSetText(herospelltool[4], BlzGetAbilityResearchExtendedTooltip(Database_Hero_Abilities[4][k], 0) )
-                call BlzFrameSetText(herospellname[4], BlzGetAbilityResearchTooltip(Database_Hero_Abilities[4][k], 0) )
-                call BlzFrameSetSize(herotool[4], 0.33, StringSizeSmall(BlzGetAbilityResearchExtendedTooltip(Database_Hero_Abilities[4][k], 0)))
-
-                call BlzFrameSetText(herospelltool[5], BlzGetAbilityExtendedTooltip(uniq, 0))
-                call BlzFrameSetText(herospellname[5], GetAbilityName(uniq) )
-                call BlzFrameSetSize(herotool[5], 0.33, StringSizeSmall(BlzGetAbilityExtendedTooltip(uniq, 0)))
-                
-                call BlzFrameSetVisible( herospell[1], true )
-                call BlzFrameSetVisible( herospell[2], true )
-                call BlzFrameSetVisible( herospell[3], true )
-                call BlzFrameSetVisible( herospell[4], true )
-                call BlzFrameSetVisible( herospell[5], true )
-
-                call BlzFrameSetText( heroavtor, udg_DB_Hero_Avtor[k] )
-                call BlzFrameSetText( herohard, udg_DB_Hero_Hard[k] )
-                
-                call BlzFrameSetTexture( butskinv, icon,0, true)
-            endif
-            
-            set cyclA = 1
-            loop
-                exitwhen cyclA > udg_DB_Skin_Limit
-                if GetLocalPlayer() == GetTriggerPlayer() then
-                    if skiniconBTN[k][cyclA] != null and StringLength(skiniconBTN[k][cyclA]) > 3 then
-                        if BlzFrameIsVisible(butskinv1[1]) then
-                            call BlzFrameSetVisible( butskin1[cyclA], true )
-                        endif
-                        call BlzFrameSetVisible( butskin, true )
-                        if udg_LvL[i] < skinlvl[k][cyclA] then
-                            call BlzFrameSetText( numskin1[cyclA], I2S(skinlvl[k][cyclA]) )
-                            call BlzFrameSetTexture( butskinv1[cyclA], skiniconDIS[k][cyclA],0, true)
-                            call BlzFrameSetVisible( lockskin1[cyclA], true )
-                            call BlzFrameSetVisible( numskin1[cyclA], true )
-                        else
-                            call BlzFrameSetTexture( butskinv1[cyclA], skiniconBTN[k][cyclA],0, true)
-                            call BlzFrameSetVisible( lockskin1[cyclA], false )
-                            call BlzFrameSetVisible( numskin1[cyclA], false )
-                        endif
-                    else
-                        if cyclA == 1 then
-                            call BlzFrameSetVisible( butskin, false )
-                        endif
-                        call BlzFrameSetVisible( butskin1[cyclA], false )
-                    endif
-                endif
-                set cyclA = cyclA + 1
-            endloop
         endif
+        
+        call heroFrame.destroy()
+        set hero = null
+        set owner = null
     endfunction
     
-    private function IsCanChoosedManyTimes takes integer heroId returns boolean
-        if heroId == udg_Database_Hero[31] then
-            return true
-        elseif heroId == udg_Database_Hero[34] then
-            return true
+    //Hero choosing
+    private function HeroChooseButton takes nothing returns nothing
+        local integer heroId = 0
+        local integer frameId = GetHandleId(BlzGetTriggerFrame())
+        local integer class = LoadInteger(udg_hash, frameId, KEY_CLASS )
+        local integer position = LoadInteger(udg_hash, frameId, KEY_POSITION )
+        local player owner = GetTriggerPlayer()
+        local integer index = GetPlayerId( owner ) + 1
+        local HeroFramehandle heroFrame = HeroFrame[class][position]
+        local integer unitType
+        local unit hero
+        
+        if GetLocalPlayer() == owner then
+            call BlzFrameSetVisible( BlzGetTriggerFrame(), false)
+            call BlzFrameSetVisible( BlzGetTriggerFrame(), true)
         endif
-        return false
+
+        call ShowUnit(ChoosedHero[index].hero, false)
+        if heroFrame.hero[index-1] == null then
+            set heroFrame.hero[index-1] = CreateUnit( Player(PLAYER_NEUTRAL_PASSIVE), heroFrame.heroId, GetLocationX(udg_point[25+index]), GetLocationY(udg_point[25+index]), bj_UNIT_FACING )
+            set ChoosedHero[index].hero = heroFrame.hero[index-1]
+            //call BlzShowUnitTeamGlow( ChoosedHero[index].hero, false ) 
+        else
+            set ChoosedHero[index].hero = heroFrame.hero[index-1]
+            call ShowUnit(ChoosedHero[index].hero, true)
+        endif
+        
+        set hero = ChoosedHero[index].hero
+        set unitType = GetUnitTypeId(hero)
+        set heroId = GetHeroNumber( unitType )
+        set ChoosedHero[index].position = position
+        set ChoosedHero[index].class = class
+        set ChoosedHero[index].heroKey = heroId
+        set udg_SkinUsed[index] = 0
+        
+        call SetUnitSkin( hero, heroFrame.heroId )
+        call SetHeroColor(hero)
+        call QueueUnitAnimationBJ( hero, "stand" )
+        call QueueUnitAnimationBJ( hero, "attack" )
+        call QueueUnitAnimationBJ( hero, "stand" )
+        call SetUnitState( hero, UNIT_STATE_MANA, GetUnitState( hero, UNIT_STATE_MAX_MANA) )
+        call FogModifierStart( udg_Visible[index] )
+
+        call CameraSetupApplyForPlayer( true, udg_CameraChoose[index], Player(index-1), 0 )
+        call SetCameraTargetControllerNoZForPlayer( Player(index-1), hero, 210.00, -150.00, false )
+
+        if class == CLASSES then
+            call DisableInfoFrames(owner)
+        else
+            call SetAspectsInfo(owner, heroId)
+            call SetSkinInfo(owner, heroId, index, BlzGetAbilityIcon(unitType))
+            call SetAbilitiesInfo(owner, hero, heroId, heroFrame.alternativeUnique, class)
+            call SetInfoPanel(owner, hero, heroFrame)
+
+            if GetLocalPlayer() == owner then
+                if udg_Host == owner then
+                    call BlzFrameSetVisible( BanButton, true )
+                endif
+                call BlzFrameSetVisible( InfoButton, true) 
+            endif
+        endif
+
+        if GetLocalPlayer() == owner then
+            call BlzFrameSetVisible( ChooseButton, true )
+        endif
+
+        call heroFrame.destroy()
+        set hero = null
+        set owner = null
     endfunction
     
-    private function IsHeroCanBeChosen takes integer heroId, integer index, boolean isThisHeroExist returns boolean
+    private function IsHeroCanBeChosen takes integer heroId, integer heroIndex, integer playerIndex, boolean isRandomPick returns boolean
         /*call BJDebugMsg("==================================" )
-        call BJDebugMsg("index: " + I2S(index))*/
-        if IsBanned[index] then
+        call BJDebugMsg("heroIndex: " + I2S(heroIndex))*/
+        if IsBanned[heroIndex] then
             //call BJDebugMsg("IsBanned")
             return false
+        elseif RandomHero_IsCanPickByIndex(playerIndex) == false and isRandomPick then//Attempts_Used[playerIndex] < ATTEMPTS_TO_PICK_RANDOM_HERO
+            //call BJDebugMsg("no attemps")
+            return false
         elseif heroId == 0 then
+            //call BJDebugMsg("no hero")
             return false
-        elseif isThisHeroExist then
-            return false
-        elseif not(udg_UnitHeroLogic[index] == false or IsCanChoosedManyTimes(heroId) ) then
-            /*if udg_UnitHeroLogic[index] then
+        elseif not(udg_UnitHeroLogic[heroIndex] == false or IsCanChoosedManyTimes(heroId) ) then
+            /*if udg_UnitHeroLogic[heroIndex] then
                 call BJDebugMsg("true")
             else
                 call BJDebugMsg("false")
@@ -419,304 +489,142 @@ scope HeroChoose
         return true
     endfunction
     
-    function HeroesButton takes nothing returns nothing
-        local player pl = GetTriggerPlayer()
-        local integer i = GetPlayerId( pl ) + 1
-        local integer h = GetPlayerId( udg_Host ) + 1
-        local integer k = udg_HeroKey[i]
-        local integer cyclA = 1
-        local boolean l = false
+    private function GetChoosedHero takes nothing returns nothing
+        local player owner = GetTriggerPlayer()
+        local integer index = GetPlayerId( owner ) + 1
+        local unit hero = ChoosedHero[index].hero
+        local integer class = ChoosedHero[index].class
+        local integer position = ChoosedHero[index].position 
+        local integer heroKey = ChoosedHero[index].heroKey
+        local integer heroRawcode = GetUnitTypeId( hero )
+        local boolean isRandomPick = heroRawcode == HeroFrame[9][0].heroId
 
-        /*loop
-            exitwhen cyclA > 4
-            if GetUnitTypeId( udg_hero[cyclA] ) == udg_HeroChoose[i] then
-                set l = true
+        if IsHeroCanBeChosen( heroRawcode, ChoosedHero[index].heroKey, index, isRandomPick ) then
+            if isRandomPick then
+                set hero = RandomHero_GetRandomHero( owner )
+                set heroKey = GetHeroNumber( GetUnitTypeId(hero) )
             endif
-            set cyclA = cyclA + 1
-        endloop*/
-        if LoadInteger( udg_hash, i, StringHash( "randpick" ) ) >= 3 and udg_HeroChoose[i] == udg_DB_HeroFrame_Buffer[0] then
-            set l = true
-        endif
-        /*if udg_UnitHeroLogic[k] then
-            set l = true
-        endif*/
-
-        if IsHeroCanBeChosen( udg_HeroChoose[i], k, l ) then
-            call RemoveUnit( udg_HeroSpawn[i] )
-            call FogModifierStop( udg_Visible[i] )
-            if GetLocalPlayer() == pl then
-                call BlzFrameSetVisible( AspectsParent, false )
-                call ResetToGameCameraForPlayer( pl, 0 )
-                call BlzFrameSetVisible( butskin, false )
-                call BlzFrameSetVisible( herobut, false )
-                call BlzFrameSetVisible( banbut, false )
-                if AnyHasLvL(2) then
-                    call BlzFrameSetVisible( modesbut, true )
-                    if pl == udg_Host then
-                        call BlzFrameSetVisible( modeslight, true )
-                    endif
-                    if not(AnyHasLvL(10)) then
-                        call BlzFrameSetVisible( modebase, false )
-                        call BlzFrameSetVisible( rotbase, false )
-                    endif
-                endif
+            set Event_HeroPicked_Hero = hero
+            set Event_HeroPicked_HeroKey = heroKey
+            set Event_HeroPicked_Player = owner
+            set Event_HeroPicked_Real = 0.00
+            set Event_HeroPicked_Real = 1.00
+            set Event_HeroPicked_Real = 0.00
+            
+            set ChoosedHeroButton[index] = heroIcon[class][position]
+            set ChoosedHeroIcon[index] = BlzGetAbilityIcon(GetUnitTypeId(hero))
+            
+            call BlzFrameSetTexture( ChoosedHeroButton[index], "ReplaceableTextures\\CommandButtons\\BTNCancel.blp",0, true) 
+            call BlzFrameSetTexture(LevelHeroIcon[index], ChoosedHeroIcon[index], 0, true)
+            
+            if GetLocalPlayer() == owner then
+                call BlzFrameSetVisible( HeroTable, false )
             endif
-            set cyclA = 1
-            loop
-                exitwhen cyclA > udg_DB_Skin_Limit
-                if GetLocalPlayer() == pl then
-                    call BlzFrameSetVisible( butskin1[cyclA], false )
-                endif
-                set cyclA = cyclA + 1
-            endloop
-            if udg_HeroChoose[i] == udg_DB_HeroFrame_Buffer[0] then
-                call RandomHero( pl )
-            else
-                call CreateUnit( pl, udg_HeroChoose[i], GetLocationX(GetRectCenter(gg_rct_HeroesTp)), GetLocationY(GetRectCenter(gg_rct_HeroesTp)), bj_UNIT_FACING )
-            endif
-            set udg_HeroChoose[i] = 0
+        elseif isRandomPick then
+            call DisplayTimedTextToPlayer( owner, 0, 0, 5, "Attempts exhausted." )
         else
-            if udg_HeroChoose[i] == udg_DB_HeroFrame_Buffer[0] then
-                call DisplayTimedTextToPlayer( pl, 0, 0, 10, "Attempts exhausted." )
-            else
-                call DisplayTimedTextToPlayer( pl, 0, 0, 5, "This hero is not available. Please choose an another hero.")
-            endif
+            call DisplayTimedTextToPlayer( owner, 0, 0, 5, "This hero is not available. Please choose an another hero.")
         endif
 
-        set pl = null
+        set hero = null
+        set owner = null
     endfunction
 
-    function HeroFrameBonus takes nothing returns nothing
-        local integer cyclA
-        local integer rand
+    private function SkinButton takes nothing returns nothing
+        local player owner = GetTriggerPlayer()
+        local integer index = GetPlayerId( owner ) + 1
+        local unit hero = ChoosedHero[index].hero
+        local integer heroRawcode = GetUnitTypeId( hero )
+        local integer heroKey = ChoosedHero[index].heroKey
+        local integer i
 
-        set cyclA = 1
-        loop
-            exitwhen cyclA > 4
-            set rand = GetRandomInt( 1, 9 )
-            set udg_HeroBonusPotion[cyclA] = GetRandomInt( 1, udg_DB_HeroFrame_Number[rand] )
-            set udg_HeroBonusPotionClass[cyclA] = rand
-            set cyclA = cyclA + 1
-        endloop
-    endfunction
-
-    function SkinButton takes nothing returns nothing
-        local player p = GetTriggerPlayer()
-        local integer i = GetPlayerId( p ) + 1
-        local integer cyclA = 1
-        local integer cyclAEnd
-        local boolean l = false
-        local integer k
-        local integer cyclB
-
-        set cyclA = 1
-        set cyclAEnd = udg_Database_InfoNumberHeroes
-        loop
-            exitwhen cyclA > cyclAEnd or l
-            if udg_HeroChoose[i] == udg_Database_Hero[cyclA] then
-                set k = cyclA
-                set l = true
-            endif
-            set cyclA = cyclA + 1
-        endloop
-
-        if butskin == BlzGetTriggerFrame() then
-            set udg_SkinUsed[i] = 0
-            set cyclA = 1
+        if MainSkinButton == BlzGetTriggerFrame() then
+            set udg_SkinUsed[index] = 0
+            set i = 1
             loop
-                exitwhen cyclA > udg_DB_Skin_Limit
-                if BlzFrameIsVisible(butskinv1[cyclA]) then
-                    call BlzSetUnitSkin( udg_HeroSpawn[i], udg_HeroChoose[i] )
-                    if GetLocalPlayer() == p then
-                        call BlzFrameSetVisible( butskin1[cyclA], false )
+                exitwhen i > udg_DB_Skin_Limit
+                if BlzFrameIsVisible(Skins_Icon[i]) then
+                    call BlzSetUnitSkin( hero, heroRawcode )
+                    if GetLocalPlayer() == owner then
+                        call BlzFrameSetVisible( Skins_Button[i], false )
                     endif
                 else
-                    if GetLocalPlayer() == p then
-                        if skiniconBTN[k][cyclA] != null then
-                            call BlzFrameSetVisible( butskin1[cyclA], true )
+                    if GetLocalPlayer() == owner then
+                        if skiniconBTN[heroKey][i] != null then
+                            call BlzFrameSetVisible( Skins_Button[i], true )
                         endif
                     endif
                 endif
-                set cyclA = cyclA + 1
+                set i = i + 1
             endloop
         else
-            set cyclB = 1
+            set i = 1
             loop
-                exitwhen cyclB > udg_DB_Skin_Limit
-                if butskin1[cyclB] == BlzGetTriggerFrame() then//[1]
-                    if l and udg_LvL[i] >= skinlvl[k][cyclB] then//[1]
-                        set udg_SkinUsed[i] = skinmodel[k][cyclB]//[1]
-                        call BlzFrameSetTexture( faceframe[i], skiniconBTN[k][cyclB], 0, false)
-                        call SetUnitSkin( udg_HeroSpawn[i], udg_SkinUsed[i] )
-                        call BlzShowUnitTeamGlow( udg_HeroSpawn[i], FALSE ) 
+                exitwhen i > udg_DB_Skin_Limit
+                if Skins_Button[i] == BlzGetTriggerFrame() then
+                    if udg_LvL[index] >= skinlvl[heroKey][i] then
+                        set udg_SkinUsed[index] = skinmodel[heroKey][i]
+                        call BlzFrameSetTexture( faceframe[index], skiniconBTN[heroKey][i], 0, false)
+                        call SetUnitSkin( hero, udg_SkinUsed[index] )
+                        //call BlzShowUnitTeamGlow( hero, FALSE ) 
                     else
-                        set udg_SkinUsed[i] = 0
+                        set udg_SkinUsed[index] = 0
                     endif
                 endif
-                set cyclB = cyclB + 1
+                set i = i + 1
             endloop
         endif
         
-        set p = null
+        set hero = null
+        set owner = null
     endfunction
 
-    function HeroBan takes nothing returns nothing
-        local player p = GetTriggerPlayer()
-        local integer i = GetPlayerId( p ) + 1
-        local integer k = udg_HeroKey[i]
-        local integer ab = udg_HeroKeyPos[i]
-        local integer cyclA
-        local integer cyclAEnd
-        local string str = ""
+    private function HeroBan takes nothing returns nothing
+        local player owner = GetTriggerPlayer()
+        local integer index = GetPlayerId( owner ) + 1
+        local integer heroKey = ChoosedHero[index].heroKey
+        //local integer frameId = GetHandleId(BlzGetTriggerFrame())
+        local integer class = ChoosedHero[index].class//LoadInteger(udg_hash, frameId, KEY_CLASS )
+        local integer position = ChoosedHero[index].position//LoadInteger(udg_hash, frameId, KEY_POSITION )
+        local integer heroRawcode = GetUnitTypeId( ChoosedHero[index].hero )
+        local integer i
 
-        if GetLocalPlayer() == p then
+        if GetLocalPlayer() == owner then
             call BlzFrameSetVisible( BlzGetTriggerFrame(),false)
             call BlzFrameSetVisible( BlzGetTriggerFrame(),true)
         endif
         
-        if udg_HeroChoose[i] != 0 and udg_HeroChoose[i] != udg_DB_HeroFrame_Buffer[0] then
-            set cyclA = 1
-            loop
-                exitwhen cyclA > 4
-                if GetUnitTypeId(udg_hero[cyclA]) == udg_HeroChoose[i] then
-                    call Repick( Player(cyclA-1) )
-                    call DisplayTimedTextToPlayer(Player(cyclA-1), 0, 0, 10, "The host has banned this hero.")
-                endif
-                set cyclA = cyclA + 1
-            endloop
-            if IsBanned[k] then
-                set IsBanned[k] = false
-                set str = udg_HeroKeyIcon[i]
+        /*call BJDebugMsg("class: " + I2S(class))
+        call BJDebugMsg("position: " + I2S(position))
+        call BJDebugMsg("heroKey: " + I2S(heroKey))*/
+        //call BJDebugMsg("heroRawcode: " + I2S(heroRawcode))
+        
+        if heroRawcode != 0 and heroRawcode != HeroFrame[9][0] then
+            if IsBanned[heroKey] then
+                //call BJDebugMsg("isBanned: false")
+                set IsBanned[heroKey] = false
+                call BlzFrameSetTexture( heroIcon[class][position], BlzGetAbilityIcon(GetUnitTypeId(ChoosedHero[index].hero)), 0, true)
                 set udg_BanLimit = udg_BanLimit + 1
             elseif udg_BanLimit > 0 then
-                set IsBanned[k] = true
-                set str = "war3mapImported\\BTNban.blp"
+                //call BJDebugMsg("isBanned: true")
+                set IsBanned[heroKey] = true
+                call BlzFrameSetTexture( heroIcon[class][position], "war3mapImported\\BTNban.blp", 0, true)
                 set udg_BanLimit = udg_BanLimit - 1
+                set i = 0
+                loop
+                    exitwhen i > 3
+                    if GetUnitTypeId(udg_hero[i+1]) == heroRawcode then
+                        call Repick( Player(i) )
+                        call DisplayTimedTextToPlayer(Player(i), 0, 0, 5, "The host has banned this hero.")
+                    endif
+                    set i = i + 1
+                endloop
             else
-                call DisplayTimedTextToPlayer( p, 0, 0, 10, "The limit of banned heroes has been exceeded. Unban the hero to continue." )
-            endif
-            
-            if str != "" then
-                if ab == 1 then
-                    set cyclA = 1
-                    set cyclAEnd = udg_DB_HeroFrame_Number[1]
-                    loop
-                        exitwhen cyclA > cyclAEnd
-                        if udg_DB_HeroFrame_Buffer[cyclA] == udg_HeroChoose[i] then
-                            call BlzFrameSetTexture( hero1v[cyclA], str,0, true)
-                            set cyclA = cyclAEnd
-                        endif
-                        set cyclA = cyclA + 1
-                    endloop
-                endif
-
-                if ab == 2 then
-                    set cyclA = 1
-                    set cyclAEnd = udg_DB_HeroFrame_Number[2]
-                    loop
-                        exitwhen cyclA > cyclAEnd
-                        if udg_DB_HeroFrame_Deffender[cyclA] == udg_HeroChoose[i] then
-                            call BlzFrameSetTexture( hero2v[cyclA], str,0, true)
-                            set cyclA = cyclAEnd
-                        endif
-                        set cyclA = cyclA + 1
-                    endloop
-                endif
-                
-                if ab == 3 then
-                    set cyclA = 1
-                    set cyclAEnd = udg_DB_HeroFrame_Number[3]
-                    loop
-                        exitwhen cyclA > cyclAEnd
-                        if udg_DB_HeroFrame_Ripper[cyclA] == udg_HeroChoose[i] then
-                            call BlzFrameSetTexture( hero3v[cyclA], str,0, true)
-                            set cyclA = cyclAEnd
-                        endif
-                        set cyclA = cyclA + 1
-                    endloop
-                endif
-                
-                if ab == 4 then
-                    set cyclA = 1
-                    set cyclAEnd = udg_DB_HeroFrame_Number[4]
-                    loop
-                        exitwhen cyclA > cyclAEnd
-                        if udg_DB_HeroFrame_Hybrid[cyclA] == udg_HeroChoose[i] then
-                            call BlzFrameSetTexture( hero4v[cyclA], str,0, true)
-                            set cyclA = cyclAEnd
-                        endif
-                        set cyclA = cyclA + 1
-                    endloop
-                endif
-                
-                if ab == 5 then
-                    set cyclA = 1
-                    set cyclAEnd = udg_DB_HeroFrame_Number[5]
-                    loop
-                        exitwhen cyclA > cyclAEnd
-                        if udg_DB_HeroFrame_Maraduer[cyclA] == udg_HeroChoose[i] then
-                            call BlzFrameSetTexture( hero5v[cyclA], str,0, true)
-                            set cyclA = cyclAEnd
-                        endif
-                        set cyclA = cyclA + 1
-                    endloop
-                endif
-                
-                if ab == 6 then
-                    set cyclA = 1
-                    set cyclAEnd = udg_DB_HeroFrame_Number[6]
-                    loop
-                        exitwhen cyclA > cyclAEnd
-                        if udg_DB_HeroFrame_Killer[cyclA] == udg_HeroChoose[i] then
-                            call BlzFrameSetTexture( hero6v[cyclA], str,0, true)
-                            set cyclA = cyclAEnd
-                        endif
-                        set cyclA = cyclA + 1
-                    endloop
-                endif
-                
-                if ab == 7 then
-                    set cyclA = 1
-                    set cyclAEnd = udg_DB_HeroFrame_Number[7]
-                    loop
-                        exitwhen cyclA > cyclAEnd
-                        if udg_DB_HeroFrame_Elemental[cyclA] == udg_HeroChoose[i] then
-                            call BlzFrameSetTexture( hero7v[cyclA], str,0, true)
-                            set cyclA = cyclAEnd
-                        endif
-                        set cyclA = cyclA + 1
-                    endloop
-                endif
-                
-                if ab == 8 then
-                    set cyclA = 1
-                    set cyclAEnd = udg_DB_HeroFrame_Number[8]
-                    loop
-                        exitwhen cyclA > cyclAEnd
-                        if udg_DB_HeroFrame_Healer[cyclA] == udg_HeroChoose[i] then
-                            call BlzFrameSetTexture( hero8v[cyclA], str,0, true)
-                            set cyclA = cyclAEnd
-                        endif
-                        set cyclA = cyclA + 1
-                    endloop
-                endif
-                
-                if ab == 9 then
-                    set cyclA = 1
-                    set cyclAEnd = udg_DB_HeroFrame_Number[9]
-                    loop
-                        exitwhen cyclA > cyclAEnd
-                        if udg_DB_HeroFrame_Debuffer[cyclA] == udg_HeroChoose[i] then
-                            call BlzFrameSetTexture( hero9v[cyclA], str,0, true)
-                            set cyclA = cyclAEnd
-                        endif
-                        set cyclA = cyclA + 1
-                    endloop
-                endif
+                call DisplayTimedTextToPlayer( owner, 0, 0, 5, "The limit of banned heroes has been exceeded. Unban the hero to continue." )
             endif
         endif
         
-        set p = null
+        set owner = null
     endfunction
     
     //Tooltip
@@ -743,555 +651,520 @@ scope HeroChoose
     private function TooltipEnable2 takes nothing returns nothing 
         call TooltipEnable(3)
     endfunction
-
-    function Trig_HeroesFrame_Actions takes nothing returns nothing
-        local trigger trig
-        local trigger trigclass = CreateTrigger()
-        local trigger trigskin = CreateTrigger()
-        local framehandle herofon
-        local framehandle buttool
-        local framehandle class
-        local framehandle namefon
+    
+    private function CreatePotionIcon takes framehandle parent returns nothing
         local framehandle newframe
-        local framehandle array newfrtrg
-        local framehandle array potion
-        local integer cyclA = 1
-        local integer cyclAEnd
-        local integer cyclB
-        local real size = 0.032
-        local real xpos = 0.66
         
-        set newfrtrg[1] = null
-        set newfrtrg[2] = null
+        set newframe = BlzCreateFrameByType("BACKDROP", "", parent, "", 0)
+        call BlzFrameSetPoint( newframe, FRAMEPOINT_CENTER, parent, FRAMEPOINT_BOTTOMLEFT, 0.007,0.007) 
+        call BlzFrameSetSize(newframe, 0.01, 0.01)
+        call BlzFrameSetTexture( newframe, "potionframe.blp",0, true)
         
-        call HeroFrameBonus()
+        set newframe = null
+    endfunction
+    
+    private function CreateIconNew takes framehandle parent returns nothing
+        local framehandle newframe
+        
+        set newframe = BlzCreateFrameByType("BACKDROP", "", parent, "", 0)
+        call BlzFrameSetPoint( newframe, FRAMEPOINT_CENTER, parent, FRAMEPOINT_BOTTOMRIGHT, -0.006,0.006) 	
+        call BlzFrameSetSize(newframe, 0.02, 0.02)
+        call BlzFrameSetTexture( newframe, "framenew.blp",0, true)
+        
+        set newframe = null
+    endfunction
+    
+    private function CreateHeroButton takes trigger trigclass, integer class, integer position returns nothing
+        local HeroFramehandle heroFrame = HeroFrame[class][position]
+        local integer i
+        local framehandle buttonFrame
+        local framehandle icon
+    
+        if heroFrame.heroId == 0 then 
+            //call BJDebugMsg("return")
+            call heroFrame.destroy()
+            set trigclass = null
+            set buttonFrame = null
+            set icon = null
+            return
+        endif
+        
+        set buttonFrame = BlzCreateFrameByType("GLUEBUTTON", "", HeroTable, "ScoreScreenTabButtonTemplate", 0)
+        call BlzFrameSetAbsPoint(buttonFrame, FRAMEPOINT_CENTER, START_POSITION_X-(BUTTON_SIZE*class),START_POSITION_Y-(BUTTON_SIZE*position))	
+        call BlzFrameSetSize(buttonFrame, BUTTON_SIZE, BUTTON_SIZE)
+        call SaveInteger(udg_hash, GetHandleId(buttonFrame), KEY_CLASS, class )
+        call SaveInteger(udg_hash, GetHandleId(buttonFrame), KEY_POSITION, position )
 
-        set herobut = BlzCreateFrame("ScriptDialogButton", BlzGetOriginFrame(ORIGIN_FRAME_GAME_UI, 0), 0,0) 
-        call BlzFrameSetSize(herobut, 0.07,0.04)
-        call BlzFrameSetAbsPoint(herobut, FRAMEPOINT_CENTER, 0.18,0.185)
-        call BlzFrameSetText(herobut, "Choose")
-        call BlzFrameSetLevel( herobut, -1 )
-        call BlzFrameSetVisible( herobut, false )
-        
-        set trig = CreateTrigger()
-        call BlzTriggerRegisterFrameEvent(trig, herobut, FRAMEEVENT_CONTROL_CLICK)
-        call TriggerAddAction(trig, function HeroesButton)
-        
-        set banbut = BlzCreateFrame("ScriptDialogButton", herobut, 0,0) 
-        call BlzFrameSetSize(banbut, 0.04,0.04)
-        call BlzFrameSetAbsPoint(banbut, FRAMEPOINT_CENTER, 0.06,0.185)
-        call BlzFrameSetText(banbut, "Ban")
-        call BlzFrameSetVisible( banbut, false )
-        
-        set trig = CreateTrigger()
-        call BlzTriggerRegisterFrameEvent(trig, banbut, FRAMEEVENT_CONTROL_CLICK)
-        call TriggerAddAction(trig, function HeroBan)
+        set icon = BlzCreateFrameByType("BACKDROP", "", buttonFrame, "StandartFrameTemplate", 0)
+        call BlzFrameSetAllPoints(icon, buttonFrame )
+    
+        call BlzTriggerRegisterFrameEvent(trigclass, buttonFrame, FRAMEEVENT_CONTROL_CLICK)
+        call BlzFrameSetTexture( icon, heroFrame.icon, 0, true)
 
-        set herofon = BlzCreateFrame("EscMenuBackdrop", herobut, 0, 0)
-        call BlzFrameSetAbsPoint(herofon, FRAMEPOINT_CENTER, 0.398, 0.16)
-        call BlzFrameSetSize(herofon, 0.3, 0.075)
+        set heroIcon[class][position] = icon
+        set heroButton[class][position] = buttonFrame
 
-        set namefon = BlzCreateFrame("QuestButtonBaseTemplate", herobut, 0, 0)
-        call BlzFrameSetAbsPoint(namefon, FRAMEPOINT_CENTER, 0.458, 0.205)
-        call BlzFrameSetSize(namefon, 0.15, 0.05)
-        call BlzFrameSetLevel( namefon, -2 )
-
-        set herohard = BlzCreateFrameByType("TEXT", "", namefon, "StandartFrameTemplate", 0)
-        call BlzFrameSetSize( herohard, 0.2, 0.04 )
-        call BlzFrameSetPoint( herohard, FRAMEPOINT_TOPLEFT, namefon, FRAMEPOINT_TOPLEFT, 0.01,-0.01) 
-        call BlzFrameSetText( herohard, "" )
-
-        set heroavtor = BlzCreateFrameByType("TEXT", "", namefon, "StandartFrameTemplate", 0)
-        call BlzFrameSetSize( heroavtor, 0.2, 0.04 )
-        call BlzFrameSetPoint( heroavtor, FRAMEPOINT_TOPLEFT, namefon, FRAMEPOINT_TOPLEFT, 0.01,-0.02) 
-        call BlzFrameSetText( heroavtor, "" )
+        if heroFrame.heroId == udg_Database_Hero[udg_Database_InfoNumberHeroes] then
+            call CreateIconNew(buttonFrame)
+            call BlzFrameSetLevel( buttonFrame, 2 )
+        endif
         
-        //skins
-        set butskin = BlzCreateFrameByType("GLUEBUTTON", "", herobut, "ScoreScreenTabButtonTemplate", 0)
-        call BlzFrameSetAbsPoint(butskin, FRAMEPOINT_CENTER, 0.02,0.2)	
-        call BlzFrameSetSize(butskin, 0.035, 0.035)
-        call BlzFrameSetVisible( butskin, false )
-        
-        call TriggerAddAction(trigskin, function SkinButton)
-        call BlzTriggerRegisterFrameEvent(trigskin, butskin, FRAMEEVENT_CONTROL_CLICK)
-
-        set butskinv = BlzCreateFrameByType("BACKDROP", "", butskin, "StandartFrameTemplate", 0)
-        call BlzFrameSetAllPoints(butskinv,butskin )
-        call BlzFrameSetTexture( butskinv, "",0, true)
-        
-        set namefon = BlzCreateFrame( "QuestButtonBaseTemplate", butskin, 0, 0 )
-        call BlzFrameSetAbsPoint(namefon, FRAMEPOINT_CENTER, 0.02, 0.17)
-        call BlzFrameSetSize( namefon, 0.04, 0.03 )
-
-        set newframe = BlzCreateFrameByType("TEXT", "",  namefon, "StandartFrameTemplate", 0)
-        call BlzFrameSetPoint( newframe, FRAMEPOINT_CENTER, namefon, FRAMEPOINT_CENTER, 0.007, -0.005) 
-        call BlzFrameSetSize(newframe, 0.04, 0.02)
-        call BlzFrameSetText( newframe, "skins" )
-        
-        set cyclA = 1
+        set i = 1
         loop
-            exitwhen cyclA > udg_DB_Skin_Limit
-            set butskin1[cyclA] = BlzCreateFrameByType("GLUEBUTTON", "", butskin, "ScoreScreenTabButtonTemplate", 0)
-            call BlzFrameSetAbsPoint(butskin1[cyclA], FRAMEPOINT_CENTER, 0.02,0.2+(0.03*cyclA))	
-            call BlzFrameSetSize(butskin1[cyclA], 0.03, 0.03)
-            call BlzFrameSetVisible( butskin1[cyclA], false )
-            call BlzTriggerRegisterFrameEvent(trigskin, butskin1[cyclA], FRAMEEVENT_CONTROL_CLICK)
-            call BlzFrameSetLevel( butskin1[cyclA], -1 )
-
-            set butskinv1[cyclA] = BlzCreateFrameByType("BACKDROP", "", butskin1[cyclA], "StandartFrameTemplate", 0)
-            call BlzFrameSetAllPoints(butskinv1[cyclA],butskin1[cyclA] )
-            call BlzFrameSetTexture( butskinv1[cyclA], "",0, true)
-            
-            set lockskin1[cyclA] = BlzCreateFrameByType("BACKDROP", "", butskin1[cyclA], "StandartFrameTemplate", 0)
-            call BlzFrameSetSize( lockskin1[cyclA], 0.015, 0.015 )
-            call BlzFrameSetPoint( lockskin1[cyclA], FRAMEPOINT_CENTER, butskin1[cyclA], FRAMEPOINT_CENTER, 0,0) 
-            call BlzFrameSetTexture( lockskin1[cyclA], "framelock.blp",0, true)
-            
-            set numskin1[cyclA] = BlzCreateFrameByType("TEXT", "", butskin1[cyclA], "StandartFrameTemplate", 0)
-            call BlzFrameSetSize( numskin1[cyclA], 0.01, 0.01 )
-            call BlzFrameSetPoint( numskin1[cyclA], FRAMEPOINT_CENTER, butskin1[cyclA], FRAMEPOINT_CENTER, 0.002,-0.005) 
-            set cyclA = cyclA + 1
-        endloop
-        
-        
-        set cyclA = 1
-        loop
-            exitwhen cyclA > 5
-            set herospell[cyclA] = BlzCreateFrameByType("BACKDROP", "", herobut, "", 0)
-            set buttool = BlzCreateFrameByType("FRAME", "", herospell[cyclA],"", 0)
-            set herotool[cyclA] = BlzCreateFrame( "QuestButtonBaseTemplate", herospell[cyclA], 0, 0 )//BlzCreateFrameByType("QuestButtonBaseTemplate", "", herospell[cyclA], "StandartFrameTemplate", 0)
-            set herospellname[cyclA] = BlzCreateFrameByType("TEXT", "", herotool[cyclA], "StandartFrameTemplate", 0)
-            set herospelltool[cyclA] = BlzCreateFrameByType("TEXT", "", herotool[cyclA], "StandartFrameTemplate", 0)
-             
-            call BlzFrameSetPoint( herospellname[cyclA], FRAMEPOINT_TOPLEFT, herotool[cyclA], FRAMEPOINT_TOPLEFT, 0.005,-0.01) 
-            call BlzFrameSetLevel( herospellname[cyclA], 1 )
-            call BlzFrameSetSize(herospellname[cyclA], 0.3, 0.6)
-
-            call BlzFrameSetPoint( herospelltool[cyclA], FRAMEPOINT_TOPLEFT, herotool[cyclA], FRAMEPOINT_TOPLEFT, 0.005,-0.025) 
-            call BlzFrameSetLevel( herospelltool[cyclA], 1 )
-            call BlzFrameSetSize(herospelltool[cyclA], 0.3, 0.6)
-
-            call BlzFrameSetAllPoints(buttool, herospell[cyclA])
-            call BlzFrameSetTooltip(buttool, herotool[cyclA])
-        
-            call BlzFrameSetSize(herospell[cyclA], 0.04, 0.04)
-            if cyclA == 5 then
-                call BlzFrameSetPoint( herospell[cyclA], FRAMEPOINT_CENTER, herofon, FRAMEPOINT_CENTER, 0.04*(cyclA-3)+0.02, 0 )
-            else
-                call BlzFrameSetPoint( herospell[cyclA], FRAMEPOINT_CENTER, herofon, FRAMEPOINT_CENTER, 0.04*(cyclA-3), 0 )
+            exitwhen i > POTION_BONUSES_ADDED_TO_HEROES
+            if udg_HeroBonusPotion[i] == position and udg_HeroBonusPotionClass[i] == class then
+                call CreatePotionIcon(buttonFrame)
+                set udg_HeroBonusPotionHero[i] = heroFrame.heroId
+                set i = POTION_BONUSES_ADDED_TO_HEROES
             endif
-            call BlzFrameSetSize(herotool[cyclA], 0.33, 0.06)
-            call BlzFrameSetAbsPoint(herotool[cyclA], FRAMEPOINT_BOTTOM, 0.7, 0.16)
-
-            call BlzFrameSetTexture( herospell[cyclA], "war3mapImported\\PASfeed-icon-red-1_result.blp",0, true)
-            call BlzFrameSetVisible( herospell[cyclA], false )
-            set cyclA = cyclA + 1
+            set i = i + 1
         endloop
-
-        set cyclA = 1
-        loop
-            exitwhen cyclA > 9
-            set class = BlzCreateFrameByType("BACKDROP", "", herobut, "", 0)
-            set buttool = BlzCreateFrameByType("FRAME", "", herobut,"", 0)
-            
-            call BlzFrameSetAllPoints(buttool, class)
         
-            call BlzFrameSetSize(class, size, size)
-            call BlzFrameSetAbsPoint(class, FRAMEPOINT_CENTER, (xpos+size)-(size*cyclA),0.5+size)
-
-            call SetStableTool( buttool, udg_DB_HeroesFrame_Name[cyclA], udg_DB_HeroesFrame_Tooltip[cyclA] )
-
-            call BlzFrameSetTexture( class, udg_DB_HeroesFrame_Icon[cyclA],0, true)
-            set cyclA = cyclA + 1
+        call heroFrame.destroy()
+        set trigclass = null
+        set buttonFrame = null
+        set icon = null
+    endfunction
+    
+    private function CreateHeroButtons takes nothing returns nothing
+        local trigger trigclass = CreateTrigger()
+        local framehandle buttonFrame
+        local framehandle icon
+        local integer i = 0
+        local integer iEnd = CLASSES - 1
+        local integer k
+        local integer kEnd
+        
+        loop
+            exitwhen i > iEnd
+            set k = 0
+            set kEnd = HeroesTableDatabase_HEROES_IN_CLASS[i] - 1
+            loop
+                exitwhen k > kEnd
+                call CreateHeroButton(trigclass, i, k)
+                set k = k + 1
+            endloop
+            set i = i + 1
         endloop
+    
+        //Random Hero
+        set buttonFrame = BlzCreateFrameByType("GLUEBUTTON", "", HeroTable, "ScoreScreenTabButtonTemplate", 0)
+        call BlzFrameSetAbsPoint(buttonFrame, FRAMEPOINT_CENTER, (START_POSITION_X+BUTTON_SIZE)-(BUTTON_SIZE*10),START_POSITION_Y+BUTTON_SIZE)	
+        call BlzFrameSetSize(buttonFrame, BUTTON_SIZE, BUTTON_SIZE)
+        call BlzTriggerRegisterFrameEvent(trigclass, buttonFrame, FRAMEEVENT_CONTROL_CLICK)
+        call SaveInteger(udg_hash, GetHandleId(buttonFrame), KEY_CLASS, 9 )
+        call SaveInteger(udg_hash, GetHandleId(buttonFrame), KEY_POSITION, 0 )
 
+        set icon = BlzCreateFrameByType("BACKDROP", "", buttonFrame, "StandartFrameTemplate", 0)
+        call BlzFrameSetAllPoints(icon, buttonFrame )
+        call BlzFrameSetTexture( icon, "war3mapImported\\PASBTNSelectHeroOn.blp",0, true)
+        
         call TriggerAddAction(trigclass, function HeroChooseButton)
-
-        set hero1[0] = BlzCreateFrameByType("GLUEBUTTON", "", herobut, "ScoreScreenTabButtonTemplate", 0)
-        call BlzFrameSetAbsPoint(hero1[0], FRAMEPOINT_CENTER, (xpos+size)-(size*10),0.5+size)	
-        call BlzFrameSetSize(hero1[0], size, size)
-
-        set buttool = BlzCreateFrameByType("BACKDROP", "", hero1[0], "StandartFrameTemplate", 0)
-        call BlzFrameSetAllPoints(buttool,hero1[0] )
         
-        call BlzTriggerRegisterFrameEvent(trigclass, hero1[0], FRAMEEVENT_CONTROL_CLICK)
-        call BlzFrameSetTexture( buttool, "war3mapImported\\PASBTNSelectHeroOn.blp",0, true)
-
-        set cyclA = 1
+        set trigclass = null
+        set buttonFrame = null
+        set icon = null
+    endfunction
+    
+    private function CreateClassFrames takes nothing returns nothing
+        local framehandle class 
+        local framehandle buttool 
+        local integer index = 0
+        
         loop
-            exitwhen cyclA > 4
-            set lvlic[cyclA] = BlzCreateFrameByType("BACKDROP", "", herobut, "", 0)
-            call BlzFrameSetAbsPoint(lvlic[cyclA], FRAMEPOINT_CENTER, 0.57+(cyclA*0.03), 0.2)	
-            call BlzFrameSetSize(lvlic[cyclA], 0.03, 0.03)
+            exitwhen index > CLASSES - 1
+            set class = BlzCreateFrameByType("BACKDROP", "", HeroTable, "", 0)
+            call BlzFrameSetSize(class, BUTTON_SIZE, BUTTON_SIZE)
+            call BlzFrameSetAbsPoint(class, FRAMEPOINT_CENTER, START_POSITION_X-(BUTTON_SIZE*index),START_POSITION_Y+BUTTON_SIZE)//+BUTTON_SIZE
+            call BlzFrameSetTexture( class, ClassFrame[index].icon,0, true)
+
+            set buttool = BlzCreateFrameByType("FRAME", "", HeroTable,"", 0)
+            call BlzFrameSetAllPoints(buttool, class)
+            call SetStableTool( buttool, ClassFrame[index].className, ClassFrame[index].description )
+            set index = index + 1
+        endloop
+        
+        set class = null
+        set buttool = null
+    endfunction
+    
+    private function MainStartFrames takes nothing returns nothing
+        local integer i
+        local integer rand
+        local trigger chooseButtonTrigger
+
+        set i = 1
+        loop
+            exitwhen i > POTION_BONUSES_ADDED_TO_HEROES
+            set rand = GetRandomInt( 0, CLASSES - 1 )
+            set udg_HeroBonusPotion[i] = GetRandomInt( 0, HeroesTableDatabase_HEROES_IN_CLASS[rand] - 1 )
+            set udg_HeroBonusPotionClass[i] = rand
+            set i = i + 1
+        endloop
+        
+        set HeroTable = BlzCreateFrameByType("FRAME", "HeroTable", BlzGetOriginFrame(ORIGIN_FRAME_GAME_UI, 0), "StandartFrameTemplate", 0)
+        call BlzFrameSetLevel( HeroTable, -1 )
+        call BlzFrameSetVisible( HeroTable, false )
+
+        set ChooseButton = BlzCreateFrame("ScriptDialogButton", HeroTable, 0,0) 
+        call BlzFrameSetSize( ChooseButton, 0.07,0.04)
+        call BlzFrameSetAbsPoint( ChooseButton, FRAMEPOINT_CENTER, 0.18,0.185)
+        call BlzFrameSetText( ChooseButton, "Choose")
+        call BlzFrameSetLevel( ChooseButton, -1 )
+        call BlzFrameSetVisible( ChooseButton, false )
+        
+        set chooseButtonTrigger = CreateTrigger()
+        call BlzTriggerRegisterFrameEvent(chooseButtonTrigger, ChooseButton, FRAMEEVENT_CONTROL_CLICK)
+        call TriggerAddAction(chooseButtonTrigger, function GetChoosedHero)
+        
+        set chooseButtonTrigger = null
+    endfunction
+    
+    private function CreateSkinButtons takes nothing returns nothing
+        local trigger skinButtonTrigger = CreateTrigger()
+        local framehandle background
+        local framehandle skinName
+        local integer i
+        
+        set MainSkinButton = BlzCreateFrameByType("GLUEBUTTON", "", HeroTable, "ScoreScreenTabButtonTemplate", 0)
+        call BlzFrameSetAbsPoint(MainSkinButton, FRAMEPOINT_CENTER, 0.02,0.2)	
+        call BlzFrameSetSize(MainSkinButton, 0.035, 0.035)
+        call BlzFrameSetVisible( MainSkinButton, false )
+        
+        call TriggerAddAction(skinButtonTrigger, function SkinButton)
+        call BlzTriggerRegisterFrameEvent(skinButtonTrigger, MainSkinButton, FRAMEEVENT_CONTROL_CLICK)
+
+        set MainSkinIcon = BlzCreateFrameByType("BACKDROP", "", MainSkinButton, "StandartFrameTemplate", 0)
+        call BlzFrameSetAllPoints( MainSkinIcon, MainSkinButton )
+        call BlzFrameSetTexture( MainSkinIcon, "",0, true)
+        
+        set background = BlzCreateFrame( "QuestButtonBaseTemplate", MainSkinButton, 0, 0 )
+        call BlzFrameSetAbsPoint(background, FRAMEPOINT_CENTER, 0.02, 0.17)
+        call BlzFrameSetSize( background, 0.04, 0.03 )
+
+        set skinName = BlzCreateFrameByType("TEXT", "", background, "StandartFrameTemplate", 0)
+        call BlzFrameSetPoint( skinName, FRAMEPOINT_CENTER, background, FRAMEPOINT_CENTER, 0.007, -0.005) 
+        call BlzFrameSetSize(skinName, 0.04, 0.02)
+        call BlzFrameSetText( skinName, "skins" )
+        
+        set i = 1
+        loop
+            exitwhen i > udg_DB_Skin_Limit
+            set Skins_Button[i] = BlzCreateFrameByType("GLUEBUTTON", "", MainSkinButton, "ScoreScreenTabButtonTemplate", 0)
+            call BlzFrameSetAbsPoint(Skins_Button[i], FRAMEPOINT_CENTER, 0.02,0.2+(0.03*i))	
+            call BlzFrameSetSize(Skins_Button[i], 0.03, 0.03)
+            call BlzFrameSetVisible( Skins_Button[i], false )
+            call BlzTriggerRegisterFrameEvent(skinButtonTrigger, Skins_Button[i], FRAMEEVENT_CONTROL_CLICK)
+            call BlzFrameSetLevel( Skins_Button[i], -1 )
+
+            set Skins_Icon[i] = BlzCreateFrameByType("BACKDROP", "", Skins_Button[i], "StandartFrameTemplate", 0)
+            call BlzFrameSetAllPoints(Skins_Icon[i],Skins_Button[i] )
+            call BlzFrameSetTexture( Skins_Icon[i], "", 0, true)
             
-            if GetPlayerSlotState( Player( cyclA - 1 ) ) == PLAYER_SLOT_STATE_PLAYING then
-                call BlzFrameSetTexture(lvlic[cyclA], "ReplaceableTextures\\CommandButtons\\BTNSelectHeroOn.blp", 0, true)
+            set Skins_LockFrame[i] = BlzCreateFrameByType("BACKDROP", "", Skins_Button[i], "StandartFrameTemplate", 0)
+            call BlzFrameSetSize( Skins_LockFrame[i], 0.015, 0.015 )
+            call BlzFrameSetPoint( Skins_LockFrame[i], FRAMEPOINT_CENTER, Skins_Button[i], FRAMEPOINT_CENTER, 0,0) 
+            call BlzFrameSetTexture( Skins_LockFrame[i], "framelock.blp",0, true)
+            
+            set Skins_Text[i] = BlzCreateFrameByType("TEXT", "", Skins_Button[i], "StandartFrameTemplate", 0)
+            call BlzFrameSetSize( Skins_Text[i], 0.01, 0.01 )
+            call BlzFrameSetPoint( Skins_Text[i], FRAMEPOINT_CENTER, Skins_Button[i], FRAMEPOINT_CENTER, 0.002,-0.005) 
+            set i = i + 1
+        endloop
+        
+        set skinButtonTrigger = null
+        set background = null
+        set skinName = null
+    endfunction
+    
+    struct AbilityFrame
+        readonly framehandle icon
+        readonly framehandle name
+        readonly framehandle description
+        private framehandle tooltip
+        private static real tooltipSizeY = 0.33
+            
+        static method create takes framehandle parent returns AbilityFrame
+            local AbilityFrame this = AbilityFrame.allocate()
+            local framehandle tooltipActivator
+            
+            set .icon = BlzCreateFrameByType("BACKDROP", "", parent, "", 0)
+            
+            set .tooltip = BlzCreateFrame( "QuestButtonBaseTemplate", .icon, 0, 0 )
+            call BlzFrameSetSize(.tooltip, tooltipSizeY, 0.06)
+            call BlzFrameSetAbsPoint(.tooltip, FRAMEPOINT_BOTTOM, 0.7, 0.16)
+            
+            set .name = BlzCreateFrameByType("TEXT", "", .tooltip, "StandartFrameTemplate", 0)
+            set .description = BlzCreateFrameByType("TEXT", "", .tooltip, "StandartFrameTemplate", 0)
+            call BlzFrameSetPoint( .name, FRAMEPOINT_TOPLEFT, .tooltip, FRAMEPOINT_TOPLEFT, 0.005,-0.01) 
+            call BlzFrameSetPoint( .description, FRAMEPOINT_TOPLEFT, .tooltip, FRAMEPOINT_TOPLEFT, 0.005,-0.025) 
+            
+            set tooltipActivator = BlzCreateFrameByType("FRAME", "", .icon,"", 0)
+            call BlzFrameSetAllPoints(tooltipActivator, .icon)
+            call BlzFrameSetTooltip(tooltipActivator, .tooltip)
+            
+            set parent = null
+            set tooltipActivator = null
+            return this
+        endmethod
+        
+        method SetNameAndDescription takes string newName, string newDescription returns nothing
+            call BlzFrameSetText( .name, newName )
+            call BlzFrameSetText( .description, newDescription )
+            call BlzFrameSetSize( .tooltip, tooltipSizeY, StringSizeSmall(newDescription) )
+        endmethod
+    endstruct
+    
+    globals
+        AbilityFrame array abilityFrame[6]
+    endglobals
+    
+    private function CreateAbilityButtons takes nothing returns nothing
+        local integer i
+
+        set AbilityBackground = BlzCreateFrame("EscMenuBackdrop", HeroTable, 0, 0)
+        call BlzFrameSetAbsPoint(AbilityBackground, FRAMEPOINT_CENTER, 0.398, 0.16)
+        call BlzFrameSetSize(AbilityBackground, 0.3, 0.075)
+        call BlzFrameSetVisible( AbilityBackground, false )
+
+        set i = 1
+        loop
+            exitwhen i > 5
+            set abilityFrame[i] = AbilityFrame.create(AbilityBackground)
+            
+            call BlzFrameSetSize(abilityFrame[i].icon, 0.04, 0.04)
+            
+            if i == 5 then
+                call BlzFrameSetPoint( abilityFrame[i].icon, FRAMEPOINT_CENTER, AbilityBackground, FRAMEPOINT_CENTER, 0.04*(i-3)+0.02, 0 )
             else
-                call BlzFrameSetTexture(lvlic[cyclA], "war3mapImported\\BTNDivineShieldOff-Reforged.blp", 0, true)
-                call BlzFrameSetVisible( lvltxt[cyclA], false )
+                call BlzFrameSetPoint( abilityFrame[i].icon, FRAMEPOINT_CENTER, AbilityBackground, FRAMEPOINT_CENTER, 0.04*(i-3), 0 )
+            endif
+
+            call BlzFrameSetLevel( abilityFrame[i].name, 1 )
+            call BlzFrameSetSize(abilityFrame[i].name, 0.3, 0.6)
+
+            call BlzFrameSetLevel( abilityFrame[i].description, 1 )
+            call BlzFrameSetSize(abilityFrame[i].description, 0.3, 0.6)
+
+            call BlzFrameSetTexture( abilityFrame[i].icon, "war3mapImported\\PASfeed-icon-red-1_result.blp",0, true)
+            set i = i + 1
+        endloop
+        
+    endfunction
+            
+    private function CreatePlayerLevelInfoFrames takes nothing returns nothing
+        local integer i
+        local framehandle textBackground
+    
+        set i = 1
+        loop
+            exitwhen i > PLAYERS_LIMIT
+            set LevelHeroIcon[i] = BlzCreateFrameByType("BACKDROP", "", HeroTable, "", 0)
+            call BlzFrameSetAbsPoint(LevelHeroIcon[i], FRAMEPOINT_CENTER, 0.57+(i*0.03), 0.2)	
+            call BlzFrameSetSize(LevelHeroIcon[i], 0.03, 0.03)
+            
+            if GetPlayerSlotState( Player( i - 1 ) ) == PLAYER_SLOT_STATE_PLAYING then
+                call BlzFrameSetTexture(LevelHeroIcon[i], "ReplaceableTextures\\CommandButtons\\BTNSelectHeroOn.blp", 0, true)
+            else
+                call BlzFrameSetTexture(LevelHeroIcon[i], "war3mapImported\\BTNDivineShieldOff-Reforged.blp", 0, true)
+                call BlzFrameSetVisible( LevelTextFrame[i], false )
             endif
             
-            set newframe = BlzCreateFrameByType("BACKDROP", "", herobut, "", 0)
-            call BlzFrameSetPoint( newframe, FRAMEPOINT_CENTER, lvlic[cyclA], FRAMEPOINT_CENTER, 0,-0.025) 	
-            call BlzFrameSetSize(newframe, 0.02, 0.02)
-            call BlzFrameSetTexture( newframe, "war3mapImported\\BTNfeed-icon-red-1_result.blp",0, true)
+            set textBackground = BlzCreateFrameByType("BACKDROP", "", HeroTable, "", 0)
+            call BlzFrameSetPoint( textBackground, FRAMEPOINT_CENTER, LevelHeroIcon[i], FRAMEPOINT_CENTER, 0,-0.025) 	
+            call BlzFrameSetSize( textBackground, 0.02, 0.02)
+            call BlzFrameSetTexture( textBackground, "war3mapImported\\BTNfeed-icon-red-1_result.blp",0, true)
             
-            set lvltxt[cyclA] = BlzCreateFrameByType("TEXT", "", herobut, "StandartFrameTemplate", 0)
-            call BlzFrameSetSize( lvltxt[cyclA], 0.01, 0.01 )
-            //call BlzFrameSetAbsPoint(lvltxt[cyclA], FRAMEPOINT_RIGHT, 0.587+(cyclA*0.03), 0.2) 
-            call BlzFrameSetPoint( lvltxt[cyclA], FRAMEPOINT_CENTER, newframe, FRAMEPOINT_CENTER, 0, 0) 
-            set cyclA = cyclA + 1
+            set LevelTextFrame[i] = BlzCreateFrameByType("TEXT", "", HeroTable, "StandartFrameTemplate", 0)
+            call BlzFrameSetSize( LevelTextFrame[i], 0.01, 0.01 ) 
+            call BlzFrameSetPoint( LevelTextFrame[i], FRAMEPOINT_CENTER, textBackground, FRAMEPOINT_CENTER, 0, 0) 
+            set i = i + 1
         endloop
-
-        set cyclA = 1
-        set cyclAEnd = udg_DB_HeroFrame_Number[1]
-        loop
-            exitwhen cyclA > cyclAEnd
-            set hero1[cyclA] = BlzCreateFrameByType("GLUEBUTTON", "", herobut, "ScoreScreenTabButtonTemplate", 0)
-            call BlzFrameSetAbsPoint(hero1[cyclA], FRAMEPOINT_CENTER, (xpos+size)-(size*1),(0.5+size)-(size*cyclA))	
-            call BlzFrameSetSize(hero1[cyclA], size, size)
-
-            set hero1v[cyclA] = BlzCreateFrameByType("BACKDROP", "", hero1[cyclA], "StandartFrameTemplate", 0)
-            call BlzFrameSetAllPoints(hero1v[cyclA],hero1[cyclA] )
         
-            call BlzTriggerRegisterFrameEvent(trigclass, hero1[cyclA], FRAMEEVENT_CONTROL_CLICK)
-            call BlzFrameSetTexture( hero1v[cyclA], udg_DB_HeroFrame_Buffer_Icon[cyclA],0, true)
-
-            if udg_DB_HeroFrame_Buffer[cyclA] == udg_Database_Hero[udg_Database_InfoNumberHeroes] then
-                set newfrtrg[1] = hero1[cyclA]
-            elseif udg_DB_HeroFrame_Buffer[cyclA] == udg_Database_Hero[udg_Database_InfoNumberHeroes-1] then
-                set newfrtrg[2] = hero1[cyclA]
+        set textBackground = null
+    endfunction
+    
+    private function CreateBanButton takes nothing returns nothing
+        local trigger trig = CreateTrigger()
+    
+        set BanButton = BlzCreateFrame("ScriptDialogButton", HeroTable, 0,0) 
+        call BlzFrameSetSize(BanButton, 0.04,0.03)
+        call BlzFrameSetAbsPoint(BanButton, FRAMEPOINT_BOTTOMLEFT, 0.035,0.195)
+        call BlzFrameSetText(BanButton, "Ban")
+        call BlzFrameSetVisible( BanButton, false )
+         
+        call BlzTriggerRegisterFrameEvent(trig, BanButton, FRAMEEVENT_CONTROL_CLICK)
+        call TriggerAddAction(trig, function HeroBan)
+        
+        set trig = null
+    endfunction
+    
+    //Info Panel
+    function InfoButtonClick takes nothing returns nothing 
+        if GetLocalPlayer() == GetTriggerPlayer() then
+            call BlzFrameSetEnable(InfoButton, false) 
+            call BlzFrameSetEnable(InfoButton, true)
+            if BlzFrameIsVisible(InfoBackground) then
+                call BlzFrameSetVisible(InfoBackground, false) 
+            else
+                call BlzFrameSetVisible(InfoBackground, true) 
             endif
-            
-            set cyclB = 1
-            loop
-                exitwhen cyclB > 4
-                if udg_HeroBonusPotion[cyclB] == cyclA and udg_HeroBonusPotionClass[cyclB] == 1 then
-                    set potion[cyclB] = hero1[cyclA]
-                    set udg_HeroBonusPotionHero[cyclB] = udg_DB_HeroFrame_Buffer[cyclA]
-                endif
-                set cyclB = cyclB + 1
-            endloop
-            set cyclA = cyclA + 1
-        endloop
-
-        set cyclA = 1
-        set cyclAEnd = udg_DB_HeroFrame_Number[2]
+        endif
+    endfunction 
+    
+    private function CreateAspects takes framehandle parent returns nothing
+        local framehandle passiveOutline
+        local integer i
+    
+        set i = 0
         loop
-            exitwhen cyclA > cyclAEnd
-            set hero2[cyclA] = BlzCreateFrameByType("GLUEBUTTON", "", herobut, "ScoreScreenTabButtonTemplate", 0)
-            call BlzFrameSetAbsPoint(hero2[cyclA], FRAMEPOINT_CENTER, (xpos+size)-(size*2),(0.5+size)-(size*cyclA))	
-            call BlzFrameSetSize(hero2[cyclA], size, size)
-
-            set hero2v[cyclA] = BlzCreateFrameByType("BACKDROP", "", hero2[cyclA], "StandartFrameTemplate", 0)
-            call BlzFrameSetAllPoints(hero2v[cyclA],hero2[cyclA] )
-        
-            call BlzTriggerRegisterFrameEvent(trigclass, hero2[cyclA], FRAMEEVENT_CONTROL_CLICK)
-            call BlzFrameSetTexture( hero2v[cyclA], udg_DB_HeroFrame_Deffender_Icon[cyclA],0, true)
-
-            if udg_DB_HeroFrame_Deffender[cyclA] == udg_Database_Hero[udg_Database_InfoNumberHeroes] then
-                set newfrtrg[1] = hero2[cyclA]
-            elseif udg_DB_HeroFrame_Deffender[cyclA] == udg_Database_Hero[udg_Database_InfoNumberHeroes-1] then
-                set newfrtrg[2] = hero2[cyclA]
-            endif
+            exitwhen i > 2
+            set AspectVision[i] = BlzCreateFrameByType("BACKDROP", "AspectVision0" + I2S(i), parent, "", 1) 
+            call BlzFrameSetPoint( AspectVision[i], FRAMEPOINT_LEFT, parent, FRAMEPOINT_RIGHT, i*ASPECTS_INDENT, 0)
+            call BlzFrameSetSize(AspectVision[i], ASPECTS_SIZE, ASPECTS_SIZE)
+            call BlzFrameSetTexture(AspectVision[i], "", 0, true) 
             
-            set cyclB = 1
-            loop
-                exitwhen cyclB > 4
-                if udg_HeroBonusPotion[cyclB] == cyclA and udg_HeroBonusPotionClass[cyclB] == 2 then
-                    set potion[cyclB] = hero2[cyclA]
-                    set udg_HeroBonusPotionHero[cyclB] = udg_DB_HeroFrame_Deffender[cyclA]
-                endif
-                set cyclB = cyclB + 1
-            endloop
-            set cyclA = cyclA + 1
-        endloop
-
-        set cyclA = 1
-        set cyclAEnd = udg_DB_HeroFrame_Number[3]
-        loop
-            exitwhen cyclA > cyclAEnd
-            set hero3[cyclA] = BlzCreateFrameByType("GLUEBUTTON", "", herobut, "ScoreScreenTabButtonTemplate", 0)
-            call BlzFrameSetAbsPoint(hero3[cyclA], FRAMEPOINT_CENTER, (xpos+size)-(size*3),(0.5+size)-(size*cyclA))	
-            call BlzFrameSetSize(hero3[cyclA], size, size)
-
-            set hero3v[cyclA] = BlzCreateFrameByType("BACKDROP", "", hero3[cyclA], "StandartFrameTemplate", 0)
-            call BlzFrameSetAllPoints(hero3v[cyclA],hero3[cyclA] )
-        
-            call BlzTriggerRegisterFrameEvent(trigclass, hero3[cyclA], FRAMEEVENT_CONTROL_CLICK)
-            call BlzFrameSetTexture( hero3v[cyclA], udg_DB_HeroFrame_Ripper_Icon[cyclA],0, true)
-
-            if udg_DB_HeroFrame_Ripper[cyclA] == udg_Database_Hero[udg_Database_InfoNumberHeroes] then
-                set newfrtrg[1] = hero3[cyclA]
-            elseif udg_DB_HeroFrame_Ripper[cyclA] == udg_Database_Hero[udg_Database_InfoNumberHeroes-1] then
-                set newfrtrg[2] = hero3[cyclA]
-            endif
+            set AspectButton[i] = BlzCreateFrameByType("BUTTON", "", AspectVision[i], "", 1) 
+            call BlzFrameSetAllPoints(AspectButton[i], AspectVision[i] )
             
-            set cyclB = 1
-            loop
-                exitwhen cyclB > 4
-                if udg_HeroBonusPotion[cyclB] == cyclA and udg_HeroBonusPotionClass[cyclB] == 3 then
-                    set potion[cyclB] = hero3[cyclA]
-                    set udg_HeroBonusPotionHero[cyclB] = udg_DB_HeroFrame_Ripper[cyclA]
-                endif
-                set cyclB = cyclB + 1
-            endloop
-            set cyclA = cyclA + 1
-        endloop
-
-        set cyclA = 1
-        set cyclAEnd = udg_DB_HeroFrame_Number[4]
-        loop
-            exitwhen cyclA > cyclAEnd
-            set hero4[cyclA] = BlzCreateFrameByType("GLUEBUTTON", "", herobut, "ScoreScreenTabButtonTemplate", 0)
-            call BlzFrameSetAbsPoint(hero4[cyclA], FRAMEPOINT_CENTER, (xpos+size)-(size*4),(0.5+size)-(size*cyclA))	
-            call BlzFrameSetSize(hero4[cyclA], size, size)
-
-            set hero4v[cyclA] = BlzCreateFrameByType("BACKDROP", "", hero4[cyclA], "StandartFrameTemplate", 0)
-            call BlzFrameSetAllPoints(hero4v[cyclA],hero4[cyclA] )
-        
-            call BlzTriggerRegisterFrameEvent(trigclass, hero4[cyclA], FRAMEEVENT_CONTROL_CLICK)
-            call BlzFrameSetTexture( hero4v[cyclA], udg_DB_HeroFrame_Hybrid_Icon[cyclA],0, true)
-
-            if udg_DB_HeroFrame_Hybrid[cyclA] == udg_Database_Hero[udg_Database_InfoNumberHeroes] then
-                set newfrtrg[1] = hero4[cyclA]
-            elseif udg_DB_HeroFrame_Hybrid[cyclA] == udg_Database_Hero[udg_Database_InfoNumberHeroes-1] then
-                set newfrtrg[2] = hero4[cyclA]
-            endif
-            
-            set cyclB = 1
-            loop
-                exitwhen cyclB > 4
-                if udg_HeroBonusPotion[cyclB] == cyclA and udg_HeroBonusPotionClass[cyclB] == 4 then
-                    set potion[cyclB] = hero4[cyclA]
-                    set udg_HeroBonusPotionHero[cyclB] = udg_DB_HeroFrame_Hybrid[cyclA]
-                endif
-                set cyclB = cyclB + 1
-            endloop
-            set cyclA = cyclA + 1
-        endloop
-
-        set cyclA = 1
-        set cyclAEnd = udg_DB_HeroFrame_Number[5]
-        loop
-            exitwhen cyclA > cyclAEnd
-            set hero5[cyclA] = BlzCreateFrameByType("GLUEBUTTON", "", herobut, "ScoreScreenTabButtonTemplate", 0)
-            call BlzFrameSetAbsPoint(hero5[cyclA], FRAMEPOINT_CENTER, (xpos+size)-(size*5),(0.5+size)-(size*cyclA))	
-            call BlzFrameSetSize(hero5[cyclA], size, size)
-
-            set hero5v[cyclA] = BlzCreateFrameByType("BACKDROP", "", hero5[cyclA], "StandartFrameTemplate", 0)
-            call BlzFrameSetAllPoints(hero5v[cyclA],hero5[cyclA] )
-        
-            call BlzTriggerRegisterFrameEvent(trigclass, hero5[cyclA], FRAMEEVENT_CONTROL_CLICK)
-            call BlzFrameSetTexture( hero5v[cyclA], udg_DB_HeroFrame_Maraduer_Icon[cyclA],0, true)
-
-            if udg_DB_HeroFrame_Maraduer[cyclA] == udg_Database_Hero[udg_Database_InfoNumberHeroes] then
-                set newfrtrg[1] = hero5[cyclA]
-            elseif udg_DB_HeroFrame_Maraduer[cyclA] == udg_Database_Hero[udg_Database_InfoNumberHeroes-1] then
-                set newfrtrg[2] = hero5[cyclA]
-            endif
-            
-            set cyclB = 1
-            loop
-                exitwhen cyclB > 4
-                if udg_HeroBonusPotion[cyclB] == cyclA and udg_HeroBonusPotionClass[cyclB] == 5 then
-                    set potion[cyclB] = hero5[cyclA]
-                    set udg_HeroBonusPotionHero[cyclB] = udg_DB_HeroFrame_Maraduer[cyclA]
-                endif
-                set cyclB = cyclB + 1
-            endloop
-            set cyclA = cyclA + 1
-        endloop
-        
-        set cyclA = 1
-        set cyclAEnd = udg_DB_HeroFrame_Number[6]
-        loop
-            exitwhen cyclA > cyclAEnd
-            set hero6[cyclA] = BlzCreateFrameByType("GLUEBUTTON", "", herobut, "ScoreScreenTabButtonTemplate", 0)
-            call BlzFrameSetAbsPoint(hero6[cyclA], FRAMEPOINT_CENTER, (xpos+size)-(size*6),(0.5+size)-(size*cyclA))	
-            call BlzFrameSetSize(hero6[cyclA], size, size)
-
-            set hero6v[cyclA] = BlzCreateFrameByType("BACKDROP", "", hero6[cyclA], "StandartFrameTemplate", 0)
-            call BlzFrameSetAllPoints(hero6v[cyclA],hero6[cyclA] )
-        
-            call BlzTriggerRegisterFrameEvent(trigclass, hero6[cyclA], FRAMEEVENT_CONTROL_CLICK)
-            call BlzFrameSetTexture( hero6v[cyclA], udg_DB_HeroFrame_Killer_Icon[cyclA],0, true)
-
-            if udg_DB_HeroFrame_Killer[cyclA] == udg_Database_Hero[udg_Database_InfoNumberHeroes] then
-                set newfrtrg[1] = hero6[cyclA]
-            elseif udg_DB_HeroFrame_Killer[cyclA] == udg_Database_Hero[udg_Database_InfoNumberHeroes-1] then
-                set newfrtrg[2] = hero6[cyclA]
-            endif
-            
-            set cyclB = 1
-            loop
-                exitwhen cyclB > 4
-                if udg_HeroBonusPotion[cyclB] == cyclA and udg_HeroBonusPotionClass[cyclB] == 6 then
-                    set potion[cyclB] = hero6[cyclA]
-                    set udg_HeroBonusPotionHero[cyclB] = udg_DB_HeroFrame_Killer[cyclA]
-                endif
-                set cyclB = cyclB + 1
-            endloop
-            set cyclA = cyclA + 1
-        endloop
-        
-        set cyclA = 1
-        set cyclAEnd = udg_DB_HeroFrame_Number[7]
-        loop
-            exitwhen cyclA > cyclAEnd
-            set hero7[cyclA] = BlzCreateFrameByType("GLUEBUTTON", "", herobut, "ScoreScreenTabButtonTemplate", 0)
-            call BlzFrameSetAbsPoint(hero7[cyclA], FRAMEPOINT_CENTER, (xpos+size)-(size*7),(0.5+size)-(size*cyclA))	
-            call BlzFrameSetSize(hero7[cyclA], size, size)
-
-            set hero7v[cyclA] = BlzCreateFrameByType("BACKDROP", "", hero7[cyclA], "StandartFrameTemplate", 0)
-            call BlzFrameSetAllPoints(hero7v[cyclA],hero7[cyclA] )
-        
-            call BlzTriggerRegisterFrameEvent(trigclass, hero7[cyclA], FRAMEEVENT_CONTROL_CLICK)
-            call BlzFrameSetTexture( hero7v[cyclA], udg_DB_HeroFrame_Elemental_Icon[cyclA],0, true)
-
-            if udg_DB_HeroFrame_Elemental[cyclA] == udg_Database_Hero[udg_Database_InfoNumberHeroes] then
-                set newfrtrg[1] = hero7[cyclA]
-            elseif udg_DB_HeroFrame_Elemental[cyclA] == udg_Database_Hero[udg_Database_InfoNumberHeroes-1] then
-                set newfrtrg[2] = hero7[cyclA]
-            endif
-            
-            set cyclB = 1
-            loop
-                exitwhen cyclB > 4
-                if udg_HeroBonusPotion[cyclB] == cyclA and udg_HeroBonusPotionClass[cyclB] == 7 then
-                    set potion[cyclB] = hero7[cyclA]
-                    set udg_HeroBonusPotionHero[cyclB] = udg_DB_HeroFrame_Elemental[cyclA]
-                endif
-                set cyclB = cyclB + 1
-            endloop
-            set cyclA = cyclA + 1
-        endloop
-        
-        set cyclA = 1
-        set cyclAEnd = udg_DB_HeroFrame_Number[8]
-        loop
-            exitwhen cyclA > cyclAEnd
-            set hero8[cyclA] = BlzCreateFrameByType("GLUEBUTTON", "", herobut, "ScoreScreenTabButtonTemplate", 0)
-            call BlzFrameSetAbsPoint(hero8[cyclA], FRAMEPOINT_CENTER, (xpos+size)-(size*8),(0.5+size)-(size*cyclA))	
-            call BlzFrameSetSize(hero8[cyclA], size, size)
-
-            set hero8v[cyclA] = BlzCreateFrameByType("BACKDROP", "", hero8[cyclA], "StandartFrameTemplate", 0)
-            call BlzFrameSetAllPoints(hero8v[cyclA],hero8[cyclA] )
-        
-            call BlzTriggerRegisterFrameEvent(trigclass, hero8[cyclA], FRAMEEVENT_CONTROL_CLICK)
-            call BlzFrameSetTexture( hero8v[cyclA], udg_DB_HeroFrame_Healer_Icon[cyclA],0, true)
-
-            if udg_DB_HeroFrame_Healer[cyclA] == udg_Database_Hero[udg_Database_InfoNumberHeroes] then
-                set newfrtrg[1] = hero8[cyclA]
-            elseif udg_DB_HeroFrame_Healer[cyclA] == udg_Database_Hero[udg_Database_InfoNumberHeroes-1] then
-                set newfrtrg[2] = hero8[cyclA]
-            endif
-            
-            set cyclB = 1
-            loop
-                exitwhen cyclB > 4
-                if udg_HeroBonusPotion[cyclB] == cyclA and udg_HeroBonusPotionClass[cyclB] == 8 then
-                    set potion[cyclB] = hero8[cyclA]
-                    set udg_HeroBonusPotionHero[cyclB] = udg_DB_HeroFrame_Healer[cyclA]
-                endif
-                set cyclB = cyclB + 1
-            endloop
-            set cyclA = cyclA + 1
-        endloop
-
-        set cyclA = 1
-        set cyclAEnd = udg_DB_HeroFrame_Number[9]
-        loop
-            exitwhen cyclA > cyclAEnd
-            set hero9[cyclA] = BlzCreateFrameByType("GLUEBUTTON", "", herobut, "ScoreScreenTabButtonTemplate", 0)
-            call BlzFrameSetAbsPoint(hero9[cyclA], FRAMEPOINT_CENTER, (xpos+size)-(size*9),(0.5+size)-(size*cyclA))	
-            call BlzFrameSetSize(hero9[cyclA], size, size)
-
-            set hero9v[cyclA] = BlzCreateFrameByType("BACKDROP", "", hero9[cyclA], "StandartFrameTemplate", 0)
-            call BlzFrameSetAllPoints(hero9v[cyclA],hero9[cyclA] )
-        
-            call BlzTriggerRegisterFrameEvent(trigclass, hero9[cyclA], FRAMEEVENT_CONTROL_CLICK)
-            call BlzFrameSetTexture( hero9v[cyclA], udg_DB_HeroFrame_Debuffer_Icon[cyclA],0, true)
-
-            if udg_DB_HeroFrame_Debuffer[cyclA] == udg_Database_Hero[udg_Database_InfoNumberHeroes] then
-                set newfrtrg[1] = hero9[cyclA]
-            elseif udg_DB_HeroFrame_Debuffer[cyclA] == udg_Database_Hero[udg_Database_InfoNumberHeroes-1] then
-                set newfrtrg[2] = hero9[cyclA]
-            endif	
-            
-            set cyclB = 1
-            loop
-                exitwhen cyclB > 4
-                if udg_HeroBonusPotion[cyclB] == cyclA and udg_HeroBonusPotionClass[cyclB] == 9 then
-                    set potion[cyclB] = hero9[cyclA]
-                    set udg_HeroBonusPotionHero[cyclB] = udg_DB_HeroFrame_Debuffer[cyclA]
-                endif
-                set cyclB = cyclB + 1
-            endloop
-            set cyclA = cyclA + 1
-        endloop
-
-        set cyclA = 1
-        loop
-            exitwhen cyclA > 1
-            set newframe = BlzCreateFrameByType("BACKDROP", "", herobut, "", 0)
-            call BlzFrameSetPoint( newframe, FRAMEPOINT_CENTER, newfrtrg[cyclA], FRAMEPOINT_BOTTOMRIGHT, -0.006,0.006) 	
-            call BlzFrameSetSize(newframe, 0.02, 0.02)
-            call BlzFrameSetTexture( newframe, "framenew.blp",0, true)
-            set cyclA = cyclA + 1
-        endloop
-        
-        set cyclA = 1
-        loop
-            exitwhen cyclA > 4
-            set newframe = BlzCreateFrameByType("BACKDROP", "", herobut, "", 0)
-            call BlzFrameSetPoint( newframe, FRAMEPOINT_CENTER, potion[cyclA], FRAMEPOINT_BOTTOMLEFT, 0.007,0.007) 
-            call BlzFrameSetSize(newframe, 0.01, 0.01)
-            call BlzFrameSetTexture( newframe, "potionframe.blp",0, true)
-            set cyclA = cyclA + 1
-        endloop
-        
-        set AspectsParent = BlzCreateFrame("QuestButtonBaseTemplate", herobut, 0, 0)
-        call BlzFrameSetAbsPoint(AspectsParent, FRAMEPOINT_CENTER, 0.32, 0.205)
-        call BlzFrameSetSize(AspectsParent, 0.11, 0.05)
-        call BlzFrameSetLevel( AspectsParent, -2 )
-        call BlzFrameSetVisible( AspectsParent, false )
-        
-        set cyclA = 0
-        loop
-            exitwhen cyclA > 2
-            set AspectVision[cyclA] = BlzCreateFrameByType("BACKDROP", "AspectVision0" + I2S(cyclA), AspectsParent, "", 1) 
-            call BlzFrameSetPoint(AspectVision[cyclA], FRAMEPOINT_BOTTOMLEFT, AspectsParent, FRAMEPOINT_BOTTOMLEFT, 0.01 + (cyclA*(ASPECTS_SIZE+ASPECTS_INDENT)),0.015)
-            call BlzFrameSetSize(AspectVision[cyclA], ASPECTS_SIZE, ASPECTS_SIZE)
-            call BlzFrameSetTexture(AspectVision[cyclA], "", 0, true) 
-            
-            set AspectButton[cyclA] = BlzCreateFrameByType("BUTTON", "", AspectVision[cyclA], "", 1) 
-            call BlzFrameSetAllPoints(AspectButton[cyclA],AspectVision[cyclA] )
-            
-            set newframe = BlzCreateFrameByType("BACKDROP", "", AspectVision[cyclA], "StandartFrameTemplate", 0)
-            call BlzFrameSetTexture(newframe, "war3mapImported\\PAS_Effect.blp", 0, true)
-            call BlzFrameSetAllPoints(newframe, AspectVision[cyclA])
-            set cyclA = cyclA + 1
+            set passiveOutline = BlzCreateFrameByType("BACKDROP", "", AspectVision[i], "StandartFrameTemplate", 0)
+            call BlzFrameSetTexture(passiveOutline, "war3mapImported\\PAS_Effect.blp", 0, true)
+            call BlzFrameSetAllPoints(passiveOutline, AspectVision[i])
+            set i = i + 1
         endloop
         
         call Tooltip_AddEvent(AspectButton[0], function TooltipEnable0 )
         call Tooltip_AddEvent(AspectButton[1], function TooltipEnable1 )
         call Tooltip_AddEvent(AspectButton[2], function TooltipEnable2 )
+        
+        set parent = null
+        set passiveOutline = null
+    endfunction 
+    
+    private function CreateStory takes framehandle parent returns nothing
+        set StoryTextArea = BlzCreateFrame("MyTextArea", parent ,0,0)
+        call BlzFrameSetSize( StoryTextArea, 0.32, 0.12)
+        call BlzFrameSetPoint( StoryTextArea, FRAMEPOINT_TOPLEFT, parent, FRAMEPOINT_BOTTOMLEFT, 0, -0.005)
+        call BlzFrameSetText( StoryTextArea, "None")  
+    
+        set parent = null
+    endfunction 
+    
+    private function CreateInfoPanel takes nothing returns nothing 
+        local framehandle firstFrame
+        local framehandle secondFrame
+        local trigger trig
+        local string array names
+        local integer i
+        local integer iEnd
+    
+        set InfoButton = BlzCreateFrame("ScriptDialogButton", HeroTable ,0,0) 
+        call BlzFrameSetSize(InfoButton, 0.04,0.03)
+        call BlzFrameSetAbsPoint(InfoButton, FRAMEPOINT_BOTTOMLEFT, 0.035,0.165)
+        call BlzFrameSetText(InfoButton, "|cffFCD20DInfo|r") 
+        call BlzFrameSetVisible(InfoButton, false) 
 
+        set trig = CreateTrigger() 
+        call BlzTriggerRegisterFrameEvent( trig, InfoButton, FRAMEEVENT_CONTROL_CLICK) 
+        call TriggerAddAction( trig, function InfoButtonClick) 
+
+        set InfoBackground = BlzCreateFrame("QuestButtonBaseTemplate", HeroTable ,0,0) 
+        call BlzFrameSetAbsPoint(InfoBackground, FRAMEPOINT_TOPLEFT, 0.015, 0.52) 
+        call BlzFrameSetSize( InfoBackground, 0.34, 0.3)
+        call BlzFrameSetVisible(InfoBackground, false) 
+        call BlzFrameSetLevel( InfoBackground, 2 )
+
+        set names[0] = "|cffe1a019Name:|r"
+        set names[1] = "|cffe1a019Difficulty:|r"
+        set names[2] = "|cffe1a019Author:|r"
+        set names[3] = "|cffe1a019Main Stat:|r"
+        set names[4] = "|cffe1a019Type:|r"
+        set names[5] = "|cffe1a019Role:|r"
+        set names[6] = "|cffe1a019Aspects:|r"
+        set names[7] = "|cffe1a019Story:|r"
+
+        set secondFrame = InfoBackground
+        set i = 0
+        set iEnd = TEXT_NUMBERS - 1
+        loop
+            exitwhen i > iEnd
+            set firstFrame = secondFrame
+            set secondFrame = BlzCreateFrameByType("TEXT", "name", InfoBackground, "", 0) 
+            
+            if i == iEnd then
+                call BlzFrameSetPoint( secondFrame, FRAMEPOINT_TOPRIGHT, firstFrame, FRAMEPOINT_BOTTOMRIGHT, 0, -0.01)
+                call CreateStory(secondFrame)
+                set InfoPanelText[i] = null
+            else
+                if i == TEXT_NUMBERS - 2 then
+                    call BlzFrameSetPoint( secondFrame, FRAMEPOINT_TOPRIGHT, firstFrame, FRAMEPOINT_BOTTOMRIGHT, 0, -0.01)
+                    call CreateAspects(secondFrame)
+                elseif i == 0 then
+                    call BlzFrameSetPoint( secondFrame, FRAMEPOINT_LEFT, firstFrame, FRAMEPOINT_TOPLEFT, 0.01, -0.015) 
+                else
+                    call BlzFrameSetPoint( secondFrame, FRAMEPOINT_TOPRIGHT, firstFrame, FRAMEPOINT_BOTTOMRIGHT, 0, 0) 
+                endif
+                set InfoPanelText[i] = BlzCreateFrameByType("TEXT", "name", secondFrame, "", 0)  
+                call BlzFrameSetPoint( InfoPanelText[i], FRAMEPOINT_LEFT, secondFrame, FRAMEPOINT_RIGHT, 0.005, 0)
+                call BlzFrameSetSize( InfoPanelText[i], 0.18, 0.015)
+                call BlzFrameSetText( InfoPanelText[i], "None")
+                call BlzFrameSetTextAlignment( InfoPanelText[i], TEXT_JUSTIFY_CENTER, TEXT_JUSTIFY_LEFT) 
+            endif
+            
+            call BlzFrameSetSize( secondFrame, 0.05, 0.015)
+            call BlzFrameSetText( secondFrame, names[i] ) 
+            call BlzFrameSetTextAlignment( secondFrame, TEXT_JUSTIFY_CENTER, TEXT_JUSTIFY_RIGHT) 
+            
+            set names[i] = null
+            set i = i + 1
+        endloop
+        
+        set InfoPanel_Icon = BlzCreateFrameByType("BACKDROP", "InfoPanelIcon", InfoBackground, "", 1) 
+        call BlzFrameSetPoint( InfoPanel_Icon, FRAMEPOINT_TOPRIGHT, InfoBackground, FRAMEPOINT_TOPRIGHT, -0.01, -0.01)
+        call BlzFrameSetSize( InfoPanel_Icon, 0.05, 0.05)
+        call BlzFrameSetTexture(InfoPanel_Icon, "", 0, true) 
+         
         set trig = null
-        set trigclass = null
-        set herofon = null
-        set buttool = null
-        set class = null
-        set namefon = null
-        set newframe = null
+        set firstFrame = null
+        set secondFrame = null
+    endfunction 
+    
+    //Init All Peices
+    private function InitTable takes nothing returns nothing
+        call MainStartFrames()
+        call CreateBanButton()
+        call CreateSkinButtons()
+        call CreateAbilityButtons()
+        call CreateClassFrames()
+        call CreateHeroButtons()
+        call CreatePlayerLevelInfoFrames()
+        call CreateInfoPanel()
+        
+        call BlzFrameSetVisible( HeroTable, true )        
     endfunction
-
+    
     //===========================================================================
-    function InitTrig_HeroesFrame takes nothing returns nothing
-        set gg_trg_HeroesFrame = CreateTrigger(  )
-        call TriggerRegisterTimerExpireEvent( gg_trg_HeroesFrame, udg_StartTimer )
-        call TriggerAddAction( gg_trg_HeroesFrame, function Trig_HeroesFrame_Actions )
+    private function StartInit takes nothing returns nothing
+        local integer i 
+        call CreateEventTrigger( "Event_HeroRepick_Real", function HeroRepick, null )
+        call CreateEventTrigger( "Event_PlayerLeave_Real", function HeroLeave, null )
+        //call CreateEventTrigger( "Event_HeroChoose_Real", function HeroChoose, null )
+        
+        call InitTable()
+        
+        set i = 1
+        loop
+            exitwhen i > PLAYERS_LIMIT
+            set ChoosedHeroButton[i] = null
+            set ChoosedHeroIcon[i] = ""
+            set ChoosedHero[i] = ChoosedHeroTemplate.create()
+            set i = i + 1
+        endloop
+    endfunction
+    
+    private function init takes nothing returns nothing
+        call BlzLoadTOCFile("war3mapImported\\TextAreaTemplate.toc")
+        call CreateEventTrigger( "Event_DatabaseLoaded", function StartInit, null )
     endfunction
 
-endscope
+endlibrary
