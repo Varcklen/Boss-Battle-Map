@@ -16,7 +16,7 @@ function Trig_EarthPot_Actions takes nothing returns nothing
     endif
     
     set heal = 225 * udg_SpellDamagePotion[GetPlayerId( GetOwningPlayer( caster ) ) + 1]
-    set udg_logic[52] = true
+    set IsHealFromPotion = true
     call healst( caster, null, heal )
     call potionst( caster )
     call spectimeunit( caster, "Abilities\\Spells\\Human\\Heal\\HealTarget.mdl", "origin", 2 )

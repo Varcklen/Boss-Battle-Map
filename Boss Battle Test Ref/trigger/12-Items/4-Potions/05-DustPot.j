@@ -9,7 +9,7 @@ function DustPotCast takes nothing returns nothing
     local unit u = LoadUnitHandle( udg_hash, id, StringHash( "dust" ) )
     
     if GetUnitState( u, UNIT_STATE_LIFE) > 0.405 then
-        set udg_logic[52] = true
+        set IsHealFromPotion = true
         call healst( u, null, heal )
     endif
     

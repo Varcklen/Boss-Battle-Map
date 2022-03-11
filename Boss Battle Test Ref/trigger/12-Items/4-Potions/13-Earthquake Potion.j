@@ -9,7 +9,7 @@ function Trig_Earthquake_Potion_Conditions takes nothing returns boolean
 endfunction
 
 function Earthquake_Heal takes unit caster returns nothing
-    set udg_logic[52] = true
+    set IsHealFromPotion = true
     call healst(caster, null, GetUnitState(caster, UNIT_STATE_MAX_LIFE))
     call PlaySpecialEffect( EARTHQUAKE_POTION_ANIMATION, caster )
     

@@ -40,8 +40,8 @@ library Luck requires Multiboard
         set u = null
     endfunction
     
-    function GetUnitLuck takes unit myUnit returns real
-        local real luck = LoadInteger(udg_hash, GetHandleId(myUnit), KEY_LUCK_PERCENT )
+    function GetUnitLuck takes unit myUnit returns integer
+        local integer luck = LoadInteger(udg_hash, GetHandleId(myUnit), KEY_LUCK_PERCENT )
         set myUnit = null
         return luck
     endfunction

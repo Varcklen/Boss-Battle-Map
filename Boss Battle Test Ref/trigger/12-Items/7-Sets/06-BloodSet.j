@@ -12,12 +12,14 @@ scope BloodSet initializer init
     endfunction
 
     private function AfterDamageEvent takes nothing returns nothing
-        call healst( udg_DamageEventSource, null, udg_DamageEventAmount * VAMPIRISM_BONUS )
+        local real heal = udg_DamageEventAmount * VAMPIRISM_BONUS
+        call healst( udg_DamageEventSource, null, heal )
         call PlaySpecialEffect(ANIMATION, udg_DamageEventSource)
     endfunction
 
     //===========================================================================
     private function init takes nothing returns nothing
+        //По какой-то причине при udg_AfterDamageEvent другие модификаторы переставали работать?udg_DamageEventAfterArmor
         call CreateEventTrigger( "udg_AfterDamageEvent", function AfterDamageEvent, function AfterDamageEvent_Conditions )
     endfunction
 

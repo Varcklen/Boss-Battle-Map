@@ -35,7 +35,7 @@ function Trig_Lava_Potion_Actions takes nothing returns nothing
     set heal = LAVA_POTION_HEAL * udg_SpellDamagePotion[GetPlayerId( GetOwningPlayer( caster ) ) + 1]
     
     call UnitTakeDamage(caster, target, dmg, DAMAGE_TYPE_MAGIC)
-    set udg_logic[52] = true
+    set IsHealFromPotion = true
     call healst( caster, null, heal )
     call potionst( caster )
     call PlaySpecialEffect( LAVA_POTION_ANIMATION, target )

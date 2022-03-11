@@ -99,41 +99,13 @@ Action
                         Array : hero
                             Call  : GetForLoopIndexA
                         Var   : heroinfo
-                    Disab: CreateItemLoc
-                        Const : I083
+                    CreateItemLoc
+                        Const : I0DG
                         Call  : GetRectCenter
                             Var   : gg_rct_HeroTp
-                    Disab: UnitAddItemSwapped
-                        Call  : GetLastCreatedItem
-                        Array : hero
-                            Call  : GetForLoopIndexA
-                    Disab: CreateItemLoc
-                        Const : I071
-                        Call  : GetRectCenter
-                            Var   : gg_rct_HeroTp
-                    Disab: UnitAddItemSwapped
-                        Call  : GetLastCreatedItem
-                        Array : hero
-                            Call  : GetForLoopIndexA
-                    Disab: CreateItemLoc
-                        Const : I05P
-                        Call  : GetRectCenter
-                            Var   : gg_rct_HeroTp
-                    Disab: UnitAddItemSwapped
+                    UnitAddItemSwapped
                         Call  : GetLastCreatedItem
                         Array : hero
                             Call  : GetForLoopIndexA
                 Action
                     DoNothing
-    CreateItemLoc
-        Const : IZ02
-        Call  : GetRectCenter
-            Var   : gg_rct_HeroTp
-    CreateItemLoc
-        Const : IZ01
-        Call  : GetRectCenter
-            Var   : gg_rct_HeroTp
-    CreateItemLoc
-        Const : I0FV
-        Call  : GetRectCenter
-            Var   : gg_rct_HeroTp

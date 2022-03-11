@@ -26,7 +26,7 @@ function Trig_Waterfall_Potion_Actions takes nothing returns nothing
     set hp = WATERFALL_POTION_HEAL * udg_SpellDamagePotion[GetPlayerId( GetOwningPlayer( caster ) ) + 1]
     set mp = WATERFALL_POTION_MANA * udg_SpellDamagePotion[GetPlayerId( GetOwningPlayer( caster ) ) + 1]
     
-    set udg_logic[52] = true
+    set IsHealFromPotion = true
     call healst( caster, null, hp )
     call manast( caster, null, mp )
     call potionst( caster )

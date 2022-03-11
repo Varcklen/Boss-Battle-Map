@@ -44,5 +44,17 @@ library Conditions
         set caster = null
         return isWork
     endfunction
+    
+    function GetHeroNumber takes integer heroId returns integer
+        local integer i = 1
+        loop
+            exitwhen i > udg_Database_InfoNumberHeroes
+            if udg_Database_Hero[i] == heroId then
+                return i
+            endif
+            set i = i + 1
+        endloop
+        return 0
+    endfunction
 
 endlibrary
