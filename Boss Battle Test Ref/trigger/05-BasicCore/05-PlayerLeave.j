@@ -1,3 +1,9 @@
+globals
+    real Event_PlayerLeave_Real
+    unit Event_PlayerLeave_Hero
+    player Event_PlayerLeave_Player
+endglobals
+
 function PlayerLeaveTimer takes nothing returns nothing
     local integer id = GetHandleId( GetExpiredTimer() )
     local unit u = LoadUnitHandle( udg_hash, id, StringHash( "leave" ) )
@@ -65,8 +71,6 @@ function Trig_PlayerLeave_Actions takes nothing returns nothing
     call GroupRemoveUnit(udg_heroinfo, udg_hero[i])
     call GroupRemoveUnit( udg_DeadHero, udg_hero[i])
     call GroupRemoveUnit( udg_otryad, udg_hero[i])
-    call BlzFrameSetVisible( lvltxt[i], false )
-    call BlzFrameSetTexture(lvlic[i], "war3mapImported\\BTNDivineShieldOff-Reforged.blp", 0, true)
     call BlzFrameSetTexture( iconframe[i], "war3mapImported\\BTNDivineShieldOff-Reforged.blp", 0, true )
     call BlzFrameSetVisible( uniqframe[i],false)
     call BlzFrameSetVisible( specframe[i],false)
@@ -76,7 +80,12 @@ function Trig_PlayerLeave_Actions takes nothing returns nothing
     call RemoveUnit( udg_unit[i + 25] )
     call RemoveUnit( udg_unit[i + 35] )
     call BlzFrameSetVisible( faceframe[i],false)
-    call DelChooseIcon( udg_hero[i] )
+
+    set Event_PlayerLeave_Hero = udg_hero[i]
+    set Event_PlayerLeave_Player = pl
+    set Event_PlayerLeave_Real = 0.00
+    set Event_PlayerLeave_Real = 1.00
+    set Event_PlayerLeave_Real = 0.00
 
     set udg_BossHP = udg_BossHP - 0.15
     set udg_BossAT = udg_BossAT - 0.1
@@ -265,7 +274,6 @@ function Trig_PlayerLeave_Actions takes nothing returns nothing
         exitwhen u == null
         call RemoveUnit( u )
         call GroupRemoveUnit(g,u)
-        set u = FirstOfGroup(g)
     endloop
 
 	if udg_Heroes_Amount == 1 then

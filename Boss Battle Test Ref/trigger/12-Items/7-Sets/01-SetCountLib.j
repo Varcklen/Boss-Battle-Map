@@ -162,7 +162,184 @@ library SetCount
         endif
         return ""
     endfunction
+    
+    function Mech_Logic takes item t returns boolean
+        local integer cyclA = 1
+        local integer cyclAEnd = udg_DB_SetItems_Num[1]
+        local boolean l = false
+        
+        loop
+            exitwhen cyclA > cyclAEnd
+            if GetItemTypeId(t) == DB_SetItems[1][cyclA] then
+                set l = true
+                set cyclA = cyclAEnd
+            endif
+            set cyclA = cyclA + 1
+        endloop
+        set t = null
+        return l
+    endfunction
 
+    function CristallLogic takes item t returns boolean
+        local integer cyclA = 1
+        local integer cyclAEnd = udg_DB_SetItems_Num[9]
+        local boolean l = false
+        
+        loop
+            exitwhen cyclA > cyclAEnd
+            if GetItemTypeId(t) == DB_SetItems[9][cyclA] then
+                set l = true
+                set cyclA = cyclAEnd
+            endif
+            set cyclA = cyclA + 1
+        endloop
+        set t = null
+        return l
+    endfunction
+
+    function BloodLogic takes item t returns boolean
+        local integer cyclA = 1
+        local integer cyclAEnd = udg_DB_SetItems_Num[4]
+        local boolean l = false
+        
+        loop
+            exitwhen cyclA > cyclAEnd
+            if GetItemTypeId(t) == DB_SetItems[4][cyclA] then
+                set l = true
+                set cyclA = cyclAEnd
+            endif
+            set cyclA = cyclA + 1
+        endloop
+        set t = null
+        return l
+    endfunction
+
+    function RuneLogic takes item t returns boolean
+        local integer cyclA = 1
+        local integer cyclAEnd = udg_DB_SetItems_Num[5]
+        local boolean l = false
+        
+        loop
+            exitwhen cyclA > cyclAEnd
+            if GetItemTypeId(t) == DB_SetItems[5][cyclA] then
+                set l = true
+                set cyclA = cyclAEnd
+            endif
+            set cyclA = cyclA + 1
+        endloop
+        set t = null
+        return l
+    endfunction
+
+    function MoonLogic takes item t returns boolean
+        local integer cyclA = 1
+        local integer cyclAEnd = udg_DB_SetItems_Num[6]
+        local boolean l = false
+        
+        loop
+            exitwhen cyclA > cyclAEnd
+            if GetItemTypeId(t) == DB_SetItems[6][cyclA] then
+                set l = true
+                set cyclA = cyclAEnd
+            endif
+            set cyclA = cyclA + 1
+        endloop
+        set t = null
+        return l
+    endfunction
+
+    function NatureLogic takes item t returns boolean
+        local integer cyclA = 1
+        local integer cyclAEnd = udg_DB_SetItems_Num[7]
+        local boolean l = false
+        
+        loop
+            exitwhen cyclA > cyclAEnd
+            if GetItemTypeId(t) == DB_SetItems[7][cyclA] then
+                set l = true
+                set cyclA = cyclAEnd
+            endif
+            set cyclA = cyclA + 1
+        endloop
+        set t = null
+        return l
+    endfunction
+
+    function AlchemyLogic takes item t returns boolean
+        local integer cyclA = 1
+        local integer cyclAEnd = udg_DB_SetItems_Num[8]
+        local boolean l = false
+        
+        loop
+            exitwhen cyclA > cyclAEnd
+            if GetItemTypeId(t) == DB_SetItems[8][cyclA] then
+                set l = true
+                set cyclA = cyclAEnd
+            endif
+            set cyclA = cyclA + 1
+        endloop
+        set t = null
+        return l
+    endfunction
+
+    function Weapon_Logic takes item t returns boolean
+        local integer cyclA = 1
+        local integer cyclAEnd = udg_DB_SetItems_Num[2]
+        local boolean l = false
+        
+        loop
+            exitwhen cyclA > cyclAEnd
+            if GetItemTypeId(t) == DB_SetItems[2][cyclA] then
+                set l = true
+                set cyclA = cyclAEnd
+            endif
+            set cyclA = cyclA + 1
+        endloop
+        set t = null
+        return l
+    endfunction
+
+    function Ring_Logic takes item t returns boolean
+        local integer cyclA = 1
+        local integer cyclAEnd = udg_DB_SetItems_Num[3]
+        local boolean l = false
+        
+        loop
+            exitwhen cyclA > cyclAEnd
+            if GetItemTypeId(t) == DB_SetItems[3][cyclA] then
+                set l = true
+                set cyclA = cyclAEnd
+            endif
+            set cyclA = cyclA + 1
+        endloop
+        set t = null
+        return l
+    endfunction
+    
+    public function CheckItemSet takes item checkedItem, integer setCount returns boolean
+        local boolean isCheckTrue = false
+        if setCount == SET_ALCHEMY then
+            set isCheckTrue = AlchemyLogic(checkedItem)
+        elseif setCount == SET_BLOOD then
+            set isCheckTrue = BloodLogic(checkedItem)
+        elseif setCount == SET_CRYSTAL then
+            set isCheckTrue = CristallLogic(checkedItem)
+        elseif setCount == SET_MECH then
+            set isCheckTrue = Mech_Logic(checkedItem)
+        elseif setCount == SET_MOON then
+            set isCheckTrue = MoonLogic(checkedItem)
+        elseif setCount == SET_NATURE then
+            set isCheckTrue = NatureLogic(checkedItem)
+        elseif setCount == SET_RING then
+            set isCheckTrue = Ring_Logic(checkedItem)
+        elseif setCount == SET_RUNE then
+            set isCheckTrue = RuneLogic(checkedItem)
+        elseif setCount == SET_WEAPON then
+            set isCheckTrue = Weapon_Logic(checkedItem)
+        endif
+        set checkedItem = null
+        return isCheckTrue
+    endfunction
 endlibrary
 
 

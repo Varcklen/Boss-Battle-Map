@@ -9,7 +9,7 @@ library List
     struct ListInt
         private integer array list[LIST_LIMIT]
         private boolean array isFill[LIST_LIMIT]
-        private integer max = 0
+        readonly integer Size = 0
         
         private method FindEmptyAndFill takes nothing returns nothing
             local integer i = 0
@@ -17,12 +17,12 @@ library List
             local boolean end = false
             
             loop
-                exitwhen i > .max or end
+                exitwhen i > .Size or end
                 if .isFill[i] == false then
-                    set .max = .max - 1
+                    set .Size = .Size - 1
                     set k = i
                     loop
-                        exitwhen k > .max
+                        exitwhen k > .Size
                         set .isFill[k] = .isFill[k+1]
                         set .list[k] = .list[k+1]
                         set k = k + 1
@@ -34,10 +34,10 @@ library List
         endmethod
         
         method Add takes integer numberToAdd returns nothing
-            set .list[.max] = numberToAdd
-            set .isFill[.max] = true
-            //call BJDebugMsg(".max: " + I2S(.max))
-            set .max = .max + 1
+            set .list[.Size] = numberToAdd
+            set .isFill[.Size] = true
+            set .Size = .Size + 1
+            //call BJDebugMsg(".Size: " + I2S(.Size))
         endmethod
         
         //not tested!
@@ -50,7 +50,7 @@ library List
                 if .isFill[i] == false then
                     set .list[i] = arrayToAdd[k]
                     set .isFill[i] = true
-                    set .max = i
+                    set .Size = i
                     set k = k + 1
                 endif
                 set i = i + 1
@@ -59,7 +59,6 @@ library List
             call arrayToAdd.destroy()
         endmethod
         
-        //not tested!
         method RemoveByIndex takes integer indexToRemove returns nothing
             set .list[indexToRemove] = 0
             set .isFill[indexToRemove] = false
@@ -67,8 +66,8 @@ library List
         endmethod
         
         method GetIntegerByIndex takes integer index returns integer
-            if index > max or index < 0 then
-                call BJDebugMsg("Error! You have gone beyond the list! Current: " + I2S(index) + ". max: " + I2S(max))
+            if index > Size or index < 0 then
+                call BJDebugMsg("Error! You have gone beyond the list! Current: " + I2S(index) + ". Size: " + I2S(Size))
                 return 0
             elseif .isFill[index] == false then
                 call BJDebugMsg("Error! You are trying to get a number from an empty index! Current: " + I2S(index))
@@ -78,8 +77,23 @@ library List
             endif
         endmethod
         
-        method Size takes nothing returns integer
-            return max
+        method GetRandomIndex takes nothing returns integer
+            return GetRandomInt(0, IMaxBJ(0, .Size - 1 ))
+        endmethod
+        
+        method GetRandomCell takes nothing returns integer
+            return .list[GetRandomInt(0, IMaxBJ(0, .Size - 1 ))]
+        endmethod
+        
+        method GetRandomCellAndRemove takes nothing returns integer
+            local integer index = GetRandomInt(0, IMaxBJ(0, .Size - 1 ) )
+            local integer cell = .list[index]
+            call .RemoveByIndex(index)
+            return cell
+        endmethod
+        
+        method IsEmpty takes nothing returns boolean
+            return .Size == 0
         endmethod
     endstruct
 endlibrary

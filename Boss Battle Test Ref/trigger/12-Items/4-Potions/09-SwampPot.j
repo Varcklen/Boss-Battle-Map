@@ -19,7 +19,7 @@ function Trig_SwampPot_Actions takes nothing returns nothing
     set hp = 800 * udg_SpellDamagePotion[GetPlayerId( GetOwningPlayer( caster ) ) + 1]
     set mp = 500 * udg_SpellDamagePotion[GetPlayerId( GetOwningPlayer( caster ) ) + 1]
     
-    set udg_logic[52] = true
+    set IsHealFromPotion = true
     call healst( caster, null, hp )
     call manast( caster, null, mp )
     call potionst( caster )

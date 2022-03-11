@@ -53,18 +53,6 @@ function Trig_Start_Actions takes nothing returns nothing
         set udg_LogicModes = true
     endif
     set udg_HeroChooseMode = 2
-    call BlzFrameSetVisible( herobut, true )
-    set cyclA = 0
-    loop
-        exitwhen cyclA > 3
-        if udg_Host == Player(cyclA) then
-            if GetLocalPlayer() == Player(cyclA) then
-                call BlzFrameSetVisible( banbut, true )
-            endif
-            set cyclA = 3
-        endif
-        set cyclA = cyclA + 1
-    endloop
 
     call TimerStart( CreateTimer(), 25, false, function Start2 )
 endfunction

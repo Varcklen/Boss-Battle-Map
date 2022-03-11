@@ -527,11 +527,6 @@ function Trig_Set_Damage_Actions takes nothing returns nothing
         if GetUnitAbilityLevel( udg_DamageEventTarget, 'B04S') > 0 then
             set udg_DamageEventAmount = 1.5 * udg_DamageEventAmount
         endif
-        if inv(udg_hero[i], 'I02V') > 0 then
-            set udg_DamageHealLoop = true
-            call healst( udg_hero[i], null, udg_DamageEventAmount * 0.2 )
-            call DestroyEffect(AddSpecialEffectTarget( "Abilities\\Spells\\Undead\\VampiricAura\\VampiricAuraTarget.mdl", udg_hero[i], "origin" ))
-        endif
         if GetUnitAbilityLevel( udg_DamageEventTarget, 'B01V' ) > 0 then
             set udg_DamageEventAmount = udg_DamageEventAmount * LoadReal( udg_hash, GetHandleId( udg_DamageEventTarget ), StringHash( "bknw" ) )
         endif
