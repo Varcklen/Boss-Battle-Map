@@ -45,9 +45,15 @@ scope SplitShop initializer init
         local player owner = GetOwningPlayer(hero)
         local boolean isCan = true
         
-        if ThisItem(it) then
+        if it == null then
+            set isCan = false
+            call DisplayTimedTextToPlayer( owner, 0, 0, 5, "You can't split an item that doesn't exist." )
+        elseif ThisItem(it) then
             set isCan = false
             call DisplayTimedTextToPlayer( owner, 0, 0, 5, "This item cannot be split." )
+        endif
+        
+        if isCan == false then
             if GetLocalPlayer() == owner then
                 call StartSound(gg_snd_Error)
             endif

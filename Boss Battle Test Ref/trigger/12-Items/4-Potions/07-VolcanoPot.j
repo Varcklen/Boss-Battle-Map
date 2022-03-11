@@ -29,7 +29,7 @@ function Trig_VolcanoPot_Actions takes nothing returns nothing
     
     call dummyspawn( caster, 1, 0, 0, 0 ) 
     call UnitDamageTarget( bj_lastCreatedUnit, target, dmg, true, false, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_MAGIC, WEAPON_TYPE_WHOKNOWS)
-    set udg_logic[52] = true
+    set IsHealFromPotion = true
     call healst( caster, null, heal )
     call potionst( caster )
     call DestroyEffect( AddSpecialEffect( "Abilities\\Spells\\Other\\Incinerate\\FireLordDeathExplode.mdl", GetUnitX( target ), GetUnitY( target ) ) )

@@ -19,8 +19,8 @@ scope BloodSet initializer init
 
     //===========================================================================
     private function init takes nothing returns nothing
-        //По какой-то причине при udg_AfterDamageEvent другие модификаторы переставали работать?
-        call CreateEventTrigger( "udg_DamageEventAfterArmor", function AfterDamageEvent, function AfterDamageEvent_Conditions )
+        //По какой-то причине при udg_AfterDamageEvent другие модификаторы переставали работать?udg_DamageEventAfterArmor
+        call CreateEventTrigger( "udg_AfterDamageEvent", function AfterDamageEvent, function AfterDamageEvent_Conditions )
     endfunction
 
 endscope

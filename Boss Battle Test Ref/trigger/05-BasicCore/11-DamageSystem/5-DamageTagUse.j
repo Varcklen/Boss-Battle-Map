@@ -12,6 +12,8 @@ function Trig_DamageTagUse_Actions takes nothing returns nothing
 	set udg_DamageEvent = 0.00
 	set udg_DamageEvent = 1.00
 	set udg_DamageEvent = 0.00
+    
+    set IsAttack = false
 
 	set udg_DamageEventAmount = 0
 	set udg_DamageEventTarget = null

@@ -3,6 +3,7 @@ globals
     real Event_OnDamageChange_Real
     
     boolean IsDisableSpellPower = false
+    boolean IsAttack = false
 endglobals
 
 function Trig_DamageSystem_Actions takes nothing returns nothing
@@ -15,6 +16,7 @@ function Trig_DamageSystem_Actions takes nothing returns nothing
 	else
 		set udg_IsDamageSpell = false
 	endif
+    set IsAttack = true
 	set udg_DamageHealLoop = false
 	set udg_DamageEventType = 0
     

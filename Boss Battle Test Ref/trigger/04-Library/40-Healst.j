@@ -17,6 +17,8 @@ library HealstLib requires DummyspawnLib, Inventory, TimebonusLib, RandomTargetL
         real Event_AfterHeal_Heal
         unit Event_AfterHeal_Caster
         unit Event_AfterHeal_Target
+        
+        boolean IsHealFromPotion = false
     endglobals
 
     function PeacelockE_End takes nothing returns nothing
@@ -65,17 +67,7 @@ library HealstLib requires DummyspawnLib, Inventory, TimebonusLib, RandomTargetL
         set caster = null
     endfunction
 
-    function OrbThundraEnd takes nothing returns nothing
-        local integer id = GetHandleId( GetExpiredTimer( ) )
-        local unit u = LoadUnitHandle( udg_hash, id, StringHash( "orbth" ) )
-        
-        call SaveBoolean( udg_hash, GetHandleId( u ), StringHash( "orbth" ), false )
-        call FlushChildHashtable( udg_hash, id )
-
-        set u = null
-    endfunction
-
-    function healst takes unit caster, unit target, real r returns nothing
+    private function HealUnit takes unit caster, unit target, real r returns nothing
         local integer i = GetPlayerId( GetOwningPlayer( caster ) ) + 1
         local integer cyclA = 1
         local integer id
@@ -95,7 +87,7 @@ library HealstLib requires DummyspawnLib, Inventory, TimebonusLib, RandomTargetL
         else
             set u = target
         endif
-
+        
         set Event_OnHealChange_StaticHeal = h
         set Event_OnHealChange_Heal = h
         set Event_OnHealChange_Caster = caster
@@ -179,20 +171,6 @@ library HealstLib requires DummyspawnLib, Inventory, TimebonusLib, RandomTargetL
             set rsp = 0
         endif
         ///
-        if udg_logic[52] then
-            set udg_logic[52] = false
-            if inv( u, 'I0E1' ) > 0 then
-                set cyclA = 1
-                loop
-                    exitwhen cyclA > 4
-                    if udg_hero[cyclA] != u and GetUnitState( udg_hero[cyclA], UNIT_STATE_LIFE) > 0.405 and IsUnitAlly( udg_hero[cyclA], GetOwningPlayer( u ) ) then
-                        call healst( u, udg_hero[cyclA], rsp )
-                    endif
-                    set cyclA = cyclA + 1
-                endloop
-            endif
-        endif
-        ///
         if GetUnitState( u, UNIT_STATE_LIFE) >= ( GetUnitState( u, UNIT_STATE_MAX_LIFE ) - rsp ) then
             if inv( caster, 'I0CN') > 0 then
                 call shield( u, u, rsp*0.3, 60 )
@@ -252,29 +230,8 @@ library HealstLib requires DummyspawnLib, Inventory, TimebonusLib, RandomTargetL
                     call SaveReal( udg_hash, id, StringHash( "orbhf" ), rfun*0.4 )
                     call TimerStart( LoadTimerHandle( udg_hash, GetHandleId( u ), StringHash( "orbhf" ) ), 0.01, false, function OrbHolyFire )
                 endif
-                if inv( u, 'I0DG') > 0 and caster != u then
-                    set udg_DamageHealLoop = true
-                    call healst(caster, null, rfun )
-                endif
             endif
             
-            if inv(caster, 'I0F5') > 0 and not(LoadBoolean( udg_hash, GetHandleId( caster ), StringHash( "orbth" ) ) ) and IsUnitType( u, UNIT_TYPE_HERO) then
-                call SaveBoolean( udg_hash, GetHandleId( caster ), StringHash( "orbth" ), true )
-                call BlzStartUnitAbilityCooldown( caster, 'A15D', 60 )
-                
-                call DestroyEffect( AddSpecialEffect("Abilities\\Spells\\Human\\ReviveHuman\\ReviveHuman.mdl", GetUnitX( u ), GetUnitY( u ) ) )
-                call healst( caster, u, GetUnitState( u, UNIT_STATE_MAX_LIFE) )
-                
-                set id = GetHandleId( caster )
-                if LoadTimerHandle( udg_hash, id, StringHash( "orbth" ) ) == null then
-                    call SaveTimerHandle( udg_hash, id, StringHash( "orbth" ), CreateTimer() )
-                endif
-                call SaveTimerHandle( udg_hash, id, StringHash( "orbth" ), CreateTimer( ) ) 
-                set id = GetHandleId( LoadTimerHandle( udg_hash, id, StringHash( "orbth" ) ) ) 
-                call SaveUnitHandle( udg_hash, id, StringHash( "orbth" ), caster ) 
-                call TimerStart( LoadTimerHandle( udg_hash, GetHandleId( caster ), StringHash( "orbth" ) ), 60, false, function OrbThundraEnd )
-            endif
-
             call SetUnitState( u, UNIT_STATE_LIFE, GetUnitState( u, UNIT_STATE_LIFE ) + rfun )
             call textst( "|c0000C800 +" + I2S( R2I( rfun ) ), u, 64, GetRandomReal( 45, 135 ), t, 1 )
             if udg_combatlogic[i] and not( udg_fightmod[3] ) and not( udg_logic[43] ) then
@@ -286,7 +243,7 @@ library HealstLib requires DummyspawnLib, Inventory, TimebonusLib, RandomTargetL
                     call ChangeToolItem( caster, 'I0E3', "|cffbe81f7", "|r", I2S(R2I(0.35*udg_HealFight[i])) )
                 endif
             endif
-            
+
             set Event_AfterHeal_Heal = rfun
             set Event_AfterHeal_Caster = caster
             set Event_AfterHeal_Target = u
@@ -297,10 +254,43 @@ library HealstLib requires DummyspawnLib, Inventory, TimebonusLib, RandomTargetL
             set udg_DamageHealLoop = false
         endif
         
+        set IsHealFromPotion = false
+        
         set caster = null
         set target = null
         set u = null
         set n = null
+    endfunction
+    
+    function EndHealTimer takes nothing returns nothing
+        local integer id = GetHandleId( GetExpiredTimer() )
+        local unit target = LoadUnitHandle( udg_hash, id, StringHash( "heal" ) )
+        local unit caster = LoadUnitHandle( udg_hash, id, StringHash( "healc" ) )
+        local real r = LoadReal( udg_hash, id, StringHash( "heal" ) )
+    
+        call HealUnit( caster, target, r )
+        call FlushChildHashtable( udg_hash, id )
+    
+        set caster = null
+        set target = null
+    endfunction
+
+    function healst takes unit caster, unit target, real r returns nothing
+        local integer id = 0
+        if IsAttack then
+            set id = GetHandleId( caster )
+            call SaveTimerHandle( udg_hash, id, StringHash("heal"), CreateTimer() )
+            set id = GetHandleId( LoadTimerHandle( udg_hash, id, StringHash("heal") ) ) 
+            call SaveUnitHandle( udg_hash, id, StringHash("heal"), caster )
+            call SaveUnitHandle( udg_hash, id, StringHash( "healc" ), target ) 
+            call SaveReal( udg_hash, id, StringHash( "heal" ), r ) 
+            call TimerStart( LoadTimerHandle( udg_hash, GetHandleId( caster ), StringHash("heal") ), 0.01, false, function EndHealTimer)
+        else
+            call HealUnit( caster, target, r )
+        endif
+        
+        set caster = null
+        set target = null
     endfunction
 
 endlibrary
