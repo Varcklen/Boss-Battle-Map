@@ -43,9 +43,6 @@ library BuffDeleteLib requires SpellPower, ShamanBallLib, MajyteLib, Luck, Multi
         set Event_DeleteBuff_Real = 1
         set Event_DeleteBuff_Real = 0
         
-        if GetUnitAbilityLevel( u, 'BNsi') > 0 then
-            call UnitRemoveAbility( u, 'BNsi' )
-        endif
         if GetUnitAbilityLevel( u, 'B060') > 0 then
             call UnitRemoveAbility( u, 'B060')
         endif

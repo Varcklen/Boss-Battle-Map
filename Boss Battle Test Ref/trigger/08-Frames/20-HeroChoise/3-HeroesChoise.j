@@ -89,7 +89,7 @@ scope HeroesChoise initializer init
     private function IsTimerResume takes nothing returns boolean
         local integer i
         
-        if udg_logic[54] or udg_Boss_LvL == 1 then
+        if IsSinglePlayer or udg_Boss_LvL == 1 then
             return false
         endif
         set i = 1

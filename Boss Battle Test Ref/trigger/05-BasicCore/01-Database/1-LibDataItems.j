@@ -754,7 +754,6 @@ function DataItems takes nothing returns nothing
     set udg_DB_Item_Activate[BaseNum()] = 'I0G5'
     set udg_DB_Item_Activate[BaseNum()] = 'I0G6'
     set udg_DB_Item_Activate[BaseNum()] = 'I0G9'
-    set udg_DB_Item_Activate[BaseNum()] = 'I0GE'
     set udg_DB_Item_Activate[BaseNum()] = 'I0GR'
     set udg_DB_Item_Activate[BaseNum()] = 'IZ01'
     set udg_Database_NumberItems[31] = udg_base

@@ -1699,8 +1699,9 @@
         1-Shaman: Shaman
             1-ShamanQ: ShamanQ
             2-ShamanW: ShamanW
-            3-ShamanE: ShamanE
-            4-ShamanR: ShamanR
+            3-ShamanWCheese: ShamanWCheese
+            4-ShamanE: ShamanE
+            5-ShamanR: ShamanR
         2-Angel: Angel
             1-AngelQ: AngelQ
             2-AngelW: AngelW

@@ -26,7 +26,7 @@ function Trig_Start_Actions takes nothing returns nothing
     call SetMapMusicIndexedBJ( "music", 3 )
     call EnableTrigger( gg_trg_TimeGame )
     
-    if not(udg_logic[54]) then
+    if IsSinglePlayer == false then
     	call TimerStart( udg_timer[1], 120, false, null )
     	set udg_timerdialog[2] = CreateTimerDialog(udg_timer[1])
     	call TimerDialogSetTitle(udg_timerdialog[2], "Start of the battle:" )
