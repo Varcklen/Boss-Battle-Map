@@ -84,7 +84,9 @@ scope AlchemistsStone initializer init
         if element1 != 0 and element2 != 0 then
             //call RemoveItem(it)
             call stazisst( caster, it)
-            call GetItem(caster,  element1, element2)
+            if UnitInventoryCount(caster) < 6 then
+                call GetItem(caster,  element1, element2)
+            endif
         endif
         
         set caster = null

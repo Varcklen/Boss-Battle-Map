@@ -620,18 +620,6 @@ function Trig_Set_Damage_Actions takes nothing returns nothing
             call SaveReal( udg_hash, GetHandleId( udg_hero[k] ), StringHash( "bksb" ), l )
         endif
     endif
-	if GetUnitTypeId(udg_DamageEventTarget) == 'h01V' and IsUnitType( udg_DamageEventSource, UNIT_TYPE_HERO) then
-        set u = LoadUnitHandle( udg_hash, GetHandleId(udg_DamageEventTarget), StringHash( "ches" ) )
-        call healst( u, udg_DamageEventSource, 2.5*udg_DamageEventAmount )
-		call DestroyEffect( AddSpecialEffectTarget( "Abilities\\Spells\\Undead\\VampiricAura\\VampiricAuraTarget.mdl", udg_DamageEventSource, "origin" ) )
-		if luckylogic( udg_DamageEventSource, 20, 1, 100 ) then
-			set bj_lastCreatedUnit = CreateUnit( GetOwningPlayer( udg_DamageEventSource ), 'u015', GetUnitX(udg_DamageEventSource), GetUnitY(udg_DamageEventSource), GetRandomReal( 0, 360 ) )
-            call UnitApplyTimedLife(bj_lastCreatedUnit, 'BTLF', 20 )
-            call SetUnitVertexColor( bj_lastCreatedUnit, 255, 255, 255, 200 )
-            call BlzSetUnitBaseDamage( bj_lastCreatedUnit, LoadInteger( udg_hash, GetHandleId(udg_DamageEventTarget), StringHash( "ches" ) ), 0 )
-            call spectimeunit( bj_lastCreatedUnit, "Abilities\\Spells\\Human\\Banish\\BanishTarget.mdl", "origin", 20 )
-		endif
-	endif
     if udg_modbad[18] and GetOwningPlayer(udg_DamageEventTarget) == Player(10) then
         set l = GetUnitState( udg_DamageEventTarget, UNIT_STATE_MAX_LIFE) * 0.4
         if udg_DamageEventAmount > l then

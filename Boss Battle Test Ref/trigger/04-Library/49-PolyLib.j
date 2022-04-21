@@ -1,28 +1,42 @@
-library PolyLib requires TimebonusLib, UnitstLib, BuffsLibLib
+library PolyLib initializer init requires TimebonusLib, UnitstLib, BuffsLibLib
 
     globals
         constant integer POLYMORPH_SHEEP = 'n02L'
         constant integer POLYMORPH_RAT = 'n02N'
         constant integer POLYMORPH_FROG = 'n02M'
+        
+        private constant string ANIMATION = "Abilities\\Spells\\Orc\\MirrorImage\\MirrorImageDeathCaster.mdl"
     endglobals
+    
+    private function EndPolymorph takes unit target returns nothing
+        local integer unitId = GetHandleId( target )
+        local integer skin = LoadInteger( udg_hash, unitId, StringHash( "polysk" ) )
+        local real selectionScale = LoadReal( udg_hash, unitId, StringHash( "polyc" ) )
 
+        if IsUnitAlive( target ) then
+            call PlaySpecialEffect(ANIMATION, target)
+        endif
+        call SetUnitSkin( target, skin )
+        call BlzSetUnitRealFieldBJ( target, UNIT_RF_SELECTION_SCALE, selectionScale )
+        call UnitRemoveAbility( target, 'A1A0' )
+        call UnitRemoveAbility( target, 'B043' )
+        call UnitRemoveAbility( target, 'BNsi' )
+        call SaveInteger( udg_hash, unitId, StringHash( "poly" ), 0 )
+
+        set target = null
+    endfunction
+    
     function PolyCast takes nothing returns nothing
         local integer id = GetHandleId( GetExpiredTimer() )
         local unit u = LoadUnitHandle( udg_hash, id, StringHash( "poly" ) )
-        local integer h = LoadInteger( udg_hash, GetHandleId( u ), StringHash( "poly" ) ) - 1
-        local integer skin = LoadInteger( udg_hash, GetHandleId( u ), StringHash( "polysk" ) )
-        local real c = LoadReal( udg_hash, GetHandleId( u ), StringHash( "polyc" ) )
+        local integer unitId = GetHandleId( u )
+        local integer h = LoadInteger( udg_hash, unitId, StringHash( "poly" ) ) - 1
+        local integer skin = LoadInteger( udg_hash, unitId, StringHash( "polysk" ) )
+        local real c = LoadReal( udg_hash, unitId, StringHash( "polyc" ) )
 
-        call SaveInteger( udg_hash, GetHandleId( u ), StringHash( "poly" ), h )
-        if h <= 0 then
-            if GetUnitState( u, UNIT_STATE_LIFE) > 0.405 then
-                call DestroyEffect( AddSpecialEffect( "Abilities\\Spells\\Orc\\MirrorImage\\MirrorImageDeathCaster.mdl", GetUnitX( u ), GetUnitY( u ) ) )
-            endif
-            call SetUnitSkin( u, skin )
-            call BlzSetUnitRealFieldBJ( u, UNIT_RF_SELECTION_SCALE, c )
-            call UnitRemoveAbility( u, 'A1A0' )
-            call UnitRemoveAbility( u, 'B043' )
-            call UnitRemoveAbility( u, 'BNsi' )
+        call SaveInteger( udg_hash, unitId, StringHash( "poly" ), h )
+        if h <= 0 and IsUnitHasAbility( u, 'A1A0') then
+            call EndPolymorph(u)
         endif
         call FlushChildHashtable( udg_hash, id )
 
@@ -55,7 +69,7 @@ library PolyLib requires TimebonusLib, UnitstLib, BuffsLibLib
             call UnitAddAbility( target, 'A1A0' )
             set id = GetHandleId( target )
             
-            //намеренно без условия
+            //РЅР°РјРµСЂРµРЅРЅРѕ Р±РµР· СѓСЃР»РѕРІРёСЏ
             call SaveTimerHandle( udg_hash, id, StringHash( "poly" ), CreateTimer() )
             set id = GetHandleId( LoadTimerHandle( udg_hash, id, StringHash( "poly" ) ) ) 
             call SaveUnitHandle( udg_hash, id, StringHash( "poly" ), target )
@@ -65,6 +79,26 @@ library PolyLib requires TimebonusLib, UnitstLib, BuffsLibLib
         
         set caster = null
         set target = null
+    endfunction
+
+    private function DeleteBuff_Conditions takes nothing returns boolean
+        return IsUnitHasAbility( Event_DeleteBuff_Unit, 'A1A0')
+    endfunction
+    
+    private function DeleteBuff takes nothing returns nothing
+        call EndPolymorph(Event_DeleteBuff_Unit)
+    endfunction
+    
+    private function DeleteSilence takes nothing returns nothing
+        if IsUnitHasAbility( Event_DeleteBuff_Unit, 'BNsi') then
+            call UnitRemoveAbility( Event_DeleteBuff_Unit, 'BNsi' )
+        endif
+    endfunction
+    
+    private function init takes nothing returns nothing
+        //Poly can sometimes not delete and stay permanently, if its active:
+        //call CreateEventTrigger( "Event_DeleteBuff_Real", function DeleteBuff, function DeleteBuff_Conditions )
+        call CreateEventTrigger( "Event_DeleteBuff_Real", function DeleteSilence, null )
     endfunction
 
 endlibrary

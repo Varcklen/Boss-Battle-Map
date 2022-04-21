@@ -281,8 +281,8 @@ library HealstLib requires DummyspawnLib, Inventory, TimebonusLib, RandomTargetL
             set id = GetHandleId( caster )
             call SaveTimerHandle( udg_hash, id, StringHash("heal"), CreateTimer() )
             set id = GetHandleId( LoadTimerHandle( udg_hash, id, StringHash("heal") ) ) 
-            call SaveUnitHandle( udg_hash, id, StringHash("heal"), caster )
-            call SaveUnitHandle( udg_hash, id, StringHash( "healc" ), target ) 
+            call SaveUnitHandle( udg_hash, id, StringHash("healc"), caster )
+            call SaveUnitHandle( udg_hash, id, StringHash( "heal" ), target ) 
             call SaveReal( udg_hash, id, StringHash( "heal" ), r ) 
             call TimerStart( LoadTimerHandle( udg_hash, GetHandleId( caster ), StringHash("heal") ), 0.01, false, function EndHealTimer)
         else

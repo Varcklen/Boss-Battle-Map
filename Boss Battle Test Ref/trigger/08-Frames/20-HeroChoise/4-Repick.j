@@ -37,7 +37,7 @@ library Repick requires SpellPower, NullingAbility
 
         set udg_UnitHeroLogic[heroKey] = false
         set udg_SkinUsed[index] = 0
-        if udg_logic[54] == false then
+        if IsSinglePlayer == false then
             call PauseTimer( udg_timer[1] )
             call PauseTimer( udg_timer[2] )
             call PauseTimer( udg_timer[3] )

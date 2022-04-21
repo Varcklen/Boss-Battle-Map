@@ -283,7 +283,7 @@ function DataAbilities takes nothing returns nothing
     set udg_DB_Trigger_One[58] = gg_trg_AltarQ
     set udg_DB_Trigger_One[59] = gg_trg_WagonQ
     set udg_DB_Trigger_One[60] = gg_trg_FallenOneQ
-    set udg_DB_Trigger_One[61] = gg_trg_MephistarQ
+    set udg_DB_Trigger_One[61] = gg_trg_MephistarW
     set udg_DB_Trigger_One[62] = gg_trg_SunKingQ
     set udg_DB_Trigger_One[63] = gg_trg_ArmsQ
     set udg_DB_Trigger_One[64] = gg_trg_JesterQ
@@ -358,7 +358,7 @@ function DataAbilities takes nothing returns nothing
     set udg_DB_Trigger_Two[54] = gg_trg_SoulstealerW
     set udg_DB_Trigger_Two[55] = gg_trg_WagonW
     set udg_DB_Trigger_Two[56] = gg_trg_FallenOneW
-    set udg_DB_Trigger_Two[57] = gg_trg_MephistarW
+    set udg_DB_Trigger_Two[57] = gg_trg_MephistarQ
     set udg_DB_Trigger_Two[58] = gg_trg_SunKingW
     set udg_DB_Trigger_Two[59] = gg_trg_ArmsW
     set udg_DB_Trigger_Two[60] = gg_trg_JesterW

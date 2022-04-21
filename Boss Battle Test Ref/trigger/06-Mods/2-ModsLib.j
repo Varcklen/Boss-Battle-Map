@@ -140,15 +140,6 @@ library Mods requires LibDataAbilities, SpellPower, RandomTargetLib, Money, Mult
         local integer g = 0
         local boolean isActivated = false
     
-        //Newbie
-        if udg_logic[89] then
-            set udg_BossHP = udg_BossHP - 0.25
-            set udg_BossAT = udg_BossAT - 0.25
-            call SpellPower_AddBossSpellPower(-0.25)
-
-            call IconFrame( "Newbie", BlzGetAbilityIcon('A0MC'), BlzGetAbilityTooltip('A0MC', 0), BlzGetAbilityExtendedTooltip('A0MC', 0) )
-        endif
-        
         //Power Up
         if udg_logic[6] then
             set udg_logic[7] = true

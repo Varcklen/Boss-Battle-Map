@@ -54,9 +54,6 @@ function Trig_EndFightWork_Actions takes nothing returns nothing
     else
         set udg_Boss_Random = GetRandomInt( 1, 5 )
     endif
-    if udg_logic[89] and udg_Boss_LvL == 10 then
-        set udg_Boss_Random = 1
-    endif
 
     call MultiSetValue( udg_multi, 5, 1, I2S( udg_Boss_LvL ) + "/10" )
     call BlzFrameSetText(lvltext, I2S( udg_Boss_LvL ) + "/10")
@@ -159,11 +156,8 @@ function Trig_EndFightWork_Actions takes nothing returns nothing
             call IconFrame( "DT", BlzGetAbilityIcon('A0JO'), BlzGetAbilityTooltip('A0JO', 0), BlzGetAbilityExtendedTooltip('A0JO', 0) )
         endif
     
-        if not(udg_logic[89]) then
-            set udg_LastBoss = GetRandomInt( 1, 6 )
-        else
-            set udg_LastBoss = 1
-        endif
+        set udg_LastBoss = GetRandomInt( 1, 6 )
+        
         set b[1] = 'A06L'
         set b[2] = 'A0VH'
         set b[3] = 'A09E'

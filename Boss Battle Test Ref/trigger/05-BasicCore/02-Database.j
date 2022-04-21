@@ -36,6 +36,8 @@ globals
     boolean DEBUG = false
     unit UNIT_BUFF = null
     
+    boolean IsSinglePlayer = false
+    
     real array HardModAspd[9]//скорость атаки в модах
 endglobals
 
@@ -45,7 +47,7 @@ function Trig_Database_Actions takes nothing returns nothing
     local unit temp
     
     set udg_perc = "%"
-    set udg_Version = "1.4.5q"
+    set udg_Version = "1.4.5t"
     set udg_UntilFirstFight = true
     
     if udg_hash == null then
@@ -665,6 +667,7 @@ function Trig_Database_Actions takes nothing returns nothing
     endloop
     if udg_Heroes_Amount == 1 then
         set udg_logic[54] = true
+        set IsSinglePlayer = true
     endif
     set udg_BossHP = udg_BossHP - ( 0.15 * ( 4 - udg_Heroes_Amount ) ) 
     set udg_BossAT = udg_BossAT - ( 0.1 * ( 4 - udg_Heroes_Amount ) )
