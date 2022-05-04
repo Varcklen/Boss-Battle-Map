@@ -2,27 +2,6 @@ function Trig_Autoload_Conditions takes nothing returns boolean
     return not( udg_logic[43] ) and not(udg_logic[1])
 endfunction
 
-function BonusLoad takes integer i returns nothing
-    call BonusLoadModule()
-    call ItemLoadModule()
-    //call BlzFrameSetText( lvltxt[i], I2S(udg_LvL[i]) )
-    call HeroesTable_SetLevelNumberFrame(Player(i - 1), udg_LvL[i] )
-    
-    if AnyHasLvL(3) then
-        call ShowUnit( gg_unit_h01G_0201, true )
-    endif
-    if AnyHasLvL(4) then
-        call ShowUnit( gg_unit_h00P_0089, true )
-    endif
-    if AnyHasLvL(5) then
-        call ShowUnit(gg_unit_h027_0035, true)
-    endif
-    if AnyHasLvL(5) then
-        set udg_logic[89] = false
-        set udg_logic[i + 90] = true
-    endif
-endfunction
-
 function AutoloadCast takes nothing returns nothing
     local integer id = GetHandleId( GetExpiredTimer() )
     local integer i = LoadInteger( udg_hash, id, StringHash( "auto" ) )

@@ -1,0 +1,1246 @@
+//If you are using TESH, place this file in the tesh\includes folder and DELETE this commentary.
+
+function Quest_QuestCondition takes unit caster, integer questItem, integer reward, integer currentCount, integer countNeeded returns boolean
+        local boolean isCompleted = false
+        
+        if currentCount >= countNeeded then
+            call CompletedActions(caster, questItem, reward)
+            set isCompleted = true
+        else
+            call textst( "|c00ffffff " + I2S(currentCount) + "/" + I2S(countNeeded), caster, 64, GetRandomReal( 45, 135 ), 8, 1.5 )
+        endif
+        
+        set caster = null
+        return isCompleted
+    endfunction
+
+function RANDOM_TARGET_NOT_STUNNED takes nothing returns nothing
+endfunction
+function RANDOM_TARGET_UNDEAD takes nothing returns nothing
+endfunction
+function RANDOM_TARGET_ORGANIC takes nothing returns nothing
+endfunction
+function RANDOM_TARGET_NOT_UNDEAD takes nothing returns nothing
+endfunction
+function RANDOM_TARGET_NOT_CASTER takes nothing returns nothing
+endfunction
+function RANDOM_TARGET_MINION takes nothing returns nothing
+endfunction
+function RANDOM_TARGET_HERO takes nothing returns nothing
+endfunction
+function RANDOM_TARGET_NOT_FULL_HEALTH takes nothing returns nothing
+endfunction
+function RANDOM_TARGET_VULNERABLE takes nothing returns nothing
+endfunction
+function RANDOM_TARGET_CAN_MOVE takes nothing returns nothing
+endfunction
+function RANDOM_TARGET_NOT_PROVOKED takes nothing returns nothing
+endfunction
+
+function Lightning_CreateLightning takes string lightningType, real xStart, real yStart, real zStart, real xEnd, real yEnd, real zEnd, real lifeTime returns lightning
+        local integer id
+    
+        set TempLightning = AddLightningEx(lightningType, true, xStart, yStart, zStart, xEnd, yEnd, zEnd )
+                
+        set id = GetHandleId( TempLightning )
+        call SaveTimerHandle( udg_hash, id, StringHash( "light" ), CreateTimer() )
+        set id = GetHandleId( LoadTimerHandle( udg_hash, id, StringHash( "light" ) ) ) 
+        call SaveLightningHandle( udg_hash, id, StringHash( "light" ), TempLightning )
+        call TimerStart( LoadTimerHandle( udg_hash, GetHandleId( TempLightning ), StringHash( "light" ) ), lifeTime, false, function End )
+        
+        return TempLightning
+    endfunction
+
+function DEATH_AREA takes nothing returns nothing
+endfunction
+
+function luckyst takes unit u, integer luck returns nothing
+        local integer index = GetUnitUserData(u)
+        local integer unitId = GetHandleId(u)
+        local integer oldLuck = LoadInteger(udg_hash, unitId, KEY_LUCK )
+        local integer newLuck 
+        local integer newLuckPercent
+        
+        if index <= 0 or index > PLAYERS_LIMIT then
+            set u = null
+            return
+        endif
+        
+        set newLuck = oldLuck + luck
+        set newLuckPercent = R2I( RMaxBJ(0, ( SquareRoot( newLuck ) * 2 ) - 2 ) )
+        call SaveInteger(udg_hash, unitId, KEY_LUCK, newLuck )
+        call SaveInteger(udg_hash, unitId, KEY_LUCK_PERCENT, newLuckPercent )
+
+        call UpdateFrames( index, newLuckPercent, newLuck )
+        
+        set u = null
+    endfunction
+
+function SpellPower_SetBossSpellPower takes real newBossSpellPower returns nothing
+        set BossSpellPower = newBossSpellPower
+        if BossSpellPower < BOSS_SPELL_POWER_MIN then
+            set BossSpellPower = BOSS_SPELL_POWER_MIN
+        elseif BossSpellPower > BOSS_SPELL_POWER_MAX then
+            set BossSpellPower = BOSS_SPELL_POWER_MAX
+        endif
+    endfunction
+    
+    function SpellPower_AddBossSpellPower takes real addedBossSpellPower returns nothing
+        set BossSpellPower = BossSpellPower + addedBossSpellPower
+        if BossSpellPower < BOSS_SPELL_POWER_MIN then
+            set BossSpellPower = BOSS_SPELL_POWER_MIN
+        endif
+    endfunction
+
+    function SpellPower_GetBossSpellPower takes nothing returns real
+        return BossSpellPower
+    endfunction
+
+function IsUnitManaIsFull takes unit whichUnit returns boolean
+        local boolean isFull = GetUnitState(whichUnit, UNIT_STATE_MANA) == GetUnitState(whichUnit, UNIT_STATE_MAX_MANA)
+        set whichUnit = null
+        return isFull
+    endfunction
+
+function RemoveEffect takes unit target, integer myEffect, integer myBuff returns nothing
+        call UnitRemoveAbility(target, myEffect)
+        call UnitRemoveAbility(target, myBuff)
+    
+        set target = null
+    endfunction
+
+function effst takes unit caster, unit target, string str, integer lvl, real t returns nothing
+        if GetUnitAbilityLevel( caster, 'A04L') > 0 then
+            call Unreachable(caster)
+        endif
+        
+        set caster = null
+        set target = null
+    endfunction
+
+    function debuffst takes unit caster, unit target, string str, integer lvl, real t returns nothing
+        local integer s 
+        local integer i = GetPlayerId( GetOwningPlayer( caster ) ) + 1
+
+        if GetUnitAbilityLevel( caster, 'A08U' ) > 0 and combat( caster, false, 0 ) and not( udg_fightmod[3] ) and udg_DamageEventSource != caster and udg_DamageEventTarget != caster then
+            call spdst( caster,  0.15 * GetUnitAbilityLevel(caster, 'A08U') )
+            set udg_Data[GetPlayerId(GetOwningPlayer(caster)) + 1 + 112] = udg_Data[GetPlayerId(GetOwningPlayer(caster)) + 1 + 112] + GetUnitAbilityLevel(caster, 'A08U')
+            call DestroyEffect( AddSpecialEffectTarget("Abilities\\Spells\\Undead\\DeathPact\\DeathPactTarget.mdl", caster, "origin" ) )
+        endif
+        
+        if inv( caster, 'I09B' ) > 0 and GetUnitState( caster, UNIT_STATE_LIFE) > 0.405 and combat( caster, false, 0 ) and not( udg_fightmod[3] ) then
+            set s = LoadInteger( udg_hash, GetHandleId( caster ), StringHash( udg_QuestItemCode[6] ) ) + 1
+            call SaveInteger( udg_hash, GetHandleId( caster ), StringHash( udg_QuestItemCode[6] ), s )
+
+            if s >= udg_QuestNum[6] then
+                call SetWidgetLife( GetItemOfTypeFromUnitBJ( caster, 'I09B'), 0. )
+                set bj_lastCreatedItem = CreateItem( 'I092', GetUnitX(caster), GetUnitY(caster))
+                call UnitAddItem(caster, bj_lastCreatedItem)
+                call textst( "|c00ffffff Trembling enemies done!", caster, 64, GetRandomReal( 45, 135 ), 12, 1.5 )
+                call DestroyEffect( AddSpecialEffect( "Abilities\\Spells\\Human\\ReviveHuman\\ReviveHuman.mdl", GetUnitX(caster), GetUnitY(caster) ) )
+                set udg_QuestDone[i] = true
+            else
+                call QuestDiscription( caster, 'I09B', s, udg_QuestNum[6] )
+            endif
+        endif
+
+        set caster = null
+        set target = null
+    endfunction
+
+function bufst takes unit caster, unit target, integer sp, integer bf, string str, real t returns nothing
+        local integer id = GetHandleId( target )
+        local integer g = StringHash( str )
+        local real h = t + 0.01
+
+        call UnitAddAbility( target, sp )
+        
+        if LoadTimerHandle( udg_hash, id, g ) == null then
+            call SaveTimerHandle( udg_hash, id, g, CreateTimer() )
+        endif
+        set id = GetHandleId( LoadTimerHandle( udg_hash, id, g ) ) 
+        call SaveInteger( udg_hash, id, g, sp )
+        call SaveUnitHandle( udg_hash, id, g, target )
+        call SaveStr( udg_hash, id, 1, str )
+        call SaveInteger( udg_hash, id, StringHash( str+"1" ), sp )
+        call SaveInteger( udg_hash, id, StringHash( str+"2" ), bf )
+        call TimerStart( LoadTimerHandle( udg_hash, GetHandleId( target ), g ), h, false, function bufend )
+        
+        set caster = null
+        set target = null
+    endfunction
+
+function POLYMORPH_SHEEP takes nothing returns nothing
+endfunction
+function POLYMORPH_RAT takes nothing returns nothing
+endfunction
+function POLYMORPH_FROG takes nothing returns nothing
+endfunction
+
+function randomtarget takes unit caster, real r, string str, string str1, string str2, string str3, string str4 returns unit
+endfunction
+
+function combat takes unit u, boolean b, integer sp returns boolean
+        local boolean l = true
+        if not( udg_combatlogic[GetPlayerId( GetOwningPlayer( u ) ) + 1] ) then
+            if b and IsUnitInGroup( u, udg_heroinfo ) and GetSpellAbilityId() == sp then
+                call textst( "|c00909090 Doesn't work out of combat", u, 64, 90, 10, 1 )
+            endif
+            set l = false
+        endif
+        set u = null
+        return l
+    endfunction
+
+function IsUnitHealthIsFull takes unit whichUnit returns boolean
+        local boolean isFull = GetUnitState(whichUnit, UNIT_STATE_LIFE) == GetUnitState(whichUnit, UNIT_STATE_MAX_LIFE)
+        set whichUnit = null
+        return isFull
+    endfunction
+
+function Math_IsNumberInteger takes real r returns boolean
+        //call BJDebugMsg("Check r: " + R2S(r) )
+        //call BJDebugMsg("Check i: " + I2S(R2I(r)) )
+        return R2I(r) == r
+    endfunction
+    
+    function GetRandomPointInRect takes rect whichRect returns point
+        set Point.x = GetRandomReal(GetRectMinX(whichRect), GetRectMaxX(whichRect))
+        set Point.y = GetRandomReal(GetRectMinY(whichRect), GetRectMaxY(whichRect))
+        set whichRect = null
+        return Point
+    endfunction
+    
+    function GetMovedPoint takes effect wave, real yaw, real distance returns point
+        set Point.x = BlzGetLocalSpecialEffectX( wave ) + distance * Cos( yaw )
+        set Point.y = BlzGetLocalSpecialEffectY( wave ) + distance * Sin( yaw )
+        set wave = null
+        return Point
+    endfunction
+
+function unitst takes unit target, unit caster, string str returns boolean
+        local boolean l = false
+        if GetUnitState( target, UNIT_STATE_LIFE ) > 0.405 and GetUnitTypeId(target) != 'u000' and GetOwningPlayer( target ) != Player( PLAYER_NEUTRAL_PASSIVE ) then
+            if IsUnitEnemy( target, GetOwningPlayer( caster ) ) and GetUnitAbilityLevel( target, 'Avul') == 0 and str == "enemy" then
+                set l = true
+            elseif IsUnitAlly( target, GetOwningPlayer( caster ) ) and str == "ally" then
+                set l = true
+            elseif GetUnitAbilityLevel( target, 'Avul') == 0 and str == "all" then
+                set l = true
+            endif
+        endif
+        set target = null
+        set caster = null
+        return l
+    endfunction
+
+function moneyst takes unit caster, integer money returns nothing
+endfunction
+
+function GetPotionSpellPower takes unit myUnit returns real
+        local real spellPower = udg_SpellDamagePotion[GetUnitUserData(myUnit)]
+        
+        set myUnit = null
+        return spellPower
+    endfunction
+    
+    function GetUniqueSpellPower takes unit myUnit returns real
+        local real spellPower = udg_SpellDamageSpec[GetUnitUserData(myUnit)]
+        
+        set myUnit = null
+        return spellPower
+    endfunction
+
+function SET_MECH takes nothing returns nothing
+endfunction
+function SET_WEAPON takes nothing returns nothing
+endfunction
+function SET_RING takes nothing returns nothing
+endfunction
+function SET_BLOOD takes nothing returns nothing
+endfunction
+function SET_RUNE takes nothing returns nothing
+endfunction
+function SET_MOON takes nothing returns nothing
+endfunction
+function SET_NATURE takes nothing returns nothing
+endfunction
+function SET_ALCHEMY takes nothing returns nothing
+endfunction
+function SET_CRYSTAL takes nothing returns nothing
+endfunction
+
+function GetUnitLuck takes unit myUnit returns real
+        local real luck = udg_luckychance[GetUnitUserData(myUnit)]
+        set myUnit = null
+        return luck
+    endfunction
+
+function GetMovedPointByPoint takes point p, real yaw, real distance returns point
+        set Point.x = p.x + distance * Cos( yaw )
+        set Point.y = p.y + distance * Sin( yaw )
+        call p.destroy()
+        return Point
+    endfunction
+
+function Aspects_IsHeroAspectActive takes unit hero, integer aspect returns boolean
+        local integer heroIndex = 0
+        local integer playerIndex = GetUnitUserData(hero)
+    
+        if aspect < 1 or aspect > 3 then
+            call BJDebugMsg("You are trying to address an aspect that does not exist. Please report this to the developer. Current aspect: " + I2S(aspect))
+            return false
+        elseif playerIndex < 1 or playerIndex > 4 then
+            //call BJDebugMsg("You are trying to address an aspect of a non-existent hero. Please report this to the developer. Current playerIndex: " + I2S(playerIndex))
+            return false
+        endif
+        set heroIndex = udg_HeroNum[playerIndex]
+    
+        set hero = null
+        return IsAspectActive[heroIndex][aspect]
+    endfunction
+
+function ArrayInt takes nothing returns nothing
+endfunction
+function ListInt takes nothing returns nothing
+endfunction
+
+function DistanceBetweenCustomPoints takes point a, point b returns real
+        local real dx = a.x - b.x
+        local real dy = a.y - b.y
+        call a.destroy()
+        call b.destroy()
+        return SquareRoot(dx * dx + dy * dy)
+    endfunction
+
+function GetAngleBetweenPoints takes point a, point b returns real
+        local real r = bj_RADTODEG * Atan2(a.y - b.y, a.x - b.x)
+        call a.destroy()
+        call b.destroy()
+        return r
+    endfunction
+
+function SetUnitSkin takes unit whichUnit, integer skinId returns nothing
+        call BlzSetUnitSkin( whichUnit, skinId )
+            
+        if IsUnitHasAbility(whichUnit, GLOW_NORMAL) then
+            call Refresh(whichUnit, GLOW_NORMAL)
+        elseif IsUnitHasAbility(whichUnit, GLOW_SMALL) then
+            call Refresh(whichUnit, GLOW_SMALL)
+        elseif IsUnitHasAbility(whichUnit, GLOW_BIG) then
+            call Refresh(whichUnit, GLOW_BIG)
+        endif
+        
+        set whichUnit = null
+    endfunction
+
+function textst takes string inf, unit caster, real speed, real angle, real size, real life returns nothing
+    local texttag txt = CreateTextTag()
+    local real sp = ( ( speed * 0.071 / 128 ) * Cos( angle * 0.0174 ) )
+    local real an = ( ( speed * 0.071 / 128 ) * Sin( angle * 0.0174 ) )
+    local real pos = 0
+    
+    if udg_logic[32] then
+        set udg_logic[32] = false
+        set pos = -100
+    endif
+    
+    call SetTextTagText( txt, inf, size * 0.023 / 10 ) 
+    call SetTextTagPosUnit( txt, caster, pos ) 
+    call SetTextTagColor( txt, 225, 225, 225, 225 ) 
+    call SetTextTagVelocity( txt, sp , an )
+    call SetTextTagFadepoint( txt, life ) 
+    call SetTextTagLifespan( txt, life + 0.5 ) 
+    call SetTextTagPermanent( txt, false )
+    
+    set txt = null
+    set caster = null
+endfunction
+
+function AddHealthPercent takes unit whichUnit, integer percent returns real
+        local real value    = GetUnitState(whichUnit, UNIT_STATE_LIFE)
+        local real maxValue = GetUnitState(whichUnit, UNIT_STATE_MAX_LIFE)
+        local real addedValue = maxValue * percent / 100
+
+        // Return 0 for null units.
+        if whichUnit == null or maxValue == 0 then
+            return value
+        endif
+
+        call SetUnitState( whichUnit, UNIT_STATE_LIFE, RMaxBJ(0,GetUnitState( whichUnit, UNIT_STATE_LIFE) + addedValue ))
+        set whichUnit = null
+        return GetUnitState( whichUnit, UNIT_STATE_LIFE)
+    endfunction
+    
+    function AddManaPercent takes unit whichUnit, integer percent returns real
+        local real value    = GetUnitState(whichUnit, UNIT_STATE_MANA)
+        local real maxValue = GetUnitState(whichUnit, UNIT_STATE_MAX_MANA)
+        local real addedValue = maxValue * percent / 100
+
+        // Return 0 for null units.
+        if whichUnit == null or maxValue == 0 then
+            return value
+        endif
+
+        call SetUnitState( whichUnit, UNIT_STATE_MANA, RMaxBJ(0,GetUnitState( whichUnit, UNIT_STATE_MANA) + addedValue ))
+        set whichUnit = null
+        return GetUnitState( whichUnit, UNIT_STATE_MANA)
+    endfunction
+
+function GetHealthFromPercent takes unit whichUnit, integer percent returns real
+    local real value    = GetUnitState(whichUnit, UNIT_STATE_LIFE)
+    local real maxValue = GetUnitState(whichUnit, UNIT_STATE_MAX_LIFE)
+
+    // Return 0 for null units.
+    if whichUnit == null or maxValue == 0 then
+        return 0.0
+    endif
+    if percent < 0 then
+        set percent = 0
+    elseif percent > 100 then
+        set percent = 100
+    endif
+
+    set whichUnit = null
+    return value / maxValue * percent
+endfunction
+
+function GetManaFromPercent takes unit whichUnit, integer percent returns real
+    local real value    = GetUnitState(whichUnit, UNIT_STATE_MANA)
+    local real maxValue = GetUnitState(whichUnit, UNIT_STATE_MAX_MANA)
+
+    // Return 0 for null units.
+    if whichUnit == null or maxValue == 0 then
+        return 0.0
+    endif
+    if percent < 0 then
+        set percent = 0
+    elseif percent > 100 then
+        set percent = 100
+    endif
+
+    set whichUnit = null
+    return value / maxValue * percent
+endfunction
+
+function GetHealthPercent takes unit whichUnit returns real
+    local real value    = GetUnitState(whichUnit, UNIT_STATE_LIFE)
+    local real maxValue = GetUnitState(whichUnit, UNIT_STATE_MAX_LIFE)
+
+    // Return 0 for null units.
+    if whichUnit == null or maxValue == 0 then
+        return 0.0
+    endif
+
+    set whichUnit = null
+    return value / maxValue * 100.0
+endfunction
+
+function GetManaPercent takes unit whichUnit returns real
+    local real value    = GetUnitState(whichUnit, UNIT_STATE_MANA)
+    local real maxValue = GetUnitState(whichUnit, UNIT_STATE_MAX_MANA)
+
+    // Return 0 for null units.
+    if whichUnit == null or maxValue == 0 then
+        return 0.0
+    endif
+
+    set whichUnit = null
+    return value / maxValue * 100.0
+endfunction
+
+function Math_GetRandomX takes real x, real scatter returns real
+        return x + GetRandomReal(-scatter, scatter)
+    endfunction
+
+    function Math_GetRandomY takes real y, real scatter returns real
+        return y + GetRandomReal(-scatter, scatter)
+    endfunction
+
+function IsUnitHasAbility takes unit caster, integer myBuff returns boolean
+        local boolean isWork = GetUnitAbilityLevel( caster, myBuff) > 0
+        set caster = null
+        return isWork
+    endfunction
+
+function GetUnitSpellPower takes unit myUnit returns real
+        local player owner = GetOwningPlayer(myUnit)
+        local real spellPower
+        
+        if owner == Player(10) or owner == Player(11) or owner == Player(PLAYER_NEUTRAL_AGGRESSIVE) then
+            set spellPower = udg_SpellDamageSpec[0]
+        else
+            set spellPower = udg_SpellDamageSpec[GetUnitUserData(myUnit)]
+        endif
+        set owner = null
+        set myUnit = null
+        return spellPower
+    endfunction
+
+function luckylogic takes unit u, integer ch, integer min, integer max returns boolean
+    local boolean l = false
+    
+    if GetRandomInt( min, max ) <= ( OtherUses(u, ch) + udg_luckychance[GetPlayerId( GetOwningPlayer( u ) ) + 1] ) then
+        set l = true
+    endif
+    set u = null
+    return l
+endfunction
+
+function LuckChance takes unit u, integer ch returns boolean
+    return luckylogic(u, ch, 1, 100 )
+endfunction
+
+function PlaySpecialEffect takes string myEffect, unit myUnit returns nothing
+     call DestroyEffect( AddSpecialEffect( myEffect, GetUnitX( myUnit ), GetUnitY( myUnit ) ) )
+endfunction
+
+function AddSpecialEffectToUnit takes string myEffect, unit myUnit returns effect
+     set Effect = AddSpecialEffect( myEffect, GetUnitX( myUnit ), GetUnitY( myUnit ) )
+     return Effect
+endfunction
+
+function pausest takes unit u, integer i returns nothing
+	local integer k = GetPlayerId(GetOwningPlayer( u )) + 1
+	local integer g = LoadInteger( udg_hash, GetHandleId( u ), StringHash( "pause" ) )
+	local boolean b = LoadBoolean( udg_hash, GetHandleId( u ), StringHash( "pause" ) )
+
+    if IsUnitType( u, UNIT_TYPE_HERO) or IsUnitType( u, UNIT_TYPE_ANCIENT) then
+        call SaveInteger( udg_hash, GetHandleId( u ), StringHash( "pause" ), g + i )
+        set g = LoadInteger( udg_hash, GetHandleId( u ), StringHash( "pause" ) )
+
+        if g >= 1 and not(b) then
+            call SaveBoolean( udg_hash, GetHandleId( u ), StringHash( "pause" ), true )
+            call PauseUnit( u, true )
+        elseif g < 1 and b then
+            call SaveBoolean( udg_hash, GetHandleId( u ), StringHash( "pause" ), false )
+            call PauseUnit( u, false )
+        endif
+    elseif i > 0 then
+        call PauseUnit( u, true )
+    elseif i < 0 then
+        call PauseUnit( u, false )
+    endif
+    
+    set u = null
+endfunction
+
+function UnitTakeDamage takes unit dealer, unit target, real damage, damagetype damageType returns nothing
+    local attacktype attackType = ATTACK_TYPE_HERO
+    
+    if damageType == DAMAGE_TYPE_MAGIC then
+        set attackType = ATTACK_TYPE_NORMAL
+    endif
+
+    call UnitDamageTarget( dealer, target, damage, true, false, attackType, damageType, WEAPON_TYPE_WHOKNOWS)
+        
+    set attackType = null
+    set dealer = null
+    set target = null
+endfunction
+
+function healst takes unit caster, unit target, real r returns nothing
+endfunction
+function manast takes unit caster, unit target, real r returns nothing
+endfunction
+function shield takes unit caster, unit target, real sh, real t returns nothing
+endfunction
+function PLAYERS_LIMIT takes unit caster, unit target, real sh, real t returns nothing
+endfunction
+function PLAYERS_LIMIT_ARRAYS takes unit caster, unit target, real sh, real t returns nothing
+endfunction
+
+function AngleBetweenUnits takes unit a, unit b returns real
+        local real r = bj_RADTODEG * Atan2(GetUnitY(a) - GetUnitY(b), GetUnitX(a) - GetUnitX(b))
+        set a = null
+        set b = null
+        return r
+    endfunction
+
+    function DistanceBetweenUnits takes unit u, unit n returns real
+        local real dx = GetUnitX(u) - GetUnitX(n)
+        local real dy = GetUnitY(u) - GetUnitY(n)
+        set u = null
+        set n = null
+        return SquareRoot(dx * dx + dy * dy)
+    endfunction
+
+    function MoveLightningUnits takes lightning l, unit u, unit n returns nothing
+        call MoveLightningEx(l, true, GetUnitX(u), GetUnitY(u), GetUnitFlyHeight(u), GetUnitX(n), GetUnitY(n), GetUnitFlyHeight(n))
+        set l = null
+        set u = null
+        set n = null
+    endfunction
+
+    function SpecialEffectAngle takes string str, real angle, real x, real y returns nothing
+        local effect fx = AddSpecialEffect(str, x, y )
+        call BlzSetSpecialEffectYaw( fx, angle*3.14/180 )
+        call DestroyEffect( fx )
+        set fx = null
+    endfunction
+
+    function GetMovedPointBetweenUnits takes unit unitWho, unit unitTo, real distance returns point
+        local real angle = Atan2( GetUnitY( unitTo ) - GetUnitY( unitWho ), GetUnitX( unitTo ) - GetUnitX( unitWho ) )
+        
+        set Point.x = GetUnitX( unitWho ) + distance * Cos( angle )
+        set Point.y = GetUnitY( unitWho ) + distance * Sin( angle )
+        set unitWho = null
+        set unitTo = null
+        return Point
+    endfunction
+
+function IsHeroHasItem takes unit hero, integer itemId returns boolean
+    local boolean hasItem = false
+    local integer i = 0
+    
+    loop
+        exitwhen i > 5 or hasItem
+        if GetItemTypeId( UnitItemInSlot( hero, i ) ) == itemId then
+            set hasItem = true
+        endif
+        set i = i + 1
+    endloop
+    set hero = null
+    return hasItem
+endfunction
+
+function UnitReduceCooldown takes unit u, real time returns nothing
+    local integer array a
+    local integer cyclA
+    local integer i = GetUnitUserData(u)
+    
+    if not(IsUnitInGroup(u, udg_heroinfo)) then
+        call BJDebugMsg("You are trying to reduce the cooldown of a \"" + GetUnitName(u) + "\" unit that is not a hero! Please report this error to the map author.")
+        return
+    endif
+    
+    set cyclA = 1
+    loop
+        exitwhen cyclA > 4
+        set a[cyclA] = 0
+        set cyclA = cyclA + 1
+    endloop
+    
+    if GetUnitAbilityLevel( u, udg_DB_Hero_FirstSpell[udg_HeroNum[i]]) > 0 then
+        set a[1] = udg_DB_Hero_FirstSpell[udg_HeroNum[i]]
+    endif
+    if GetUnitAbilityLevel( u, udg_Database_EarringSpell[udg_HeroNum[i]]) > 0 then
+        set a[2] = udg_Database_EarringSpell[udg_HeroNum[i]]
+    endif
+    if GetUnitAbilityLevel( u, udg_DB_Hero_Passive[udg_HeroNum[i]]) > 0 then
+        set a[3] = udg_DB_Hero_Passive[udg_HeroNum[i]]
+    endif
+    if GetUnitAbilityLevel( u, udg_DB_Hero_Fourth[udg_HeroNum[i]]) > 0 then
+        set a[4] = udg_DB_Hero_Fourth[udg_HeroNum[i]]
+    endif
+
+    set cyclA = 1
+    loop
+        exitwhen cyclA > 4
+        if a[cyclA] != 0 then
+            if BlzGetUnitAbilityCooldownRemaining(u,a[cyclA]) > time then
+                call BlzStartUnitAbilityCooldown( u, a[cyclA], RMaxBJ( 0.1,BlzGetUnitAbilityCooldownRemaining(u, a[cyclA]) - time) )
+            endif
+        endif
+        set cyclA = cyclA + 1
+    endloop
+    
+    set cyclA = 1
+    loop
+        exitwhen cyclA > 4
+        set a[cyclA] = 0
+        set cyclA = cyclA + 1
+    endloop
+
+    set u = null
+endfunction
+
+function UnitReduceCooldownPercent takes unit u, real percent returns nothing
+    local integer array a
+    local integer cyclA
+    local integer i = GetUnitUserData(u)
+
+    if not(IsUnitInGroup(u, udg_heroinfo)) then
+        call BJDebugMsg("You are trying to reduce the cooldown of a \"" + GetUnitName(u) + "\" unit that is not a hero! Please report this error to the map author.")
+        return
+    endif
+
+    if percent < 0 then
+        set percent = 0
+    endif
+
+    set cyclA = 1
+    loop
+        exitwhen cyclA > 4
+        set a[cyclA] = 0
+        set cyclA = cyclA + 1
+    endloop
+    
+    if GetUnitAbilityLevel( u, udg_DB_Hero_FirstSpell[udg_HeroNum[i]]) > 0 then
+        set a[1] = udg_DB_Hero_FirstSpell[udg_HeroNum[i]]
+    endif
+    if GetUnitAbilityLevel( u, udg_Database_EarringSpell[udg_HeroNum[i]]) > 0 then
+        set a[2] = udg_Database_EarringSpell[udg_HeroNum[i]]
+    endif
+    if GetUnitAbilityLevel( u, udg_DB_Hero_Passive[udg_HeroNum[i]]) > 0 then
+        set a[3] = udg_DB_Hero_Passive[udg_HeroNum[i]]
+    endif
+    if GetUnitAbilityLevel( u, udg_DB_Hero_Fourth[udg_HeroNum[i]]) > 0 then
+        set a[4] = udg_DB_Hero_Fourth[udg_HeroNum[i]]
+    endif
+
+    set cyclA = 1
+    loop
+        exitwhen cyclA > 4
+        if a[cyclA] != 0 then
+            call BlzStartUnitAbilityCooldown( u, a[cyclA], RMaxBJ( 0.1,BlzGetUnitAbilityCooldownRemaining(u, a[cyclA]) * percent) )
+        endif
+        set cyclA = cyclA + 1
+    endloop
+    
+    set cyclA = 1
+    loop
+        exitwhen cyclA > 4
+        set a[cyclA] = 0
+        set cyclA = cyclA + 1
+    endloop
+
+    set u = null
+endfunction
+
+function IsUnitAlive takes unit myUnit returns boolean
+    local boolean isWork = false
+    if GetUnitState( myUnit, UNIT_STATE_LIFE) > 0.405 then
+        set isWork = true
+    endif
+    set myUnit = null
+    return isWork
+endfunction
+
+function IsUnitDead takes unit myUnit returns boolean
+    local boolean isWork = false
+    if GetUnitState( myUnit, UNIT_STATE_LIFE) <= 0.405 then
+        set isWork = true
+    endif
+    set myUnit = null
+    return isWork
+endfunction
+
+function CreateEventTrigger takes string eventReal, code action, code condition returns trigger
+    set trig = CreateTrigger()
+    call TriggerRegisterVariableEvent( trig, eventReal, EQUAL, 1.00 )
+    call TriggerAddCondition( trig, Condition( condition ) )
+    call TriggerAddAction( trig, action )
+    return trig
+endfunction
+
+function TARGET_ALLY takes nothing returns nothing
+endfunction
+function TARGET_ENEMY  takes nothing returns nothing
+endfunction
+function TARGET_ALL takes nothing returns nothing
+endfunction
+
+function ASPECT_01 takes nothing returns nothing
+endfunction
+function ASPECT_02  takes nothing returns nothing
+endfunction
+function ASPECT_03 takes nothing returns nothing
+endfunction
+
+function spdst takes unit u, real spd returns nothing
+    local integer i = GetUnitUserData(u)
+    local real r 
+    local real a
+    local real k
+    
+    set udg_SpellDamage[i] = udg_SpellDamage[i] + ( spd / 100 ) 
+    set r = 100 * ( udg_SpellDamage[i] - 1 )
+    set a = r - 1
+
+    if a < 0 and a > -1 then
+        set a = 0
+    endif
+
+	call MultiSetValue( udg_multi, ( udg_Multiboard_Position[i] * 3 ) - 1, 4, R2SW( a, 1, 2 ) + udg_perc )
+	call MultiSetValue( udg_multi, ( udg_Multiboard_Position[i] * 3 ) - 1, 4, R2SW( a, 1, 2 ) + udg_perc )
+    set spellstr[i] = R2SW( a, 1, 2 )
+    set k = StringLength(spellstr[i]) * 0.004
+	if GetLocalPlayer() == Player(i-1) then
+		call BlzFrameSetText(spelltext, spellstr[i] + udg_perc)
+		call BlzFrameSetAbsPoint( spelltext, FRAMEPOINT_CENTER, 0.636 - k, 0.578 )
+	endif
+    
+    set u = null
+endfunction
+
+function bufallst takes unit caster, unit target, integer sp1, integer sp2, integer sp3, integer sp4, integer sp5, integer bf, string str, real t returns nothing
+    local integer id
+    local integer g = StringHash( str )
+    local real h = timebonus(caster, t) + 0.01
+    local unit u
+    
+    if target == null then
+        set u = caster
+    else
+        set u = target
+    endif
+
+    if sp1 != 0 then
+        call UnitAddAbility( u, sp1 )
+    endif
+    if sp2 != 0 then
+        call UnitAddAbility( u, sp2 )
+    endif
+    if sp3 != 0 then
+        call UnitAddAbility( u, sp3 )
+    endif
+    if sp4 != 0 then
+        call UnitAddAbility( u, sp4 )
+    endif
+    if sp5 != 0 then
+        call UnitAddAbility( u, sp5 )
+    endif
+    
+    set id = GetHandleId( u )
+    if LoadTimerHandle( udg_hash, id, g ) == null then
+        call SaveTimerHandle( udg_hash, id, g, CreateTimer() )
+    endif
+	set id = GetHandleId( LoadTimerHandle( udg_hash, id, g ) ) 
+	call SaveUnitHandle( udg_hash, id, g, u )
+    call SaveStr( udg_hash, id, 1, str )
+    call SaveInteger( udg_hash, id, StringHash( str+"1" ), sp1 )
+    call SaveInteger( udg_hash, id, StringHash( str+"2" ), sp2 )
+    call SaveInteger( udg_hash, id, StringHash( str+"3" ), sp3 )
+    call SaveInteger( udg_hash, id, StringHash( str+"4" ), sp4 )
+    call SaveInteger( udg_hash, id, StringHash( str+"5" ), sp5 )
+    call SaveInteger( udg_hash, id, StringHash( str+"6" ), bf )
+	call TimerStart( LoadTimerHandle( udg_hash, GetHandleId( u ), g ), h, false, function bufallend )
+    
+    set caster = null
+    set target = null
+    set u = null
+endfunction
+
+function Inventory_ReplaceItemByNew takes unit owner, item oldItem, integer newItem returns item
+
+    call UnitRemoveItem(owner, oldItem)
+    set bj_lastCreatedItem = CreateItem( newItem, GetUnitX(owner), GetUnitY(owner) )
+    call SetModificators(owner, oldItem, bj_lastCreatedItem)
+    call RemoveItem(oldItem)
+    call UnitAddItem( owner, bj_lastCreatedItem )
+    
+    set owner = null
+    set oldItem = null
+    return bj_lastCreatedItem
+endfunction
+
+function Inventory_ReplaceItem takes unit owner, item oldItem, item newItem returns nothing
+    
+    call UnitRemoveItem(owner, oldItem)
+    call SetModificators(owner, oldItem, newItem)
+    call RemoveItem(oldItem)
+    if IsItemOwned(newItem) == false then
+        call UnitAddItem( owner, newItem )
+    endif
+    
+    set owner = null
+    set oldItem = null
+    set newItem = null
+endfunction
+
+function statst takes unit u, integer st, integer ag, integer in, integer data, boolean isPermanent returns nothing
+endfunction
+
+function InvokeTimerWithItem takes item myItem, string stringHash, real time, boolean isPeriodic, code func returns integer
+    local integer id = GetHandleId( myItem )
+    local integer secondKey = StringHash( stringHash )
+
+    if LoadTimerHandle( udg_hash, id, secondKey ) == null then
+        call SaveTimerHandle( udg_hash, id, secondKey, CreateTimer() )
+    endif
+	set id = GetHandleId( LoadTimerHandle( udg_hash, id, secondKey ) ) 
+	call SaveItemHandle( udg_hash, id, secondKey, myItem )
+	call TimerStart( LoadTimerHandle( udg_hash, GetHandleId( myItem ), secondKey ), time, isPeriodic, func )
+    
+    set myUnit = null
+    set func = null
+    return id
+endfunction
+
+function InvokeTimerWithUnit takes unit myUnit, string stringHash, real time, boolean isPeriodic, code func returns integer
+    local integer id = GetHandleId( myUnit )
+    local integer secondKey = StringHash( stringHash )
+
+    if LoadTimerHandle( udg_hash, id, secondKey ) == null then
+        call SaveTimerHandle( udg_hash, id, secondKey, CreateTimer() )
+    endif
+	set id = GetHandleId( LoadTimerHandle( udg_hash, id, secondKey ) ) 
+	call SaveUnitHandle( udg_hash, id, secondKey, myUnit )
+	call TimerStart( LoadTimerHandle( udg_hash, GetHandleId( myUnit ), secondKey ), time, isPeriodic, func )
+    
+    set myUnit = null
+    set func = null
+    return id
+endfunction
+
+function InvokeTimerWithEffect takes effect myEffect, string stringHash, real time, boolean isPeriodic, code func returns integer
+    local integer id = GetHandleId( myEffect )
+    local integer secondKey = StringHash( stringHash )
+
+    if LoadTimerHandle( udg_hash, id, secondKey ) == null then
+        call SaveTimerHandle( udg_hash, id, secondKey, CreateTimer() )
+    endif
+	set id = GetHandleId( LoadTimerHandle( udg_hash, id, secondKey ) ) 
+	call SaveItemHandle( udg_hash, id, secondKey, myEffect )
+	call TimerStart( LoadTimerHandle( udg_hash, GetHandleId( myEffect ), secondKey ), time, isPeriodic, func )
+    
+    set myEffect = null
+    set func = null
+    return id
+endfunction
+
+function dummyspawn takes unit caster, real dur, integer sp1, integer sp2, integer sp3 returns unit
+    set bj_lastCreatedUnit = CreateUnit( GetOwningPlayer( caster ), 'u000', GetUnitX( caster ), GetUnitY( caster ), 270 )
+    if dur != 0 then
+        call UnitApplyTimedLife( bj_lastCreatedUnit, 'BTLF', dur)
+    endif    
+    if sp1 != 0 then
+        call UnitAddAbility( bj_lastCreatedUnit, sp1)
+    endif
+    if sp2 != 0 then
+        call UnitAddAbility( bj_lastCreatedUnit, sp2)
+    endif
+    if sp3 != 0 then
+        call UnitAddAbility( bj_lastCreatedUnit, sp3)
+    endif
+    
+    set caster = null
+    return bj_lastCreatedUnit
+endfunction
+
+function Math_GetUnitRandomX takes unit whichUnit, real scatter returns real
+    return GetUnitX(whichUnit) + GetRandomReal(-scatter, scatter)
+endfunction
+
+function Math_GetUnitRandomY takes unit whichUnit, real scatter returns real
+    return GetUnitY(whichUnit) + GetRandomReal(-scatter, scatter)
+endfunction
+
+function SetCount_GetPieces takes unit hero, integer setCount returns integer
+        local integer count = 0
+        local integer unitId = GetUnitUserData(hero)
+    
+        if setCount == SET_COUNT_ALCHEMY then
+            set count = udg_Set_Alchemy_Number[unitId]
+        elseif setCount == SET_COUNT_BLOOD then
+            set count = udg_Set_Blood_Number[unitId]
+        elseif setCount == SET_COUNT_CRYSTAL then
+            set count = udg_Set_Cristall_Number[unitId]
+        elseif setCount == SET_COUNT_MECH then
+            set count = udg_Set_Mech_Number[unitId]
+        elseif setCount == SET_COUNT_MOON then
+            set count = udg_Set_Moon_Number[unitId]
+        elseif setCount == SET_COUNT_NATURE then
+            set count = udg_Set_Nature_Number[unitId]
+        elseif setCount == SET_COUNT_RING then
+            set count = udg_Set_Ring_Number[unitId]
+        elseif setCount == SET_COUNT_RUNE then
+            set count = udg_Set_Rune_Number[unitId]
+        elseif setCount == SET_COUNT_WEAPON then
+            set count = udg_Set_Weapon_Number[unitId]
+        endif
+        
+        set hero = null
+        return count
+    endfunction
+
+function SetCount_AddPiece takes unit hero, integer setCount, integer numberToAdd returns integer
+        local integer count = 0
+        local integer unitId = GetUnitUserData(hero)
+    
+        if setCount == SET_COUNT_ALCHEMY then
+            set udg_Set_Alchemy_Number[unitId] = udg_Set_Alchemy_Number[unitId] + numberToAdd
+        elseif setCount == SET_COUNT_BLOOD then
+            set udg_Set_Blood_Number[unitId] = udg_Set_Blood_Number[unitId] + numberToAdd
+        elseif setCount == SET_COUNT_CRYSTAL then
+            set udg_Set_Cristall_Number[unitId] = udg_Set_Cristall_Number[unitId] + numberToAdd
+        elseif setCount == SET_COUNT_MECH then
+            set udg_Set_Mech_Number[unitId] = udg_Set_Mech_Number[unitId] + numberToAdd
+        elseif setCount == SET_COUNT_MOON then
+            set udg_Set_Moon_Number[unitId] = udg_Set_Moon_Number[unitId] + numberToAdd
+        elseif setCount == SET_COUNT_NATURE then
+            set udg_Set_Nature_Number[unitId] = udg_Set_Nature_Number[unitId] + numberToAdd
+        elseif setCount == SET_COUNT_RING then
+            set udg_Set_Ring_Number[unitId] = udg_Set_Ring_Number[unitId] + numberToAdd
+        elseif setCount == SET_COUNT_RUNE then
+            set udg_Set_Rune_Number[unitId] = udg_Set_Rune_Number[unitId] + numberToAdd
+        elseif setCount == SET_COUNT_WEAPON then
+            set udg_Set_Weapon_Number[unitId] = udg_Set_Weapon_Number[unitId] + numberToAdd
+        endif
+        
+        set hero = null
+        return count
+    endfunction
+
+function SetCount_GetSetName takes integer setCount returns string
+        if setCount == SET_COUNT_ALCHEMY then
+            return SET_NAME_ALCHEMY
+        elseif setCount == SET_COUNT_BLOOD then
+            return SET_NAME_BLOOD
+        elseif setCount == SET_COUNT_CRYSTAL then
+            return SET_NAME_CRYSTAL
+        elseif setCount == SET_COUNT_MECH then
+            return SET_NAME_MECH
+        elseif setCount == SET_COUNT_MOON then
+            return SET_NAME_MOON
+        elseif setCount == SET_COUNT_NATURE then
+            return SET_NAME_NATURE
+        elseif setCount == SET_COUNT_RING then
+            return SET_NAME_RING
+        elseif setCount == SET_COUNT_RUNE then
+            return SET_NAME_RUNE
+        elseif setCount == SET_COUNT_WEAPON then
+            return SET_NAME_WEAPON
+        endif
+        return ""
+    endfunction
+
+function SetCount_SetPiece takes unit hero, integer setCount, integer numberToSet returns nothing
+        local integer unitId = GetUnitUserData(hero)
+    
+        if setCount == SET_ALCHEMY then
+            set udg_Set_Alchemy_Number[unitId] = numberToSet
+        elseif setCount == SET_BLOOD then
+            set udg_Set_Blood_Number[unitId] = numberToSet
+        elseif setCount == SET_CRYSTAL then
+            set udg_Set_Cristall_Number[unitId] = numberToSet
+        elseif setCount == SET_MECH then
+            call AddMech(hero, numberToSet, unitId)
+        elseif setCount == SET_MOON then
+            set udg_Set_Moon_Number[unitId] = numberToSet
+        elseif setCount == SET_NATURE then
+            set udg_Set_Nature_Number[unitId] = numberToSet
+        elseif setCount == SET_RING then
+            set udg_Set_Ring_Number[unitId] = numberToSet
+        elseif setCount == SET_RUNE then
+            set udg_Set_Rune_Number[unitId] = numberToSet
+        elseif setCount == SET_WEAPON then
+            set udg_Set_Weapon_Number[unitId] = numberToSet
+        endif
+        
+        set hero = null
+    endfunction
+
+function GroupAoE takes unit caster, unit dummy, real x, real y, real dmg, real area, string who, string strall, string str returns group
+endfunction
+function framehandle takes nothing returns nothing
+endfunction
+function BlzTriggerRegisterFrameEvent takes trigger whichTrigger, framehandle frame, frameeventtype eventId returns event
+endfunction
+function BlzCreateFrame takes string name, framehandle owner, integer priority, integer createContext returns framehandle
+endfunction
+function BlzCreateSimpleFrame takes string name, framehandle owner, integer createContext returns framehandle
+endfunction
+function BlzDestroyFrame takes framehandle frame returns nothing
+endfunction
+function BlzFrameSetAbsPoint takes framehandle frame, framepointtype point, real x, real y returns nothing
+endfunction
+function BlzFrameClearAllPoints takes framehandle frame returns nothing
+endfunction
+function BlzFrameSetAllPoints takes framehandle frame, framehandle relative returns nothing
+endfunction
+function BlzFrameSetVisible takes framehandle frame, boolean visible returns nothing
+endfunction
+function BlzFrameIsVisible takes framehandle frame returns boolean
+endfunction
+function BlzGetFrameByName takes string name, integer createContext returns framehandle
+endfunction
+function BlzFrameGetName takes framehandle frame returns string
+endfunction
+function BlzFrameClick takes framehandle frame returns nothing
+endfunction
+function BlzFrameSetText takes framehandle frame, string text returns nothing
+endfunction
+function BlzFrameGetText takes framehandle frame returns string
+endfunction
+function BlzFrameAddText takes framehandle frame, string text returns nothing
+endfunction
+function BlzFrameSetTextSizeLimit takes framehandle frame, integer size returns nothing
+endfunction
+function BlzFrameGetTextSizeLimit takes framehandle frame returns integer
+endfunction
+function BlzFrameSetTextColor takes framehandle frame, integer color returns nothing
+endfunction
+function BlzFrameSetFocus  takes framehandle frame, boolean flag returns nothing
+endfunction
+function BlzFrameSetModel takes framehandle frame, string modelFile, integer cameraIndex returns nothing
+endfunction
+function BlzFrameSetEnable takes framehandle frame, boolean enabled returns nothing
+endfunction
+function BlzFrameGetEnable takes framehandle frame returns boolean
+endfunction
+function BlzFrameSetAlpha takes framehandle frame, integer alpha returns nothing
+endfunction
+function BlzFrameGetAlpha takes framehandle frame returns integer
+endfunction
+function BlzFrameSetSpriteAnimate takes framehandle frame, integer primaryProp, integer flags returns nothing
+endfunction
+function BlzFrameSetTexture takes framehandle frame, string texFile, integer flag, boolean blend returns nothing
+endfunction
+function BlzFrameSetScale takes framehandle frame, real scale returns nothing
+endfunction
+function BlzFrameSetTooltip takes framehandle frame, framehandle tooltip returns nothing
+endfunction
+function BlzFrameCageMouse takes framehandle frame, boolean enable returns nothing
+endfunction
+function BlzFrameSetValue takes framehandle frame, real value returns nothing
+endfunction
+function BlzFrameGetValue takes framehandle frame returns real
+endfunction
+function BlzFrameSetMinMaxValue takes framehandle frame, real minValue, real maxValue returns nothing
+endfunction
+function BlzFrameSetStepSize takes framehandle frame, real stepSize returns nothing
+endfunction
+function BlzFrameSetSize takes framehandle frame, real width, real height returns nothing
+endfunction
+function BlzFrameSetVertexColor takes framehandle frame, integer color returns nothing
+endfunction
+function BlzFrameSetLevel takes framehandle frame, integer level returns nothing
+endfunction
+function BlzFrameSetParent takes framehandle frame, framehandle parent returns nothing
+endfunction
+function BlzFrameGetParent takes framehandle frame returns framehandle
+endfunction
+function BlzFrameGetHeight takes framehandle frame returns real
+endfunction
+function BlzFrameGetWidth takes framehandle frame returns real
+endfunction
+function BlzFrameSetFont takes framehandle frame, string fileName, real height, integer flags returns nothing
+endfunction
+function BlzFrameSetTextAlignment takes framehandle frame, textaligntype vert, textaligntype horz returns nothing
+endfunction
+function BlzFrameGetChildrenCount takes framehandle frame returns integer
+endfunction
+function BlzFrameGetChild takes framehandle frame, integer index returns framehandle
+endfunction
+function BlzCreateFrameByType takes string typeName, string name, framehandle owner, string inherits, integer createContext returns framehandle
+endfunction
+function BlzGetUnitSkin                                 takes unit whichUnit returns integer
+endfunction
+function BlzGetItemSkin                                 takes item whichItem returns integer
+endfunction
+function BlzSetUnitSkin                                 takes unit whichUnit, integer skinId returns nothing
+endfunction
+function BlzSetItemSkin                                 takes item whichItem, integer skinId returns nothing
+endfunction
+function BlzCreateItemWithSkin                       takes integer itemid, real x, real y, integer skinId returns item
+endfunction
+function BlzCreateUnitWithSkin                       takes player id, integer unitid, real x, real y, real face, integer skinId returns unit
+endfunction
+function BlzCreateDeableWithSkin               takes integer objectid, real x, real y, real face, real scale, integer variation, integer skinId returns deable
+endfunction
+function BlzCreateDeableZWithSkin              takes integer objectid, real x, real y, real z, real face, real scale, integer variation, integer skinId returns deable
+endfunction
+function BlzCreateDeadDeableWithSkin           takes integer objectid, real x, real y, real face, real scale, integer variation, integer skinId returns deable
+endfunction
+function BlzCreateDeadDeableZWithSkin          takes integer objectid, real x, real y, real z, real face, real scale, integer variation, integer skinId returns deable
+endfunction
+function BlzGetPlayerTownHallCount                   takes player whichPlayer returns integer
+endfunction
+function BlzGroupAddGroupFast                 takes group whichGroup, group addGroup returns integer
+endfunction
+function BlzGroupRemoveGroupFast              takes group whichGroup, group removeGroup returns integer
+endfunction
+function BlzGroupGetSize                      takes group whichGroup returns integer
+endfunction
+function BlzGroupUnitAt                       takes group whichGroup, integer index returns unit
+endfunction
+function BlzForceHasPlayer        takes force whichForce, player whichPlayer returns boolean
+endfunction
+function BlzCameraSetupSetLabel               takes camerasetup whichSetup, string label returns nothing
+endfunction
+function BlzCameraSetupGetLabel               takes camerasetup whichSetup returns string
+endfunction
+function BlzHideCinematicPanels                     takes boolean enable returns nothing
+endfunction
+function BlzSetAbilityExtendedTooltip                takes integer abilCode, string extendedTooltip, integer level returns nothing
+endfunction
+function BlzSetAbilityResearchTooltip                takes integer abilCode, string researchTooltip, integer level returns nothing
+endfunction
+function BlzGetAbilityResearchTooltip                takes integer abilCode, integer level returns string
+endfunction
+function BlzSetItemDescription                       takes item whichItem, string description returns nothing
+endfunction
+function BlzGetItemDescription                       takes item whichItem returns string
+endfunction
+function BlzSetSpecialEffectTimeScale                takes effect whichEffect, real timeScale returns nothing
+endfunction
+function BlzSpecialEffectClearSubAnimations          takes effect whichEffect returns nothing
+endfunction
+function BlzSpecialEffectRemoveSubAnimation          takes effect whichEffect, subanimtype whichSubAnim returns nothing
+endfunction
+function BlzSpecialEffectAddSubAnimation             takes effect whichEffect, subanimtype whichSubAnim returns nothing
+endfunction
+function BlzPlaySpecialEffect                        takes effect whichEffect, animtype whichAnim returns nothing
+endfunction
+function BlzPlaySpecialEffectWithTimeScale           takes effect whichEffect, animtype whichAnim, real timeScale returns nothing
+endfunction
+function BlzGetAnimName                              takes animtype whichAnim returns string
+endfunction
+function BlzUnitDisableAbility                       takes unit whichUnit, integer abilId, boolean flag, boolean hideUI returns nothing
+endfunction
+function BlzIsUnitInvulnerable                       takes unit whichUnit returns boolean
+endfunction
+function BlzGetAbilityManaCost                       takes integer abilId, integer level returns integer
+endfunction
+function BlzGetAbilityCooldown                       takes integer abilId, integer level returns real
+endfunction
+function BlzStartUnitAbilityCooldown                 takes unit whichUnit, integer abilCode, real cooldown returns nothing
+endfunction
+function BlzSetUnitAbilityManaCost                   takes unit whichUnit, integer abilId, integer level, integer manaCost returns nothing
+endfunction
+function BlzGetEventDamageTarget 	                   takes nothing returns unit
+endfunction
+function BlzGetEventAttackType  	                   takes nothing returns attacktype
+endfunction
+function BlzGetEventDamageType                       takes nothing returns damagetype
+endfunction
+function BlzGetEventWeaponType  	                   takes nothing returns weapontype
+endfunction
+function BlzSetEventAttackType                       takes attacktype attackType returns boolean
+endfunction
+function BlzSetEventDamageType                       takes damagetype damageType returns boolean
+endfunction
+function BlzSetEventWeaponType                       takes weapontype weaponType returns boolean
+endfunction
+function BlzGetEventIsAttack                         takes nothing returns boolean
+endfunction
+function BlzGetUnitZ                                 takes unit whichUnit returns real
+endfunction
+function BlzEnableSelections                         takes boolean enableSelection, boolean enableSelectionCircle returns nothing
+endfunction
+function BlzIsSelectionEnabled                       takes nothing returns boolean
+endfunction
+function BlzIsSelectionCircleEnabled                 takes nothing returns boolean
+endfunction
+function BlzCameraSetupApplyForceDurationSmooth      takes camerasetup whichSetup, boolean doPan, real forcedDuration, real easeInDuration, real easeOutDuration, real smoothFactor returns nothing
+endfunction
+function BlzEnableTargetIndicator                    takes boolean enable returns nothing
+endfunction
+function BlzIsTargetIndicatorEnabled                 takes nothing returns boolean
+endfunction
+function BlzShowTerrain                              takes boolean show returns nothing
+endfunction
+function BlzShowSkyBox                               takes boolean show returns nothing
+endfunction
+function BlzStartRecording                           takes integer fps returns nothing
+endfunction
+function BlzEndRecording                             takes nothing returns nothing
+endfunction
+function BlzShowUnitTeamGlow                         takes unit whichUnit, boolean show returns nothing
+endfunction
+function BlzGetAbilityExtendedTooltip                takes integer abilCode, integer level returns string
+endfunction
+function skin takes nothing returns nothing
+endfunction

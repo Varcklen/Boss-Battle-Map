@@ -96,7 +96,8 @@ library PolyLib initializer init requires TimebonusLib, UnitstLib, BuffsLibLib
     endfunction
     
     private function init takes nothing returns nothing
-        call CreateEventTrigger( "Event_DeleteBuff_Real", function DeleteBuff, function DeleteBuff_Conditions )
+        //Poly can sometimes not delete and stay permanently, if its active:
+        //call CreateEventTrigger( "Event_DeleteBuff_Real", function DeleteBuff, function DeleteBuff_Conditions )
         call CreateEventTrigger( "Event_DeleteBuff_Real", function DeleteSilence, null )
     endfunction
 

@@ -127,7 +127,7 @@ library HeroesTableDatabase initializer init
         set HeroFrame[0][4] = HeroFramehandle.create('N05A', "SkifterOk", 1, "ReplaceableTextures\\CommandButtons\\BTNScout.blp" )
         set HeroFrame[0][5] = HeroFramehandle.create('N02H', "ZiHeLL", 1, "ReplaceableTextures\\CommandButtons\\BTNMedivh.blp" )
         set HeroFrame[0][6] = HeroFramehandle.create('O00C', "Varcklen", 2, "ReplaceableTextures\\CommandButtons\\BTNBlueDragonSpawn.blp" )
-        set HeroFrame[0][7] = HeroFramehandle.create('O00S', "Sheepy", 2, "war3mapImported\\BTNHolyMage.blp" )
+        set HeroFrame[0][7] = HeroFramehandle.create('N04E', "Sheepy", 2, "war3mapImported\\BTNHolyMage.blp" )
         
         set HeroFrame[0][0].story = "A seafarer who escaped from Atlantis. He was hunted by other nagas and they could not cope with him."
         set HeroFrame[0][1].story = "Warrior of the infernal wastelands."
@@ -180,7 +180,7 @@ library HeroesTableDatabase initializer init
         set HeroFrame[2][0] = HeroFramehandle.create('N00N', "Varcklen", 0, "ReplaceableTextures\\CommandButtons\\BTNHeroDeathKnight.blp" )
         set HeroFrame[2][1] = HeroFramehandle.create('N02R', "Varcklen", 0, "ReplaceableTextures\\CommandButtons\\BTNBeastMaster.blp" )
         set HeroFrame[2][2] = HeroFramehandle.create('N04B', "Rena", 0, "ReplaceableTextures\\CommandButtons\\BTNZergling.blp" )
-        set HeroFrame[2][3] = HeroFramehandle.create('N04C', "Varcklen", 1, "ReplaceableTextures\\CommandButtons\\BTNHeroDreadLord.blp" )  
+        set HeroFrame[2][3] = HeroFramehandle.create('N028', "Varcklen", 1, "ReplaceableTextures\\CommandButtons\\BTNHeroDreadLord.blp" )  
         set HeroFrame[2][4] = HeroFramehandle.create('N014', "ZiHeLL", 1, "ReplaceableTextures\\CommandButtons\\BTNGarithos.blp" )
         set HeroFrame[2][5] = HeroFramehandle.create('N00X', "Varcklen", 1, "ReplaceableTextures\\CommandButtons\\BTNOneHeadedOgre.blp" )
         set HeroFrame[2][6] = HeroFramehandle.create('N04I', "ZiHeLL", 2, "ReplaceableTextures\\CommandButtons\\BTNHeroDemonHunter.blp" )

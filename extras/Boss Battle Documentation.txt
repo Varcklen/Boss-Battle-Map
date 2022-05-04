@@ -1,0 +1,48 @@
+function healst takes unit caster, unit target, real r returns nothing //Вынуждает target получить здоровье от caster размером в r. (Если target=null, то целью становится caster)
+function manast takes unit caster, unit target, real r returns nothing //Вынуждает target получить ману от caster размером в r. (Если target=null, то целью становится caster)
+function shield takes unit caster, unit target, real sh, real t returns nothing // Вынуждает target получить щит от caster, размером sh на t секунд.
+function moneyst takes unit caster, integer money returns nothing //Вынуждает caster получить золото, размером в money.
+function spdst takes unit u, real spd returns nothing //Вынуждает u повысить spell power главного владельца, размером в spd
+function SpellPotionUnit takes unit hero, real spd returns nothing //Вынуждает hero повысить potion spell power главного владельца, размером в spd
+function SpellUniqueUnit takes unit hero, real spd returns nothing //Вынуждает hero повысить unique spell power главного владельца, размером в spd
+function textst takes string inf, unit caster, real speed, real angle, real size, real life returns nothing //Создает плавающий текст над caster с описанием inf со скоростью speed, под углом angle (0 - вправо, 90 - вверх, 180 - влево, 270 - вниз), размером size, продолжительностью в life.
+function LuckChance takes unit u, integer ch returns boolean //Делает бросок кубика от 1 до 100 для юнита u с учетом его параметра удачи. Если полученное значение больше или равно ch, возвращает true.
+function luckylogic takes unit u, integer ch, integer min, integer max returns boolean //Аналогично LuckChance, но диапазон кубика нужно задать самому через min и max.
+function unitst takes unit target, unit caster, string str returns boolean //Масштабная проверка target для caster. Если target жив, не является dummy и не нейтрально-пассивный, Возвращает true в трёх случаях: str == TARGET_ENEMY и caster с target (уязвимый) - враги, str == TARGET_ALLY и caster с target - союзники, str == TARGET_ALL и target уязвим.
+function Math_GetRandomX takes real x, real scatter returns real // Возвращает реальное число в диапазоне от x-scatter до x+scatter
+function Math_GetRandomY takes real y, real scatter returns real // Возвращает реальное число в диапазоне от y-scatter до y+scatter
+function Math_GetUnitRandomX takes unit whichUnit, real scatter returns real //Аналогично Math_GetRandomX, но использует x-позицию whichUnit.
+function Math_GetUnitRandomY takes unit whichUnit, real scatter returns real //Аналогично Math_GetRandomY, но использует y-позицию whichUnit.
+function HeroLessHP takes unit caster returns unit // Возвращает героя с наименьшим хп. caster нужен для проверок в дуэли и союзов.
+function HeroLessMP takes unit caster returns unit //Аналогично HeroLessHP, но для маны
+function IsUnitHealthIsFull takes unit whichUnit returns boolean // Возвращает true, если здоровье полное.
+function AddHealthPercent takes unit whichUnit, integer percent returns real //Добавляет whichUnit процент здоровья размером в percent и возвращает итоговый результат
+function AddManaPercent takes unit whichUnit, integer percent returns real //Добавляет whichUnit процент маны размером в percent и возвращает итоговый результат
+function combat takes unit u, boolean b, integer sp returns boolean //Возвращает true, если u находится в бою. Если b=true, по будет выведен плавающий текст "Doesn't work out of combat"
+function CreateEventTrigger takes string eventReal, code action, code condition returns trigger // Позволяет создать готовый триггер для кастомных событий, где eventReal - переменная для начала события, action - триггер действие, condition - необязательный триггер условие.
+function GroupAoE takes unit caster, unit dummy, real x, real y, real dmg, real area, string who, string strall, string str returns group //В точке (x,y) размером area по юнитам являющихся who (TARGET_ALLY,TARGET_ENEMY,TARGET_ALL) для caster наносится урон dmg, сопровождающийся спецэффектом str на каждом задетом юните и strall в (x,y). Возвращает группу всех задетых юнитов.
+function PlaySpecialEffect takes string myEffect, unit myUnit returns nothing // Использует спецэффект myEffect на юните myUnit и удаляет спецээфект после окончания действия.
+function IsUnitAlive takes unit myUnit returns boolean // Если юнит жив, возвращает true
+function function IsUnitDead takes unit myUnit returns boolean // Если юнит метрв, возвращает true
+function UnitTakeDamage takes unit dealer, unit target, real damage, damagetype damageType returns nothing //dealer наносит по target урон, равный damage, типа damageType (DAMAGE_TYPE_MAGIC,ATTACK_TYPE_NORMAL).
+function berserk takes unit u, integer i returns nothing //юнит u входит в бешенство, если внутренний счётчик больше 0 и выходит, если 0 или ниже. Изменить счётчик можно с помощью i.
+function randomtarget takes unit caster, real r, string str, string str1, string str2, string str3, string str4 returns unit // Выбирает случайную цель вокруг caster в радиусе area среди str (TARGET_ALLY,TARGET_ENEMY,TARGET_ALL), обладающие дополнительными параметрами str1-str4 (RANDOM_TARGET_NOT_STUNNED, RANDOM_TARGET_NOT_FULL_HEALTH и так далее)
+function IsHeroHasItem takes unit hero, integer itemId returns boolean //Возвращает true, если у юнита есть такой предмет
+function InvokeTimerWithUnit takes unit myUnit, string stringHash, real time, boolean isPeriodic, code func returns integer //Для юнита запускает таймер, сохранив его в хеш-таблице в ключе (айди таймера, stringHash), который запустит func через time. Если isPeriodic=true, таймер будет повторятся.
+function InvokeTimerWithItem takes item myItem, string stringHash, real time, boolean isPeriodic, code func returns integer // Аналогично InvokeTimerWithUnit, но для предмета
+function InvokeTimerWithEffect takes effect myEffect, string stringHash, real time, boolean isPeriodic, code func returns integer // Аналогично InvokeTimerWithUnit, но для спецэффекта. 
+function UnitStun takes unit caster, unit target, real r returns nothing //Вынуждает caster оглушить target на r секунд.
+function UnitPoly takes unit caster, unit target, integer skin, real r returns nothing // Вынуждает caster превратить target в skin (POLYMORPH_SHEEP, POLYMORPH_RAT, POLYMORPH_FROG) на r секунд.
+function moonst takes integer i returns nothing //Запускает/Отключает ночь, если внутренний счётчик больше 0 или если 0 или ниже. Изменить счётчик можно с помощью i.
+function rainst takes integer i returns nothing //Запускает/Отключает дождь, если внутренний счётчик больше 0 или если 0 или ниже. Изменить счётчик можно с помощью i.
+function heroswap takes nothing returns nothing //Меняет души героев случаным образом.
+function statst takes unit u, integer st, integer ag, integer in, integer data, boolean isPermanent returns nothing //Пошвыает у юнита u силу, ловкость и интеллекта на st, ag, in.
+function NewUniques takes unit caster, integer uniq returns integer // Дает caster новый юник в виде uniq.
+function NewSpecial takes unit caster, integer spec returns nothing // Дает caster новый спешиал в виде spec.
+function ResInBattle takes unit caster, unit u, integer perc returns nothing // Вынуждает caster восресить u с perc процентом здоровья.
+function bufst takes unit caster, unit target, integer sp, integer bf, string str, real t returns nothing // Вынуждает caster дать target бафф sp с бафом-описанием bf на t секунд. Используй это для простых бафов.
+function bufallst takes unit caster, unit target, integer sp1, integer sp2, integer sp3, integer sp4, integer sp5, integer bf, string str, real t returns nothing // аналогично bufst, но для сложных бафов.
+function stazisst takes unit u, item it returns nothing // Удаляет у юнита u предмет под действием эффекта "Corrupt".
+function effst takes unit caster, unit target, string str, integer lvl, real t returns nothing // Нужно давать всем эффектам, накладывабщие баф
+function debuffst takes unit caster, unit target, string str, integer lvl, real t returns nothing // Нужно давать всем эффектам, накладывабщие дебаф
+function SetUnitSkin takes unit whichUnit, integer skinId returns nothing // меняет скин whichUnit на skinId.

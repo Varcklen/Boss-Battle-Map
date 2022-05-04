@@ -208,6 +208,7 @@ library Repick requires SpellPower, NullingAbility
         call FlushChildHashtable( udg_hash, GetHandleId(udg_hero[i]) )
         call RemoveUnit( udg_hero[i] )
         set udg_hero[i] = null
+        set ChoosedHero[i] = null
 
         if GetLocalPlayer() == p then
             call BlzFrameSetVisible( AspectVision, false )

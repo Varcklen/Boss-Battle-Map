@@ -46,9 +46,6 @@ function Trig_Start_Actions takes nothing returns nothing
     if not(AnyHasLvL(5)) then
         call ShowUnit(gg_unit_h027_0035, false)
     endif
-    if not(AnyHasLvL(5)) then
-        set udg_logic[89] = true
-    endif
     if AnyHasLvL(2) then
         set udg_LogicModes = true
     endif

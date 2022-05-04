@@ -91,7 +91,7 @@ function Trig_SpawnBoss_Actions takes nothing returns nothing
 	if GetOwningPlayer(u) == Player(10) and udg_BossHP != 1 then
         call BlzSetUnitBaseDamage( u, R2I(GetUnitDamage(u) * udg_BossAT - GetUnitAvgDiceDamage(u)), 0 )
         call BlzSetUnitMaxHP( u, R2I(BlzGetUnitMaxHP(u) * udg_BossHP)+1 )
-        call SetUnitState( u, UNIT_STATE_LIFE, GetUnitState( u, UNIT_STATE_MAX_LIFE ) )
+        //call SetUnitState( u, UNIT_STATE_LIFE, GetUnitState( u, UNIT_STATE_MAX_LIFE ) )
 	endif
     
     if not( RectContainsUnit( udg_Boss_Rect, u) ) then

@@ -130,6 +130,7 @@ function Trig_ItemL_Actions takes nothing returns nothing
             call UnitRemoveAbility(u, 'A0CB')
         elseif GetItemTypeId(GetManipulatedItem()) == 'I078' then
             call UnitRemoveAbility(u, 'A0L9')
+            call UnitRemoveAbility(u, 'B04I')
         elseif GetItemTypeId(GetManipulatedItem()) == 'I0BL' then
             call UnitRemoveAbility(u, 'A0M9' )
         endif

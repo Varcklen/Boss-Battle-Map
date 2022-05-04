@@ -1,0 +1,168 @@
+Предисловие: С событиями была обнаружена неисправимая проблема: 
+Если вызывать событие №2 через событие №1, то ещё не сработавшие действия события №1 уже не сработают. Полу-мерное решение: Таймер на 0.01 секунду решает проблему.
+
+- Срабатывает, когда заканчивается бой, в котором игроки проиграли (Срабатывает для каждого героя).
+real Event_EndOfLostBattle_Real - Событие 
+unit Event_EndOfLostBattle_Hero - Герой
+
+- Срабатывает, когда начинается бой (Срабатывает для каждого героя).
+real udg_FightStart_Real - Событие 
+unit udg_FightStart_Unit - Герой
+
+- Срабатывает, когда начинается бой.
+real udg_FightStartGlobal_Real - Событие 
+
+- Срабатывает, когда заканчивается бой (Срабатывает для каждого героя).
+real udg_FightEnd_Real - Событие 
+unit udg_FightEnd_Unit - Герой
+
+- Срабатывает, когда заканчивается бой.
+real udg_FightEndGlobal_Real - Событие 
+
+- Срабатывает, когда юнит собирается получить золото (Используется для изменения получения золота)
+real Event_OnMoneyChange_Real - Событие
+integer Event_OnMoneyChange_StaticMoney - Статическое изначальное золото
+real Event_OnMoneyChange_Money - Изменяемое золото (можно менять)
+unit Event_OnMoneyChange_Caster - Юнит
+
+- Срабатывает после Event_OnMoneyChange_Real (для случаев, когда нужно что-то сделать с конечным  значением золота)
+real Event_AfterMoneyAdded_Real - Событие
+integer Event_AfterMoneyAdded_Money - Золото
+unit Event_AfterMoneyAdded_Caster - Юнит
+
+- Срабатывает перед тем, как создать артефакт награду (Срабатывает для каждого артефакта-предмета)
+real Event_ItemRewardCreate_Real - Событие
+unit Event_ItemRewardCreate_Hero - Герой
+integer Event_ItemRewardCreate_Position - Позиция предмета-награды (от 1 до 12)
+integer Event_ItemRewardCreate_ItemReward - Предмет-Награда
+
+- Срабатывает после создания копии юнита.
+real CreateUnitCopy_Real - Событие
+unit CreateUnitCopy_Original - Оригинал
+unit CreateUnitCopy_Copy - Копия
+
+- Срабатывает, когда удаляются все бафы/дебафы с цели.
+real Event_DeleteBuff_Real - Событие
+unit Event_DeleteBuff_Unit - Юнит
+
+- Срабатывает перед тем, как удалить героя.
+real Event_HeroRepick_Real - Событие
+unit Event_HeroRepick_Hero - Герой.
+
+- Срабатывает, когда щит юнита уничтожается (удаляется баф/заканчивается время действия/щит опущен до 0)
+real Event_ShieldDestroyed_Real - Событие
+unit Event_ShieldDestroyed_Hero - Юнит
+
+- Срабатывает, когда юнит собирается получить исцеление (Используется для изменения получения здоровья)
+real Event_OnHealChange_Real - Событие
+real Event_OnHealChange_StaticHeal - Изначальное статическое исцеление
+real Event_OnHealChange_Heal - Изменяемое исцеление (можно менять)
+unit Event_OnHealChange_Caster - Кастер
+unit Event_OnHealChange_Target - Цель
+
+- Срабатывает после Event_OnHealChange_Real (для случаев, когда нужно что-то сделать с конечным  значением исцеления)
+real Event_AfterHeal_Real - Событие
+real Event_AfterHeal_Heal - Исцеление
+unit Event_AfterHeal_Caster - Кастер
+unit Event_AfterHeal_Target - Цель
+
+- Срабатывает, когда мир меняется на ночь или день  (Срабатывает для каждого героя).
+real Event_MoonChange_Real - Событие
+boolean Event_MoonChange_isNight - true, если стала ночь
+unit Event_MoonChange_Unit - Герой.
+
+- Срабатывает, когда нажата кнопка "Дуэли".
+real Event_PvPButtonClicked_Real - Событие
+player Event_PvPButtonClicked_Player - Нажавший игрок.
+
+- Срабатывает, когда создается герой.
+real Event_HeroChoose_Real - Событие
+unit Event_HeroChoose_Hero - Герой
+
+- Срабатывает, когда цель собирается получить урон (Используется для изменения получения урона)
+real Event_OnDamageChange_Real - Событие
+real Event_OnDamageChange_StaticDamage - Изначальный статический урон
+real udg_DamageEventAmount - Изменяемый урон
+unit udg_DamageEventTarget - Цель
+unit udg_DamageEventSource - Юнит, наносящий урон
+
+- Срабатывает после Event_OnDamageChange_Real (для случаев, когда нужно что-то сделать с конечным  значением урона)
+real udg_AfterDamageEvent - Событие
+real udg_DamageEventAmount - Урон
+unit udg_DamageEventTarget - Цель
+unit udg_DamageEventSource - Юнит, наносящий урон
+
+- Срабатывает, когда призывается миньон героя.
+real udg_Event_PlayerMinionSummon_Real - Событие
+unit udg_Event_PlayerMinionSummon_Hero - Герой-Владелец
+unit udg_Event_PlayerMinionSummon_Unit - Миньон
+
+- Срабатывает, когда погибает герой.
+real Event_Hero_Kill_Real
+unit Event_Hero_Kill_Unit
+
+- Срабатывает для инициализации модификаторов (после победы первого босса).
+real Event_Mode_Awake_Real - Событие
+
+- Срабатывает во время обмена между героями (срабатывает у обоих).
+real Event_ItemExchange_Real - Событие
+item Event_ItemExchange_Item - Предмет, который ты получаешь
+item Event_ItemExchange_OldItem - Предмет, который ты отдаешь
+unit Event_ItemExchange_Hero - Твой герой
+unit Event_ItemExchange_Friend - Герой союзника
+
+- Срабатывает перед forge.
+real Event_AfterForge_Real - Событие
+item Event_AfterForge_NewItem - Предмет, что ты получаешь
+integer Event_AfterForge_ForgedItem - равкод forged предмета
+item Event_AfterForge_ForgedItem_Item - forged предмет
+unit Event_AfterForge_Hero - Герой
+
+- Срабатывает после forge.
+real Event_BeforeForge_Real - Событие
+integer Event_BeforeForge_NewItem - Предмет, что ты получаешь
+item Event_BeforeForge_ForgedItem - forged предмет
+unit Event_BeforeForge_Hero - Герой
+
+- Срабатывает, когда юнит меняет количество механизмов.
+real Event_MechAdded_Real - Событие
+integer Event_MechAdded_AddedMechs - сколько механизмов было добавлено
+integer Event_MechAdded_NewCount - новое значение
+integer Event_MechAdded_OldCount - старое значение
+unit Event_MechAdded_Hero - Герой
+  
+- Срабатывает, когда руна добавляется  
+real udg_Event_RuneSetAdd_Real - Событие
+unit udg_Event_RuneSetAdd_Hero - Герой
+item udg_Event_RuneSetAdd_Item - Предмет
+
+- Срабатывает, когда руна удаляется
+real udg_Event_RuneSetRemove_Real - Событие
+unit udg_Event_RuneSetRemove_Hero - Герой
+item udg_Event_RuneSetRemove_Item - Предмет
+
+- Срабатывает перед тем, как запустить волны от набора "Луна".
+real Event_UntilMoonSetCast_Real - Событие
+unit Event_UntilMoonSetCast_Hero - Юнит
+real Event_UntilMoonSetCast_Damage - Урон (можно менять)
+real Event_UntilMoonSetCast_Static_Damage - Изначальный статический урон
+
+- Срабатывает, когда юнит получает оружие (не Ultimate Weapon)
+real Event_UnitAddWeapon_Real - Событие
+unit Event_UnitAddWeapon_Hero - Юнит
+item Event_UnitAddWeapon_Item - Предмет
+    
+- Срабатывает, когда юнит теряет оружие (не Ultimate Weapon)
+real Event_UnitLoseWeapon_Real - Событие
+unit Event_UnitLoseWeapon_Hero - Юнит
+item Event_UnitLoseWeapon_Item - Предмет
+
+- Срабатывает, когда юнит получает Ultimate Weapon
+real Event_UnitAddUltimateWeapon_Real - Событие
+unit Event_UnitAddUltimateWeapon_Hero - Юнит
+item Event_UnitAddUltimateWeapon_Item - Предмет
+
+- Срабатывает, когда юнит теряет Ultimate Weapon
+real Event_UnitLoseUltimateWeapon_Real - Событие
+unit Event_UnitLoseUltimateWeapon_Hero - Юнит
+item Event_UnitLoseUltimateWeapon_Item - Предмет

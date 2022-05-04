@@ -78,17 +78,28 @@ library AspectFrames initializer init requires Tooltip, Aspects
         set hero = null
     endfunction 
     
-    private function DisableHeroAspects takes player owner, integer heroIndex returns nothing
+    private function DisableHeroAspectsTimer takes nothing returns nothing
+        local integer id = GetHandleId( GetExpiredTimer() )
         local integer i = 0
-        local integer playerIndex = GetPlayerId(owner) + 1
+        local unit hero = LoadUnitHandle( udg_hash, id, StringHash( "acpc" ) )
+        local integer heroIndex = LoadInteger( udg_hash, id, StringHash( "acpc" ) )
         
         set i = 1
         loop
             exitwhen i > ASPECT_LIMIT
-            call RemoveAspect(udg_hero[playerIndex], heroIndex, i)
+            call RemoveAspect(hero, heroIndex, i)
             set i = i + 1
         endloop
         
+        set hero = null
+    endfunction
+    
+    private function DisableHeroAspects takes player owner, integer heroIndex returns nothing
+        local integer id
+        
+        set id = InvokeTimerWithUnit(udg_hero[GetPlayerId(owner) + 1], "acpc", 0.01, false, function DisableHeroAspectsTimer )
+        call SaveInteger( udg_hash, id, StringHash( "acpc" ), heroIndex )
+
         set owner = null
     endfunction 
     

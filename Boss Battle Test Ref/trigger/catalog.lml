@@ -1585,15 +1585,13 @@
             3-WagonE: WagonE
             4-WagonR: WagonR
         8-Mephistar: Mephistar
-            1-AllSetLib: AllSetLib
-                Disab
-            2-MephistarQ: MephistarQ
-            3-MephistarW: MephistarW
-            4-MephistarEInit: MephistarEInit
+            1-MephistarQ: MephistarQ
+            2-MephistarW: MephistarW
+            3-MephistarEInit: MephistarEInit
                 Run
-            5-MephistarE: MephistarE
-            6-MephistarEFrame: MephistarEFrame
-            7-MephistarR: MephistarR
+            4-MephistarE: MephistarE
+            5-MephistarEFrame: MephistarEFrame
+            6-MephistarR: MephistarR
     08-Hybrids: Hybrids
         1-TrollMage: TrollMage
             1-Orb: Orb
