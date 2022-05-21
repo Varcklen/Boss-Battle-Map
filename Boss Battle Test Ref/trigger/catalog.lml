@@ -863,24 +863,24 @@
         090-Maiev: Maiev
         091-Mooncloth: Mooncloth
         '092-Magic Thread': 'Magic Thread'
-        093-Moth: Moth
-        094-Moon: Moon
-        095-Moonglade: Moonglade
-        '096-Mechs for dummies': 'Mechs for dummies'
-        '097-Mechanical Relay': 'Mechanical Relay'
-        '098-Mystery box': 'Mystery box'
-        '099-Magic box': 'Magic box'
-        '100-Moon Well': 'Moon Well'
-        '101-Medallion of Garithos': 'Medallion of Garithos'
-        102----------------------------: ---------------------------
+        093-Moon: Moon
+        094-Moonglade: Moonglade
+        '095-Mechs for dummies': 'Mechs for dummies'
+        '096-Mechanical Relay': 'Mechanical Relay'
+        '097-Mystery box': 'Mystery box'
+        '098-Magic box': 'Magic box'
+        '099-Moon Well': 'Moon Well'
+        '100-Medallion of Garithos': 'Medallion of Garithos'
+        101----------------------------: ---------------------------
             Comment
-        '103-Necro Wool': 'Necro Wool'
-        '104-Necro Wool Death': 'Necro Wool Death'
-        '105-North Lotus': 'North Lotus'
-        106-Norepinephrine: Norepinephrine
-        107-NecroSubUpgrade: NecroSubUpgrade
-        108-NecroSubUse: NecroSubUse
-        '109-Newborn Phoenix': 'Newborn Phoenix'
+        '102-Necro Wool': 'Necro Wool'
+        '103-Necro Wool Death': 'Necro Wool Death'
+        '104-North Lotus': 'North Lotus'
+        105-Norepinephrine: Norepinephrine
+        106-NecroSubUpgrade: NecroSubUpgrade
+        107-NecroSubUse: NecroSubUse
+        '108-Newborn Phoenix': 'Newborn Phoenix'
+        '109-Night Butterfly': 'Night Butterfly'
         110----------------------------: ---------------------------
             Comment
         '111-Ogre Staff': 'Ogre Staff'

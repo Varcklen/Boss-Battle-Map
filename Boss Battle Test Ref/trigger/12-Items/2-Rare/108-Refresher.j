@@ -13,7 +13,7 @@ function Trig_Refresher_Actions takes nothing returns nothing
         call ItemsRefresh(i)
     endif
     
-    if k == 10 then
+    if k >= 10 then
         call stazisst( GetManipulatingUnit(), GetManipulatedItem() )
     elseif k == 9 then
         call BlzSetItemIconPath( GetManipulatedItem(), words( GetManipulatingUnit(), BlzGetItemDescription(GetManipulatedItem()), "|cffffffff", "|r", I2S(10-k) + " charge" ) )

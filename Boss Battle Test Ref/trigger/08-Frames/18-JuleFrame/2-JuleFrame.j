@@ -53,7 +53,7 @@ scope JuleFrame initializer init
         return udg_it
     endfunction
 
-    function JuleItemUse takes nothing returns nothing
+    private function Buy takes nothing returns nothing
         local player p = GetTriggerPlayer()
         local unit u = udg_hero[GetPlayerId(GetTriggerPlayer()) + 1]
         local integer cyclA
@@ -195,7 +195,7 @@ scope JuleFrame initializer init
         set JuleLib_Item_Name[Index] = name
         set JuleLib_Item_Description[Index] = description
         
-        call Tooltip_AddMouseEvent( julebut[raw][column], function EnableTooltip, function JuleItemUse, Index )
+        call Tooltip_AddMouseEvent( julebut[raw][column], function EnableTooltip, function Buy, Index )
         set Index = Index + 1
         
         set juletext[raw][column] = BlzCreateFrameByType("TEXT", "", juleicon[raw][column], "StandartFrameTemplate", 0)

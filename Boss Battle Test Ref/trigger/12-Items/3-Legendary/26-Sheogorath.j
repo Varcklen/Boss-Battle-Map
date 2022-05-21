@@ -52,6 +52,7 @@ function Trig_Sheogorath_Actions takes nothing returns nothing
     endif
     set t = timebonus(caster, t)
     
+    call eyest( caster )
     set id = GetHandleId( caster )
 
     call UnitAddAbility( caster, 'A17E' )

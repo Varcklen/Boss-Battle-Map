@@ -32,6 +32,9 @@ function Trig_Sheep2_Actions takes nothing returns nothing
         set cyclA = cyclA + 1
     endloop
     call SetUnitPosition( udg_DamageEventTarget, GetUnitX( udg_DamageEventTarget ) + GetRandomReal( -200, 200 ), GetUnitY( udg_DamageEventTarget ) + GetRandomReal( -200, 200 ) )
+    if not( RectContainsUnit( udg_Boss_Rect, udg_DamageEventTarget) ) then
+        call SetUnitPositionLoc( udg_DamageEventTarget, GetRectCenter( udg_Boss_Rect ) )
+    endif
 endfunction
 
 //===========================================================================

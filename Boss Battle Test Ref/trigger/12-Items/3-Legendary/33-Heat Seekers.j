@@ -19,7 +19,7 @@ function Heat_SeekersEnd takes nothing returns nothing
             call IssuePointOrder( dummy, "move", GetUnitX( target ), GetUnitY( target ) )
         endif
     elseif GetUnitState( dummy, UNIT_STATE_LIFE) > 0.405 and GetUnitState( target, UNIT_STATE_LIFE) <= 0.405 then
-        set target = randomtarget( dummy, 900, "enemy", "", "", "", "" )
+        set target = randomtarget( dummy, 1200, "enemy", "", "", "", "" )
         if target != null then
             call IssuePointOrderLoc( dummy, "move", GetUnitLoc( target ) )
             call SaveUnitHandle( udg_hash, id, StringHash( "htskr1t" ), target )
@@ -59,7 +59,7 @@ function Heat_SeekersCast takes nothing returns nothing
         set cyclA = 1
         loop
             exitwhen cyclA > mech
-            set t = randomtarget( u, 900, "enemy", "", "", "", "" )
+            set t = randomtarget( u, 1200, "enemy", "", "", "", "" )
             if t != null then
                 call dummyspawn( u, 0, 'A0Z7', 'A0N5', 0 )
                 call SetUnitMoveSpeed( bj_lastCreatedUnit, 400 )

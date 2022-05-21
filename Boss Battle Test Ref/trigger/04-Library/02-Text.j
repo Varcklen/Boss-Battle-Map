@@ -5,6 +5,14 @@ library TextLib
         private constant integer SATURATION = 225
     endglobals
 
+    function B2S takes boolean b returns string
+        if b then
+            return "true"
+        else
+            return "false"
+        endif
+    endfunction
+
     function textst takes string inf, unit caster, real speed, real angle, real size, real life returns nothing
         local texttag txt = CreateTextTag()
         local real sp = ( speed * 0.071 / 128 ) * Cos( angle * 0.0174 )

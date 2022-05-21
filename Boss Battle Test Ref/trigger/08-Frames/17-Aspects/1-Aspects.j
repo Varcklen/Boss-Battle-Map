@@ -49,6 +49,7 @@ library AspectFrames initializer init requires Tooltip, Aspects
     private function AddAspect takes unit hero, integer key01, integer key02 returns nothing
         if IsAspectActive[key01][key02] == false then
             set IsAspectActive[key01][key02] = true
+            //call BJDebugMsg("add key 01 02: " + I2S(key01) + " " + I2S(key02))
             
             set Event_AspectAdded_Key01 = key01
             set Event_AspectAdded_Key02 = key02
@@ -62,9 +63,31 @@ library AspectFrames initializer init requires Tooltip, Aspects
         set hero = null
     endfunction 
     
+    private function EnableHeroAspectTimer takes nothing returns nothing
+        local integer id = GetHandleId( GetExpiredTimer() )
+        local unit hero = LoadUnitHandle( udg_hash, id, StringHash( "acpe" ) )
+        local integer heroIndex = LoadInteger( udg_hash, id, StringHash( "acpe" ) )
+        local integer usedButton = LoadInteger( udg_hash, id, StringHash( "acpeb" ) )
+        
+        call AddAspect(hero, heroIndex, usedButton)
+        
+        set hero = null
+    endfunction
+    
+    private function EnableHeroAspect takes player owner, integer heroIndex, integer usedButton returns nothing
+        local integer id
+        
+        set id = InvokeTimerWithUnit(udg_hero[GetPlayerId(owner) + 1], "acpe", 0.02, false, function EnableHeroAspectTimer )
+        call SaveInteger( udg_hash, id, StringHash( "acpe" ), heroIndex )
+        call SaveInteger( udg_hash, id, StringHash( "acpeb" ), usedButton)
+
+        set owner = null
+    endfunction 
+    
     private function RemoveAspect takes unit hero, integer key01, integer key02 returns nothing
         if IsAspectActive[key01][key02] == true then
             set IsAspectActive[key01][key02] = false
+            //call BJDebugMsg("remove key 01 02: " + I2S(key01) + " " + I2S(key02))
             
             set Event_AspectRemoved_Key01 = key01
             set Event_AspectRemoved_Key02 = key02
@@ -108,17 +131,14 @@ library AspectFrames initializer init requires Tooltip, Aspects
         local player owner = GetTriggerPlayer()
         local integer playerIndex = GetPlayerId(owner) + 1
         local integer heroIndex = udg_HeroNum[playerIndex]
-        local integer i = 0
-        
         if usedButton < 0 or usedButton > 3 then
             call BJDebugMsg("Invalid AspectButton button pressed. Please notify the map developer about this. Current button: " + I2S(usedButton) + ".")
             return
         endif
-        
+        //call BJDebugMsg("used button: " + I2S(usedButton))
         call DisableHeroAspects(owner, heroIndex)
         if usedButton != 0 then
-            call AddAspect(udg_hero[playerIndex], heroIndex, usedButton)
-            
+            call EnableHeroAspect(owner, heroIndex, usedButton)
             set ChoosedAspect[playerIndex] = Aspect[heroIndex][usedButton]
         else
             set ChoosedAspect[playerIndex] = 0

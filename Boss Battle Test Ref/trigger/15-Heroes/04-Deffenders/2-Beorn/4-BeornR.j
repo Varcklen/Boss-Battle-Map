@@ -109,6 +109,9 @@ function Trig_BeornR_Actions takes nothing returns nothing
     
     set dmg = (BEORN_R_DAMAGE_FIRST_LEVEL + ( BEORN_R_DAMAGE_LEVEL_BONUS * lvl )) * GetUnitSpellPower(caster)
     
+    //call BJDebugMsg("aspect1: " + B2S(IsAspectActive[udg_HeroNum[GetUnitUserData(caster)]][1]))
+    //call BJDebugMsg("aspect2: " + B2S(IsAspectActive[udg_HeroNum[GetUnitUserData(caster)]][2]))
+    //call BJDebugMsg("aspect3: " + B2S(IsAspectActive[udg_HeroNum[GetUnitUserData(caster)]][3]))
     if Aspects_IsHeroAspectActive( caster, ASPECT_03 ) then
         call BeornR_Alternative( caster, target, t, dmg )
     else
