@@ -4,6 +4,7 @@ This is the Boss Battle map source code and extra materials. If you're going to 
 
 To convert the map to .w3x format, use the W3x2Lni program:
 https://www.hiveworkshop.com/threads/w3x2lni-v2-7-2.305201/
+
 If you have problems with the code (it looks like a bunch of illegible code), then use TESH:
 https://www.hiveworkshop.com/threads/a-new-tesh-syntax-highlighter-for-warcraft-3.246081/
 
