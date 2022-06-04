@@ -105,7 +105,6 @@ function StartFight takes nothing returns nothing
     if udg_Boss_LvL == 1 then
         set udg_UntilFirstFight = false
         set udg_LogicModes = false
-        call BlzFrameSetVisible( herobut, false )
         call BlzFrameSetVisible( rpkmod,false)
         call BlzFrameSetVisible( reselectionButton,false)
         set cyclA = 1

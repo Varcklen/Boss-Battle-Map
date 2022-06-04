@@ -740,6 +740,8 @@
             Closed
         22-ManaReg: ManaReg
             Closed
+        23-Refresh: Refresh
+            Closed
     2-Handle: Handle
         Disab
         Run
@@ -1350,7 +1352,23 @@
         28-SoulMarry: SoulMarry
         '29-Last Rites': 'Last Rites'
         '30-Left the Game': 'Left the Game'
-    02-Other: Other
+    02-Uniques: Uniques
+        01-SmallHeal: SmallHeal
+        02-Provoke: Provoke
+        03-Manaball: Manaball
+        04-KillEye: KillEye
+        05-Buff: Buff
+        06-Debuff: Debuff
+        07-Chaos: Chaos
+        08-PetD: PetD
+        09-Venom: Venom
+        10-SkLordSpec: SkLordSpec
+        11-Mixology: Mixology
+        12-SummonSheep: SummonSheep
+        13-Orbs: Orbs
+        '14-Play Note': 'Play Note'
+        '15-Brother Rant': 'Brother Rant'
+    03-Other: Other
         1-Poof: Poof
         2-Superbots: Superbots
         3-SuperLuch: SuperLuch
@@ -1360,7 +1378,7 @@
         7-HalifMana: HalifMana
         8-Sneaky: Sneaky
         9-VampireSkill: VampireSkill
-    03-Buffers: Buffers
+    04-Buffers: Buffers
         1-Magnataur: Magnataur
             1-MagnataurB: MagnataurB
             2-MagnataurQ: MagnataurQ
@@ -1405,7 +1423,7 @@
             3-WandererE: WandererE
             4-WandererEHP: WandererEHP
             5-WandererR: WandererR
-    04-Deffenders: Deffenders
+    05-Deffenders: Deffenders
         1-Nerub: Nerub
             1-NerubQ: NerubQ
             2-NerubW: NerubW
@@ -1451,7 +1469,7 @@
             5-InfernalE: InfernalE
             6-InfernalSmall: InfernalSmall
             7-InfernalR: InfernalR
-    05-Rippers: Rippers
+    06-Rippers: Rippers
         1-Vampyre: Vampyre
             1-VampQ: VampQ
             2-VampW: VampW
@@ -1498,7 +1516,7 @@
             2-LycanthropeW: LycanthropeW
             3-LycanthropeE: LycanthropeE
             4-LycanthropeR: LycanthropeR
-    06-Killers: Killers
+    07-Killers: Killers
         1-Sniper: Sniper
             1-SniperQ: SniperQ
             2-SniperW: SniperW
@@ -1545,7 +1563,7 @@
             2-GunMasterW: GunMasterW
             3-GunMasterE: GunMasterE
             4-GunMasterR: GunMasterR
-    07-Marauders: Marauders
+    08-Marauders: Marauders
         1-MiracleBrew: MiracleBrew
             1-MiracleBrewQ: MiracleBrewQ
             2-MiracleBrewW: MiracleBrewW
@@ -1592,7 +1610,7 @@
             4-MephistarE: MephistarE
             5-MephistarEFrame: MephistarEFrame
             6-MephistarR: MephistarR
-    08-Hybrids: Hybrids
+    09-Hybrids: Hybrids
         1-TrollMage: TrollMage
             1-Orb: Orb
             2-TrollMageQ: TrollMageQ
@@ -1647,7 +1665,7 @@
             7-BunnieW: BunnieW
             8-BunnieE: BunnieE
             9-BunnieR: BunnieR
-    09-Elementalists: Elementalists
+    10-Elementalists: Elementalists
         1-Incarnation: Incarnation
             1-IncarnationQ: IncarnationQ
             2-IncarnationW: IncarnationW
@@ -1693,7 +1711,7 @@
             2-PeacelockW: PeacelockW
             3-PeacelockE: PeacelockE
             4-PeacelockR: PeacelockR
-    10-Healers: Healers
+    11-Healers: Healers
         1-Shaman: Shaman
             1-ShamanQ: ShamanQ
             2-ShamanW: ShamanW
@@ -1747,7 +1765,7 @@
             '3-Corrupted EntW': 'Corrupted EntW'
             4-CorruptedEntE: CorruptedEntE
             5-CorruptedEntR: CorruptedEntR
-    11-Curses: Curses
+    12-Curses: Curses
         1-King: King
             1-KingQ: KingQ
             2-KingW: KingW
@@ -1815,27 +1833,11 @@
             '2-The PlagueW': 'The PlagueW'
             '3-The PlagueE': 'The PlagueE'
             '4-The PlagueR': 'The PlagueR'
-16-Uniques: Uniques
-    01-SmallHeal: SmallHeal
-    02-Provoke: Provoke
-    03-Manaball: Manaball
-    04-KillEye: KillEye
-    05-Buff: Buff
-    06-Debuff: Debuff
-    07-Chaos: Chaos
-    08-PetD: PetD
-    09-Venom: Venom
-    10-SkLordSpec: SkLordSpec
-    11-Mixology: Mixology
-    12-SummonSheep: SummonSheep
-    13-Orbs: Orbs
-    '14-Play Note': 'Play Note'
-    '15-Brother Rant': 'Brother Rant'
-17-Other: Other
+16-Other: Other
     Comment
-18------------------------: -----------------------
+17------------------------: -----------------------
     Comment
-19-BossesInfo: BossesInfo
+18-BossesInfo: BossesInfo
     01-StartFight: StartFight
     02-StartFightWork: StartFightWork
     03-HeroDeath: HeroDeath
@@ -1852,7 +1854,7 @@
     12-BossDamage: BossDamage
     13-SpawnUnit: SpawnUnit
     14-SpawnBoss: SpawnBoss
-20-Bosses: Bosses
+19-Bosses: Bosses
     01-BossCastLib: BossCastLib
     02-Bosses1: Bosses1
         01-Morloc1: Morloc1
@@ -2182,7 +2184,7 @@
         32-Marine6: Marine6
         33-Marine7: Marine7
         34-Marine8: Marine8
-21-Arenas: Arenas
+20-Arenas: Arenas
     1-Auto: Auto
     2-InfiniteArena: InfiniteArena
         '1-IA Start': 'IA Start'
@@ -2209,7 +2211,7 @@
         '4-AL End': 'AL End'
             Closed
         '5-AL EndWork': 'AL EndWork'
-22-FichInEnd: FichInEnd
+21-FichInEnd: FichInEnd
     1-KillUnit: KillUnit
     2-Cristal: Cristal
     3-IdolWish: IdolWish

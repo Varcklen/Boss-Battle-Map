@@ -7,6 +7,19 @@ function Trig_PyrolordR_Conditions takes nothing returns boolean
     return GetSpellAbilityId() == 'A0NM'
 endfunction
 
+function PyrolordRCool takes nothing returns nothing
+    local integer id = GetHandleId( GetExpiredTimer() )
+    local unit u = LoadUnitHandle( udg_hash, id, StringHash( "prlrc" ) )
+    local integer sk = LoadInteger( udg_hash, id, StringHash( "prlrc" ) )
+    local integer lvl = LoadInteger( udg_hash, id, StringHash( "prlrlvl" ) )
+
+    call BlzStartUnitAbilityCooldown( u, sk, 5 )
+    call SetUnitState( u, UNIT_STATE_MANA, GetUnitState( u, UNIT_STATE_MANA ) + BlzGetAbilityManaCost( sk, lvl-1 ) )
+    call FlushChildHashtable( udg_hash, id )
+
+    set u = null
+endfunction  
+
 function PyrolordRCast takes nothing returns nothing
     local integer id = GetHandleId( GetExpiredTimer( ) )
     local unit dummy = LoadUnitHandle( udg_hash, id, StringHash( "prlr" ) )
@@ -24,7 +37,7 @@ function PyrolordRCast takes nothing returns nothing
             call IssuePointOrder( dummy, "move", GetUnitX( target ), GetUnitY( target ) )
         endif
     elseif GetUnitState( dummy, UNIT_STATE_LIFE) > 0.405 and GetUnitState( target, UNIT_STATE_LIFE) <= 0.405 then
-        set target = randomtarget( dummy, 900, "enemy", "", "", "", "" )
+        set target = randomtarget( dummy, 1200, "enemy", "", "", "", "" )
         if target != null then
             call IssuePointOrderLoc( dummy, "move", GetUnitLoc( target ) )
             call SaveUnitHandle( udg_hash, id, StringHash( "prlrt" ), target )
@@ -54,6 +67,7 @@ function Trig_PyrolordR_Actions takes nothing returns nothing
     local unit t
     local real rand
     local integer bonus
+    local boolean isEnemyFound = false
     
     if CastLogic() then
         set caster = udg_Caster
@@ -75,8 +89,9 @@ function Trig_PyrolordR_Actions takes nothing returns nothing
     set cyclA = 1
     loop
         exitwhen cyclA > arrows
-        set t = randomtarget( caster, 900, "enemy", "", "", "", "" )
+        set t = randomtarget( caster, 1200, "enemy", "", "", "", "" )
         if t != null then
+            set isEnemyFound = true
             call dummyspawn( caster, 0, 'A017', 'A0N5', 0 )
             call SetUnitMoveSpeed( bj_lastCreatedUnit, GetRandomReal( 300, 500 ) )
             set rand = GetRandomReal( 0.5, 2 )
@@ -96,6 +111,20 @@ function Trig_PyrolordR_Actions takes nothing returns nothing
         endif
         set cyclA = cyclA + 1
     endloop
+    
+    if isEnemyFound == false and GetSpellAbilityId() == 'A0NM' then
+        call textst( "|c00909090 No enemies found", caster, 64, 90, 10, 1 )
+        
+        set id = GetHandleId( caster )
+        if LoadTimerHandle( udg_hash, id, StringHash( "prlrc" ) ) == null then
+            call SaveTimerHandle( udg_hash, id, StringHash( "prlrc" ), CreateTimer() )
+        endif
+        set id = GetHandleId( LoadTimerHandle( udg_hash, id, StringHash( "prlrc" ) ) ) 
+        call SaveUnitHandle( udg_hash, id, StringHash( "prlrc" ), caster )
+        call SaveInteger( udg_hash, id, StringHash( "prlrc" ), GetSpellAbilityId() )
+        call SaveInteger( udg_hash, id, StringHash( "prlrlvl" ), lvl )
+        call TimerStart( LoadTimerHandle( udg_hash, GetHandleId( caster ), StringHash( "prlrc" ) ), 0.01, false, function PyrolordRCool )
+    endif
     
     set caster = null
     set t = null

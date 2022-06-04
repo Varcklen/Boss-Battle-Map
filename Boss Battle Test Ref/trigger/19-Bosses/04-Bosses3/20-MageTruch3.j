@@ -7,7 +7,7 @@ function Trig_gg_trg_MageTruch3_Actions takes nothing returns nothing
 
     call DisableTrigger( GetTriggeringTrigger() )
     
-    call shield( udg_DamageEventTarget, udg_DamageEventTarget, 1000 * SpellPower_GetBossSpellPower(), 180 )
+    call shield( udg_DamageEventTarget, udg_DamageEventTarget, 1000, 180 )
     
     if LoadTimerHandle( udg_hash, id, StringHash( "bsmtr" ) ) == null  then
         call SaveTimerHandle( udg_hash, id, StringHash( "bsmtr" ), CreateTimer() )

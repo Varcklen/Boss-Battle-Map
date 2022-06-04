@@ -42,8 +42,9 @@ scope LycanthropeW initializer init
         local integer id = GetHandleId( GetExpiredTimer() )
         local unit hero = LoadUnitHandle(udg_hash, id, StringHash("lcnw") )
         local integer healthPerc = LoadInteger(udg_hash, id, StringHash("lcnw") )
+        local boolean isWolf = LoadBoolean(udg_hash, GetHandleId(hero), StringHash("lcnw") )
 
-        if IsUnitAlive(hero) and IsUnitHasAbility( hero, WOLF_BUFF) then
+        if IsUnitAlive(hero) and IsUnitHasAbility( hero, WOLF_BUFF) and isWolf then
             if IsUnitLoaded( hero ) == false and IsUnitHidden(hero) == false then
                 call AddHealthPercent(hero, -healthPerc)
             endif
@@ -90,6 +91,7 @@ scope LycanthropeW initializer init
         set id = InvokeTimerWithUnit(hero, "lcnw", TICK, true, function TakeHealth )
         call SaveReal(udg_hash, GetHandleId(hero), StringHash("lcnw"), damageBonus )
         call SaveInteger(udg_hash, id, StringHash("lcnw"), ALT_LOST_HEALTH_PERCENT )
+        call SaveBoolean(udg_hash, GetHandleId(hero), StringHash("lcnw"), true )
         
         set hero = null
     endfunction
@@ -100,6 +102,7 @@ scope LycanthropeW initializer init
         set id = InvokeTimerWithUnit(hero, "lcnw", TICK, true, function TakeHealth )
         call SaveReal(udg_hash, GetHandleId(hero), StringHash("lcnw"), damageBonus )
         call SaveInteger(udg_hash, id, StringHash("lcnw"), LOST_HEALTH_PERCENT )
+        call SaveBoolean(udg_hash, GetHandleId(hero), StringHash("lcnw"), true )
         
         set hero = null
     endfunction
@@ -158,6 +161,7 @@ scope LycanthropeW initializer init
         //call BlzSetUnitSkin( hero, HUMAN_FORM )
         call SetUnitSkin( hero, HUMAN_FORM )
         
+        call SaveBoolean(udg_hash, GetHandleId(hero), StringHash("lcnw"), false )
         call RemoveSavedReal( udg_hash, GetHandleId( hero ), StringHash( "lcnw" ) )
         
         call TurnOff_Ability(hero, ID_Q_ABILITY, Q_NUMBER)

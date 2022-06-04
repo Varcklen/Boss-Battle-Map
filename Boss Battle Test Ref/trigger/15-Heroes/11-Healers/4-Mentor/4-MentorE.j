@@ -10,8 +10,8 @@ scope MentorE initializer init
         private constant string ANIMATION = "Abilities\\Spells\\Undead\\ReplenishMana\\ReplenishManaCaster.mdl"
     endglobals
 
-    private function Trig_MentorE_Conditions takes nothing returns boolean
-        return udg_IsDamageSpell == false and GetUnitAbilityLevel(udg_DamageEventSource, ID_ABILITY) > 0 and IsUnitEnemy(udg_DamageEventSource, GetOwningPlayer(udg_DamageEventTarget))
+    private function AfterDamageEvent_Conditions takes nothing returns boolean
+        return udg_IsDamageSpell == false and IsUnitHasAbility(udg_DamageEventSource, ID_ABILITY) and IsUnitEnemy(udg_DamageEventSource, GetOwningPlayer(udg_DamageEventTarget))
     endfunction
     
     private function Caster takes unit caster, integer level returns nothing
@@ -58,7 +58,7 @@ scope MentorE initializer init
         set caster = null
     endfunction
 
-    private function Trig_MentorE_Actions takes nothing returns nothing
+    private function AfterDamageEvent takes nothing returns nothing
         local integer level = GetUnitAbilityLevel( udg_DamageEventSource, ID_ABILITY)
         if IsUnitManaIsFull(udg_DamageEventSource) then
             call Allies(udg_DamageEventSource, level)
@@ -69,7 +69,7 @@ scope MentorE initializer init
 
     //===========================================================================
     private function init takes nothing returns nothing
-         call CreateEventTrigger( "udg_AfterDamageEvent", function Trig_MentorE_Actions, function Trig_MentorE_Conditions )
+         call CreateEventTrigger( "udg_AfterDamageEvent", function AfterDamageEvent, function AfterDamageEvent_Conditions )
     endfunction
 
 endscope

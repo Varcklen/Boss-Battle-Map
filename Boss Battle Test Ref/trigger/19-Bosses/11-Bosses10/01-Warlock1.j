@@ -102,7 +102,6 @@ function WarlEnd takes nothing returns nothing
                 call KillUnit( u )
             endif
             call GroupRemoveUnit(g,u)
-            set u = FirstOfGroup(g)
         endloop
     endif
     
@@ -172,7 +171,6 @@ function WarlGhoul takes nothing returns nothing
             exitwhen u == null
             set n = n + 1
             call GroupRemoveUnit(g,u)
-            set u = FirstOfGroup(g)
         endloop
         
         if n == 0 then
@@ -184,8 +182,8 @@ function WarlGhoul takes nothing returns nothing
             call ShowUnit( boss, false)
             set new = CreateUnit(GetOwningPlayer(boss), 'n00F', GetUnitX(boss), GetUnitY(boss), GetUnitFacing(boss))
             call SaveUnitHandle( udg_hash, GetHandleId( LoadTimerHandle( udg_hash, GetHandleId( boss ), StringHash( "aggro" ) ) ) , StringHash( "aggro" ), new )
-            call BlzSetUnitBaseDamage( new, BlzGetUnitBaseDamage(boss, 0), 0 )
-            call BlzSetUnitArmor( new, BlzGetUnitArmor(boss) )
+            //call BlzSetUnitBaseDamage( new, BlzGetUnitBaseDamage(boss, 0), 0 )
+            //call BlzSetUnitArmor( new, BlzGetUnitArmor(boss) )
             call SetUnitState( new, UNIT_STATE_LIFE, GetUnitState( boss, UNIT_STATE_MAX_LIFE ) * 0.3 )
             call GroupRemoveUnit( udg_Bosses, boss )
             call TransmissionFromUnitWithNameBJ( bj_FORCE_ALL_PLAYERS, new, GetUnitName(new), null, "Army! To me!", bj_TIMETYPE_SET, 3, false )
@@ -305,8 +303,8 @@ function Warlock2Akt takes nothing returns nothing
         call DestroyEffect( AddSpecialEffect( "Abilities\\Spells\\Orc\\FeralSpirit\\feralspirittarget.mdl", GetUnitX( u ), GetUnitY( u ) ) )
         call ShowUnit( u, false)
         set boss = CreateUnit( GetOwningPlayer( u ), 'o006', x, y, GetRandomReal( 0, 360 ) )
-        call BlzSetUnitBaseDamage( boss, BlzGetUnitBaseDamage(u, 0), 0 )
-        call BlzSetUnitArmor( boss, BlzGetUnitArmor(u) )
+        //call BlzSetUnitBaseDamage( boss, BlzGetUnitBaseDamage(u, 0), 0 )
+        //call BlzSetUnitArmor( boss, BlzGetUnitArmor(u) )
         call SetUnitState( boss, UNIT_STATE_LIFE, GetUnitState( boss, UNIT_STATE_MAX_LIFE ) * 0.3 )
         call GroupRemoveUnit( udg_Bosses, u )
         call TransmissionFromUnitWithNameBJ( bj_FORCE_ALL_PLAYERS, boss, GetUnitName(boss), null, "You wont get me!", bj_TIMETYPE_SET, 3, false )
@@ -334,13 +332,13 @@ function Warlock2Akt takes nothing returns nothing
         call SaveUnitHandle( udg_hash, id1, StringHash( "bswrp" ), boss )
         call TimerStart( LoadTimerHandle( udg_hash, GetHandleId( boss ), StringHash( "bswrp" ) ), 0.5, true, function WarlGhoul )
 
-	set id1 = GetHandleId( boss )
-    	if LoadTimerHandle( udg_hash, id1, StringHash( "bswrstr" ) ) == null  then
-        	call SaveTimerHandle( udg_hash, id1, StringHash( "bswrstr" ), CreateTimer() )
-    	endif
-	set id1 = GetHandleId( LoadTimerHandle( udg_hash, id1, StringHash( "bswrstr" ) ) ) 
-    	call SaveUnitHandle( udg_hash, id1, StringHash( "bswrstr" ), boss )
-	call TimerStart( LoadTimerHandle( udg_hash, GetHandleId( boss ), StringHash( "bswrstr" ) ), bosscast(15), true, function WarlockStorm )
+        set id1 = GetHandleId( boss )
+            if LoadTimerHandle( udg_hash, id1, StringHash( "bswrstr" ) ) == null  then
+                call SaveTimerHandle( udg_hash, id1, StringHash( "bswrstr" ), CreateTimer() )
+            endif
+        set id1 = GetHandleId( LoadTimerHandle( udg_hash, id1, StringHash( "bswrstr" ) ) ) 
+            call SaveUnitHandle( udg_hash, id1, StringHash( "bswrstr" ), boss )
+        call TimerStart( LoadTimerHandle( udg_hash, GetHandleId( boss ), StringHash( "bswrstr" ) ), bosscast(15), true, function WarlockStorm )
         
         call DestroyTimer( GetExpiredTimer() )
         call FlushChildHashtable( udg_hash, id )

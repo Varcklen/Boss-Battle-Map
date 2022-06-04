@@ -64,7 +64,7 @@ scope SpecialsShop initializer init
         return true
     endfunction
     
-    private function Refresh takes nothing returns nothing
+    public function Refresh takes nothing returns nothing
         local integer i 
         local ListInt list = ListInt.create()
         local integer special

@@ -30,25 +30,25 @@ function Trig_ElementalW_Actions takes nothing returns nothing
     set dmg = 100 + ( 50 * lvl )
 
     if GetUnitAbilityLevel( target, 'A0K8') > 0 then
-	set dmgsum = dmgsum + dmg
+        set dmgsum = dmgsum + dmg
     endif
     if GetUnitAbilityLevel( target, 'A0LO') > 0 then
-	set dmgsum = dmgsum + dmg
+        set dmgsum = dmgsum + dmg
     endif
     if GetUnitAbilityLevel( target, 'A0FU') > 0 then
-	set dmgsum = dmgsum + dmg
+        set dmgsum = dmgsum + dmg
     endif
-        call DestroyEffect( AddSpecialEffect( "Acid Ex.mdx", GetUnitX( target ), GetUnitY( target ) ) )
-    	call DelBuff( target, false )
+    call DestroyEffect( AddSpecialEffect( "Acid Ex.mdx", GetUnitX( target ), GetUnitY( target ) ) )
+    call DelBuff( target, false )
     if GetUnitAbilityLevel( caster, 'A0LP') > 0 then
-	call DestroyEffect( AddSpecialEffect( "Acid Ex.mdx", GetUnitX( caster ), GetUnitY( caster ) ) )
-	call healst( caster, null, 60 + (40*GetUnitAbilityLevel( caster, 'A0LP')) )
+        call DestroyEffect( AddSpecialEffect( "Acid Ex.mdx", GetUnitX( caster ), GetUnitY( caster ) ) )
+        call healst( caster, null, 60 + (40*GetUnitAbilityLevel( caster, 'A0LP')) )
     endif
     if IsUnitAlly( target, GetOwningPlayer( caster ) ) then
-	call healst(caster, target, dmgsum )
+        call healst(caster, target, dmgsum )
     else
-    	call dummyspawn( caster, 1, 0, 0, 0 )
-   	call UnitDamageTarget( bj_lastCreatedUnit, target, dmgsum, true, false, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_MAGIC, WEAPON_TYPE_WHOKNOWS)
+        call dummyspawn( caster, 1, 0, 0, 0 )
+        call UnitDamageTarget( bj_lastCreatedUnit, target, dmgsum, true, false, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_MAGIC, WEAPON_TYPE_WHOKNOWS)
     endif    
 
     set caster = null

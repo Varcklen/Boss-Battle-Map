@@ -1,4 +1,4 @@
-library Repick requires SpellPower, NullingAbility
+library Repick requires SpellPower, NullingAbility, BuffDeleteLib
 
     globals
         real Event_HeroRepick_Real = 0
@@ -55,6 +55,7 @@ library Repick requires SpellPower, NullingAbility
             call spdst( hero, -10 )
         endif
         
+        call DelBuff( hero, false )
         call DeleteItems(hero)
         call MultiSetIcon( udg_multi, ( udg_Multiboard_Position[index] * 3 ) - 1, 3, "ReplaceableTextures\\CommandButtons\\BTNSelectHeroOn.blp" )
 

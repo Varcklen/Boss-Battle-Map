@@ -137,7 +137,7 @@ function Trig_KillUnit_Actions takes nothing returns nothing
         endif
     endif
 
-    if GetUnitTypeId(GetDyingUnit()) != 'h01F' and udg_combatlogic[j] and ( ( inv( GetKillingUnit(), 'I0CR') > 0 ) or ( ( inv( GetKillingUnit(), 'I030') > 0 ) and udg_Set_Weapon_Logic[j + 80] ) ) and ( GetUnitTypeId(GetKillingUnit()) == 'u000' or GetKillingUnit() == udg_hero[j] ) and not(IsUnitType( GetDyingUnit(), UNIT_TYPE_HERO)) and not(IsUnitType( GetDyingUnit(), UNIT_TYPE_ANCIENT)) then
+    if IsUnitEnemy(GetDyingUnit(), GetOwningPlayer(GetKillingUnit())) and GetUnitTypeId(GetDyingUnit()) != 'h01F' and udg_combatlogic[j] and ( ( inv( GetKillingUnit(), 'I0CR') > 0 ) or ( ( inv( GetKillingUnit(), 'I030') > 0 ) and udg_Set_Weapon_Logic[j + 80] ) ) and ( GetUnitTypeId(GetKillingUnit()) == 'u000' or GetKillingUnit() == udg_hero[j] ) and not(IsUnitType( GetDyingUnit(), UNIT_TYPE_HERO)) and not(IsUnitType( GetDyingUnit(), UNIT_TYPE_ANCIENT)) then
         call DestroyEffect( AddSpecialEffect("Objects\\Spawnmodels\\Orc\\OrcSmallDeathExplode\\OrcSmallDeathExplode.mdl", GetUnitX( GetDyingUnit() ), GetUnitY( GetDyingUnit() ) ) )
         set bj_lastCreatedUnit = CreateUnit( GetOwningPlayer( GetKillingUnit() ), GetUnitTypeId(GetDyingUnit()), GetUnitX( GetDyingUnit() ), GetUnitY( GetDyingUnit() ), GetUnitFacing( GetDyingUnit() ) )
         call UnitApplyTimedLife( bj_lastCreatedUnit, 'BTLF', 10 )

@@ -54,6 +54,27 @@ scope LegionerE initializer init
         call Action(GetSpellAbilityUnit())
     endfunction
 
+
+    //When choose hero
+    private function HeroChoose_Conditions takes nothing returns boolean
+        return GetUnitTypeId(Event_HeroChoose_Hero) == 'O00C'
+    endfunction
+    
+    private function HeroChoose takes nothing returns nothing
+        set udg_panel[1] = CreateLeaderboardBJ( GetForceOfPlayer(GetOwningPlayer(Event_HeroChoose_Hero)), "" )
+        call LeaderboardSetLabelColor(udg_panel[1], 250, 200, 50, 250 )
+        call LeaderboardAddItemBJ( Player(4), udg_panel[1], "Rubies: ", udg_cristal )
+    endfunction
+    
+    //When hero repicked
+    private function HeroRepick_Conditions takes nothing returns boolean
+        return GetUnitTypeId(Event_HeroRepick_Hero) == 'O00C'
+    endfunction
+    
+    private function HeroRepick takes nothing returns nothing
+        call DestroyLeaderboard( udg_panel[1] )
+    endfunction
+    
     //===========================================================================
     private function init takes nothing returns nothing
         local trigger trig = CreateTrigger()
@@ -63,6 +84,8 @@ scope LegionerE initializer init
         call TriggerAddAction( trig, function Cast )
         
         call CreateEventTrigger( "udg_AfterDamageEvent", function AfterDamageEvent, function AfterDamageEvent_Conditions )
+        call CreateEventTrigger( "Event_HeroChoose_Real", function HeroChoose, function HeroChoose_Conditions )
+        call CreateEventTrigger( "Event_HeroRepick_Real", function HeroRepick, function HeroRepick_Conditions )
         
         set trig = null
     endfunction

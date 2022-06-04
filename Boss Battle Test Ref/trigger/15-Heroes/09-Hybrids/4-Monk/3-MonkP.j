@@ -16,6 +16,7 @@ endfunction
 
 //===========================================================================
 function InitTrig_MonkP takes nothing returns nothing
+    //По какой-то причине при udg_AfterDamageEvent другие модификаторы переставали работать?udg_DamageEventAfterArmor
     call CreateEventTrigger( "udg_AfterDamageEvent", function Trig_MonkP_Actions, function Trig_MonkP_Conditions )
 endfunction
 

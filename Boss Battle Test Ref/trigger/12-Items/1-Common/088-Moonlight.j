@@ -30,7 +30,7 @@ function Trig_Moonlight_Actions takes nothing returns nothing
     loop
         exitwhen cyclA > cyclAEnd
         set target = randomtarget( caster, 600, "enemy", "", "", "", "" )
-        if target != null  then
+        if target != null then
             set l = true
             call dummyspawn( caster, 1, 0, 0, 0 )
             call UnitDamageTarget( bj_lastCreatedUnit, target, 200, true, false, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_MAGIC, WEAPON_TYPE_WHOKNOWS )
@@ -46,6 +46,8 @@ function Trig_Moonlight_Actions takes nothing returns nothing
         set id = GetHandleId( LoadTimerHandle( udg_hash, GetHandleId( bj_lastCreatedEffect ), StringHash( "mons" ) ) )
         call SaveEffectHandle( udg_hash, id, StringHash( "mons" ), bj_lastCreatedEffect )
         call TimerStart( LoadTimerHandle( udg_hash, GetHandleId( bj_lastCreatedEffect ), StringHash( "mons" ) ), 2.5, false, function MoonlightCast )
+    else
+        call textst( "|c00909090 No targets.", caster, 64, 90, 10, 1 )
     endif
     
     set target = null
