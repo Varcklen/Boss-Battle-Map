@@ -1,5 +1,3 @@
-//TESH.scrollpos=0
-//TESH.alwaysfold=0
 function Trig_Illusionist6_Conditions takes nothing returns boolean
     return GetUnitTypeId(udg_DamageEventTarget) == 'h020' and GetUnitLifePercent(udg_DamageEventTarget) <= 40
 endfunction

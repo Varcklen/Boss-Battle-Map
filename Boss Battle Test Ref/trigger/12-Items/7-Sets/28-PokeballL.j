@@ -1,13 +1,13 @@
 function Trig_PokeballL_Conditions takes nothing returns boolean
-    return not( udg_logic[36] ) and GetItemTypeId(GetManipulatedItem()) == 'I03I' and inv( GetManipulatingUnit(), 'I03I' ) <= 1
+    return not( udg_logic[36] ) and GetItemTypeId(GetManipulatedItem()) == 'I03I'
 endfunction
 
 function Trig_PokeballL_Actions takes nothing returns nothing
     local unit n = GetManipulatingUnit()//udg_hero[GetPlayerId(GetOwningPlayer(GetManipulatingUnit())) + 1]
     local integer i = CorrectPlayer(n)//GetPlayerId(GetOwningPlayer(n)) + 1
     local integer k = 0
-    
-    //if udg_Multiboard_Sets[i] == "Мехатрон" or udg_Multiboard_Sets[i + 1] == "Мехатрон" or udg_Multiboard_Sets[i + 2] == "Мехатрон" then
+
+    if inv( n, 'I03I' ) <= 1 then
         set udg_Caster = n
         call SaveBoolean( udg_hash, GetHandleId( n ), StringHash( "pkbl" ), false )
         call SaveBoolean( udg_hash, GetHandleId( n ), StringHash( "pkblt" ), true )
@@ -21,8 +21,6 @@ function Trig_PokeballL_Actions takes nothing returns nothing
         set udg_Set_Cristall_Number[i] = udg_Set_Cristall_Number[i] - 3
         
         call iconoff( i, "Мехатрон" )
-        
-        call TriggerExecute( gg_trg_MechL )
         
         if udg_Set_Blood_Number[i] < 3 or k >= 3 then
             call TriggerExecute( gg_trg_BloodL )
@@ -82,9 +80,10 @@ function Trig_PokeballL_Actions takes nothing returns nothing
         endif
         
         call SaveBoolean( udg_hash, GetHandleId( n ), StringHash( "pkblt" ), false )
-        
         call DisplayTimedTextToPlayer( GetOwningPlayer(n), 0, 0, 5, "|cffffcc00Mechatron Charisard|r is not active!")
-    //endif
+    endif
+    call TriggerExecute( gg_trg_MechL )
+
     
     //call AllSetRing( n, 1, GetManipulatedItem() )
     

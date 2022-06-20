@@ -47,7 +47,7 @@ function Trig_Database_Actions takes nothing returns nothing
     local unit temp
     
     set udg_perc = "%"
-    set udg_Version = "1.4.5w"
+    set udg_Version = "1.4.5x"
     set udg_UntilFirstFight = true
     
     if udg_hash == null then

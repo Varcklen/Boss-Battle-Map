@@ -108,6 +108,7 @@ scope HeroesChoise initializer init
         local player owner = Event_HeroPicked_Player
         local integer index = GetPlayerId(owner) + 1
         local integer heroKey = Event_HeroPicked_HeroKey
+        local integer class = Event_HeroPicked_Class
         local FirstPosition position
         
         set udg_HeroNum[index] = heroKey
@@ -116,6 +117,7 @@ scope HeroesChoise initializer init
         set ChoosedHero[index] = hero
         set position = GetFirstPositon(hero, index)
         set udg_UnitHero[heroKey] = hero
+        set udg_number[index + 100] = class + 1
         
         call MultiSetIcon( udg_multi, ( udg_Multiboard_Position[index] * 3 ) - 1, 3, udg_DB_Hero_Icon[heroKey] )
         if udg_SkinUsed[index] == 0 then

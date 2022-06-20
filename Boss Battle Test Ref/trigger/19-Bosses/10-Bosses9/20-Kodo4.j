@@ -1,5 +1,3 @@
-//TESH.scrollpos=0
-//TESH.alwaysfold=0
 function Trig_Kodo4_Conditions takes nothing returns boolean
     return GetUnitTypeId(udg_DamageEventTarget) == 'h01K' and GetUnitLifePercent(udg_DamageEventTarget) <= 40
 endfunction

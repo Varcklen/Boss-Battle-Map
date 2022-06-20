@@ -12,9 +12,8 @@ function Trig_MechL_Actions takes nothing returns nothing
     local unit n = GetManipulatingUnit()
     local integer i = GetUnitUserData(n)
     local integer m = -1
-    local boolean l = LoadBoolean( udg_hash, GetHandleId( n ), StringHash( "pkblt" ) )
 
-    if GetItemTypeId(GetManipulatedItem()) == 'I05I' or l then
+    if GetItemTypeId(GetManipulatedItem()) == 'I05I' or GetItemTypeId(GetManipulatedItem()) == 'I03I' then
         set m = m - 2
     endif
     call SetCount_AddPiece( n, SET_MECH, m )

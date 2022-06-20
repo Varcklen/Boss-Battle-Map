@@ -49,8 +49,6 @@ function Trig_EndFightWork_Actions takes nothing returns nothing
         endif
     elseif udg_Boss_LvL == 5 or udg_Boss_LvL == 7 or udg_Boss_LvL == 4 or udg_Boss_LvL == 9 or udg_Boss_LvL == 3 or udg_Boss_LvL == 8 then
         set udg_Boss_Random = GetRandomInt( 1, 6 )
-    elseif udg_Boss_LvL == 6 then
-        set udg_Boss_Random = GetRandomInt( 1, 4 )
     else
         set udg_Boss_Random = GetRandomInt( 1, 5 )
     endif

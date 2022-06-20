@@ -1,11 +1,22 @@
-function Trig_Runestone_Brib_Conditions takes nothing returns boolean 
-	return GetItemTypeId(GetManipulatedItem()) != 'I01C' and inv( GetManipulatingUnit(), 'I01C' ) > 0 and not(udg_logic[GetPlayerId(GetOwningPlayer(GetManipulatingUnit())) + 1 + 26]) and not(LoadBoolean( udg_hash, GetHandleId( GetManipulatedItem() ), StringHash( "jule" ) ))
+function Trig_Runestone_Brib_Conditions takes nothing returns boolean
+    if udg_logic[36] then
+        return false
+    elseif GetItemTypeId(GetManipulatedItem()) == 'I01C' then
+        return false
+    elseif inv( GetManipulatingUnit(), 'I01C' ) == 0 then
+        return false
+    elseif udg_logic[GetPlayerId(GetOwningPlayer(GetManipulatingUnit())) + 1 + 26] then
+        return false
+    elseif LoadBoolean( udg_hash, GetHandleId( GetManipulatedItem() ), StringHash( "jule" ) ) then
+        return false
+    elseif SubString(BlzGetItemExtendedTooltip(GetManipulatedItem()), 0, 18) == "|cffC71585Cursed|r" then
+        return false
+    endif
+    return true
 endfunction 
 
 function Trig_Runestone_Brib_Actions takes nothing returns nothing 
-    if SubString(BlzGetItemExtendedTooltip(GetManipulatedItem()), 0, 18) != "|cffC71585Cursed|r" then 
-        call BlzSetItemIconPath( GetManipulatedItem(), "|cffC71585Cursed|r|n" + BlzGetItemExtendedTooltip(GetManipulatedItem()) )
-    endif
+    call BlzSetItemIconPath( GetManipulatedItem(), "|cffC71585Cursed|r|n" + BlzGetItemExtendedTooltip(GetManipulatedItem()) )
 endfunction 
 
 //=========================================================================== 

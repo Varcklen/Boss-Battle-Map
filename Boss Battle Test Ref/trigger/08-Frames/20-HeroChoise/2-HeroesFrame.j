@@ -24,6 +24,7 @@ library HeroesTable initializer init requires HeroesTableDatabase, Repick
         unit Event_HeroPicked_Hero
         player Event_HeroPicked_Player
         integer Event_HeroPicked_HeroKey
+        integer Event_HeroPicked_Class
         
         private constant real BUTTON_SIZE = 0.032
         private constant real START_POSITION_X = 0.66
@@ -507,6 +508,7 @@ library HeroesTable initializer init requires HeroesTableDatabase, Repick
             set Event_HeroPicked_Hero = hero
             set Event_HeroPicked_HeroKey = heroKey
             set Event_HeroPicked_Player = owner
+            set Event_HeroPicked_Class = class
             set Event_HeroPicked_Real = 0.00
             set Event_HeroPicked_Real = 1.00
             set Event_HeroPicked_Real = 0.00
