@@ -4,19 +4,15 @@
 |cffffcc00Discord:|r discordapp.com/invite/KVfrcby;
 |cffffcc00Discord.Me:|r discord.me/bbwc3.
 
-|cffffcc001.5.0:|r|r
-- Added a new hero: Shepherd (Sadtwig)
-- Bonus Arenas Rebalance (Varcklen)
-- Several fixes. See Questlog.
-
-|cffffcc001.4.9:|r (Varcklen)
-- Fixed Arms Master gaining Weapon Gifts from his E ability. 
-
+|cffffcc001.5.1x:|r (Sadtwig)
+- New Hero: Runesmith
+- Several Fixes (See Quest Log).
+- Several Hotfixes (See Quest Log).
 }
 
 STRING 1
 {
-|cffbe81f7Boss Battle 1.5.0|r
+|cffbe81f7Boss Battle 1.5.1x|r
 }
 
 STRING 2
@@ -223,7 +219,7 @@ dummy
 }
 
 STRING 27
-// Units: u01K (Вурдалак), EditorSuffix (Name - Editor Suffix)
+// Units: u01K (Ghoul), EditorSuffix (Name - Editor Suffix)
 {
 (Ghoul King)
 }
@@ -325,19 +321,19 @@ Dead commander
 }
 
 STRING 44
-// Units: u019 (Вурдалак), EditorSuffix (Name - Editor Suffix)
+// Units: u019 (Ghoul), EditorSuffix (Name - Editor Suffix)
 {
 (6)
 }
 
 STRING 45
-// Units: u018 (Вурдалак), EditorSuffix (Name - Editor Suffix)
+// Units: u018 (Ghoul), EditorSuffix (Name - Editor Suffix)
 {
 (5)
 }
 
 STRING 46
-// Units: u017 (Вурдалак), EditorSuffix (Name - Editor Suffix)
+// Units: u017 (Ghoul), EditorSuffix (Name - Editor Suffix)
 {
 (4)
 }
@@ -385,37 +381,37 @@ Sludge
 }
 
 STRING 54
-// Units: u00W (Скелет-маг), EditorSuffix (Name - Editor Suffix)
+// Units: u00W (Skeletal Mage), EditorSuffix (Name - Editor Suffix)
 {
 (6)
 }
 
 STRING 55
-// Units: u00V (Скелет-маг), EditorSuffix (Name - Editor Suffix)
+// Units: u00V (Skeletal Mage), EditorSuffix (Name - Editor Suffix)
 {
 (5)
 }
 
 STRING 56
-// Units: u00S (Скелет-маг), EditorSuffix (Name - Editor Suffix)
+// Units: u00S (Skeletal Mage), EditorSuffix (Name - Editor Suffix)
 {
 (4)
 }
 
 STRING 57
-// Units: u00R (Скелет-маг), EditorSuffix (Name - Editor Suffix)
+// Units: u00R (Skeletal Mage), EditorSuffix (Name - Editor Suffix)
 {
 (3)
 }
 
 STRING 58
-// Units: u00Q (Скелет-маг), EditorSuffix (Name - Editor Suffix)
+// Units: u00Q (Skeletal Mage), EditorSuffix (Name - Editor Suffix)
 {
 (2)
 }
 
 STRING 59
-// Units: u00P (Скелет-маг), EditorSuffix (Name - Editor Suffix)
+// Units: u00P (Skeletal Mage), EditorSuffix (Name - Editor Suffix)
 {
 (1)
 }
@@ -499,25 +495,25 @@ Explosive lump
 }
 
 STRING 73
-// Units: u00D (Вурдалак), EditorSuffix (Name - Editor Suffix)
+// Units: u00D (Ghoul), EditorSuffix (Name - Editor Suffix)
 {
 (3)
 }
 
 STRING 74
-// Units: u00C (Вурдалак), EditorSuffix (Name - Editor Suffix)
+// Units: u00C (Ghoul), EditorSuffix (Name - Editor Suffix)
 {
 (2)
 }
 
 STRING 75
-// Units: u00B (Вурдалак), EditorSuffix (Name - Editor Suffix)
+// Units: u00B (Ghoul), EditorSuffix (Name - Editor Suffix)
 {
 (1)
 }
 
 STRING 76
-// Units: u00A (Вурдалак), EditorSuffix (Name - Editor Suffix)
+// Units: u00A (Ghoul), EditorSuffix (Name - Editor Suffix)
 {
 (Колдун)
 }
@@ -703,7 +699,7 @@ Wulf
 }
 
 STRING 107
-// Units: o008 (Разрушитель), EditorSuffix (Name - Editor Suffix)
+// Units: o008 (Demolisher), EditorSuffix (Name - Editor Suffix)
 {
 (Федор)
 }
@@ -1647,7 +1643,7 @@ Seiber
 }
 
 STRING 262
-// Units: n00E (Овца), EditorSuffix (Name - Editor Suffix)
+// Units: n00E (Sheep), EditorSuffix (Name - Editor Suffix)
 {
 (Великий Герой)
 }
@@ -1845,7 +1841,7 @@ Box
 }
 
 STRING 295
-// Units: h01H (Портал), EditorSuffix (Name - Editor Suffix)
+// Units: h01H (Portal), EditorSuffix (Name - Editor Suffix)
 {
 (Вендиго)
 }
@@ -1905,7 +1901,7 @@ Nightingale
 }
 
 STRING 305
-// Units: h013 (Портал), EditorSuffix (Name - Editor Suffix)
+// Units: h013 (Portal), EditorSuffix (Name - Editor Suffix)
 {
 (Колдун, малый портал)
 }
@@ -2067,7 +2063,7 @@ Arach
 }
 
 STRING 332
-// Units: h00J (Портал), EditorSuffix (Name - Editor Suffix)
+// Units: h00J (Portal), EditorSuffix (Name - Editor Suffix)
 {
 (Бесконечная арена)
 }
@@ -2115,7 +2111,7 @@ Informant
 }
 
 STRING 340
-// Units: h00C (Осадная машина), EditorSuffix (Name - Editor Suffix)
+// Units: h00C (Siege Engine), EditorSuffix (Name - Editor Suffix)
 {
 (Федор)
 }
@@ -2157,7 +2153,7 @@ Guard
 }
 
 STRING 347
-// Units: h005 (Портал), EditorSuffix (Name - Editor Suffix)
+// Units: h005 (Portal), EditorSuffix (Name - Editor Suffix)
 {
 (Колдун)
 }
@@ -2205,7 +2201,7 @@ Moon priestess
 }
 
 STRING 355
-// Units: e00G (Глефомет), EditorSuffix (Name - Editor Suffix)
+// Units: e00G (Glaive Thrower), EditorSuffix (Name - Editor Suffix)
 {
 (Цель: Босс)
 }
@@ -2812,7 +2808,7 @@ Underminzer
 
 STRING 456
 {
-Change Notes
+Change Notes 1.5.1
 }
 
 STRING 457
@@ -5158,29 +5154,19 @@ Activation: Restores |cffbe81f71-400|r health to the hero. If the inventory is f
 
 STRING 828
 {
-|c00ffcc001.5.0:|r 
-(Sadtwig)
-- Added a new hero: Shepherd
-- Fixed on-summon effect item interactions.
-- Buffed Orb of Twilight Flame.
-- Rebalanced Orb of Nerzhul
-- Fixed Minotaur not losing stats from his passive when using tarot card: oblivion.
-- Fixed Plague Doctor's Reincarnation scaling with spell power.
-- Fixed Spirit Figurine Tooltip scaling with spell power.
-- Fixed some typos.
+|c00ffcc001.5.1x:|r (Sadtwig)
+- Runesmith W body has more attack range
+- Runesmith collecting a Rune of the Strongman fixed.
+- Runesmith Q and W reset at end of battle and are now combat only.
+- Carvable Rocks no longer spawn in pvp.
 
-(Varcklen)
-- Rebalance of Infinite and Overlord Arenas
-
-|c00ffcc001.4.9:|r (Varcklen)
-- Fixed Arms Master gaining Weapon Gifts from his E ability.
-
-|c00ffcc001.4.8:|r (Sadtwig)
-- Fixed remaining green Icons (Magic Meat, Legendary Gifts, Mixology)
-- Fixed Lord of Chaos. W and R now cast random abilties from their corresponding pools instead of random Q abilities.
-
-|c00ffcc001.4.7:|r (Sadtwig)
-- replaced BlzSetIconPath() native with BlzSetIconExtendedTooltip() to fix green icons.
+|c00ffcc001.5.1:|r (Sadtwig)
+- New Hero: Runesmith
+- Devourer E now correctly applies bonus magic damage.
+- Mixology now doesn't work out of combat with Witcher Medallion
+- Faceless Spy can no longer turn into itself.
+- Shepherd E now counts towards Trembling Enemies quest.
+- Fixed "On a new One" not granting a hero if random pick attempts were exhausted.
 }
 
 STRING 829
@@ -18492,10 +18478,11 @@ Activation: |cffcc0000Corrupted|r. |cFFE16B90Forges|r a mage artifact.
 }
 
 STRING 2757
-// Items: I02S (Spirit figurine), Ubertip (Tooltip - Extended)
+// Abilities: A010 (Barbarian: Bloodlust), Ubertip (Tooltip - Normal - Extended)
 {
-|cffe96a1cLegendary|r, |cff5858faMoon|r
-Summons a small uncontrollable spirit that chases the hero and constantly attacks nearby enemies, dealing 15 damage. This spirit also uses waves created by the "|cff5858faMoon|r" set bonus.
+Kills a minion. Restores the hero |cffbe81f1125%|r of the target's health. If the target is |cffff1493undead|r, it increases the attack power of the hero by 30.
+|cffffcc00Duration:|r 16 seconds.
+|cffffcc00Cooldown:|r 10 seconds.
 }
 
 STRING 2758
@@ -25028,7 +25015,7 @@ Restores |cffbe81f78|r health, |cffbe81f74|r mana and gives 4 gold to all living
 }
 
 STRING 3720
-// Abilities: A1AJ (Невидимость), EditorSuffix (Editor Suffix)
+// Abilities: A1AJ (Invisibility), EditorSuffix (Editor Suffix)
 {
 (Nightmares)
 }
@@ -25645,31 +25632,31 @@ The hero receives 7 hellish plates, each of which increases the armor by 3. Each
 }
 
 STRING 3815
-// Abilities: A1A4 (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A1A4 (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Подрывник: Увядание)
 }
 
 STRING 3816
-// Abilities: A1A3 (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A1A3 (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Подрывник: Ослабление)
 }
 
 STRING 3817
-// Abilities: A1A2 (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A1A2 (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Подрывник: Истощение)
 }
 
 STRING 3818
-// Abilities: A1A1 (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A1A1 (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Подрывник: Изнеможение)
 }
 
 STRING 3819
-// Abilities: A1A0 (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A1A0 (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Polymorph)
 }
@@ -26921,13 +26908,13 @@ Armor (Orb of the Lich King)
 }
 
 STRING 4004
-// Abilities: A18Y (Кольцо огня), EditorSuffix (Editor Suffix)
+// Abilities: A18Y (Permanent Immolation), EditorSuffix (Editor Suffix)
 {
 (Orb of Twilights Flame)
 }
 
 STRING 4005
-// Abilities: A18Y (Кольцо огня), Tip (Tooltip - Normal)
+// Abilities: A18Y (Permanent Immolation), Tip (Tooltip - Normal)
 {
 Orb of Twilights Flame
 }
@@ -27432,7 +27419,7 @@ Mov. speed (Daring Escape)
 }
 
 STRING 4082
-// Abilities: A185 (Невидимость), EditorSuffix (Editor Suffix)
+// Abilities: A185 (Invisibility), EditorSuffix (Editor Suffix)
 {
 (Daring Escape)
 }
@@ -27877,7 +27864,7 @@ Steals 50 mana from another hero and gives an additional |cffbe81f760|r mana. If
 }
 
 STRING 4152
-// Abilities: A17U (Неуязвимость), EditorSuffix (Editor Suffix)
+// Abilities: A17U (Invulnerable), EditorSuffix (Editor Suffix)
 {
 (Vore)
 }
@@ -28501,7 +28488,7 @@ STRING 4238
 }
 
 STRING 4239
-// Abilities: A17G (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A17G (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Freeze)
 }
@@ -28513,7 +28500,7 @@ STRING 4240
 }
 
 STRING 4241
-// Abilities: A17E (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A17E (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Шеогорат)
 }
@@ -28543,7 +28530,7 @@ Speed Attack (Divine Intervention)
 }
 
 STRING 4246
-// Abilities: A179 (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A179 (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Дробитель)
 }
@@ -28601,7 +28588,7 @@ STRING 4254
 }
 
 STRING 4255
-// Abilities: A172 (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A172 (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Soulfiend Метка)
 }
@@ -28696,7 +28683,7 @@ Artifact: Stim Injector
 }
 
 STRING 4269
-// Abilities: A16S (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A16S (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Soul Rapture)
 }
@@ -28805,7 +28792,7 @@ Resurrect a random deceased hero. The resurrected hero will have 100% of the max
 }
 
 STRING 4286
-// Abilities: A16P (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A16P (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Pacifism)
 }
@@ -28913,7 +28900,7 @@ When attacks an enemy, reduces the attack power of the target by 15%.
 }
 
 STRING 4302
-// Abilities: A16M (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A16M (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Blessings)
 }
@@ -29028,13 +29015,13 @@ Heals all nearby allies for |cffbe81f7175|r health and increases their armor by 
 }
 
 STRING 4319
-// Abilities: A16J (Неуязвимость), EditorSuffix (Editor Suffix)
+// Abilities: A16J (Invulnerable), EditorSuffix (Editor Suffix)
 {
 (Divine Intervention)
 }
 
 STRING 4320
-// Abilities: A16I (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A16I (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Divine Intervention)
 }
@@ -29298,7 +29285,7 @@ STRING 4360
 }
 
 STRING 4361
-// Abilities: A163 (Антимагический щит), EditorSuffix (Editor Suffix)
+// Abilities: A163 (Spell Shield), EditorSuffix (Editor Suffix)
 {
 (Heat Seekers)
 }
@@ -29686,7 +29673,7 @@ Reduces damage taken by 18%. Increases movement speed by 100.
 }
 
 STRING 4423
-// Abilities: A15P (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A15P (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Aqua Jet)
 }
@@ -29916,7 +29903,7 @@ STRING 4455
 }
 
 STRING 4456
-// Abilities: A15K (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A15K (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Снолист)
 }
@@ -30091,7 +30078,7 @@ Deals damage equal to |cffbe81f78%|r of the hero's maximum health to all enemies
 }
 
 STRING 4482
-// Abilities: A15A (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A15A (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Blight)
 }
@@ -30417,7 +30404,7 @@ STRING 4530
 }
 
 STRING 4531
-// Abilities: A152 (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A152 (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Embolden)
 }
@@ -30526,7 +30513,7 @@ Creates an orb. Hero's next 5 attacks will deal 150% more damage.
 }
 
 STRING 4548
-// Abilities: A14Z (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A14Z (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Dextrous vapours)
 }
@@ -31268,7 +31255,7 @@ STRING 4663
 }
 
 STRING 4664
-// Abilities: A13V (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A13V (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Карта Таро Мор)
 }
@@ -31885,7 +31872,7 @@ Armor (Ascendance)
 }
 
 STRING 4761
-// Abilities: A12V (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A12V (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Ледяной щит)
 }
@@ -32072,7 +32059,7 @@ When the hero gains or improves this ability, gives a random |cffcc0000corrupted
 }
 
 STRING 4790
-// Abilities: A12R (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A12R (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Снежное усиление, Скорость передвижения)
 }
@@ -32084,7 +32071,7 @@ STRING 4791
 }
 
 STRING 4792
-// Abilities: A12P (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A12P (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Снежное усиление, Снижение урона)
 }
@@ -32096,7 +32083,7 @@ STRING 4793
 }
 
 STRING 4794
-// Abilities: A12N (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A12N (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Снежное усиление, Атака)
 }
@@ -32837,7 +32824,7 @@ The hero binds all enemies nearby, dealing |cffbe81f716|r damage to them every s
 }
 
 STRING 4900
-// Abilities: A128 (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A128 (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Огонь в бутылке)
 }
@@ -33460,7 +33447,7 @@ STRING 4994
 }
 
 STRING 4995
-// Abilities: A11Q (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A11Q (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Fixed Odds)
 }
@@ -33629,7 +33616,7 @@ STRING 5020
 }
 
 STRING 5021
-// Abilities: A11H (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A11H (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Beginner’s Luck)
 }
@@ -33641,7 +33628,7 @@ STRING 5022
 }
 
 STRING 5023
-// Abilities: A11F (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A11F (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Щиты)
 }
@@ -33653,7 +33640,7 @@ STRING 5024
 }
 
 STRING 5025
-// Abilities: A11D (Инферно), EditorSuffix (Editor Suffix)
+// Abilities: A11D (Inferno), EditorSuffix (Editor Suffix)
 {
 (Мод)
 }
@@ -34498,7 +34485,7 @@ STRING 5158
 }
 
 STRING 5159
-// Abilities: A10C (Постоянная невидимость), EditorSuffix (Editor Suffix)
+// Abilities: A10C (Permanent Invisibility), EditorSuffix (Editor Suffix)
 {
 (Временная)
 }
@@ -34666,7 +34653,7 @@ Creates an arena rune next to each hero.
 }
 
 STRING 5184
-// Abilities: A103 (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A103 (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Double Down)
 }
@@ -34787,13 +34774,13 @@ Places the target in stasis. The target cannot do anything and becomes invulnera
 }
 
 STRING 5202
-// Abilities: A0ZZ (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0ZZ (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Дар мертвых, Здоровье)
 }
 
 STRING 5203
-// Abilities: A0ZY (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0ZY (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Дар мертвых, Броня)
 }
@@ -34848,7 +34835,7 @@ All heroes do not take damage for a while.
 }
 
 STRING 5212
-// Abilities: A0ZU (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0ZU (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Луноткань)
 }
@@ -35558,7 +35545,7 @@ STRING 5323
 }
 
 STRING 5324
-// Abilities: A0YO (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0YO (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Некрошерсть)
 }
@@ -35588,7 +35575,7 @@ MP/sec (Обручальное кольцо)
 }
 
 STRING 5329
-// Abilities: A0YJ (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0YJ (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Череп Йорика)
 }
@@ -35651,7 +35638,7 @@ STRING 5338
 }
 
 STRING 5339
-// Abilities: A0YE (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0YE (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Crown of Night)
 }
@@ -35663,7 +35650,7 @@ STRING 5340
 }
 
 STRING 5341
-// Abilities: A0YC (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0YC (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Маджит)
 }
@@ -35789,7 +35776,7 @@ STRING 5358
 }
 
 STRING 5359
-// Abilities: A0Y2 (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0Y2 (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Твердая кость)
 }
@@ -35801,7 +35788,7 @@ STRING 5360
 }
 
 STRING 5361
-// Abilities: A0Y0 (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0Y0 (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Паника)
 }
@@ -35887,7 +35874,7 @@ STRING 5372
 }
 
 STRING 5373
-// Abilities: A0XU (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0XU (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Проклятие скорости)
 }
@@ -36172,7 +36159,7 @@ Increases an ally's magic resistance by 30%. Every half second the ally inflicts
 }
 
 STRING 5417
-// Abilities: A0XG (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0XG (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Стеклозуб)
 }
@@ -36310,7 +36297,7 @@ STRING 5439
 }
 
 STRING 5440
-// Abilities: A0WX (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0WX (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Поглотитель магии)
 }
@@ -36322,7 +36309,7 @@ STRING 5441
 }
 
 STRING 5442
-// Abilities: A0WV (Постоянная невидимость), EditorSuffix (Editor Suffix)
+// Abilities: A0WV (Permanent Invisibility), EditorSuffix (Editor Suffix)
 {
 (Порошок Тени)
 }
@@ -36469,19 +36456,19 @@ Weaker works on bosses.
 }
 
 STRING 5463
-// Abilities: A0WQ (Неуязвимость), EditorSuffix (Editor Suffix)
+// Abilities: A0WQ (Invulnerable), EditorSuffix (Editor Suffix)
 {
 (Orb of Avalanche)
 }
 
 STRING 5464
-// Abilities: A0WP (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0WP (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Теневая зона)
 }
 
 STRING 5465
-// Abilities: A0WL (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0WL (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Рунный камень Стон)
 }
@@ -37052,7 +37039,7 @@ Charged blade does not disappear after an attack, but no longer affects bosses.
 }
 
 STRING 5547
-// Abilities: A0VX (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0VX (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Rubedo the Beautiful)
 }
@@ -37142,7 +37129,7 @@ Increases physical damage and reduces damage taken by 30%.
 }
 
 STRING 5562
-// Abilities: A0VV (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0VV (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Стойкость)
 }
@@ -37244,7 +37231,7 @@ Increases the healing received by the hero by 50%. When the hero kills an enemy,
 }
 
 STRING 5578
-// Abilities: A0VS (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0VS (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Заряженный клинок)
 }
@@ -37268,7 +37255,7 @@ STRING 5581
 }
 
 STRING 5582
-// Abilities: A0VQ (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0VQ (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Хронобег)
 }
@@ -37280,7 +37267,7 @@ STRING 5583
 }
 
 STRING 5584
-// Abilities: A0VO (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0VO (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Хроноярость)
 }
@@ -37479,7 +37466,7 @@ STRING 5611
 }
 
 STRING 5612
-// Abilities: A0VE (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0VE (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Вершитель Света)
 }
@@ -37551,7 +37538,7 @@ STRING 5623
 }
 
 STRING 5624
-// Abilities: A0V7 (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0V7 (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Высокое напряжение)
 }
@@ -37756,7 +37743,7 @@ When you use an ability or item, you have a |cffd7df0112%|r chance to reduce the
 }
 
 STRING 5655
-// Abilities: A0V3 (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0V3 (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Энергощит)
 }
@@ -37997,7 +37984,7 @@ STRING 5688
 }
 
 STRING 5689
-// Abilities: A0UX (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0UX (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Сильный дух)
 }
@@ -38118,7 +38105,7 @@ The effect is cumulative.
 }
 
 STRING 5706
-// Abilities: A0UU (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0UU (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Возмездие)
 }
@@ -38232,7 +38219,7 @@ When your hero dies, increases attack power and movement speed of all heroes by 
 }
 
 STRING 5724
-// Abilities: A0UP (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0UP (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Знак избранного)
 }
@@ -38885,7 +38872,7 @@ STRING 5822
 }
 
 STRING 5823
-// Abilities: A0UA (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0UA (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Пивной день)
 }
@@ -38897,7 +38884,7 @@ STRING 5824
 }
 
 STRING 5825
-// Abilities: A0U8 (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0U8 (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Дубовая кожа)
 }
@@ -39029,7 +39016,7 @@ War Banner
 }
 
 STRING 5842
-// Abilities: A0U5 (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0U5 (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Phoenix Badge)
 }
@@ -39253,7 +39240,7 @@ Imposes a debuff on the enemy, because of which he begins to miss with a probabi
 }
 
 STRING 5873
-// Abilities: A0U2 (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0U2 (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Целебная слюна)
 }
@@ -39362,7 +39349,7 @@ STRING 5890
 }
 
 STRING 5891
-// Abilities: A0TW (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0TW (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Дух-Спаситель)
 }
@@ -39627,13 +39614,13 @@ Choose a target. If the target is an ally, heals the target |cffbe81f7325|r heal
 }
 
 STRING 5933
-// Abilities: A0TN (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0TN (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Возвращение)
 }
 
 STRING 5934
-// Abilities: A0TM (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0TM (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Золотой клевер)
 }
@@ -39948,7 +39935,7 @@ Imposes a buff on the ally, due to which it has |cffbe81f785%|r lifesteal. The e
 }
 
 STRING 5982
-// Abilities: A0TG (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0TG (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Тотем Магии)
 }
@@ -39966,7 +39953,7 @@ STRING 5984
 }
 
 STRING 5985
-// Abilities: A0TD (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0TD (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Рыбий укус)
 }
@@ -40245,13 +40232,13 @@ Artifact: Phoenix Badge
 }
 
 STRING 6024
-// Abilities: A0T4 (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0T4 (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Кровожадность)
 }
 
 STRING 6025
-// Abilities: A0T3 (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0T3 (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Печать Спокойствия)
 }
@@ -40323,7 +40310,7 @@ You gain +1 charge to your roll.
 }
 
 STRING 6037
-// Abilities: A0SX (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0SX (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Символ Утера)
 }
@@ -40359,13 +40346,13 @@ STRING 6042
 }
 
 STRING 6043
-// Abilities: A0SV (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0SV (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Counterstrike)
 }
 
 STRING 6044
-// Abilities: A0SU (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0SU (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Усиление+)
 }
@@ -40492,7 +40479,7 @@ STRING 6063
 }
 
 STRING 6064
-// Abilities: A0SL (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0SL (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Озаряющая песня)
 }
@@ -40819,7 +40806,7 @@ Health (Orb of Cairne Bloodhoof)
 }
 
 STRING 6112
-// Abilities: A0SF (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0SF (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Щит Ло'Гоша)
 }
@@ -40981,7 +40968,7 @@ STRING 6137
 }
 
 STRING 6138
-// Abilities: A0S4 (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0S4 (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Морпех. Метка)
 }
@@ -40993,7 +40980,7 @@ STRING 6139
 }
 
 STRING 6140
-// Abilities: A0S2 (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0S2 (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Ядовитое касание)
 }
@@ -41005,7 +40992,7 @@ STRING 6141
 }
 
 STRING 6142
-// Abilities: A0S0 (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0S0 (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Власть стихий)
 }
@@ -41445,7 +41432,7 @@ STRING 6209
 }
 
 STRING 6210
-// Abilities: A0RP (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0RP (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Кислотный всплеск)
 }
@@ -41518,19 +41505,19 @@ Provokes the enemy to attack a caster. Less effective against bosses. Does not a
 }
 
 STRING 6222
-// Abilities: A0RL (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0RL (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Оживление, Принц пещер)
 }
 
 STRING 6223
-// Abilities: A0RK (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0RK (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Оживление)
 }
 
 STRING 6224
-// Abilities: A0RJ (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0RJ (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Orb of Earth)
 }
@@ -41647,7 +41634,7 @@ Artifact: Superbot-5000
 }
 
 STRING 6243
-// Abilities: A0RC (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0RC (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Супербот-5000)
 }
@@ -41749,7 +41736,7 @@ When your hero is attacked, inflicts poison on the enemy, which slows down movem
 }
 
 STRING 6259
-// Abilities: A0R9 (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0R9 (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Зелье Пустыни)
 }
@@ -42078,13 +42065,13 @@ Reduces enemy armor by 6. If the target is a minion, instead reduces by 60.
 }
 
 STRING 6309
-// Abilities: A0R3 (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0R3 (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Меч Могущества, Снижение урона)
 }
 
 STRING 6310
-// Abilities: A0R2 (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0R2 (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Меч Могущества, Доп. Атака)
 }
@@ -42354,7 +42341,7 @@ And also new random events are opened.
 }
 
 STRING 6352
-// Abilities: A0QU (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0QU (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Длинный лук)
 }
@@ -42403,7 +42390,7 @@ Armor (Слеза Яха)
 }
 
 STRING 6360
-// Abilities: A0QP (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0QP (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Щит из Великого Древа)
 }
@@ -42439,7 +42426,7 @@ STRING 6365
 }
 
 STRING 6366
-// Abilities: A0QM (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0QM (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Безумие)
 }
@@ -42681,7 +42668,7 @@ Restores the hero |cffbe81f7300|r health and increases attack power by 1 until t
 }
 
 STRING 6404
-// Abilities: A0QG (Постоянная невидимость), EditorSuffix (Editor Suffix)
+// Abilities: A0QG (Permanent Invisibility), EditorSuffix (Editor Suffix)
 {
 (Уловка)
 }
@@ -42795,7 +42782,7 @@ At the end of the battle, increases the stats of a random hero by 1.
 }
 
 STRING 6423
-// Abilities: A0Q7 (Инферно), EditorSuffix (Editor Suffix)
+// Abilities: A0Q7 (Inferno), EditorSuffix (Editor Suffix)
 {
 (Инферно)
 }
@@ -43210,7 +43197,7 @@ All artifacts are related to sheeps.
 }
 
 STRING 6485
-// Abilities: A0PX (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0PX (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Парадокс)
 }
@@ -43409,7 +43396,7 @@ STRING 6514
 }
 
 STRING 6515
-// Abilities: A0PN (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0PN (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Гранит Науки)
 }
@@ -43452,7 +43439,7 @@ At the beginning of the game, you get 100 gold.
 }
 
 STRING 6522
-// Abilities: A0PJ (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0PJ (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Реактивные сапоги)
 }
@@ -43470,13 +43457,13 @@ Artifact: Jet boots
 }
 
 STRING 6525
-// Abilities: A0PG (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0PG (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Plague, Damage)
 }
 
 STRING 6526
-// Abilities: A0PF (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0PF (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Растерзать)
 }
@@ -43628,7 +43615,7 @@ You have 1 additional attempt at a boss fight.
 }
 
 STRING 6551
-// Abilities: A0P0 (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0P0 (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Idol of Sin)
 }
@@ -43999,7 +43986,7 @@ STRING 6607
 }
 
 STRING 6608
-// Abilities: A0OL (Неуязвимость), EditorSuffix (Editor Suffix)
+// Abilities: A0OL (Invulnerable), EditorSuffix (Editor Suffix)
 {
 (Символ Утера)
 }
@@ -44404,7 +44391,7 @@ Plant a pod at a location. After 2 seconds, the pod blooms and causes all allies
 }
 
 STRING 6670
-// Abilities: A0OD (Антимагический щит), EditorSuffix (Editor Suffix)
+// Abilities: A0OD (Spell Shield), EditorSuffix (Editor Suffix)
 {
 (Dream catcher)
 }
@@ -44525,7 +44512,7 @@ STRING 6687
 }
 
 STRING 6688
-// Abilities: A0O9 (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0O9 (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Карта Таро Сила)
 }
@@ -44537,13 +44524,13 @@ STRING 6689
 }
 
 STRING 6690
-// Abilities: A0O7 (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0O7 (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Приободрение, Скорость атаки)
 }
 
 STRING 6691
-// Abilities: A0O6 (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0O6 (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Приободрение)
 }
@@ -44555,7 +44542,7 @@ STRING 6692
 }
 
 STRING 6693
-// Abilities: A0O4 (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0O4 (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Serrated blade)
 }
@@ -45232,7 +45219,7 @@ Deals |cffbe81f7150|r damage to the enemy. If the target is marked with a seal o
 }
 
 STRING 6799
-// Abilities: A0NJ (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0NJ (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Печать взрыва)
 }
@@ -45542,7 +45529,7 @@ STRING 6844
 }
 
 STRING 6845
-// Abilities: A0N9 (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0N9 (Spell Book), EditorSuffix (Editor Suffix)
 {
 (На попятную!)
 }
@@ -45554,7 +45541,7 @@ STRING 6846
 }
 
 STRING 6847
-// Abilities: A0N7 (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0N7 (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Стрибог)
 }
@@ -45572,7 +45559,7 @@ STRING 6849
 }
 
 STRING 6850
-// Abilities: A0N4 (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0N4 (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Plague Gift, Damage)
 }
@@ -45590,7 +45577,7 @@ STRING 6852
 }
 
 STRING 6853
-// Abilities: A0N2 (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0N2 (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Приток сил, Надежда Норделя)
 }
@@ -46029,7 +46016,7 @@ Increases ally's attack speed. After the end of the effect, reduces the attack s
 }
 
 STRING 6917
-// Abilities: A0MR (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0MR (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Замедление времени)
 }
@@ -46071,7 +46058,7 @@ MP/sec: Moon Well
 }
 
 STRING 6924
-// Abilities: A0ML (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0ML (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Ускорение времени)
 }
@@ -46095,13 +46082,13 @@ At the end of the battle with the boss, you get the opportunity to refresh Jule'
 }
 
 STRING 6928
-// Abilities: A0MJ (Неуязвимость), EditorSuffix (Editor Suffix)
+// Abilities: A0MJ (Invulnerable), EditorSuffix (Editor Suffix)
 {
 (Newborn Phoenix)
 }
 
 STRING 6929
-// Abilities: A0MI (Невидимость), EditorSuffix (Editor Suffix)
+// Abilities: A0MI (Invisibility), EditorSuffix (Editor Suffix)
 {
 (Ночная бабочка)
 }
@@ -46437,7 +46424,7 @@ Throws a smoke bomb. Any enemy in the area has a 20% chance to miss, and also ta
 }
 
 STRING 6979
-// Abilities: A0MA (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0MA (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Страх)
 }
@@ -46606,7 +46593,7 @@ Gives buff to an ally. At the end of action, restores target |cffbe81f7800|r hea
 }
 
 STRING 7005
-// Abilities: A0M2 (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0M2 (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Приток сил)
 }
@@ -46862,7 +46849,7 @@ Every 10 seconds, an area appears that explodes after 4 seconds and deals damage
 }
 
 STRING 7042
-// Abilities: A0LV (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0LV (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Ослабление+)
 }
@@ -46874,7 +46861,7 @@ STRING 7043
 }
 
 STRING 7044
-// Abilities: A0LT (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0LT (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Black Sabbath)
 }
@@ -47175,7 +47162,7 @@ Using the Water Recedes (|cffffcc00W|r) ability also restores |cffbe81f7260|r he
 }
 
 STRING 7090
-// Abilities: A0LO (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0LO (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Raging Bane)
 }
@@ -47394,7 +47381,7 @@ At the beginning of each battle, something happens.
 }
 
 STRING 7124
-// Abilities: A0LJ (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0LJ (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Звездная пыль)
 }
@@ -47724,7 +47711,7 @@ If the hero does not take damage within 4 seconds, increases attack speed by 35%
 }
 
 STRING 7174
-// Abilities: A0L9 (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0L9 (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Телепу)
 }
@@ -47742,7 +47729,7 @@ STRING 7176
 }
 
 STRING 7177
-// Abilities: A0L6 (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0L6 (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Калечение, Замедление)
 }
@@ -47754,7 +47741,7 @@ STRING 7178
 }
 
 STRING 7179
-// Abilities: A0L4 (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0L4 (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Передышка)
 }
@@ -47766,7 +47753,7 @@ STRING 7180
 }
 
 STRING 7181
-// Abilities: A0L2 (Невидимость), EditorSuffix (Editor Suffix)
+// Abilities: A0L2 (Invisibility), EditorSuffix (Editor Suffix)
 {
 (Передышка)
 }
@@ -48055,7 +48042,7 @@ STRING 7223
 }
 
 STRING 7224
-// Abilities: A0KP (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0KP (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Slayer)
 }
@@ -48067,7 +48054,7 @@ STRING 7225
 }
 
 STRING 7226
-// Abilities: A0KN (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0KN (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Ослабление)
 }
@@ -48358,7 +48345,7 @@ STRING 7267
 }
 
 STRING 7268
-// Abilities: A0KE (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0KE (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Неистовые кулаки)
 }
@@ -48587,7 +48574,7 @@ STRING 7304
 }
 
 STRING 7305
-// Abilities: A0K6 (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0K6 (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Истинный облик)
 }
@@ -48766,7 +48753,7 @@ STRING 7330
 }
 
 STRING 7331
-// Abilities: A0JW (Постоянная невидимость), EditorSuffix (Editor Suffix)
+// Abilities: A0JW (Permanent Invisibility), EditorSuffix (Editor Suffix)
 {
 (Acrobatics)
 }
@@ -48880,7 +48867,7 @@ STRING 7349
 }
 
 STRING 7350
-// Abilities: A0JS (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0JS (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Скарабей)
 }
@@ -49478,7 +49465,7 @@ Increases an ally’s armor by 8 and instantly restores |cffbe81f7275|r health.
 }
 
 STRING 7436
-// Abilities: A0JB (Постоянная невидимость), EditorSuffix (Editor Suffix)
+// Abilities: A0JB (Permanent Invisibility), EditorSuffix (Editor Suffix)
 {
 (R-Moon blinking)
 }
@@ -49667,7 +49654,7 @@ STRING 7464
 }
 
 STRING 7465
-// Abilities: A0J2 (Невидимость), EditorSuffix (Editor Suffix)
+// Abilities: A0J2 (Invisibility), EditorSuffix (Editor Suffix)
 {
 (Спринт)
 }
@@ -49770,7 +49757,7 @@ Deals |cffbe81f7180|r damage to an enemy. Deals an additional |cffbe81f7175%|r d
 }
 
 STRING 7481
-// Abilities: A0J0 (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0J0 (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Спринт)
 }
@@ -49943,7 +49930,7 @@ Uses a random activated |cff60C445Unique|r.
 }
 
 STRING 7507
-// Abilities: A0IU (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0IU (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Blood of the Ancient)
 }
@@ -50646,7 +50633,7 @@ Enters the hero into invisibility and increases the movement speed by 75%.
 }
 
 STRING 7615
-// Abilities: A0I5 (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0I5 (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Утомление)
 }
@@ -50779,7 +50766,7 @@ Imposes an effect on the target. If an ally - |cffbe81f760%|r of the damage rece
 }
 
 STRING 7635
-// Abilities: A0HZ (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0HZ (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Единение)
 }
@@ -50791,7 +50778,7 @@ STRING 7636
 }
 
 STRING 7637
-// Abilities: A0HX (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0HX (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Orb of Kel'Thuzad)
 }
@@ -50908,7 +50895,7 @@ Artifact: Blood of the Ancient
 }
 
 STRING 7654
-// Abilities: A0HU (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0HU (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Избранный)
 }
@@ -51357,7 +51344,7 @@ Nearby enemies take |cffbe81f740|r damage per second.
 }
 
 STRING 7722
-// Abilities: A0H6 (Громовая поступь), EditorSuffix (Editor Suffix)
+// Abilities: A0H6 (War Stomp), EditorSuffix (Editor Suffix)
 {
 (Массовое оглушение, 5 секунд)
 }
@@ -51508,13 +51495,13 @@ Speed
 }
 
 STRING 7745
-// Abilities: A0H0 (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0H0 (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Второе дыхание)
 }
 
 STRING 7746
-// Abilities: A0GZ (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0GZ (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Бдительность)
 }
@@ -51526,7 +51513,7 @@ STRING 7747
 }
 
 STRING 7748
-// Abilities: A0GX (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0GX (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Касание жизни)
 }
@@ -51728,7 +51715,7 @@ STRING 7779
 }
 
 STRING 7780
-// Abilities: A0GN (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0GN (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Зелье Ливня)
 }
@@ -51746,7 +51733,7 @@ Artifact: Aquamarin
 }
 
 STRING 7783
-// Abilities: A0GK (Постоянная невидимость), EditorSuffix (Editor Suffix)
+// Abilities: A0GK (Permanent Invisibility), EditorSuffix (Editor Suffix)
 {
 (Noiselessness)
 }
@@ -51816,7 +51803,7 @@ Reduces enemy attack power by 15%.
 }
 
 STRING 7794
-// Abilities: A0GE (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0GE (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Усиление)
 }
@@ -52095,7 +52082,7 @@ STRING 7838
 }
 
 STRING 7839
-// Abilities: A0FU (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0FU (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Deadly Venom)
 }
@@ -52217,7 +52204,7 @@ When the hero kills someone, explodes the target, dealing |cffbe81f7240|r damage
 }
 
 STRING 7859
-// Abilities: A0FP (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0FP (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Debilitating Presence)
 }
@@ -52980,7 +52967,7 @@ Reduces attack cooldown by 22%. If the hero has not killed anyone during the bat
 }
 
 STRING 7978
-// Abilities: A0F6 (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0F6 (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Умиление)
 }
@@ -53139,7 +53126,7 @@ Throws your hero into a frenzy. Each hit increases attack power of your hero by 
 }
 
 STRING 8002
-// Abilities: A0F0 (Антимагический щит), EditorSuffix (Editor Suffix)
+// Abilities: A0F0 (Spell Shield), EditorSuffix (Editor Suffix)
 {
 (Norepinephrine)
 }
@@ -53951,7 +53938,7 @@ Makes all nearby creatures invisible for 3 seconds. If the target is not a caste
 }
 
 STRING 8125
-// Abilities: A0EE (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0EE (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Единение с луной)
 }
@@ -53975,7 +53962,7 @@ Armor (Щит Ведьмака, 25 брони)
 }
 
 STRING 8129
-// Abilities: A0EA (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0EA (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Norepinephrine)
 }
@@ -54005,7 +53992,7 @@ STRING 8133
 }
 
 STRING 8134
-// Abilities: A0E7 (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0E7 (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Речной глазастень)
 }
@@ -54161,7 +54148,7 @@ The hero is one with the moon. While the effect is active, each time the hero us
 }
 
 STRING 8158
-// Abilities: A0E1 (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0E1 (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Землетрясение)
 }
@@ -54264,7 +54251,7 @@ Deals |cffbe81f7400|r damage to all binded enemies. For each 5th hit, gives 1 te
 }
 
 STRING 8174
-// Abilities: A0DZ (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0DZ (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Soul Latch)
 }
@@ -54608,7 +54595,7 @@ STRING 8226
 }
 
 STRING 8227
-// Abilities: A0DS (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0DS (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Orb of Frost)
 }
@@ -54626,7 +54613,7 @@ STRING 8229
 }
 
 STRING 8230
-// Abilities: A0DP (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0DP (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Сокрушение)
 }
@@ -55117,7 +55104,7 @@ When the hero takes damage, with a probability of |cffd7df0115%|r, increases hea
 }
 
 STRING 8309
-// Abilities: A0D5 (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0D5 (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Ошеломление)
 }
@@ -55396,7 +55383,7 @@ Restores |cffbe81f74|r health, |cffbe81f72|r mana and gives 2 gold to all living
 }
 
 STRING 8353
-// Abilities: A0CQ (Невидимость), EditorSuffix (Editor Suffix)
+// Abilities: A0CQ (Invisibility), EditorSuffix (Editor Suffix)
 {
 (Во тьму)
 }
@@ -55808,7 +55795,7 @@ When the enemy dies, summons a skeleton.
 }
 
 STRING 8415
-// Abilities: A0CJ (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0CJ (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Посох Феноменальной Мощи)
 }
@@ -55990,13 +55977,13 @@ STRING 8443
 }
 
 STRING 8444
-// Abilities: A0C3 (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0C3 (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Лунный мотылек)
 }
 
 STRING 8445
-// Abilities: A0C2 (Антимагический щит), EditorSuffix (Editor Suffix)
+// Abilities: A0C2 (Spell Shield), EditorSuffix (Editor Suffix)
 {
 (Wtii)
 }
@@ -56409,7 +56396,7 @@ Backtracking: Уклонение
 }
 
 STRING 8509
-// Abilities: A0BO (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0BO (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Прикосновение Света)
 }
@@ -56503,7 +56490,7 @@ All heroes get into chaos. At the end of the battle, all artifacts turn into ran
 }
 
 STRING 8524
-// Abilities: A0BJ (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0BJ (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Рассечение)
 }
@@ -56515,7 +56502,7 @@ Orb: Arcane
 }
 
 STRING 8526
-// Abilities: A0BH (Постоянная невидимость), EditorSuffix (Editor Suffix)
+// Abilities: A0BH (Permanent Invisibility), EditorSuffix (Editor Suffix)
 {
 (Chaw of Chaws)
 }
@@ -56545,7 +56532,7 @@ STRING 8530
 }
 
 STRING 8531
-// Abilities: A0BE (Постоянная невидимость), EditorSuffix (Editor Suffix)
+// Abilities: A0BE (Permanent Invisibility), EditorSuffix (Editor Suffix)
 {
 (Звездная пыль)
 }
@@ -57000,7 +56987,7 @@ Increases armor of your hero and allies nearby by 11.
 }
 
 STRING 8601
-// Abilities: A0B3 (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0B3 (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Топот)
 }
@@ -57012,7 +56999,7 @@ Mov. speed (Random bonus)
 }
 
 STRING 8603
-// Abilities: A0B1 (Постоянная невидимость), EditorSuffix (Editor Suffix)
+// Abilities: A0B1 (Permanent Invisibility), EditorSuffix (Editor Suffix)
 {
 (Лунный мотылек)
 }
@@ -57048,7 +57035,7 @@ STRING 8608
 }
 
 STRING 8609
-// Abilities: A0AV (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A0AV (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Калечение)
 }
@@ -57700,7 +57687,7 @@ STRING 8708
 }
 
 STRING 8709
-// Abilities: A0A2 (Неуязвимость), EditorSuffix (Editor Suffix)
+// Abilities: A0A2 (Invulnerable), EditorSuffix (Editor Suffix)
 {
 (Pandora's Box)
 }
@@ -57827,7 +57814,7 @@ The hero marks the ground below him. After 2 seconds, the ground explodes, deali
 }
 
 STRING 8728
-// Abilities: A09X (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A09X (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Хроноускорение)
 }
@@ -57948,7 +57935,7 @@ Teleports the hero to the specified point. When the hero teleports, deals |cffbe
 }
 
 STRING 8746
-// Abilities: A09T (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A09T (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Opportunistic Reflexes)
 }
@@ -58416,7 +58403,7 @@ With a probability of |cffd7df0114%|r, one of the artifact rewards will be "Weap
 }
 
 STRING 8816
-// Abilities: A09H (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A09H (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Провокация)
 }
@@ -58983,7 +58970,7 @@ The hero makes a jump up. When it lands, it deals |cffbe81f7260|r damage to near
 }
 
 STRING 8906
-// Abilities: A092 (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A092 (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Метка, пожинатель кошмаров)
 }
@@ -58995,7 +58982,7 @@ STRING 8907
 }
 
 STRING 8908
-// Abilities: A090 (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A090 (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Ядовитая нечисть, отравление)
 }
@@ -59393,7 +59380,7 @@ Deals damage to the enemy equal to |cffbe81f7800%|r of the hero agility.
 }
 
 STRING 8972
-// Abilities: A08Q (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A08Q (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Ведьмино варево)
 }
@@ -60311,7 +60298,7 @@ If the hero hasn't used Vengeful Strike for the next 30 seconds, the next Vengef
 }
 
 STRING 9108
-// Abilities: A081 (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A081 (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Power Owerwhelming)
 }
@@ -60741,13 +60728,13 @@ Choose an ally. Reduces target damage taken by 25%. Redirects 60% of the damage 
 }
 
 STRING 9170
-// Abilities: A07V (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A07V (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Черная метка)
 }
 
 STRING 9171
-// Abilities: A07U (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A07U (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Совиная магия)
 }
@@ -60988,7 +60975,7 @@ Artifact: Fortune-telling ball
 }
 
 STRING 9208
-// Abilities: A07L (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A07L (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Темная сфера)
 }
@@ -61439,7 +61426,7 @@ STRING 9275
 }
 
 STRING 9276
-// Abilities: A07C (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A07C (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Щит Ведьмака)
 }
@@ -61671,7 +61658,7 @@ STRING 9311
 }
 
 STRING 9312
-// Abilities: A06V (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A06V (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Порез)
 }
@@ -62398,7 +62385,7 @@ Kills your hero to increase the damage dealt and healing received of all allied 
 }
 
 STRING 9417
-// Abilities: A05X (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A05X (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Реинкарнация)
 }
@@ -62980,7 +62967,7 @@ Armor (Haze1)
 }
 
 STRING 9508
-// Abilities: A05J (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A05J (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Stun)
 }
@@ -63307,7 +63294,7 @@ STRING 9554
 }
 
 STRING 9555
-// Abilities: A05C (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A05C (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Plague Gift)
 }
@@ -63416,7 +63403,7 @@ Increases attack speed by 100%. Reduces movement speed by 50%.
 }
 
 STRING 9571
-// Abilities: A05A (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A05A (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Королевская кровь)
 }
@@ -63597,7 +63584,7 @@ Increases attack and movement speed of allies by 30%.
 }
 
 STRING 9599
-// Abilities: A054 (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A054 (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Активация)
 }
@@ -64510,7 +64497,7 @@ STRING 9743
 }
 
 STRING 9744
-// Abilities: A04B (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A04B (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Преобразование праны)
 }
@@ -65458,7 +65445,7 @@ Day changes to night. Increases your hero's spell power by 50%, resets the coold
 }
 
 STRING 9885
-// Abilities: A03G (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A03G (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Чумное влияние)
 }
@@ -65863,7 +65850,7 @@ Increases the ally's attack speed by 80%, but every second takes 13 health.
 }
 
 STRING 9947
-// Abilities: A031 (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A031 (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Повязка)
 }
@@ -66184,7 +66171,7 @@ STRING 9993
 }
 
 STRING 9994
-// Abilities: A02O (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A02O (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Отрава)
 }
@@ -66361,7 +66348,7 @@ Deals |cffbe81f7damage|r to the enemy equal to the sum of all your stats. If tar
 }
 
 STRING 10022
-// Abilities: A02I (Неуязвимость), EditorSuffix (Editor Suffix)
+// Abilities: A02I (Invulnerable), EditorSuffix (Editor Suffix)
 {
 (Дух-Спаситель)
 }
@@ -66373,7 +66360,7 @@ STRING 10023
 }
 
 STRING 10024
-// Abilities: A02G (Неуязвимость), EditorSuffix (Editor Suffix)
+// Abilities: A02G (Invulnerable), EditorSuffix (Editor Suffix)
 {
 (Stasis)
 }
@@ -66518,7 +66505,7 @@ Stats (Random bonus, AS)
 }
 
 STRING 10046
-// Abilities: A029 (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A029 (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Королева пауков, атака)
 }
@@ -66790,7 +66777,7 @@ STRING 10087
 }
 
 STRING 10088
-// Abilities: A01X (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A01X (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Королева пауков, броня)
 }
@@ -67571,7 +67558,7 @@ Hurls a bolt of damaging lightning at a target enemy that jumps to nearby enemie
 }
 
 STRING 10208
-// Abilities: A01C (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A01C (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Благородный рыцарь)
 }
@@ -67703,7 +67690,7 @@ STRING 10229
 }
 
 STRING 10230
-// Abilities: A013 (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A013 (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Twin heart)
 }
@@ -67899,11 +67886,11 @@ Kills a minion. Restores the hero |cffbe81f7100%|r of the target's health. If th
 }
 
 STRING 10260
-// Abilities: A010 (Barbarian: Bloodlust), Ubertip (Tooltip - Normal - Extended)
+// Abilities: A1DO (Shepherd: Lure), Researchubertip (Tooltip - Learn - Extended)
 {
-Kills a minion. Restores the hero |cffbe81f125%|r of the target's health. If the target is |cffff1493undead|r, it increases the attack power of the hero by 30.
-|cffffcc00Duration:|r 16 seconds.
+Deals |cffbe81f790/130/170/210/250|r damage to a single target. A Sheep with 20/40/60/80/100% increased stats spawns at the border of the Arena.
 |cffffcc00Cooldown:|r 10 seconds.
+|cffffcc00Cost:|r 60 mana.
 }
 
 STRING 10261
@@ -68265,7 +68252,7 @@ Imposes a shield on all heroes, absorbing |cffbe81f725|r health for each ruby of
 }
 
 STRING 10316
-// Abilities: A00L (Неуязвимость), EditorSuffix (Editor Suffix)
+// Abilities: A00L (Invulnerable), EditorSuffix (Editor Suffix)
 {
 (Caustic Leap)
 }
@@ -68314,7 +68301,7 @@ STRING 10322
 }
 
 STRING 10323
-// Abilities: A00I (Невидимость), EditorSuffix (Editor Suffix)
+// Abilities: A00I (Invisibility), EditorSuffix (Editor Suffix)
 {
 (Мутные воды)
 }
@@ -68663,7 +68650,7 @@ HP (Idol of Greed)
 }
 
 STRING 10379
-// Abilities: A004 (Книга заклинаний), EditorSuffix (Editor Suffix)
+// Abilities: A004 (Spell Book), EditorSuffix (Editor Suffix)
 {
 (Упорство)
 }
@@ -72294,7 +72281,7 @@ Armor reduced.
 }
 
 STRING 10984
-// Buffs/Effects: B02A (Кольцо огня), EditorSuffix (Editor Suffix)
+// Buffs/Effects: B02A (Permanent Immolation), EditorSuffix (Editor Suffix)
 {
 (Orb)
 }
@@ -73304,43 +73291,43 @@ Armor increased.
 }
 
 STRING 11152
-// Upgrades: R004 (Длинноствольные мушкеты), Name (Name)
+// Upgrades: R004 (Long Rifles), Name (Name)
 {
 Adaptation
 }
 
 STRING 11153
-// Upgrades: R003 (Железная броня,Стальная броня,Мифриловая б), effect1 (Effect 1)
+// Upgrades: R003 (Iron Plating,Steel Plating,Mithril Plating), effect1 (Effect 1)
 {
 rhpx
 }
 
 STRING 11154
-// Upgrades: R003 (Железная броня,Стальная броня,Мифриловая б), Name (Name)
+// Upgrades: R003 (Iron Plating,Steel Plating,Mithril Plating), Name (Name)
 {
 Buff
 }
 
 STRING 11155
-// Upgrades: R002 (Железные мечи,Стальные мечи,Мифриловые меч), Name (Name)
+// Upgrades: R002 (Iron Forged Swords,Steel Forged Swords,Mithril Forged Swords), Name (Name)
 {
 Buff
 }
 
 STRING 11156
-// Upgrades: R001 (Железная броня,Стальная броня,Мифриловая б), effect1 (Effect 1)
+// Upgrades: R001 (Iron Plating,Steel Plating,Mithril Plating), effect1 (Effect 1)
 {
 rhpx
 }
 
 STRING 11157
-// Upgrades: R001 (Железная броня,Стальная броня,Мифриловая б), Name (Name)
+// Upgrades: R001 (Iron Plating,Steel Plating,Mithril Plating), Name (Name)
 {
 Upgrade
 }
 
 STRING 11158
-// Upgrades: R000 (Железные мечи,Стальные мечи,Мифриловые меч), Name (Name)
+// Upgrades: R000 (Iron Forged Swords,Steel Forged Swords,Mithril Forged Swords), Name (Name)
 {
 Upgrade
 }
@@ -73642,7 +73629,7 @@ By Varcklen
 
 STRING 11218
 {
-|cffbe81f7Boss Battle 1.5.0|r
+|cffbe81f7Boss Battle 1.5.1x|r
 }
 
 STRING 11219
@@ -73822,11 +73809,9 @@ When you summon a minion, it increases its attack speed by 30% and grants a fier
 }
 
 STRING 11244
-// Abilities: A1DO (Shepherd: Lure), Researchubertip (Tooltip - Learn - Extended)
+// Units: O01Z (Runesmith), Name (Name)
 {
-Deals |cffbe81f7100/150/200/250/300|r damage to a single target. A Sheep spawns at the border of the Arena.
-|cffffcc00Cooldown:|r 10 seconds.
-|cffffcc00Cost:|r 60 mana.
+Runesmith
 }
 
 STRING 11245
@@ -73863,7 +73848,7 @@ Shepherds Call, [|cffffcc00Level 1|r]
 }
 
 STRING 11250
-// Abilities: A1DQ (Shepherd: Shepherds Call Dummy), Tip (Tooltip - Normal)
+// Abilities: A1DV (Shepherd: Shepherds Call Active), Tip (Tooltip - Normal)
 {
 Shepherds Call, [|cffffcc00Level 1|r]
 }
@@ -73970,81 +73955,81 @@ E
 }
 
 STRING 11267
-// Abilities: A1DQ (Shepherd: Shepherds Call Dummy), Name (Name)
+// Items: I02S (Spirit figurine), Ubertip (Tooltip - Extended)
 {
-Shepherd: Shepherds Call Dummy
+|cffe96a1cLegendary|r, |cff5858faMoon|r
+Summons a small uncontrollable spirit that chases the hero and constantly attacks nearby enemies, dealing |cffbe81f715|r damage. This spirit also uses waves created by the "|cff5858faMoon|r" set bonus.
 }
 
 STRING 11268
-// Abilities: A1DQ (Shepherd: Shepherds Call Dummy), Researchtip (Tooltip - Learn)
+// Abilities: A1DV (Shepherd: Shepherds Call Active), Researchtip (Tooltip - Learn)
 {
 Shepherds Call, [|cffffcc00Level %d|r]
 }
 
 STRING 11269
-// Abilities: A1DQ (Shepherd: Shepherds Call Dummy), Researchubertip (Tooltip - Learn - Extended)
+// Abilities: A1DO (Shepherd: Lure), Ubertip (Tooltip - Normal - Extended)
 {
-Attacks apply a debuff reducing armor by 3/5/7/9/11.|nIdle allied summons are ordered to attack the Shepherds target.
-|cffffcc00Duration:|r 4 seconds.
+Deals |cffbe81f790|r damage to a single target. A Sheep with 20% increased stats spawns at the border of the Arena.
+|cffffcc00Cooldown:|r 10 seconds.
 }
 
 STRING 11270
-// Abilities: A1DQ (Shepherd: Shepherds Call Dummy), Tip (Tooltip - Normal)
+// Abilities: A1DV (Shepherd: Shepherds Call Active), Tip (Tooltip - Normal)
 {
 Shepherds Call, [|cffffcc00Level 2|r]
 }
 
 STRING 11271
-// Abilities: A1DQ (Shepherd: Shepherds Call Dummy), Tip (Tooltip - Normal)
+// Abilities: A1DV (Shepherd: Shepherds Call Active), Tip (Tooltip - Normal)
 {
 Shepherds Call, [|cffffcc00Level 3|r]
 }
 
 STRING 11272
-// Abilities: A1DQ (Shepherd: Shepherds Call Dummy), Tip (Tooltip - Normal)
+// Abilities: A1DV (Shepherd: Shepherds Call Active), Tip (Tooltip - Normal)
 {
 Shepherds Call, [|cffffcc00Level 4|r]
 }
 
 STRING 11273
-// Abilities: A1DQ (Shepherd: Shepherds Call Dummy), Tip (Tooltip - Normal)
+// Abilities: A1DV (Shepherd: Shepherds Call Active), Tip (Tooltip - Normal)
 {
 Shepherds Call, [|cffffcc00Level 5|r]
 }
 
 STRING 11274
-// Abilities: A1DQ (Shepherd: Shepherds Call Dummy), Ubertip (Tooltip - Normal - Extended)
+// Abilities: A1DO (Shepherd: Lure), Ubertip (Tooltip - Normal - Extended)
 {
-Attacks apply a debuff reducing armor by 3.|nIdle allied summons are ordered to attack the Shepherds target.
-|cffffcc00Duration:|r 4 seconds.
+Deals |cffbe81f7130|r damage to a single target. A Sheep with 40% increased stats spawns at the border of the Arena.
+|cffffcc00Cooldown:|r 10 seconds.
 }
 
 STRING 11275
-// Abilities: A1DQ (Shepherd: Shepherds Call Dummy), Ubertip (Tooltip - Normal - Extended)
+// Abilities: A1DO (Shepherd: Lure), Ubertip (Tooltip - Normal - Extended)
 {
-Attacks apply a debuff reducing armor by 5.|nIdle allied summons are ordered to attack the Shepherds target.
-|cffffcc00Duration:|r 4 seconds.
+Deals |cffbe81f7170|r damage to a single target. A Sheep with 60% increased stats spawns at the border of the Arena.
+|cffffcc00Cooldown:|r 10 seconds.
 }
 
 STRING 11276
-// Abilities: A1DQ (Shepherd: Shepherds Call Dummy), Ubertip (Tooltip - Normal - Extended)
+// Abilities: A1DO (Shepherd: Lure), Ubertip (Tooltip - Normal - Extended)
 {
-Attacks apply a debuff reducing armor by 7.|nIdle allied summons are ordered to attack the Shepherds target.
-|cffffcc00Duration:|r 4 seconds.
+Deals |cffbe81f7210|r damage to a single target. A Sheep with 80% increased stats spawns at the border of the Arena.
+|cffffcc00Cooldown:|r 10 seconds.
 }
 
 STRING 11277
-// Abilities: A1DQ (Shepherd: Shepherds Call Dummy), Ubertip (Tooltip - Normal - Extended)
+// Abilities: A1DO (Shepherd: Lure), Ubertip (Tooltip - Normal - Extended)
 {
-Attacks apply a debuff reducing armor by 9.|nIdle allied summons are ordered to attack the Shepherds target.
-|cffffcc00Duration:|r 4 seconds.
+Deals |cffbe81f7250|r damage to a single target. A Sheep with 100% increased stats spawns at the border of the Arena.
+|cffffcc00Cooldown:|r 10 seconds.
 }
 
 STRING 11278
-// Abilities: A1DQ (Shepherd: Shepherds Call Dummy), Ubertip (Tooltip - Normal - Extended)
+// Units: O01Z (Runesmith), Propernames (Proper Names)
 {
-Attacks apply a debuff reducing armor by 11.|nIdle allied summons are ordered to attack the Shepherds target.
-|cffffcc00Duration:|r 4 seconds.
+Odo
 }
 
 STRING 11279
@@ -74084,44 +74069,88 @@ Spirit Journey, [|cffffcc00Level 5|r]
 }
 
 STRING 11285
-// Abilities: A1DO (Shepherd: Lure), Ubertip (Tooltip - Normal - Extended)
+// Abilities: A1E3 (Runesmith: Runic Link), Researchubertip (Tooltip - Learn - Extended)
 {
-Deals |cffbe81f7100|r damage to a single target. A Sheep spawns at the border of the Arena.
-|cffffcc00Cooldown:|r 10 seconds.
+Whenever the Runesmith uses a Rune he shares the effects with his allies. Using runes provides additional boons.
+
+|cffffcc00Level 1:|r Life-Giver provides 0.5 health regeneration.
+|cffffcc00Level 2:|r Shepherd provides 1 armor for the battle.
+|cffffcc00Level 3:|r Emperor reduces active cooldowns by 5s.
+|cffffcc00Level 4:|r Strongman provides 1% spell power.
+|cffffcc00Level 5:|r Illusionist provides an additional random stat.
 }
 
 STRING 11286
-// Abilities: A1DO (Shepherd: Lure), Ubertip (Tooltip - Normal - Extended)
+// Abilities: A1DW (Runsesmith: Carve Rune), Researchtip (Tooltip - Learn)
 {
-Deals |cffbe81f7150|r damage to a single target. A Sheep spawns at the border of the Arena.
-|cffffcc00Cooldown:|r 10 seconds.
+Carve Rune, [|cffffcc00Level %d|r]
 }
 
 STRING 11287
-// Abilities: A1DO (Shepherd: Lure), Ubertip (Tooltip - Normal - Extended)
+// Abilities: A1DW (Runsesmith: Carve Rune), Hotkey (Hotkey - Normal)
 {
-Deals |cffbe81f7200|r damage to a single target. A Sheep spawns at the border of the Arena.
-|cffffcc00Cooldown:|r 10 seconds.
+R
 }
 
 STRING 11288
-// Abilities: A1DO (Shepherd: Lure), Ubertip (Tooltip - Normal - Extended)
+// Abilities: A1DW (Runsesmith: Carve Rune), Researchhotkey (Hotkey - Learn)
 {
-Deals |cffbe81f7250|r damage to a single target. A Sheep spawns at the border of the Arena.
-|cffffcc00Cooldown:|r 10 seconds.
+R
 }
 
 STRING 11289
-// Abilities: A1DO (Shepherd: Lure), Ubertip (Tooltip - Normal - Extended)
+// Units: o020 (Rock), Name (Name)
 {
-Deals |cffbe81f7300|r damage to a single target. A Sheep spawns at the border of the Arena.
-|cffffcc00Cooldown:|r 10 seconds.
+Rock
 }
 
 STRING 11290
 // Buffs/Effects: B0AF (), Bufftip (Tooltip)
 {
 |cff00ff00Spirit Journey|r
+}
+
+STRING 11291
+// Abilities: A1DS (Shepherd: Care), Ubertip (Tooltip - Normal - Extended)
+{
+The Shepherd casts his unique on everything in target area.|n|cffffcc00Area:|r 200
+|cffffcc00Cooldown:|r 15 seconds.
+}
+
+STRING 11292
+// Abilities: A1DS (Shepherd: Care), Ubertip (Tooltip - Normal - Extended)
+{
+The Shepherd casts his unique on everything in target area.|n|cffffcc00Area:|r 250
+|cffffcc00Cooldown:|r 15 seconds.
+}
+
+STRING 11293
+// Abilities: A1DS (Shepherd: Care), Ubertip (Tooltip - Normal - Extended)
+{
+The Shepherd casts his unique on everything in target area.|n|cffffcc00Area:|r 300
+|cffffcc00Cooldown:|r 15 seconds.
+}
+
+STRING 11294
+// Abilities: A1DS (Shepherd: Care), Ubertip (Tooltip - Normal - Extended)
+{
+The Shepherd casts his unique on everything in target area.|n|cffffcc00Area:|r 350
+|cffffcc00Cooldown:|r 15 seconds.
+}
+
+STRING 11295
+// Abilities: A1DS (Shepherd: Care), Ubertip (Tooltip - Normal - Extended)
+{
+The Shepherd casts his unique on everything in target area.|n|cffffcc00Area:|r 400
+|cffffcc00Cooldown:|r 15 seconds.
+}
+
+STRING 11296
+// Abilities: A1DR (Shepherd: Spirit Journey), Ubertip (Tooltip - Normal - Extended)
+{
+Target ally goes on a spirit journey increasing their attack power by 10.|nWhenever the original journeyer touches another ally, they share the effects of spirit journey and restore |cffbe81f720|r mana to them. Everyone on the spirit journey can be passed through as if they didnt exist.
+|cffffcc00Duration:|r 15 seconds.
+|cffffcc00Cooldown:|r 20 seconds.
 }
 
 STRING 11297
@@ -74133,43 +74162,34 @@ The Shepherd casts his unique on everything in target area.|n|cffffcc00Area:|r 2
 }
 
 STRING 11298
-// Abilities: A1DS (Shepherd: Care), Ubertip (Tooltip - Normal - Extended)
+// Abilities: A1DQ (Runesmith: Carve Rune of the Life-Giver), Name (Name)
 {
-The Shepherd casts his unique on everything in target area.|n|cffffcc00Area:|r 200
-|cffffcc00Cooldown:|r 15 seconds.
-|cffffcc00Cost:|r 40 mana.
+Runesmith: Carve Rune of the Life-Giver
 }
 
 STRING 11299
-// Abilities: A1DS (Shepherd: Care), Ubertip (Tooltip - Normal - Extended)
+// Abilities: A1DQ (Runesmith: Carve Rune of the Life-Giver), Hotkey (Hotkey - Normal)
 {
-The Shepherd casts his unique on everything in target area.|n|cffffcc00Area:|r 250
-|cffffcc00Cooldown:|r 15 seconds.
-|cffffcc00Cost:|r 40 mana.
+Q
 }
 
 STRING 11300
-// Abilities: A1DS (Shepherd: Care), Ubertip (Tooltip - Normal - Extended)
+// Abilities: A1DQ (Runesmith: Carve Rune of the Life-Giver), Tip (Tooltip - Normal)
 {
-The Shepherd casts his unique on everything in target area.|n|cffffcc00Area:|r 300
-|cffffcc00Cooldown:|r 15 seconds.
-|cffffcc00Cost:|r 40 mana.
+Carve Rune of the Life-Giver
 }
 
 STRING 11301
-// Abilities: A1DS (Shepherd: Care), Ubertip (Tooltip - Normal - Extended)
+// Abilities: A1DQ (Runesmith: Carve Rune of the Life-Giver), Ubertip (Tooltip - Normal - Extended)
 {
-The Shepherd casts his unique on everything in target area.|n|cffffcc00Area:|r 350
-|cffffcc00Cooldown:|r 15 seconds.
-|cffffcc00Cost:|r 40 mana.
+|cff50ff90Use when picked up|r
+Restores |cffbe81f7200|r health to all heroes.
 }
 
 STRING 11302
-// Abilities: A1DS (Shepherd: Care), Ubertip (Tooltip - Normal - Extended)
+// Abilities: A1DW (Runsesmith: Carve Rune), Tip (Tooltip - Normal)
 {
-The Shepherd casts his unique on everything in target area.|n|cffffcc00Area:|r 400
-|cffffcc00Cooldown:|r 15 seconds.
-|cffffcc00Cost:|r 40 mana.
+Carve Rune, [|cffffcc00Level 1|r]
 }
 
 STRING 11303
@@ -74179,9 +74199,17 @@ This unit has increased attack power.
 }
 
 STRING 11304
-// Abilities: A1DU (Призрак), EditorSuffix (Editor Suffix)
+// Abilities: A1DU (Ghost), EditorSuffix (Editor Suffix)
 {
 (Spirit Journey)
+}
+
+STRING 11305
+// Abilities: A1DR (Shepherd: Spirit Journey), Ubertip (Tooltip - Normal - Extended)
+{
+Target ally goes on a spirit journey increasing their attack power by 15.|nWhenever the original journeyer touches another ally, they share the effects of spirit journey and restore |cffbe81f725|r mana to them. Everyone on the spirit journey can be passed through as if they didnt exist.
+|cffffcc00Duration:|r 15 seconds.
+|cffffcc00Cooldown:|r 20 seconds.
 }
 
 STRING 11306
@@ -74194,47 +74222,678 @@ Target ally goes on a spirit journey increasing their attack power by 10/15/20/2
 }
 
 STRING 11307
-// Abilities: A1DR (Shepherd: Spirit Journey), Ubertip (Tooltip - Normal - Extended)
+// Abilities: A1DW (Runsesmith: Carve Rune), Tip (Tooltip - Normal)
 {
-Target ally goes on a spirit journey increasing their attack power by 10.|nWhenever the original journeyer touches another ally, they share the effects of spirit journey and restore |cffbe81f720|r mana to them. Everyone on the spirit journey can be passed through as if they didnt exist.
-|cffffcc00Duration:|r 15 seconds.
-|cffffcc00Cooldown:|r 20 seconds.
-|cffffcc00Cost:|r 70 mana.
+Carve Rune, [|cffffcc00Level 2|r]
 }
 
 STRING 11308
-// Abilities: A1DR (Shepherd: Spirit Journey), Ubertip (Tooltip - Normal - Extended)
+// Abilities: A1DW (Runsesmith: Carve Rune), Tip (Tooltip - Normal)
 {
-Target ally goes on a spirit journey increasing their attack power by 15.|nWhenever the original journeyer touches another ally, they share the effects of spirit journey and restore |cffbe81f725|r mana to them. Everyone on the spirit journey can be passed through as if they didnt exist.
-|cffffcc00Duration:|r 15 seconds.
-|cffffcc00Cooldown:|r 20 seconds.
-|cffffcc00Cost:|r 70 mana.
+Carve Rune, [|cffffcc00Level 3|r]
 }
 
 STRING 11309
+// Abilities: A1DW (Runsesmith: Carve Rune), Tip (Tooltip - Normal)
+{
+Carve Rune, [|cffffcc00Level 4|r]
+}
+
+STRING 11310
+// Abilities: A1DW (Runsesmith: Carve Rune), Tip (Tooltip - Normal)
+{
+Carve Rune, [|cffffcc00Level 5|r]
+}
+
+STRING 11311
+// Abilities: A1E3 (Runesmith: Runic Link), Ubertip (Tooltip - Normal - Extended)
+{
+Whenever the Runesmith uses a Rune he shares the effects with his allies. Using runes provides additional boons.
+
+- Life-Giver provides 0.5 health regeneration.
+}
+
+STRING 11312
 // Abilities: A1DR (Shepherd: Spirit Journey), Ubertip (Tooltip - Normal - Extended)
 {
 Target ally goes on a spirit journey increasing their attack power by 20.|nWhenever the original journeyer touches another ally, they share the effects of spirit journey and restore |cffbe81f730|r mana to them. Everyone on the spirit journey can be passed through as if they didnt exist.
 |cffffcc00Duration:|r 15 seconds.
 |cffffcc00Cooldown:|r 20 seconds.
-|cffffcc00Cost:|r 70 mana.
 }
 
-STRING 11310
+STRING 11313
 // Abilities: A1DR (Shepherd: Spirit Journey), Ubertip (Tooltip - Normal - Extended)
 {
 Target ally goes on a spirit journey increasing their attack power by 25.|nWhenever the original journeyer touches another ally, they share the effects of spirit journey and restore |cffbe81f735|r mana to them. Everyone on the spirit journey can be passed through as if they didnt exist.
 |cffffcc00Duration:|r 15 seconds.
 |cffffcc00Cooldown:|r 20 seconds.
-|cffffcc00Cost:|r 70 mana.
 }
 
-STRING 11311
+STRING 11314
 // Abilities: A1DR (Shepherd: Spirit Journey), Ubertip (Tooltip - Normal - Extended)
 {
 Target ally goes on a spirit journey increasing their attack power by 30.|nWhenever the original journeyer touches another ally, they share the effects of spirit journey and restore |cffbe81f740|r mana to them. Everyone on the spirit journey can be passed through as if they didnt exist.
 |cffffcc00Duration:|r 15 seconds.
 |cffffcc00Cooldown:|r 20 seconds.
-|cffffcc00Cost:|r 70 mana.
+}
+
+STRING 11315
+// Abilities: A1DV (Shepherd: Shepherds Call Active), Hotkey (Hotkey - Normal)
+{
+E
+}
+
+STRING 11316
+// Abilities: A1DV (Shepherd: Shepherds Call Active), Name (Name)
+{
+Shepherd: Shepherds Call Active
+}
+
+STRING 11317
+// Abilities: A1DV (Shepherd: Shepherds Call Active), Researchhotkey (Hotkey - Learn)
+{
+E
+}
+
+STRING 11318
+// Abilities: A1DW (Runsesmith: Carve Rune), Ubertip (Tooltip - Normal - Extended)
+{
+|cffffcc00Passive:|r Carvable rocks spawn in the arena.
+|cffffcc00Active:|r Use magic to carve a rock into a rune. The carving takes 10 seconds to finish.
+}
+
+STRING 11319
+// Abilities: A1DV (Shepherd: Shepherds Call Active), Researchubertip (Tooltip - Learn - Extended)
+{
+|cffffcc00Active:|r Idle allied summons are ordered to attack the Shepherds target.
+|cffffcc00Passive:|r Attacks apply a debuff reducing armor by 3/5/7/9/11.
+|cffffcc00Duration:|r 4 seconds.
+}
+
+STRING 11320
+// Abilities: A1DW (Runsesmith: Carve Rune), Ubertip (Tooltip - Normal - Extended)
+{
+|cffffcc00Passive:|r Carvable rocks spawn in the arena.
+|cffffcc00Active:|r Use magic to carve a rock into a rune. The carving takes 10 seconds to finish.
+}
+
+STRING 11321
+// Abilities: A1DW (Runsesmith: Carve Rune), Ubertip (Tooltip - Normal - Extended)
+{
+|cffffcc00Passive:|r Carvable rocks spawn in the arena.
+|cffffcc00Active:|r Use magic to carve a rock into a rune. The carving takes 10 seconds to finish.
+}
+
+STRING 11322
+// Abilities: A1DW (Runsesmith: Carve Rune), Ubertip (Tooltip - Normal - Extended)
+{
+|cffffcc00Passive:|r Carvable rocks spawn in the arena.
+|cffffcc00Active:|r Use magic to carve a rock into a rune. The carving takes 10 seconds to finish.
+}
+
+STRING 11323
+// Abilities: A1DW (Runsesmith: Carve Rune), Ubertip (Tooltip - Normal - Extended)
+{
+|cffffcc00Passive:|r Carvable rocks spawn in the arena.
+|cffffcc00Active:|r Use magic to carve a rock into a rune. The carving takes 10 seconds to finish.
+}
+
+STRING 11324
+// Abilities: A1DX (Runesmith: Carve Rune of the Rich), Name (Name)
+{
+Runesmith: Carve Rune of the Rich
+}
+
+STRING 11325
+// Abilities: A1DV (Shepherd: Shepherds Call Active), Ubertip (Tooltip - Normal - Extended)
+{
+|cffffcc00Active:|r Idle allied summons are ordered to attack the Shepherds target.
+|cffffcc00Passive:|r Attacks apply a debuff reducing armor by 3.
+|cffffcc00Duration:|r 4 seconds.
+}
+
+STRING 11326
+// Abilities: A1DV (Shepherd: Shepherds Call Active), Ubertip (Tooltip - Normal - Extended)
+{
+|cffffcc00Active:|r Idle allied summons are ordered to attack the Shepherds target.
+|cffffcc00Passive:|r Attacks apply a debuff reducing armor by 5.
+|cffffcc00Duration:|r 4 seconds.
+}
+
+STRING 11327
+// Abilities: A1DV (Shepherd: Shepherds Call Active), Ubertip (Tooltip - Normal - Extended)
+{
+|cffffcc00Active:|r Idle allied summons are ordered to attack the Shepherds target.
+|cffffcc00Passive:|r Attacks apply a debuff reducing armor by 7.
+|cffffcc00Duration:|r 4 seconds.
+}
+
+STRING 11328
+// Abilities: A1DV (Shepherd: Shepherds Call Active), Ubertip (Tooltip - Normal - Extended)
+{
+|cffffcc00Active:|r Idle allied summons are ordered to attack the Shepherds target.
+|cffffcc00Passive:|r Attacks apply a debuff reducing armor by 9.
+|cffffcc00Duration:|r 4 seconds.
+}
+
+STRING 11329
+// Abilities: A1DV (Shepherd: Shepherds Call Active), Ubertip (Tooltip - Normal - Extended)
+{
+|cffffcc00Active:|r Idle allied summons are ordered to attack the Shepherds target.
+|cffffcc00Passive:|r Attacks apply a debuff reducing armor by 11.
+|cffffcc00Duration:|r 4 seconds.
+}
+
+STRING 11330
+// Abilities: A1DX (Runesmith: Carve Rune of the Rich), Hotkey (Hotkey - Normal)
+{
+W
+}
+
+STRING 11331
+// Abilities: A1DX (Runesmith: Carve Rune of the Rich), Tip (Tooltip - Normal)
+{
+Carve Rune of the Rich
+}
+
+STRING 11332
+// Abilities: A1DX (Runesmith: Carve Rune of the Rich), Ubertip (Tooltip - Normal - Extended)
+{
+|cff50ff90Use when picked up|r
+Gives 50 gold.
+}
+
+STRING 11333
+// Abilities: A1DY (Runesmith: Carve Degen), Name (Name)
+{
+Runesmith: Carve Degen
+}
+
+STRING 11334
+// Abilities: A1DZ (Runesmith: Carve Rune of the Shepherd), Name (Name)
+{
+Runesmith: Carve Rune of the Shepherd
+}
+
+STRING 11335
+// Abilities: A1DZ (Runesmith: Carve Rune of the Shepherd), Hotkey (Hotkey - Normal)
+{
+E
+}
+
+STRING 11336
+// Abilities: A1DZ (Runesmith: Carve Rune of the Shepherd), Tip (Tooltip - Normal)
+{
+Carve Rune of the Shepherd
+}
+
+STRING 11337
+// Abilities: A1DZ (Runesmith: Carve Rune of the Shepherd), Ubertip (Tooltip - Normal - Extended)
+{
+|cff50ff90Use when picked up|r
+Increases health by 25.
+}
+
+STRING 11338
+// Abilities: A1E0 (Runesmith: Carve Rune of the Strongman), Name (Name)
+{
+Runesmith: Carve Rune of the Strongman
+}
+
+STRING 11339
+// Abilities: A1E0 (Runesmith: Carve Rune of the Strongman), Hotkey (Hotkey - Normal)
+{
+A
+}
+
+STRING 11340
+// Abilities: A1E0 (Runesmith: Carve Rune of the Strongman), Tip (Tooltip - Normal)
+{
+Carve Rune of the Strongman
+}
+
+STRING 11341
+// Abilities: A1E1 (Runesmith: Carve Rune of the Emperor), Ubertip (Tooltip - Normal - Extended)
+{
+|cff50ff90Use when picked up|r
+Restores |cffbe81f775|r mana to all heroes.
+}
+
+STRING 11342
+// Abilities: A1E1 (Runesmith: Carve Rune of the Emperor), Name (Name)
+{
+Runesmith: Carve Rune of the Emperor
+}
+
+STRING 11343
+// Abilities: A1E1 (Runesmith: Carve Rune of the Emperor), Hotkey (Hotkey - Normal)
+{
+R
+}
+
+STRING 11344
+// Abilities: A1E1 (Runesmith: Carve Rune of the Emperor), Tip (Tooltip - Normal)
+{
+Carve Rune of the Emperor
+}
+
+STRING 11345
+// Abilities: A1E3 (Runesmith: Runic Link), Ubertip (Tooltip - Normal - Extended)
+{
+Whenever the Runesmith uses a Rune he shares the effects with his allies. Using runes provides additional boons.
+
+- Life-Giver provides 0.5 health regeneration.
+- Shepherd provides 1 armor for the battle.
+}
+
+STRING 11346
+// Abilities: A1E2 (Runesmith: Carve Rune of the Illusionist), Name (Name)
+{
+Runesmith: Carve Rune of the Illusionist
+}
+
+STRING 11347
+// Abilities: A1E2 (Runesmith: Carve Rune of the Illusionist), Hotkey (Hotkey - Normal)
+{
+S
+}
+
+STRING 11348
+// Abilities: A1E2 (Runesmith: Carve Rune of the Illusionist), Tip (Tooltip - Normal)
+{
+Carve Rune of the Illusionist
+}
+
+STRING 11349
+// Abilities: A1E3 (Runesmith: Runic Link), Ubertip (Tooltip - Normal - Extended)
+{
+Whenever the Runesmith uses a Rune he shares the effects with his allies. Using runes provides additional boons.
+
+- Life-Giver provides 0.5 health regeneration.
+- Shepherd provides 1 armor for the battle.
+- Emperor reduces active cooldowns by 5s.
+}
+
+STRING 11350
+// Abilities: A1E0 (Runesmith: Carve Rune of the Strongman), Ubertip (Tooltip - Normal - Extended)
+{
+|cff50ff90Use when picked up|r
+Increases attack power by 1.
+}
+
+STRING 11351
+// Abilities: A1E2 (Runesmith: Carve Rune of the Illusionist), Ubertip (Tooltip - Normal - Extended)
+{
+|cff50ff90Use when picked up|r
+Gives a random stat.
+}
+
+STRING 11352
+// Abilities: A1DW (Runsesmith: Carve Rune), Researchubertip (Tooltip - Learn - Extended)
+{
+|cffffcc00Passive:|r Carvable rocks spawn in the arena.
+|cffffcc00Active:|r Use magic to carve a rock into a rune. The carving takes 10 seconds to finish.
+
+|cffffcc00Level 1:|r Life-Giver, Rich
+|cffffcc00Level 2:|r + Shepherd
+|cffffcc00Level 3:|r + Emperor
+|cffffcc00Level 4:|r + Strongman
+|cffffcc00Level 5:|r + Illusionist
+}
+
+STRING 11353
+// Abilities: A1E3 (Runesmith: Runic Link), Name (Name)
+{
+Runesmith: Runic Link
+}
+
+STRING 11354
+// Abilities: A1E3 (Runesmith: Runic Link), Researchtip (Tooltip - Learn)
+{
+Runic Link, [|cffffcc00Level %d|r]
+}
+
+STRING 11355
+// Abilities: A1E3 (Runesmith: Runic Link), Tip (Tooltip - Normal)
+{
+Runic Link, [|cffffcc00Level 1|r]
+}
+
+STRING 11356
+// Abilities: A1E3 (Runesmith: Runic Link), Tip (Tooltip - Normal)
+{
+Runic Link, [|cffffcc00Level 2|r]
+}
+
+STRING 11357
+// Abilities: A1E3 (Runesmith: Runic Link), Tip (Tooltip - Normal)
+{
+Runic Link, [|cffffcc00Level 3|r]
+}
+
+STRING 11358
+// Abilities: A1E3 (Runesmith: Runic Link), Tip (Tooltip - Normal)
+{
+Runic Link, [|cffffcc00Level 4|r]
+}
+
+STRING 11359
+// Abilities: A1E3 (Runesmith: Runic Link), Tip (Tooltip - Normal)
+{
+Runic Link, [|cffffcc00Level 5|r]
+}
+
+STRING 11360
+// Abilities: A1E3 (Runesmith: Runic Link), Researchhotkey (Hotkey - Learn)
+{
+E
+}
+
+STRING 11361
+// Abilities: A1E3 (Runesmith: Runic Link), Ubertip (Tooltip - Normal - Extended)
+{
+Whenever the Runesmith uses a Rune he shares the effects with his allies. Using runes provides additional boons.
+
+- Life-Giver provides 0.5 health regeneration.
+- Shepherd provides 1 armor for the battle.
+- Emperor reduces active cooldowns by 5s.
+- Strongman provides 1% spell power.
+}
+
+STRING 11362
+// Abilities: A1E3 (Runesmith: Runic Link), Ubertip (Tooltip - Normal - Extended)
+{
+Whenever the Runesmith uses a Rune he shares the effects with his allies. Using runes provides additional boons.
+
+- Life-Giver provides 0.5 health regeneration.
+- Shepherd provides 1 armor for the battle.
+- Emperor reduces active cooldowns by 5s.
+- Strongman provides 1% spell power.
+- Illusionist provides an additional random stat.
+}
+
+STRING 11363
+// Abilities: A1E4 (Runesmith: Traveler's Strike), Hotkey (Hotkey - Normal)
+{
+Q
+}
+
+STRING 11365
+// Abilities: A1E4 (Runesmith: Traveler's Strike), Researchhotkey (Hotkey - Learn)
+{
+Q
+}
+
+STRING 11366
+// Abilities: A1E4 (Runesmith: Traveler's Strike), Researchtip (Tooltip - Learn)
+{
+Traveler's Strike, [|cffffcc00Level %d|r]
+}
+
+STRING 11367
+// Buffs/Effects: B0AG (), Bufftip (Tooltip)
+{
+|cff00ff00Runic Link|r
+}
+
+STRING 11368
+// Buffs/Effects: B0AG (), Buffubertip (Tooltip - Extended)
+{
+Whenever the Runesmith uses a Rune he shares the effects with you.
+}
+
+STRING 11369
+// Abilities: A1E4 (Runesmith: Traveler's Strike), Tip (Tooltip - Normal)
+{
+Traveler's Strike, [|cffffcc00Level 1|r]
+}
+
+STRING 11370
+// Abilities: A1E4 (Runesmith: Traveler's Strike), Tip (Tooltip - Normal)
+{
+Traveler's Strike, [|cffffcc00Level 2|r]
+}
+
+STRING 11371
+// Abilities: A1E4 (Runesmith: Traveler's Strike), Tip (Tooltip - Normal)
+{
+Traveler's Strike, [|cffffcc00Level 3|r]
+}
+
+STRING 11372
+// Abilities: A1E4 (Runesmith: Traveler's Strike), Tip (Tooltip - Normal)
+{
+Traveler's Strike, [|cffffcc00Level 4|r]
+}
+
+STRING 11373
+// Abilities: A1E4 (Runesmith: Traveler's Strike), Tip (Tooltip - Normal)
+{
+Traveler's Strike, [|cffffcc00Level 5|r]
+}
+
+STRING 11374
+// Abilities: A1E4 (Runesmith: Traveler's Strike), Name (Name)
+{
+Runesmith: Traveler's Strike
+}
+
+STRING 11375
+// Abilities: A1E4 (Runesmith: Traveler's Strike), Researchubertip (Tooltip - Learn - Extended)
+{
+The Runesmith charges his attack. Charged attacks will cause |cffbe81f7magic damage|r based on your attack power per charge and also stun the target for 1 second per charge.
+|cffffcc00Max Charges:|r 1/2/3/4/5
+|cffffcc00Cooldown:|r 5 seconds.
+|cffffcc00Cost:|r 30 mana.
+}
+
+STRING 11376
+// Abilities: A1E4 (Runesmith: Traveler's Strike), Ubertip (Tooltip - Normal - Extended)
+{
+The Runesmith charges his attack. Charged attacks will cause |cffbe81f7magic damage|r based on your attack power per charge and also stun the target for 1 second per charge.
+|cffffcc00Max Charges:|r 1
+|cffffcc00Cooldown:|r 5 seconds.
+}
+
+STRING 11377
+// Abilities: A1E4 (Runesmith: Traveler's Strike), Ubertip (Tooltip - Normal - Extended)
+{
+The Runesmith charges his attack. Charged attacks will cause |cffbe81f7magic damage|r based on your attack power per charge and also stun the target for 1 second per charge.
+|cffffcc00Max Charges:|r 2
+|cffffcc00Cooldown:|r 5 seconds.
+}
+
+STRING 11378
+// Abilities: A1E4 (Runesmith: Traveler's Strike), Ubertip (Tooltip - Normal - Extended)
+{
+The Runesmith charges his attack. Charged attacks will cause |cffbe81f7magic damage|r based on your attack power per charge and also stun the target for 1 second per charge.
+|cffffcc00Max Charges:|r 3
+|cffffcc00Cooldown:|r 5 seconds.
+}
+
+STRING 11379
+// Abilities: A1E4 (Runesmith: Traveler's Strike), Ubertip (Tooltip - Normal - Extended)
+{
+The Runesmith charges his attack. Charged attacks will cause |cffbe81f7magic damage|r based on your attack power per charge and also stun the target for 1 second per charge.
+|cffffcc00Max Charges:|r 4
+|cffffcc00Cooldown:|r 5 seconds.
+}
+
+STRING 11380
+// Abilities: A1DW (Runsesmith: Carve Rune), Name (Name)
+{
+Runsesmith: Carve Rune
+}
+
+STRING 11381
+// Abilities: A1E5 (Runesmith: Take Root), Hotkey (Hotkey - Normal)
+{
+W
+}
+
+STRING 11382
+// Abilities: A1E6 (Runesmith: Ethereal), Name (Name)
+{
+Runesmith: Ethereal
+}
+
+STRING 11383
+// Abilities: A1E7 (Runesmith: Ethereal Book), Name (Name)
+{
+Runesmith: Ethereal Book
+}
+
+STRING 11384
+// Units: h017 (Odo), EditorSuffix (Name - Editor Suffix)
+{
+Runesmith (Decoy)
+}
+
+STRING 11385
+// Abilities: A1E7 (Runesmith: Ethereal Book), EditorSuffix (Editor Suffix)
+{
+(hidden)
+}
+
+STRING 11386
+// Abilities: A1E8 (Ghost), EditorSuffix (Editor Suffix)
+{
+(Runesmith)
+}
+
+STRING 11387
+// Abilities: A1E5 (Runesmith: Take Root), Researchtip (Tooltip - Learn)
+{
+Take Root, [|cffffcc00Level %d|r]
+}
+
+STRING 11388
+// Abilities: A1E5 (Runesmith: Take Root), Name (Name)
+{
+Runesmith: Take Root
+}
+
+STRING 11389
+// Abilities: A1E5 (Runesmith: Take Root), Researchhotkey (Hotkey - Learn)
+{
+W
+}
+
+STRING 11390
+// Abilities: A1E5 (Runesmith: Take Root), Researchubertip (Tooltip - Learn - Extended)
+{
+The Runesmith takes root allowing his spirit move around the battlefield. His body retains 60%/70%/80%/90%/100% of the Runesmith's power. When the ability ends the Runesmith reforms his body at his spirit's location.
+|cffffcc00Duration:|r 20 seconds.
+|cffffcc00Cooldown:|r 40 seconds.
+|cffffcc00Cost:|r 60 mana.
+}
+
+STRING 11391
+// Abilities: A1E5 (Runesmith: Take Root), Tip (Tooltip - Normal)
+{
+Take Root, [|cffffcc00Level 1|r]
+}
+
+STRING 11392
+// Abilities: A1E5 (Runesmith: Take Root), Tip (Tooltip - Normal)
+{
+Take Root, [|cffffcc00Level 2|r]
+}
+
+STRING 11393
+// Abilities: A1E5 (Runesmith: Take Root), Tip (Tooltip - Normal)
+{
+Take Root, [|cffffcc00Level 3|r]
+}
+
+STRING 11394
+// Abilities: A1E5 (Runesmith: Take Root), Tip (Tooltip - Normal)
+{
+Take Root, [|cffffcc00Level 4|r]
+}
+
+STRING 11395
+// Abilities: A1E5 (Runesmith: Take Root), Tip (Tooltip - Normal)
+{
+Take Root, [|cffffcc00Level 5|r]
+}
+
+STRING 11396
+// Abilities: A1E5 (Runesmith: Take Root), Ubertip (Tooltip - Normal - Extended)
+{
+The Runesmith takes root allowing his spirit move around the battlefield. His body retains 60% of the Runesmith's power. When the ability ends the Runesmith reforms his body at his spirit's location.
+|cffffcc00Duration:|r 20 seconds.
+|cffffcc00Cooldown:|r 40 seconds.
+}
+
+STRING 11397
+// Abilities: A1E5 (Runesmith: Take Root), Ubertip (Tooltip - Normal - Extended)
+{
+The Runesmith takes root allowing his spirit move around the battlefield. His body retains 70% of the Runesmith's power. When the ability ends the Runesmith reforms his body at his spirit's location.
+|cffffcc00Duration:|r 20 seconds.
+|cffffcc00Cooldown:|r 40 seconds.
+}
+
+STRING 11398
+// Abilities: A1E5 (Runesmith: Take Root), Ubertip (Tooltip - Normal - Extended)
+{
+The Runesmith takes root allowing his spirit move around the battlefield. His body retains 80% of the Runesmith's power. When the ability ends the Runesmith reforms his body at his spirit's location.
+|cffffcc00Duration:|r 20 seconds.
+|cffffcc00Cooldown:|r 40 seconds.
+}
+
+STRING 11399
+// Abilities: A1E5 (Runesmith: Take Root), Ubertip (Tooltip - Normal - Extended)
+{
+The Runesmith takes root allowing his spirit move around the battlefield. His body retains 90% of the Runesmith's power. When the ability ends the Runesmith reforms his body at his spirit's location.
+|cffffcc00Duration:|r 20 seconds.
+|cffffcc00Cooldown:|r 40 seconds.
+}
+
+STRING 11400
+// Abilities: A1E5 (Runesmith: Take Root), Ubertip (Tooltip - Normal - Extended)
+{
+The Runesmith takes root allowing his spirit move around the battlefield. His body retains 100% of the Runesmith's power. When the ability ends the Runesmith reforms his body at his spirit's location.
+|cffffcc00Duration:|r 20 seconds.
+|cffffcc00Cooldown:|r 40 seconds.
+}
+
+STRING 11401
+// Abilities: A1E4 (Runesmith: Traveler's Strike), Ubertip (Tooltip - Normal - Extended)
+{
+The Runesmith charges his attack. Charged attacks will cause |cffbe81f7magic damage|r based on your attack power per charge and also stun the target for 1 second per charge.
+|cffffcc00Max Charges:|r 5
+|cffffcc00Cooldown:|r 5 seconds.
+}
+
+STRING 11415
+// Units: h017 (Odo), Name (Name)
+{
+Odo
+}
+
+STRING 11416
+{
+Change Notes 1.5.0
+}
+
+STRING 11417
+{
+|c00ffcc001.5.0z:|r (Sadtwig)
+- Removed Debug Message from Shepherd R & made sheep scale in size.
+- Fixed Reign of the Legend Quest.
+|c00ffcc001.5.0y:|r (Sadtwig)
+- Fixed Overlord Arena to trigger BossDeath effects like Quest: Fullfillment of Will & Soul Swap.
+- Changed Shepherd R to spawn sheeps with increased stats.
+- Fixed typo in Barbarian Q Tooltip on level 4.
+|c00ffcc001.5.0x:|r (Sadtwig)
+- Fixed Shepherd Q breaking with invulnerable units.
+|c00ffcc001.5.0:|r 
+(Sadtwig)
+- Added a new hero: Shepherd
+- Fixed on-summon effect item interactions.
+- Buffed Orb of Twilight Flame.
+- Rebalanced Orb of Nerzhul
+- Fixed Minotaur not losing stats from his passive w
 }
 
