@@ -4,15 +4,15 @@
 |cffffcc00Discord:|r discordapp.com/invite/KVfrcby;
 |cffffcc00Discord.Me:|r discord.me/bbwc3.
 
-|cffffcc001.5.1x:|r (Sadtwig)
-- New Hero: Runesmith
+|cffffcc001.5.2:|r (Varcklen & Sadtwig)
+- Runestone Mos rework.
+- Reduced time between waves in Infinite Arena.
 - Several Fixes (See Quest Log).
-- Several Hotfixes (See Quest Log).
 }
 
 STRING 1
 {
-|cffbe81f7Boss Battle 1.5.1x|r
+|cffbe81f7Boss Battle 1.5.2|r
 }
 
 STRING 2
@@ -2808,7 +2808,7 @@ Underminzer
 
 STRING 456
 {
-Change Notes 1.5.1
+Change Notes 1.5.2
 }
 
 STRING 457
@@ -4804,14 +4804,6 @@ STRING 776
 Temporal Clock
 }
 
-STRING 777
-// Items: I0GI (Jagot), Description (Description)
-{
-|cff4169e1Rare|r
-When the hero uses the first ability (|cffffcc00Q|r), creates a temporal clock. If you pick them up, then cooldown of the hero's abilities will be reduced by 4 seconds.
-|cff81f260[Random bonus]|r
-}
-
 STRING 778
 // Items: I0GI (Jagot), Name (Name)
 {
@@ -4822,14 +4814,6 @@ STRING 779
 // Items: I0GI (Jagot), Tip (Tooltip - Basic)
 {
 Jagot
-}
-
-STRING 780
-// Items: I0GI (Jagot), Ubertip (Tooltip - Extended)
-{
-|cff4169e1Rare|r
-When the hero uses the first ability (|cffffcc00Q|r), creates a temporal clock. If you pick them up, then cooldown of the hero's abilities will be reduced by 4 seconds.
-|cff81f260[Random bonus]|r
 }
 
 STRING 781
@@ -5154,19 +5138,16 @@ Activation: Restores |cffbe81f71-400|r health to the hero. If the inventory is f
 
 STRING 828
 {
-|c00ffcc001.5.1x:|r (Sadtwig)
-- Runesmith W body has more attack range
-- Runesmith collecting a Rune of the Strongman fixed.
-- Runesmith Q and W reset at end of battle and are now combat only.
-- Carvable Rocks no longer spawn in pvp.
-
-|c00ffcc001.5.1:|r (Sadtwig)
-- New Hero: Runesmith
-- Devourer E now correctly applies bonus magic damage.
-- Mixology now doesn't work out of combat with Witcher Medallion
-- Faceless Spy can no longer turn into itself.
-- Shepherd E now counts towards Trembling Enemies quest.
-- Fixed "On a new One" not granting a hero if random pick attempts were exhausted.
+|c00ffcc001.5.2:|r (Varcklen & Sadtwig)
+- Runestone Mos rework. No longer interacts with summon builds.
+- Houndmaster W no longer allows summoning additional Crisps.
+- Reduced enemy spawn timer in Infinite Arena from 15s to 12s.
+- Runesmith Rocks increased hitpoints to 200 from 10.
+- Runesmith Rocks dying while being carved causes the Rune to be carved early.
+- Runesmith Q cooldown reduced to 4s from 5s.
+- Runesmith E is now disabled during duels.
+- Updated Jagot tooltip to more clearly state that cooldowns only get reduced if the ability has more than 4 seconds of cooldown remaining.
+- Fixed Dreamcatcher for Runesmith. Fizzling on purpose for Shepherd.
 }
 
 STRING 829
@@ -19072,14 +19053,6 @@ STRING 2844
 At the end of the battle increases attack power by 3.
 }
 
-STRING 2845
-// Items: I026 (Runestone Mos), Description (Description)
-{
-|cffbababcCommon|r, |cff848484Rune|r
-When your minion dies, with the probability of |cffd7df0120%|r, it creates an arena rune.
-|cff81f260[Random bonus]|r
-}
-
 STRING 2846
 // Items: I026 (Runestone Mos), Name (Name)
 {
@@ -19090,14 +19063,6 @@ STRING 2847
 // Items: I026 (Runestone Mos), Tip (Tooltip - Basic)
 {
 Runestone Mos
-}
-
-STRING 2848
-// Items: I026 (Runestone Mos), Ubertip (Tooltip - Extended)
-{
-|cffbababcCommon|r, |cff848484Rune|r
-When your minion dies, with the probability of |cffd7df0120%|r, it creates an arena rune.
-|cff81f260[Random bonus]|r
 }
 
 STRING 2849
@@ -73629,7 +73594,7 @@ By Varcklen
 
 STRING 11218
 {
-|cffbe81f7Boss Battle 1.5.1x|r
+|cffbe81f7Boss Battle 1.5.2|r
 }
 
 STRING 11219
@@ -74618,6 +74583,11 @@ STRING 11363
 Q
 }
 
+STRING 11364
+{
+Change Notes 1.5.1
+}
+
 STRING 11365
 // Abilities: A1E4 (Runesmith: Traveler's Strike), Researchhotkey (Hotkey - Learn)
 {
@@ -74676,47 +74646,6 @@ STRING 11374
 // Abilities: A1E4 (Runesmith: Traveler's Strike), Name (Name)
 {
 Runesmith: Traveler's Strike
-}
-
-STRING 11375
-// Abilities: A1E4 (Runesmith: Traveler's Strike), Researchubertip (Tooltip - Learn - Extended)
-{
-The Runesmith charges his attack. Charged attacks will cause |cffbe81f7magic damage|r based on your attack power per charge and also stun the target for 1 second per charge.
-|cffffcc00Max Charges:|r 1/2/3/4/5
-|cffffcc00Cooldown:|r 5 seconds.
-|cffffcc00Cost:|r 30 mana.
-}
-
-STRING 11376
-// Abilities: A1E4 (Runesmith: Traveler's Strike), Ubertip (Tooltip - Normal - Extended)
-{
-The Runesmith charges his attack. Charged attacks will cause |cffbe81f7magic damage|r based on your attack power per charge and also stun the target for 1 second per charge.
-|cffffcc00Max Charges:|r 1
-|cffffcc00Cooldown:|r 5 seconds.
-}
-
-STRING 11377
-// Abilities: A1E4 (Runesmith: Traveler's Strike), Ubertip (Tooltip - Normal - Extended)
-{
-The Runesmith charges his attack. Charged attacks will cause |cffbe81f7magic damage|r based on your attack power per charge and also stun the target for 1 second per charge.
-|cffffcc00Max Charges:|r 2
-|cffffcc00Cooldown:|r 5 seconds.
-}
-
-STRING 11378
-// Abilities: A1E4 (Runesmith: Traveler's Strike), Ubertip (Tooltip - Normal - Extended)
-{
-The Runesmith charges his attack. Charged attacks will cause |cffbe81f7magic damage|r based on your attack power per charge and also stun the target for 1 second per charge.
-|cffffcc00Max Charges:|r 3
-|cffffcc00Cooldown:|r 5 seconds.
-}
-
-STRING 11379
-// Abilities: A1E4 (Runesmith: Traveler's Strike), Ubertip (Tooltip - Normal - Extended)
-{
-The Runesmith charges his attack. Charged attacks will cause |cffbe81f7magic damage|r based on your attack power per charge and also stun the target for 1 second per charge.
-|cffffcc00Max Charges:|r 4
-|cffffcc00Cooldown:|r 5 seconds.
 }
 
 STRING 11380
@@ -74858,12 +74787,108 @@ The Runesmith takes root allowing his spirit move around the battlefield. His bo
 |cffffcc00Cooldown:|r 40 seconds.
 }
 
-STRING 11401
+STRING 11402
+{
+|c00ffcc001.5.1x:|r (Sadtwig)
+- Runesmith W body has more attack range
+- Runesmith collecting a Rune of the Strongman fixed.
+- Runesmith Q and W reset at end of battle and are now combat only.
+- Carvable Rocks no longer spawn in pvp.
+
+|c00ffcc001.5.1:|r (Sadtwig)
+- New Hero: Runesmith
+- Devourer E now correctly applies bonus magic damage.
+- Mixology now doesn't work out of combat with Witcher Medallion
+- Faceless Spy can no longer turn into itself.
+- Shepherd E now counts towards Trembling Enemies quest.
+- Fixed "On a new One" not granting a hero if random pick attempts were exhausted.
+}
+
+STRING 11403
+// Abilities: A1E4 (Runesmith: Traveler's Strike), Researchubertip (Tooltip - Learn - Extended)
+{
+The Runesmith charges his attack. Charged attacks will cause |cffbe81f7magic damage|r based on your attack power per charge and also stun the target for 1 second per charge.
+|cffffcc00Max Charges:|r 1/2/3/4/5
+|cffffcc00Cooldown:|r 4 seconds.
+|cffffcc00Cost:|r 30 mana.
+}
+
+STRING 11404
+// Abilities: A1E4 (Runesmith: Traveler's Strike), Ubertip (Tooltip - Normal - Extended)
+{
+The Runesmith charges his attack. Charged attacks will cause |cffbe81f7magic damage|r based on your attack power per charge and also stun the target for 1 second per charge.
+|cffffcc00Max Charges:|r 1
+|cffffcc00Cooldown:|r 4 seconds.
+}
+
+STRING 11405
+// Abilities: A1E4 (Runesmith: Traveler's Strike), Ubertip (Tooltip - Normal - Extended)
+{
+The Runesmith charges his attack. Charged attacks will cause |cffbe81f7magic damage|r based on your attack power per charge and also stun the target for 1 second per charge.
+|cffffcc00Max Charges:|r 2
+|cffffcc00Cooldown:|r 4 seconds.
+}
+
+STRING 11406
+// Abilities: A1E4 (Runesmith: Traveler's Strike), Ubertip (Tooltip - Normal - Extended)
+{
+The Runesmith charges his attack. Charged attacks will cause |cffbe81f7magic damage|r based on your attack power per charge and also stun the target for 1 second per charge.
+|cffffcc00Max Charges:|r 3
+|cffffcc00Cooldown:|r 4 seconds.
+}
+
+STRING 11407
+// Abilities: A1E4 (Runesmith: Traveler's Strike), Ubertip (Tooltip - Normal - Extended)
+{
+The Runesmith charges his attack. Charged attacks will cause |cffbe81f7magic damage|r based on your attack power per charge and also stun the target for 1 second per charge.
+|cffffcc00Max Charges:|r 4
+|cffffcc00Cooldown:|r 4 seconds.
+}
+
+STRING 11408
 // Abilities: A1E4 (Runesmith: Traveler's Strike), Ubertip (Tooltip - Normal - Extended)
 {
 The Runesmith charges his attack. Charged attacks will cause |cffbe81f7magic damage|r based on your attack power per charge and also stun the target for 1 second per charge.
 |cffffcc00Max Charges:|r 5
-|cffffcc00Cooldown:|r 5 seconds.
+|cffffcc00Cooldown:|r 4 seconds.
+}
+
+STRING 11409
+// Items: I0GI (Jagot), Description (Description)
+{
+|cff4169e1Rare|r
+When the hero uses the first ability (|cffffcc00Q|r), create a temporal clock. Temporal clocks reduce the cooldown of abilities with more than 4 seconds of coldown remaining by 4 seconds.
+|cff81f260[Random bonus]|r
+}
+
+STRING 11410
+// Items: I0GI (Jagot), Ubertip (Tooltip - Extended)
+{
+|cff4169e1Rare|r
+When the hero uses the first ability (|cffffcc00Q|r), create a temporal clock. Temporal clocks reduce the cooldown of abilities with more than 4 seconds of coldown remaining by 4 seconds.
+|cff81f260[Random bonus]|r
+}
+
+STRING 11411
+// Abilities: A1E9 (Spell Shield), EditorSuffix (Editor Suffix)
+{
+(Runestone Mos)
+}
+
+STRING 11412
+// Items: I026 (Runestone Mos), Description (Description)
+{
+|cffbababcCommon|r, |cff848484Rune|r
+Every 15 seconds, creates a random arena rune. With the probability of |cffd7df015%|r, it creates one of every arena rune.
+|cff81f260[Random bonus]|r
+}
+
+STRING 11413
+// Items: I026 (Runestone Mos), Ubertip (Tooltip - Extended)
+{
+|cffbababcCommon|r, |cff848484Rune|r
+Every 15 seconds, creates a random arena rune. With the probability of |cffd7df015%|r, it creates one of every arena rune.
+|cff81f260[Random bonus]|r
 }
 
 STRING 11415
