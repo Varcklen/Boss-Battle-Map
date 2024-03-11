@@ -1,0 +1,11 @@
+{
+  "Id": 50332191,
+  "Comment": "",
+  "IsScript": true,
+  "RunOnMapInit": false,
+  "Script": "scope GameStatus initializer init\r\n\t\r\n\tglobals\r\n\t    constant integer GAME_STATUS_OFFLINE = 0\r\n\t    constant integer GAME_STATUS_ONLINE = 1\r\n\t    constant integer GAME_STATUS_REPLAY = 2\r\n\tendglobals\r\n\t\r\n\tfunction Trig_GameStatus_Actions takes nothing returns nothing\r\n\t    local integer i\r\n\t    \r\n\t\r\n\t    // Initialize\r\n\t    \r\n\t    // Find a playing player. Its Just Works\r\n\t    set i = 1\r\n\t    loop\r\n\t        exitwhen i > 12\r\n\t        set udg_GameStatus_TempPlayer = Player(i - 1)\r\n\t        if GetPlayerController(udg_GameStatus_TempPlayer) == MAP_CONTROL_USER and GetPlayerSlotState(udg_GameStatus_TempPlayer) == PLAYER_SLOT_STATE_PLAYING then\r\n\t            set i = 99\r\n\t        endif\r\n\t        set i = i + 1\r\n\t    endloop\r\n\t    // Find out the game status\r\n\t    call CreateNUnitsAtLoc( 1, 'hfoo', udg_GameStatus_TempPlayer, GetPlayerStartLocationLoc(udg_GameStatus_TempPlayer), bj_UNIT_FACING )\r\n\t    call SelectUnitForPlayerSingle( bj_lastCreatedUnit, udg_GameStatus_TempPlayer )\r\n\t    if IsUnitSelected(bj_lastCreatedUnit, udg_GameStatus_TempPlayer) then\r\n\t        if ReloadGameCachesFromDisk() then\r\n\t            set udg_GameStatus = GAME_STATUS_OFFLINE\r\n\t        else\r\n\t            //С этим стоит пользоватся осторожно. Может сломать реплеи\r\n\t            set udg_GameStatus = GAME_STATUS_REPLAY\r\n\t        endif\r\n\t    else\r\n\t        set udg_GameStatus = GAME_STATUS_ONLINE\r\n\t    endif\r\n\t    call RemoveUnit( bj_lastCreatedUnit )\r\n\tendfunction\r\n\t\r\n\t//===========================================================================\r\n\tfunction init takes nothing returns nothing\r\n\t\tlocal trigger trig = CreateTrigger()\r\n\t    call TriggerRegisterTimerEventSingle( trig, 0.00 )\r\n\t    call TriggerAddAction( trig, function Trig_GameStatus_Actions )\r\n\tendfunction\r\n\r\nendscope",
+  "Events": [],
+  "LocalVariables": [],
+  "Conditions": [],
+  "Actions": []
+}
