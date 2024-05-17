@@ -38,11 +38,13 @@ library CheatSystem initializer init requires Multiboard
 		call Cheat.create(trig_CheatSimulateLeaver, "-leaver", "Simulate a player leaving the game.")
 		call Cheat.create(trig_CheatWhoDead, "-who", "Displays a list of living and dead heroes.")
 		call Cheat.create(trig_CheatTakeMagicDamage, "-take", "The hero receives 100 magic damage.")
+		call Cheat.create(CheatTakeBigMagicDamage_Trigger, "-takeb", "The hero receives 1000 magic damage.")
 		call Cheat.create(trig_CheatRandomAbility, "-chaos", "The hero casts all random spells.")
 		call Cheat.create(CheatBlessAll_Trigger, "-blessall", "Enables all blessings.")
 		call Cheat.create(CheatCheckStats_Trigger, "-stats", "Displays a list with data about stats.")
 		call Cheat.create(CheatBerserk_Trigger, "-rage", "The hero enters berserk mode for 10 seconds.")
 		call Cheat.create(CheatSets_Trigger, "-sets", "Displays the number of entities from sets on the player.")
+		call Cheat.create(CheatSmallPool_Trigger, "-pool", "Set small artifact pool." )
 	endfunction
 
 	public function IsCheatsEnabled takes nothing returns boolean
