@@ -17,7 +17,7 @@ scope MagicThrowHS initializer init
 	        set target = udg_Target
 	    elseif RandomLogic() then
 	        set caster = udg_Caster
-	        set target = randomtarget( caster, 900, "enemy", "", "", "", "" )
+	        set target = randomtarget( caster, 900, "enemy", 0, 0, 0 )
 	        call textst( udg_string[0] + GetObjectName(ANILITY_ID), caster, 64, 90, 10, 1.5 )
 	        if target == null then
 	            set caster = null
@@ -29,7 +29,7 @@ scope MagicThrowHS initializer init
 	    endif
 
 	    call spectimeunit( target, "Abilities\\Spells\\Undead\\ReplenishMana\\ReplenishManaCaster.mdl", "head", 1 )
-	    call UnitTakeDamage( caster, target, 100, DAMAGE_TYPE_MAGIC)
+	    call UnitTakeDamage( caster, target, 85, DAMAGE_TYPE_MAGIC)
 	    
 	    set caster = null
 	    set target = null

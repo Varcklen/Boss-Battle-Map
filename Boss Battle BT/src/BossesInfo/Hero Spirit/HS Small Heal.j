@@ -17,7 +17,7 @@ scope SmallHealHS initializer init
 	        set target = udg_Target
 	    elseif RandomLogic() then
 	        set caster = udg_Caster
-	        set target = randomtarget( caster, 900, "ally", "notfull", "", "", "" )
+	        set target = randomtarget( caster, 900, "ally", RT_NOT_FULL_HEALTH, 0, 0 )
 	        call textst( udg_string[0] + GetObjectName(ANILITY_ID), caster, 64, 90, 10, 1.5 )
 	        if target == null then
 	            set caster = null
@@ -28,7 +28,7 @@ scope SmallHealHS initializer init
 	        set target = GetSpellTargetUnit()
 	    endif
 
-	    call healst( caster, target, 100 )
+	    call healst( caster, target, 85 )
 	    call DestroyEffect( AddSpecialEffectTarget("Abilities\\Spells\\Human\\HolyBolt\\HolyBoltSpecialArt.mdl" , target, "origin" ) )
 	    
 	    set caster = null
